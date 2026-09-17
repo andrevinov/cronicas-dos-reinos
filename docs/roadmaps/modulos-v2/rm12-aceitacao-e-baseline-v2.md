@@ -2,10 +2,11 @@
 
 ## Status e dependências
 
-**Implementação técnica concluída; aceite operacional aguardando a primeira
-sessão real v2.** Último item do roadmap, construído sobre os contratos da RM-11
-e de todos os módulos v2. O gate reproduzível está verde sem escrever no save
-canônico nem fabricar uma sessão de jogo.
+**Implementação técnica e validação externa concluídas; aceite operacional
+aguarda uma sessão real pós-correção.** Último item do roadmap, construído sobre
+os contratos da RM-11 e de todos os módulos v2. O corpus está 226/226 e a
+amostra histórica externa 6/6, sem escrever no save canônico nem fabricar uma
+sessão de jogo.
 
 ## Objetivo
 
@@ -113,6 +114,8 @@ poetry run test-domain mecanica cronica sessoes sidequests mundo runtime
 poetry run test-full
 poetry run preflight
 poetry run python ferramentas/catalogo_avaliacao.py --json
+poetry run python ferramentas/verificar_corpus_avaliacao.py
+poetry run python ferramentas/validar_amostra_externa_avaliacao.py
 poetry run python ferramentas/aceitacao_modular_v2.py check
 poetry run python ferramentas/gerar-avaliacao-sessao.py <rollout> --sessao-id <id>
 ```
@@ -122,12 +125,14 @@ aceite confere cobertura e unicidade das interações, versões congeladas, soma
 custos pais, campos N/D e preservação de manifestações/adjudicações em uma
 regeneração idempotente.
 
-O penúltimo comando executa os nove episódios ancorados em
+O comando de aceitação executa os nove episódios ancorados em
 `tests/fixtures/aceitacao-modular-v2.yaml`, valida o rollout técnico determinista
 e compara suas medidas observadas com
 `baseline/modules-v2-technical-acceptance.json`. Seu estado esperado antes da
-primeira sessão é `pronta_para_primeira_sessao_real`; isso é sucesso técnico,
-mas ainda não satisfaz os itens operacionais abaixo.
+primeira sessão pós-correção é `pronta_para_primeira_sessao_real`; isso é
+sucesso técnico, mas ainda não satisfaz os itens operacionais abaixo. A sessão
+023 permanece pendente por ter sido usada no diagnóstico e por não possuir os
+novos contratos de proveniência e conclusão.
 
 ## Definition of done
 

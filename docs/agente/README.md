@@ -13,6 +13,7 @@ somente o domínio necessário para a tarefa.
 - [`operacao/escada-de-acesso.md`](operacao/escada-de-acesso.md): níveis L0–L5;
 - [`operacao/acesso-e-operacoes.md`](operacao/acesso-e-operacoes.md): consultas e limites de acesso;
 - [`operacao/endpoints-deterministicos.md`](operacao/endpoints-deterministicos.md): endpoints dirigidos;
+- [`operacao/contratos-complementares-conclusao.md`](operacao/contratos-complementares-conclusao.md): referência dos contratos abreviados na conclusão;
 - [`operacao/consolidacao-transacional.md`](operacao/consolidacao-transacional.md): preparo, conclusão, checkpoint e recovery.
 - [`operacao/modulo-orquestracao-turno-e-sessao-v2.md`](operacao/modulo-orquestracao-turno-e-sessao-v2.md): control plane, recibos e correlação exactly-once.
 
@@ -67,4 +68,14 @@ somente o domínio necessário para a tarefa.
 - [`engenharia/auditoria-final.md`](engenharia/auditoria-final.md): auditoria estrutural;
 - [`engenharia/benchmark-narrativo.md`](engenharia/benchmark-narrativo.md): protocolo de benchmark;
 - [`engenharia/telemetria-rollouts.md`](engenharia/telemetria-rollouts.md): telemetria pós-hoc;
-- [`engenharia/avaliacao-desempenho-sessoes.md`](engenharia/avaliacao-desempenho-sessoes.md): avaliação uniforme por sessão.
+- [`engenharia/avaliacao-desempenho-sessoes.md`](engenharia/avaliacao-desempenho-sessoes.md): avaliação uniforme por sessão;
+- [`engenharia/contrato-entrada-medicao.md`](engenharia/contrato-entrada-medicao.md): entrada congelada e unidades de medição;
+- [`engenharia/corpus-regressao-avaliacao.md`](engenharia/corpus-regressao-avaliacao.md): corpus independente e expectativas do avaliador;
+- [`engenharia/operacoes-executadas-rollout.md`](engenharia/operacoes-executadas-rollout.md): separação entre chamadas e operações executadas;
+- [`engenharia/classificacao-resultados-rollout.md`](engenharia/classificacao-resultados-rollout.md): estados terminais observáveis das operações;
+- [`engenharia/ledger-atividades-modulares.md`](engenharia/ledger-atividades-modulares.md): atribuição de atividades aos módulos;
+- [`engenharia/agregacao-fail-closed.md`](engenharia/agregacao-fail-closed.md): bloqueio de agregação quando a medição é inválida;
+- [`engenharia/qualidade-por-interacao.md`](engenharia/qualidade-por-interacao.md): adjudicação de qualidade separada da conformidade;
+- [`engenharia/filas-prioridade-e-custo.md`](engenharia/filas-prioridade-e-custo.md): filas independentes e custo contábil;
+- [`engenharia/reprodutibilidade-pacote-avaliacao.md`](engenharia/reprodutibilidade-pacote-avaliacao.md): proveniência e reprodução byte a byte;
+- [`engenharia/validacao-externa-e-aceite.md`](engenharia/validacao-externa-e-aceite.md): amostra externa e aceite final fail-closed.

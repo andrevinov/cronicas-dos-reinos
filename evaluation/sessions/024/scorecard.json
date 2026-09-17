@@ -1,0 +1,319 @@
+{
+  "schema_scorecard_sessao": 2,
+  "sessao_id": "024",
+  "serie_avaliacao": "modules-v2",
+  "status_avaliacao": "bloqueada_instrumentacao",
+  "nota_geral_0a100": 85.1,
+  "faixa_geral": "saudavel",
+  "eixos": {
+    "calibracao": {
+      "nota_0a100": 100.0,
+      "peso": 30
+    },
+    "eficacia_integridade": {
+      "nota_0a100": 85.72,
+      "peso": 30
+    },
+    "confiabilidade": {
+      "nota_0a100": 80.56,
+      "peso": 20
+    },
+    "economia": {
+      "nota_0a100": 74.11,
+      "peso": 15
+    },
+    "fluidez": {
+      "nota_0a100": 43.06,
+      "peso": 5
+    }
+  },
+  "componentes": {
+    "economia": {
+      "reducao_input_bruto": 100.0,
+      "inferencias_por_turno": 71.43,
+      "tools_por_turno": 83.33,
+      "l0_l2_limpo": 41.67
+    },
+    "confiabilidade": {
+      "par_cronica_exato": 66.67,
+      "referencia_interacao_exatamente_uma_vez": 75.0
+    }
+  },
+  "agregacao_modular": {
+    "schema": 1,
+    "status": "bloqueada_instrumentacao",
+    "conclusao_permitida": false,
+    "nota_parcial_componentes_validos": true,
+    "modulos_catalogados": 12,
+    "modulos_incluidos": 2,
+    "modulos_bloqueados": [
+      {
+        "module_id": "context_and_memory",
+        "motivo": "falha_instrumentacao",
+        "diagnostico": "0 recibo(s) de cobertura ausente(s), 0 incompleto(s) e 0 duplicado(s) em 20 atividade(s) esperada(s); 5 efeito(s) inadequado(s)"
+      },
+      {
+        "module_id": "npc_continuity_and_social_behavior",
+        "motivo": "falha_instrumentacao",
+        "diagnostico": "0 recibo(s) de cobertura ausente(s), 0 incompleto(s) e 0 duplicado(s) em 20 atividade(s) esperada(s)"
+      },
+      {
+        "module_id": "turn_and_session_orchestration",
+        "motivo": "falha_instrumentacao",
+        "diagnostico": "0 recibo(s) de cobertura ausente(s), 0 incompleto(s) e 0 duplicado(s) em 21 atividade(s) esperada(s); 1 efeito(s) inadequado(s)"
+      }
+    ],
+    "modulos_nao_avaliaveis": [
+      {
+        "module_id": "adversarial_operations",
+        "motivo": "sem_atividade"
+      },
+      {
+        "module_id": "canonical_quest_integration",
+        "motivo": "sem_evidencia"
+      },
+      {
+        "module_id": "causal_narrative_routing",
+        "motivo": "nao_aplicavel"
+      },
+      {
+        "module_id": "scene_world_projection",
+        "motivo": "nao_aplicavel"
+      },
+      {
+        "module_id": "sidequest_authoring",
+        "motivo": "indeterminado"
+      },
+      {
+        "module_id": "sidequest_lifecycle",
+        "motivo": "nao_aplicavel"
+      },
+      {
+        "module_id": "world_boundary_resolution",
+        "motivo": "sem_atividade"
+      }
+    ],
+    "denominadores": {
+      "calibracao": {
+        "componentes_validos": 2,
+        "module_ids": [
+          "narrative_delivery",
+          "rules_and_character_state"
+        ],
+        "modulos_bloqueados_excluidos": [
+          "context_and_memory",
+          "npc_continuity_and_social_behavior",
+          "turn_and_session_orchestration"
+        ]
+      },
+      "eficacia_integridade": {
+        "componentes_validos": 2,
+        "module_ids": [
+          "narrative_delivery",
+          "rules_and_character_state"
+        ],
+        "modulos_bloqueados_excluidos": [
+          "context_and_memory",
+          "npc_continuity_and_social_behavior",
+          "turn_and_session_orchestration"
+        ]
+      },
+      "confiabilidade": {
+        "componentes_modulares_validos": 2,
+        "module_ids": [
+          "narrative_delivery",
+          "rules_and_character_state"
+        ],
+        "componentes_globais_validos": [
+          "par_cronica_exato",
+          "referencia_interacao_exatamente_uma_vez"
+        ],
+        "modulos_bloqueados_excluidos": [
+          "context_and_memory",
+          "npc_continuity_and_social_behavior",
+          "turn_and_session_orchestration"
+        ]
+      },
+      "economia": {
+        "componentes_globais_validos": [
+          "reducao_input_bruto",
+          "inferencias_por_turno",
+          "tools_por_turno",
+          "l0_l2_limpo"
+        ]
+      },
+      "fluidez": {
+        "componentes_globais_validos": [
+          "latencia_sessao"
+        ]
+      },
+      "nota_geral": {
+        "eixos_validos": [
+          "calibracao",
+          "eficacia_integridade",
+          "confiabilidade",
+          "economia",
+          "fluidez"
+        ],
+        "eixos_sem_evidencia": [],
+        "pesos_renormalizados": true
+      }
+    },
+    "regra": "componentes de módulos com falha de instrumentação são excluídos antes das médias; a nota restante é parcial e não autoriza conclusão"
+  },
+  "filas_prioridade": {
+    "schema": 1,
+    "ranking_global_existe": false,
+    "custo_e_experiencia_misturados": false,
+    "reparo_medidor": {
+      "module_ids": [
+        "context_and_memory",
+        "npc_continuity_and_social_behavior",
+        "turn_and_session_orchestration"
+      ],
+      "regra": "somente falhas de instrumentação; severidade é a proporção de unidades obrigatórias afetadas"
+    },
+    "problemas_experiencia": {
+      "module_ids": [],
+      "regra": "somente qualidade por interação adjudicada; prioridade é 100 menos a nota de experiência"
+    },
+    "investigacao_custo": {
+      "module_ids": [
+        "context_and_memory",
+        "narrative_delivery",
+        "rules_and_character_state",
+        "sidequest_authoring",
+        "turn_and_session_orchestration",
+        "npc_continuity_and_social_behavior",
+        "scene_world_projection"
+      ],
+      "regra": "ordem por tokens atribuídos contabilmente; não infere custo causal",
+      "causalidade_inferida": false
+    }
+  },
+  "indicadores_globais": {
+    "turnos_narrativos": 9,
+    "interacoes_observadas": 12,
+    "interacoes_com_referencia_exata": 9,
+    "input_tokens": 5352780,
+    "cached_input_tokens": 5086976,
+    "uncached_input_tokens_aprox": 265804,
+    "output_tokens": 54019,
+    "reducao_input_bruto_baseline": 0.722955,
+    "inferencias_por_turno": 7.0,
+    "tools_por_turno": 6.0,
+    "orquestracao_por_turno": 2.889,
+    "fracao_par_cronica_exato": 0.666667,
+    "fracao_l0_l2_limpo": 0.333333,
+    "fracao_turnos_com_raw": 0.555556,
+    "raw_read_calls": 12,
+    "schema_discovery_calls": 2,
+    "compactacoes": 0,
+    "latencia_mediana_segundos": 146.789,
+    "latencia_p90_segundos": 265.214,
+    "latencia_maxima_segundos": 288.402,
+    "turnos_acima_300_segundos": 0
+  },
+  "manifestacoes": {
+    "total": 1,
+    "confirmadas_ou_parciais": 0,
+    "guardrails_confirmados": 0
+  },
+  "qualidade_interacao": {
+    "avaliacoes_recebidas": 0,
+    "avaliacoes_confirmadas": 0,
+    "avaliacoes_pontuaveis": 0,
+    "oportunidades_perdidas": 0,
+    "modulos_com_nota_qualidade": 0,
+    "regra": "somente adjudicações confirmadas com critério e evidência entram nos denominadores; conformidade operacional permanece separada"
+  },
+  "violacoes_criticas": [],
+  "guardrails_participam_media": false,
+  "confianca": {
+    "sessao": "provisoria",
+    "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
+  },
+  "observacoes": [
+    "N/D é excluído e os pesos restantes são renormalizados.",
+    "Componentes de módulos bloqueados são excluídos antes de qualquer eixo ou nota geral.",
+    "Manifestações do jogador são evidência adjudicada, nunca nota direta.",
+    "Qualidade por interação exige critério e evidência adjudicados; conformidade operacional não a substitui.",
+    "Reparo do medidor, problemas da experiência e investigação de custo usam filas independentes.",
+    "Custo pai é atribuição contábil aditiva; não prova custo causal. Custo de subcapacidade é somente exposição."
+  ],
+  "conclusao_medicao": {
+    "schema_conclusao_medicao": 1,
+    "permitida": false,
+    "entrada_congelada": true,
+    "reproducao_verificada": true,
+    "bloqueios": [
+      {
+        "codigo": "resultado_operacao_ausente",
+        "operation_ids": [
+          "01a0aad7-f645-7691-9aca-8b00300da48c/call_E3jNGiJxsoBdejg234UoX02j/0",
+          "01a0aaf1-5dc5-7df1-a642-200c66832150/call_GUqE9eEueQp6p4oqFB2DvM27/0",
+          "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_257zPMw7olRQqwHBUiyNpGCY/0",
+          "01a0ad32-67f0-7e82-b319-d67aaf9fd520/call_csgPWubVnXvlMeUaYn8ap13a/0"
+        ]
+      },
+      {
+        "codigo": "evidencia_operacional_insuficiente",
+        "operation_ids": [
+          "01a0aac8-baee-7d91-a05d-af084bc326de/call_qz4GGUoKTkHfvA8D1U44lHpB/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_66JS1RbDX7ktNtiy2COtQzso/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_GLh7dqT2nOaPa0N9gbWcg0MG/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_Iosm7oGSIW7fQeBVrdUOPLab/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_LPLWXerXH1iauGMGkDf5cBgO/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_PtIFmOCnVECjTnBadXgEGpSA/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_RTH2CrcHlEgvC3R0m0UlsGdd/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_lLttHUMslyv9mIhhie8XVHz0/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_rknFm5BJR7jDwj5qdaTwPfcV/0",
+          "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_sLMuI1ihYMXVmIYI7RLvgf2k/0",
+          "01a0aad7-f645-7691-9aca-8b00300da48c/call_Ff1iFEPlAQSyUM9w2ST6589P/0",
+          "01a0aad7-f645-7691-9aca-8b00300da48c/call_QApyCpLq1C5fddNJV2qnUQqG/0",
+          "01a0aade-5b4e-7661-b38a-31ce71af1f2c/call_LVcXFxzolbGJFt4CAYKpAU3J/0",
+          "01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_YP1XTSAorbD0GSq3TiIdwhUo/0",
+          "01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_gWXhPi9M5lQDq79jA7Bd1syG/0",
+          "01a0aaf1-5dc5-7df1-a642-200c66832150/call_Aii7Rc4SczJpkTFnbsq6gRzg/0",
+          "01a0aaf1-5dc5-7df1-a642-200c66832150/call_OL2BmHEieGb1yrYBk4OZuyjT/0",
+          "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_BEl29QaN3gTSATl8SypjnYwj/0",
+          "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_EohgOIjzJL2B0QjsQzRGlBf9/0",
+          "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_QhCTm9DaqXiFoWnM0Y8eSIM1/0",
+          "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_hitfd4wiLfbbPgO5n5npOCby/0",
+          "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_pc4RYqISSiJZFWwSYPooZE7Q/0",
+          "01a0ab0f-2670-78c3-974d-851984849264/call_DnlbC8O7wn2ZYksGEjKK1Ya6/0",
+          "01a0ab0f-2670-78c3-974d-851984849264/call_tgVYjtxsaoTPsFNkfoiKrQ3a/0",
+          "01a0ab0f-2670-78c3-974d-851984849264/call_zXnAOyuW4tGfhmZcHKSCfCby/0",
+          "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_3l02KUlddrsl3jJMEQXRTb0e/0",
+          "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_WnQ2OsGbCaouAaPagn5mF5ai/0",
+          "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_dZsy2v0wIv4qv051to3rep69/0",
+          "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_wQHVJEVGpomus8zU05Tlyoct/0",
+          "01a0ad2f-f078-73d3-8fa1-855c74bf0649/call_zgR45zyvQh4Eg1Lx1MFQS5AV/0"
+        ]
+      },
+      {
+        "codigo": "falha_instrumentacao_modular",
+        "module_ids": [
+          "context_and_memory",
+          "npc_continuity_and_social_behavior",
+          "turn_and_session_orchestration"
+        ]
+      }
+    ],
+    "limitacoes": [
+      {
+        "codigo": "fonte_ausente",
+        "escopo": "adjudicacoes",
+        "gravidade": "limitacao",
+        "mensagem": "Fonte não selecionada; a ausência fica explícita."
+      },
+      {
+        "codigo": "fonte_ausente",
+        "escopo": "validade",
+        "gravidade": "limitacao",
+        "mensagem": "Fonte não selecionada; a ausência fica explícita."
+      }
+    ],
+    "regra": "qualquer correlação ambígua, resultado ausente, evidência insuficiente, erro do detector, falha de instrumentação ou entrada não congelada impede conclusão dependente; fatos observados permanecem consultáveis"
+  }
+}

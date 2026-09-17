@@ -164,8 +164,16 @@ e adjudicação. Pendência não vira falha confirmada. Agência, sigilo e integ
 de rolagem são guardrails separados: não participam nem podem ser compensados
 pela média. O ledger nunca cria nota literária automática.
 
-O detector modular vigente é `4.4.0`. A linha 4.4 classifica o resultado de cada
-operação com evidência explícita e separa falha operacional, não execução,
+O detector modular vigente é `4.6.0`. A linha 4.6 recebe avaliações de qualidade
+por interação, módulo e critério, valida suas identidades e evidências e mantém
+oportunidades perdidas observáveis mesmo sem evento automático. Seu contrato
+está em [qualidade adjudicada por interação](qualidade-por-interacao.md). A linha
+4.5 cria o ledger primário de
+atividades e correlaciona exatamente um recibo de `units=1` a cada passagem de
+domínio. Duplicações e recibos órfãos permanecem explícitos, e os gates agregados
+são derivados desse ledger. Seu contrato está em
+[ledger de atividades modulares](ledger-atividades-modulares.md). A linha 4.4
+classifica o resultado de cada operação com evidência explícita e separa falha operacional, não execução,
 resultado ausente ou ambíguo, evidência insuficiente e erro do detector. Seu
 contrato está em
 [classificação de resultados](classificacao-resultados-rollout.md). A linha 4.3

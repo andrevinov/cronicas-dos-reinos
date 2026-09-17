@@ -1,7 +1,7 @@
 {
   "schema_metas_avaliacao": 2,
-  "versao_metas": "2.0.0",
-  "contrato_avaliacao": "4.0.0",
+  "versao_metas": "3.0.0",
+  "contrato_avaliacao": "5.0.0",
   "natureza": "rubrica modules-v2 pós-hoc; percepção humana entra como evidência adjudicada, não como nota",
   "pesos_sessao": {
     "calibracao": 30,
@@ -49,9 +49,12 @@
     "oportunidades_por_modulo": 10,
     "sessoes_minimas": 3
   },
-  "prioridade": {
-    "peso_deficit_experiencia": 0.7,
-    "peso_participacao_custo": 0.3
+  "filas_prioridade": {
+    "reparo_medidor": "falha de instrumentação ordenada pela proporção de unidades obrigatórias afetadas",
+    "problemas_experiencia": "déficit de qualidade por interação explicitamente adjudicada",
+    "investigacao_custo": "tokens atribuídos por rateio contábil, sem inferência causal",
+    "ranking_global_existe": false,
+    "custo_e_experiencia_misturados": false
   },
   "nota": "N/D é excluído e os pesos restantes são renormalizados. Economia modular permanece indicador até haver baseline comparável por classe de oportunidade."
 }

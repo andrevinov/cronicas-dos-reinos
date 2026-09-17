@@ -1,0 +1,6 @@
+{
+  "schema_avaliacoes_qualidade": 1,
+  "natureza": "adjudicação pós-hoc por interação, módulo e critério; não altera cânone",
+  "regra_pontuacao": "somente state=confirmada entra nos denominadores; pendente, parcial, não confirmada e indeterminada permanecem visíveis",
+  "assessments": []
+}

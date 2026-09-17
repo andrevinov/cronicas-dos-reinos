@@ -358,6 +358,40 @@ decisoes:
     ticket_id: f2de0c8b22df8d889933
     transacao_id: s022-nv04-e3b8cd845655a29f4e08122a92174c53
     historico: []
+  ini-148a362548c586ac6aad:
+    id: ini-148a362548c586ac6aad
+    janela_id: cena-133da9cea084e6b13061
+    janela_tipo: cena
+    cena_id: s024-pedido-desculpas-aiko
+    npc_id: aiko_matsuda
+    presenca: ausente
+    proposta_digest: 718ecf111ff1f106094d9dc8ee66765889a2a26773b2eb81f0ec77d01bedf178
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 09cc403f3d3b78efcd58
+    transacao_id: s024-23b0a378a23b9a7b
+    historico: []
+  ini-bd2dcd1f35759c3677bc:
+    id: ini-bd2dcd1f35759c3677bc
+    janela_id: cena-b4c006ada7f1d1b0dc3a
+    janela_tipo: cena
+    cena_id: s024-despedida-aiko
+    npc_id: aiko_matsuda
+    presenca: ausente
+    proposta_digest: 718ecf111ff1f106094d9dc8ee66765889a2a26773b2eb81f0ec77d01bedf178
+    resultado: nao_elegivel
+    motivo_codigo: ausencia
+    motivo: O interlocutor não possui presença física consolidada nem canal de contato
+      validado nesta janela.
+    evidencia_literal: null
+    pressao_superior: null
+    ticket_id: 2685e430a723949942c5
+    transacao_id: s024-0e3072cb50aa7759
+    historico: []
 ordem_recente:
 - ini-27f6a7dd0bcf2bc4f85d
 - ini-8a0c7852cab9f17ab71d
@@ -380,3 +414,5 @@ ordem_recente:
 - ini-2f3751fb21b03d06617b
 - ini-104be2c9a47c31bd5fd9
 - ini-31118004f14961cd1bc9
+- ini-148a362548c586ac6aad
+- ini-bd2dcd1f35759c3677bc

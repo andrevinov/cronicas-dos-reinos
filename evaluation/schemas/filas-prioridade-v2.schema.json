@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "filas-prioridade-v2.schema.json",
+  "title": "Filas independentes de decisão da avaliação modular v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "ranking_global_existe",
+    "custo_e_experiencia_misturados",
+    "reparo_medidor",
+    "problemas_experiencia",
+    "investigacao_custo"
+  ],
+  "properties": {
+    "schema": {"const": 1},
+    "ranking_global_existe": {"const": false},
+    "custo_e_experiencia_misturados": {"const": false},
+    "reparo_medidor": {"$ref": "#/$defs/queue"},
+    "problemas_experiencia": {"$ref": "#/$defs/queue"},
+    "investigacao_custo": {
+      "allOf": [
+        {"$ref": "#/$defs/queue"},
+        {
+          "type": "object",
+          "required": ["causalidade_inferida"],
+          "properties": {"causalidade_inferida": {"const": false}}
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "queue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["module_ids", "regra"],
+      "properties": {
+        "module_ids": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "uniqueItems": true
+        },
+        "regra": {"type": "string", "minLength": 1},
+        "causalidade_inferida": {"const": false}
+      }
+    }
+  }
+}

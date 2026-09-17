@@ -3,7 +3,7 @@ natureza: estado_atual
 historico_acumulado: historico/legado/estado-acumulado-pre-etapa-5.yaml
 campanha:
   status: entre_sessoes
-  sessao_atual: 23
+  sessao_atual: 24
   modo_de_cena_atual: conversa_com_silva_apos_operacao_sete_nomes
 personagem:
   nome: Ren Kagehira
@@ -18,8 +18,8 @@ localizacao:
   continente: Faerûn
   regiao: The Vast
   cidade: Ravens Bluff
-  area: Rua diante do restaurante da emboscada
-  ponto_exato: na rua diante do restaurante da emboscada, observando a entrada sob o disfarce de Tanaka
+  area: Circo dos Mooney
+  ponto_exato: na entrada do acampamento do circo dos Mooney, sob o disfarce de Tanaka
   descricao_operacional: Ren despediu-se de Maerra e chegou ao exterior do restaurante de Aiko às 11:35 como Tanaka.
     Observa a entrada principal e a boca do beco lateral do lado oposto da rua, à sombra de um beiral; não tem vista
     da porta dos fundos. O estabelecimento atende normalmente. O homem do casaco cinza ainda não apareceu à sua
@@ -38,7 +38,7 @@ tempo:
   dezena: 2
   dia_da_dezena: 10
   periodo_do_dia: noite de 21 Eleasis, com Ren no circo dos Mooney
-  hora_aproximada: '11:35'
+  hora_aproximada: '13:00'
   clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
   observacao: Somente estado temporal corrente. A cronologia detalhada anterior está em historico/legado/tempo-acumulado-pre-etapa-5.yaml
     e nos registros de sessão.
@@ -89,7 +89,7 @@ ponteiros:
   medidores_npcs: estado/medidores-npcs.yaml
   ficha: personagens/jogador/ficha.yaml
   conhecimento: personagens/jogador/conhecimento.md
-  transcricao_atual: sessoes/023/transcricao.md
+  transcricao_atual: sessoes/024/transcricao.md
   historico_legado_estado: historico/legado/estado-acumulado-pre-etapa-5.yaml
   historico_legado_tempo: historico/legado/tempo-acumulado-pre-etapa-5.yaml
 equipamento_em_posse:

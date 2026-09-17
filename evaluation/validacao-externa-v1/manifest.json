@@ -1,0 +1,87 @@
+{
+  "amostra": {
+    "arquivo": "amostra-s022.jsonl",
+    "linhas_fonte": [
+      1,
+      51,
+      54,
+      71,
+      74,
+      838,
+      842,
+      920,
+      923,
+      1213,
+      1216
+    ],
+    "registros": [
+      {
+        "linha_fonte": 1,
+        "sha256": "ebba350a00ef64b59e29e2060814258957b9efaffcecb566d0a444cf99045005"
+      },
+      {
+        "linha_fonte": 51,
+        "sha256": "23a9ddbfa9b1343d4bb736cdcaa967df2c258a4015318efdd2e210d2d4c14dd3"
+      },
+      {
+        "linha_fonte": 54,
+        "sha256": "57878d8064595e6fbd800adae889b1f29264116780336cf5459f665f3d8930d5"
+      },
+      {
+        "linha_fonte": 71,
+        "sha256": "fe3a2b1dbdb309f9470ab9a4e13732a1586fc60da8aa8c8c82902a428c2a5fa5"
+      },
+      {
+        "linha_fonte": 74,
+        "sha256": "62b5ca0c5396b7ce70a173838a55bf0bed88743991d2315b2e45db2a5a522573"
+      },
+      {
+        "linha_fonte": 838,
+        "sha256": "f5744bac736046dff77de282ff1c5275822f206fa0a215105741ab6880466f03"
+      },
+      {
+        "linha_fonte": 842,
+        "sha256": "1afca982c189da9a08c9bdbc190d49c272367583da216cc9d9eb68fc7d460cea"
+      },
+      {
+        "linha_fonte": 920,
+        "sha256": "cbb063ece53100e640b673fc389b1c7080eb41170f2dbeb58a94f11d3b406f54"
+      },
+      {
+        "linha_fonte": 923,
+        "sha256": "7a1d7cbf098eb2a5d237f97be913d39a9d9cffc9c2670f1f34053d6a7276d992"
+      },
+      {
+        "linha_fonte": 1213,
+        "sha256": "b9e28c0466d631d10fb4f7f0f7c3181c9001de23a5f23dcfba4ccff73a38b676"
+      },
+      {
+        "linha_fonte": 1216,
+        "sha256": "5b2d98f7b6c6f30261ee8d84e8ccc911f81e945848743a8392caa786bdfd07dc"
+      }
+    ],
+    "sha256": "65447aa6f7a18b2379a811adc58be5bf41e737a96379ac0d8e834c6804123925"
+  },
+  "fonte": {
+    "arquivo": "rollout-2026-09-14T07-11-15-01a09f66-45b5-7b90-9821-632d08dc446f.jsonl",
+    "bytes": 16126703,
+    "codex_session_id": "01a09f66-45b5-7b90-9821-632d08dc446f",
+    "manifesto_pacote": "evaluation/sessions/022/manifest.json",
+    "sessao_id": "022",
+    "sha256": "c0fa5ef70e4ca8534bfd5ec2d98f1d35bf12c7c2981edfc90e1da75e0556a120"
+  },
+  "gabarito": {
+    "arquivo": "gabarito-s022.json",
+    "sha256": "0b535e6269feffc96abe91bfd8b111968e6b618eaee0ca66bd49cdfec5fc1f16"
+  },
+  "independencia": {
+    "conjunto": "validacao_externa_historica",
+    "expectativas_geradas_pelo_avaliador": false,
+    "fora_corpus_desenvolvimento": true,
+    "limitacao": "é evidência externa histórica; o aceite prospectivo ainda exige uma sessão real pós-correção",
+    "sessao_usada_para_diagnostico_s023": false
+  },
+  "natureza": "recorte imutável de uma sessão real anterior, separado do corpus de desenvolvimento; valida o detector, não inaugura baseline operacional",
+  "schema_validacao_externa_avaliacao": 1,
+  "validacao_id": "s022-recorte-historico-v1"
+}

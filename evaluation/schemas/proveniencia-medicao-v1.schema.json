@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cronicas-dos-reinos.local/schemas/proveniencia-medicao-v1.schema.json",
+  "title": "Proveniência reproduzível do pacote de avaliação",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_proveniencia_medicao",
+    "modo",
+    "entrada_id",
+    "status_entrada",
+    "conclusao_reprodutivel_permitida",
+    "fonte",
+    "contrato",
+    "snapshots",
+    "contratos_modulos",
+    "codigo_sha256",
+    "ambiente",
+    "diagnosticos"
+  ],
+  "properties": {
+    "schema_proveniencia_medicao": {"const": 1},
+    "modo": {"enum": ["entrada_congelada", "direto_nao_congelado"]},
+    "entrada_id": {
+      "oneOf": [
+        {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        {"type": "null"}
+      ]
+    },
+    "status_entrada": {"enum": ["valida", "limitada", "nao_fornecida"]},
+    "conclusao_reprodutivel_permitida": {"type": "boolean"},
+    "fonte": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["perfil", "corte_bytes", "sha256"],
+      "properties": {
+        "perfil": {"type": "string", "minLength": 1},
+        "corte_bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "contrato": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "versao"],
+      "properties": {
+        "sha256": {
+          "oneOf": [
+            {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            {"type": "null"}
+          ]
+        },
+        "versao": {"type": ["string", "null"]}
+      }
+    },
+    "snapshots": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/snapshot"}
+    },
+    "contratos_modulos": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/moduleSnapshot"}
+    },
+    "codigo_sha256": {
+      "type": "object",
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "ambiente": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["python", "PyYAML"],
+      "properties": {
+        "python": {"type": "string", "minLength": 1},
+        "PyYAML": {"type": "string", "minLength": 1}
+      }
+    },
+    "diagnosticos": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/diagnostico"}
+    }
+  },
+  "$defs": {
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["estado", "sha256", "formato"],
+      "properties": {
+        "estado": {"enum": ["presente", "ausente"]},
+        "sha256": {"type": ["string", "null"]},
+        "formato": {"enum": ["json", "jsonl", null]}
+      }
+    },
+    "moduleSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["estado", "sha256"],
+      "properties": {
+        "estado": {"const": "presente"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "diagnostico": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["codigo", "escopo", "gravidade", "mensagem"],
+      "properties": {
+        "codigo": {"type": "string", "minLength": 1},
+        "escopo": {"type": "string", "minLength": 1},
+        "gravidade": {"enum": ["limitacao"]},
+        "mensagem": {"type": "string", "minLength": 1},
+        "linha": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

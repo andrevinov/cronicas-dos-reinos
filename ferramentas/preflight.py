@@ -182,6 +182,12 @@ def _add_npc_continuity_check(items):
         "avaliação",
     )
     result.insert(insert_at + 1, modular_gate)
+    corpus_gate = Check(
+        "corpus de regressão da avaliação",
+        (sys.executable, "ferramentas/verificar_corpus_avaliacao.py"),
+        "avaliação",
+    )
+    result.insert(insert_at + 2, corpus_gate)
     return result
 
 

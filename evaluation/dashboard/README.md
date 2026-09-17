@@ -1,5 +1,26 @@
 # Painel de desempenho modular
 
+Em pacotes gerados a partir da versão 4.1.0, o painel lê
+`scorecard.agregacao_modular`. Uma falha de instrumentação identifica a nota
+como parcial, mostra quantos módulos foram incluídos e expõe o número de
+componentes válidos em cada eixo. Pacotes históricos sem esse bloco preservam a
+renderização anterior.
+
+Em pacotes 4.2.0, cada cartão separa qualidade adjudicada de conformidade
+operacional. O diagnóstico mostra quantas avaliações e oportunidades entram nos
+denominadores, quantas permanecem pendentes e quantas oportunidades elegíveis
+ficaram sem ativação. Ausência de adjudicação aparece como qualidade N/D.
+
+Em pacotes 4.3.0, o ranking global dá lugar a três filas: reparo do medidor,
+problemas da experiência e investigação de custo. O seletor e os cartões mostram
+os ranks separadamente. Tokens são identificados como atribuição contábil por
+rateio e não alteram as filas de reparo ou experiência.
+
+Em pacotes 4.4.0, o painel lê `scorecard.conclusao_medicao`. Entrada não
+congelada, correlação ambígua, resultado ausente, evidência insuficiente, erro
+do detector ou falha modular aparecem como conclusão bloqueada. A nota parcial
+continua visível como diagnóstico e não é apresentada como conclusão válida.
+
 O painel é estático, sem backend ou dependências externas:
 
 ```bash
@@ -37,9 +58,10 @@ Ren, mas ele não tomou iniciativa.]
 
 O canal primário é o próprio Codex. O formulário do painel é secundário para
 registro retroativo: salva rascunhos em `localStorage` e exporta
-`manifestacoes-jogador-sessao-<id>.json`. Esse arquivo pode ser fornecido ao
-gerador com `--interacoes`. O texto começa como percepção `pendente`; detector
-ou auditor sugerem o módulo e a adjudicação separadamente.
+`manifestacoes-jogador-sessao-<id>.json`. Esse arquivo deve ser selecionado com
+`entrada_medicao.py preparar --interacoes` antes da geração. O texto começa
+como percepção `pendente`; detector ou auditor sugerem o módulo e a adjudicação
+separadamente.
 
 O navegador servido por `http.server` não escreve no repositório. A sessão 021
 continua exibindo seu formulário numérico legado, sem convertê-lo em evidência

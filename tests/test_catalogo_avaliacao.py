@@ -146,6 +146,10 @@ class EvaluationCatalogContractTest(unittest.TestCase):
 
     def test_schemas_publicados_sao_json_validos_e_apontam_para_draft_2020(self) -> None:
         expected = {
+            "agregacao-scorecard-v2.schema.json",
+            "atividades-modulares-rollout.schema.json",
+            "avaliacoes-qualidade-interacao-v1.schema.json",
+            "filas-prioridade-v2.schema.json",
             "catalogo-modulos-v2.schema.json",
             "catalogo-guardrails-v2.schema.json",
             "series-avaliacao.schema.json",
@@ -154,10 +158,12 @@ class EvaluationCatalogContractTest(unittest.TestCase):
             "module-releases.schema.json",
             "contrato-medicao.schema.json",
             "contrato-modulo-medicao.schema.json",
+            "conclusao-medicao-v1.schema.json",
             "corpus-regressao-rollout.schema.json",
             "entrada-medicao.schema.json",
             "gabarito-regressao-rollout.schema.json",
             "operacoes-executadas-rollout.schema.json",
+            "proveniencia-medicao-v1.schema.json",
             "resultado-corpus-regressao.schema.json",
             "resultados-operacoes-rollout.schema.json",
         }

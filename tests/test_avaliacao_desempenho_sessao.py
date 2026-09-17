@@ -348,7 +348,11 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
         self.assertNotIn("jogador", result["scorecard"]["eixos"])
         modules = json.loads((output / "resumo-modulos.json").read_text(encoding="utf-8"))["modulos"]
         self.assertEqual(len(modules), 12)
-        self.assertEqual([item["prioridade_rank"] for item in modules], list(range(1, 13)))
+        self.assertTrue(all(item["prioridade_rank"] is None for item in modules))
+        self.assertFalse(result["scorecard"]["filas_prioridade"]["ranking_global_existe"])
+        self.assertFalse(
+            result["scorecard"]["filas_prioridade"]["custo_e_experiencia_misturados"]
+        )
         self.assertTrue(all(item["versao_implementacao"] for item in modules))
         authoring = next(item for item in modules if item["modulo"] == "sidequest_authoring")
         self.assertEqual(authoring["gate_oportunidade_preparos"], 1)
@@ -366,7 +370,11 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
         self.assertIsNone(authoring["nota_confiabilidade_proxy_0a100"])
         self.assertEqual(authoring["avaliacao_ativacao"], "falha de instrumentação")
         self.assertEqual(authoring["confianca_amostra_sessao"], "N/D")
-        self.assertTrue(authoring["custo_exposto_participa_prioridade"])
+        self.assertFalse(authoring["custo_exposto_participa_prioridade"])
+        self.assertIsNotNone(authoring["fila_reparo_medidor_rank"])
+        self.assertFalse(
+            authoring["custo_atribuicao_contabil"]["causalidade_inferida"]
+        )
         self.assertEqual(authoring["unidades_avaliativas_obrigatorias"], 1)
         self.assertEqual(authoring["recibos_cobertura_ausentes"], 1)
         self.assertIn("recibo(s) de cobertura ausente", authoring["principais_problemas_de_ativacao"])
@@ -376,6 +384,15 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
         self.assertEqual(interactions[0]["interaction_ref"], "S022-I0001")
         self.assertTrue(interactions[0]["visible_exactly_once"])
         self.assertTrue((output / "manifestacoes-jogador.json").is_file())
+        quality = json.loads(
+            (output / "avaliacoes-qualidade.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(quality["schema_avaliacoes_qualidade"], 1)
+        self.assertEqual(quality["assessments"], [])
+        self.assertEqual(
+            result["manifest"]["artefatos"]["avaliacoes_qualidade"],
+            "avaliacoes-qualidade.json",
+        )
         self.assertFalse((output / "feedback-jogador.csv").exists())
 
     def test_scoreboard_nao_inventa_nota_e_incorpora_gates_feedback_e_auditoria(self) -> None:

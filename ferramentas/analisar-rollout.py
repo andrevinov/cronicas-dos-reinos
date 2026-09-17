@@ -38,9 +38,11 @@ SCHEMA_VERSION = _core.SCHEMA_VERSION
 NARRATIVE_SYSTEMS_SCHEMA = 2
 LEGACY_NARRATIVE_SYSTEMS_SCHEMA = 1
 MODULAR_LEDGER_SCHEMA = 2
-MODULAR_DETECTOR_VERSION = "4.4.0"
+MODULAR_DETECTOR_VERSION = "4.6.0"
 EXECUTED_OPERATION_SCHEMA = 1
 OPERATION_OUTCOME_SCHEMA = 1
+MODULE_ACTIVITY_SCHEMA = 1
+QUALITY_ASSESSMENT_SCHEMA = 1
 OPPORTUNITY_DECISION_SCHEMA = 2
 CANONICAL_INTEGRATION_ASSESSMENT_SCHEMA = 1
 LIVENESS_BOUNDARY_SCHEMA = 1
@@ -1193,14 +1195,9 @@ def _module_coverage_receipts(output_text: str) -> dict[str, Any]:
         re.I,
     )
     receipts: list[dict[str, Any]] = []
-    seen: set[tuple[str, str, str, int]] = set()
     for raw in encoded:
         module_id, phase, applicability, raw_units = raw.casefold().split("|", 3)
         units = int(raw_units)
-        key = (module_id, phase, applicability, units)
-        if key in seen:
-            continue
-        seen.add(key)
         receipts.append(
             {
                 "module_id": module_id,
@@ -2053,13 +2050,42 @@ def _scan_observations(path: Path, narration_regex: str | None) -> tuple[list[di
     return ordered, narration
 
 
-def _expected_module_activities(call: dict[str, Any]) -> list[tuple[str, str | None]]:
-    """Deriva a obrigação de cobertura da porta pública realmente concluída."""
+def _command_option_value(command: str, option: str) -> str | None:
+    """Obtém um argumento sem guardar seu conteúdo no relatório derivado."""
 
-    if call.get("command_executed") is False or call.get("output_success") is not True:
+    try:
+        tokens = shlex.split(command)
+    except ValueError:
+        return None
+    for index, token in enumerate(tokens[:-1]):
+        if token.casefold() == option.casefold():
+            return tokens[index + 1]
+    return None
+
+
+def _opaque_object_ref(kind: str, value: str) -> str:
+    digest = hashlib.sha256(value.encode("utf-8")).hexdigest()
+    return f"{kind}:sha256:{digest}"
+
+
+def _activity_object_ref(command: str, kind: str) -> str:
+    """Referencia o objeto da passagem sem replicar cena, ticket ou consulta."""
+
+    option = {
+        "cena": "--cena-id",
+        "ticket": "--ticket",
+    }.get(kind)
+    value = _command_option_value(command, option) if option else None
+    return _opaque_object_ref(kind, value or command)
+
+
+def _expected_module_activity_specs(call: dict[str, Any]) -> list[dict[str, str | None]]:
+    """Deriva atividades primárias somente de operações comprovadamente exitosas."""
+
+    if _final_operation_outcome(call)["state"] != "sucesso":
         return []
     command = str(call.get("command") or "")
-    expected: list[tuple[str, str | None]] = []
+    expected: list[dict[str, str | None]] = []
     receipt = call.get("orchestration_receipt") or {}
     blocked = str(receipt.get("state") or "").casefold().startswith("bloquead")
     direct = {
@@ -2075,47 +2101,77 @@ def _expected_module_activities(call: dict[str, Any]) -> list[tuple[str, str | N
         "narrative_delivery.py": "narrative_delivery",
         "turn_and_session_orchestration.py": "turn_and_session_orchestration",
     }
+
+    def add(module_id: str, phase: str | None, object_kind: str) -> None:
+        expected.append(
+            {
+                "module_id": module_id,
+                "phase": phase,
+                "object_ref": _activity_object_ref(command, object_kind),
+            }
+        )
+
     for program, args in _command_invocations(command):
         if program in {"cronica", "cronica.py"} and args[:1] == ["preparar"]:
-            expected.append(("turn_and_session_orchestration", "preparar"))
+            add("turn_and_session_orchestration", "preparar", "cena")
             if not blocked:
-                expected.extend(
-                    (
-                        ("scene_world_projection", "preparar"),
-                        ("sidequest_authoring", "preparar"),
-                        ("sidequest_lifecycle", "preparar"),
-                        ("causal_narrative_routing", "preparar"),
-                        ("npc_continuity_and_social_behavior", "preparar"),
-                        ("context_and_memory", "preparar"),
-                    )
-                )
+                for module_id in (
+                    "scene_world_projection",
+                    "sidequest_authoring",
+                    "sidequest_lifecycle",
+                    "causal_narrative_routing",
+                    "npc_continuity_and_social_behavior",
+                    "context_and_memory",
+                ):
+                    add(module_id, "preparar", "cena")
         elif program in {"cronica", "cronica.py"} and args[:1] == ["concluir"]:
-            expected.extend(
-                (
-                    ("turn_and_session_orchestration", "concluir"),
-                    ("context_and_memory", "concluir"),
-                    ("npc_continuity_and_social_behavior", "concluir"),
-                    ("rules_and_character_state", "concluir"),
-                    ("narrative_delivery", "concluir"),
-                )
-            )
+            for module_id in (
+                "turn_and_session_orchestration",
+                "context_and_memory",
+                "npc_continuity_and_social_behavior",
+                "rules_and_character_state",
+                "narrative_delivery",
+            ):
+                add(module_id, "concluir", "ticket")
         elif program in {"cronica", "cronica.py"} and args[:1] == ["sessao"]:
             operation = args[1] if len(args) > 1 else None
             if operation:
-                expected.append(
-                    ("turn_and_session_orchestration", f"sessao_{operation}")
+                add(
+                    "turn_and_session_orchestration",
+                    f"sessao_{operation}",
+                    "sessao_operacional",
                 )
         elif program == "contexto.py" and args[:1] != ["check"]:
-            expected.append(("context_and_memory", "consulta"))
+            add("context_and_memory", "consulta", "consulta_contexto")
         elif program in {"dados", "dados-lote", "dados.py", "dados-lote.py"}:
             # As primitivas de dado já têm saída estruturada própria e não
             # atravessam um envelope YAML ao qual anexar o recibo compacto.
-            expected.append(("rules_and_character_state", None))
+            add("rules_and_character_state", "rolagem", "rolagem")
         elif program == "endpoints.py" and args[:1] == ["fronteira"]:
-            expected.append(("world_boundary_resolution", "fronteira"))
+            add("world_boundary_resolution", "fronteira", "fronteira")
         elif program in direct and args[:1] != ["check"]:
-            expected.append((direct[program], None))
-    return list(dict.fromkeys(expected))
+            # Fachadas legadas não publicam a fase antes do resultado. O
+            # vínculo continua unívoco pelo escopo da operação e do módulo; a
+            # fase emitida pelo recibo completa a identidade abaixo.
+            add(direct[program], None, f"fachada_{direct[program]}")
+
+    unique: list[dict[str, str | None]] = []
+    seen: set[tuple[str | None, ...]] = set()
+    for item in expected:
+        key = (item["module_id"], item["phase"], item["object_ref"])
+        if key not in seen:
+            seen.add(key)
+            unique.append(item)
+    return unique
+
+
+def _expected_module_activities(call: dict[str, Any]) -> list[tuple[str, str | None]]:
+    """Compatibilidade da API interna anterior ao ledger de atividades."""
+
+    return [
+        (str(item["module_id"]), item["phase"])
+        for item in _expected_module_activity_specs(call)
+    ]
 
 
 def _native_coverage_complete(
@@ -2135,7 +2191,252 @@ def _native_coverage_complete(
     return True
 
 
-def _module_coverage_gates(turns: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+def _stable_activity_id(
+    operation_id: str, module_id: str, phase: str, object_ref: str,
+) -> str:
+    identity = [operation_id, module_id, phase, object_ref]
+    digest = hashlib.sha256(
+        json.dumps(identity, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    return f"atividade:{digest}"
+
+
+def _legacy_operation_id(call: dict[str, Any], turn_id: str) -> str:
+    seed = {
+        "turn_id": turn_id,
+        "call_id": call.get("call_id"),
+        "command_sha256": hashlib.sha256(
+            str(call.get("command") or "").encode("utf-8")
+        ).hexdigest(),
+    }
+    digest = hashlib.sha256(
+        json.dumps(seed, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    return f"compatibilidade-legada:{digest}"
+
+
+def _receipt_occurrence_id(
+    operation_id: str, receipt: dict[str, Any], occurrence: int,
+) -> str:
+    seed = [
+        operation_id,
+        receipt.get("module_id"),
+        receipt.get("phase"),
+        receipt.get("applicability"),
+        receipt.get("units"),
+        occurrence,
+    ]
+    digest = hashlib.sha256(
+        json.dumps(seed, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    return f"recibo-ocorrencia:{digest}"
+
+
+def _module_activity_ledger(turns: list[dict[str, Any]]) -> dict[str, Any]:
+    """Liga cada passagem modular a exatamente um recibo da mesma operação."""
+
+    activities: list[dict[str, Any]] = []
+    orphan_receipts: list[dict[str, Any]] = []
+    for turn in turns:
+        turn_id = str(turn.get("turn_id") or "")
+        for call in _turn_operations(turn):
+            specs = _expected_module_activity_specs(call)
+            operation_id = str(call.get("operation_id") or "") or _legacy_operation_id(
+                call, turn_id
+            )
+            coverage = call.get("module_coverage") or {}
+            receipt_rows = []
+            for index, raw in enumerate(coverage.get("receipts") or []):
+                receipt = copy.deepcopy(raw)
+                receipt["occurrence"] = index
+                receipt["occurrence_id"] = _receipt_occurrence_id(
+                    operation_id, receipt, index
+                )
+                receipt_rows.append(receipt)
+            consumed: set[int] = set()
+
+            for spec in specs:
+                module_id = str(spec["module_id"])
+                expected_phase = spec["phase"]
+                module_indexes = [
+                    index
+                    for index, receipt in enumerate(receipt_rows)
+                    if receipt.get("module_id") == module_id
+                ]
+                matching_indexes = [
+                    index
+                    for index in module_indexes
+                    if expected_phase is None
+                    or receipt_rows[index].get("phase") == expected_phase
+                ]
+                synthetic_dice = bool(
+                    not matching_indexes
+                    and module_id == "rules_and_character_state"
+                    and expected_phase == "rolagem"
+                    and _dice_observation(call) is not None
+                )
+                matching = [receipt_rows[index] for index in matching_indexes]
+                consumed.update(matching_indexes)
+                if synthetic_dice:
+                    matching = [
+                        {
+                            "module_id": module_id,
+                            "phase": "rolagem",
+                            "applicability": "aplicavel",
+                            "units": 1,
+                            "complete": True,
+                            "occurrence": 0,
+                            "occurrence_id": _receipt_occurrence_id(
+                                operation_id,
+                                {
+                                    "module_id": module_id,
+                                    "phase": "rolagem",
+                                    "applicability": "aplicavel",
+                                    "units": 1,
+                                },
+                                0,
+                            ),
+                            "source": "resultado_nativo_dados",
+                        }
+                    ]
+
+                phase = str(
+                    expected_phase
+                    or (matching[0].get("phase") if matching else "indeterminada")
+                )
+                object_ref = str(spec["object_ref"])
+                activity_id = _stable_activity_id(
+                    operation_id, module_id, phase, object_ref
+                )
+                status = "completo"
+                applicability: str | None = None
+                if not matching:
+                    status = (
+                        "incompleto"
+                        if module_indexes
+                        or (
+                            coverage.get("block_present")
+                            and not coverage.get("schema_present")
+                        )
+                        else "ausente"
+                    )
+                else:
+                    receipt = matching[0]
+                    applicability = str(receipt.get("applicability") or "") or None
+                    if len(matching) > 1:
+                        status = "duplicado"
+                    elif (
+                        receipt.get("complete") is not True
+                        or receipt.get("units") != 1
+                        or not _native_coverage_complete(
+                            call, module_id, str(applicability or "")
+                        )
+                    ):
+                        status = "incompleto"
+
+                assessment_state = (
+                    "falha_instrumentacao_recibo_ausente"
+                    if status == "ausente"
+                    else "falha_instrumentacao_recibo_duplicado"
+                    if status == "duplicado"
+                    else "falha_instrumentacao_recibo_incompleto"
+                    if status == "incompleto"
+                    else "nao_aplicavel"
+                    if applicability == "nao_aplicavel"
+                    else "evidencia_insuficiente"
+                    if applicability == "indeterminado"
+                    else "aplicavel"
+                )
+                output_text = str(call.get("output_text") or "")
+                activities.append(
+                    {
+                        "atividade_id": activity_id,
+                        "operacao_id": operation_id,
+                        "parent_call_id": call.get("parent_call_id")
+                        or (str(call.get("call_id") or "") or None),
+                        "turn_id": turn_id,
+                        "module_id": module_id,
+                        "fase": phase,
+                        "objeto_ref": object_ref,
+                        "operation_state": "sucesso",
+                        "receipt_state": status,
+                        "assessment_state": assessment_state,
+                        "applicability": applicability,
+                        "receipt_count": len(matching),
+                        "receipt_units": sum(
+                            int(item.get("units") or 0) for item in matching
+                        ),
+                        "schema_recibo": (
+                            1
+                            if matching
+                            and (synthetic_dice or coverage.get("schema_present"))
+                            else None
+                        ),
+                        "receipt_occurrence_ids": [
+                            str(item["occurrence_id"]) for item in matching
+                        ],
+                        "evidence": {
+                            "command_sha256": hashlib.sha256(
+                                str(call.get("command") or "").encode("utf-8")
+                            ).hexdigest(),
+                            "output_sha256": (
+                                hashlib.sha256(output_text.encode("utf-8")).hexdigest()
+                                if call.get("output_seen") is True
+                                or ("output_seen" not in call and output_text)
+                                else None
+                            ),
+                            "marker": (
+                                f"{module_id}|{phase}|{applicability or status}"
+                            ),
+                        },
+                    }
+                )
+
+            for index, receipt in enumerate(receipt_rows):
+                if index in consumed:
+                    continue
+                orphan_receipts.append(
+                    {
+                        "occurrence_id": receipt["occurrence_id"],
+                        "operacao_id": operation_id,
+                        "parent_call_id": call.get("parent_call_id")
+                        or (str(call.get("call_id") or "") or None),
+                        "turn_id": turn_id,
+                        "module_id": receipt.get("module_id"),
+                        "fase": receipt.get("phase"),
+                        "applicability": receipt.get("applicability"),
+                        "units": receipt.get("units"),
+                        "reason": "sem_atividade_compativel_na_operacao",
+                    }
+                )
+
+    states = Counter(str(item["receipt_state"]) for item in activities)
+    return {
+        "schema": MODULE_ACTIVITY_SCHEMA,
+        "activities": activities,
+        "orphan_receipts": orphan_receipts,
+        "summary": {
+            "activities": len(activities),
+            "by_receipt_state": dict(sorted(states.items())),
+            "complete": states["completo"],
+            "instrumentation_failures": sum(
+                states[state] for state in ("ausente", "incompleto", "duplicado")
+            ),
+            "orphan_receipts": len(orphan_receipts),
+        },
+        "regra": (
+            "uma atividade é a identidade operação+módulo+fase+objeto; cada "
+            "atividade exige exatamente um recibo completo com units=1 da mesma "
+            "operação, e recibos sem atividade ficam órfãos"
+        ),
+    }
+
+
+def _module_coverage_gates(
+    turns: list[dict[str, Any]],
+    activity_ledger: dict[str, Any] | None = None,
+) -> dict[str, dict[str, Any]]:
+    ledger = activity_ledger or _module_activity_ledger(turns)
     counters = {
         module_id: Counter(
             {
@@ -2148,6 +2449,7 @@ def _module_coverage_gates(turns: list[dict[str, Any]]) -> dict[str, dict[str, A
                 "missing_receipts": 0,
                 "incomplete_receipts": 0,
                 "duplicate_receipts": 0,
+                "orphan_receipts": 0,
             }
         )
         for module_id in FAIL_CLOSED_MODULE_IDS
@@ -2155,114 +2457,51 @@ def _module_coverage_gates(turns: list[dict[str, Any]]) -> dict[str, dict[str, A
     assessments: dict[str, list[dict[str, Any]]] = {
         module_id: [] for module_id in FAIL_CLOSED_MODULE_IDS
     }
-    for turn in turns:
-        turn_id = str(turn.get("turn_id") or "")
-        for call in _turn_operations(turn):
-            for module_id, expected_phase in _expected_module_activities(call):
-                if module_id not in counters:
-                    continue
-                counter = counters[module_id]
-                counter["activity_units"] += 1
-                coverage = call.get("module_coverage") or {}
-                module_receipts = [
-                    item
-                    for item in coverage.get("receipts") or []
-                    if item.get("module_id") == module_id
-                ]
-                matching = [
-                    item
-                    for item in module_receipts
-                    if expected_phase is None or item.get("phase") == expected_phase
-                ]
-                if (
-                    not matching
-                    and module_id == "rules_and_character_state"
-                    and expected_phase is None
-                    and _dice_observation(call) is not None
-                ):
-                    matching = [
-                        {
-                            "module_id": module_id,
-                            "phase": "rolagem",
-                            "applicability": "aplicavel",
-                            "units": 1,
-                            "complete": True,
-                        }
-                    ]
-                status = "completo"
-                applicability = None
-                if not matching:
-                    key = (
-                        "incomplete_receipts"
-                        if module_receipts
-                        or (
-                            coverage.get("block_present")
-                            and not coverage.get("schema_present")
-                        )
-                        else "missing_receipts"
-                    )
-                    counter[key] += 1
-                    status = "incompleto" if key == "incomplete_receipts" else "ausente"
-                else:
-                    counter["receipts"] += len(matching)
-                    if len(matching) > 1:
-                        counter["duplicate_receipts"] += len(matching) - 1
-                        counter["incomplete_receipts"] += 1
-                        status = "duplicado"
-                    receipt = matching[0]
-                    applicability = str(receipt.get("applicability") or "")
-                    native_complete = _native_coverage_complete(
-                        call, module_id, applicability
-                    )
-                    if receipt.get("complete") is not True or not native_complete:
-                        counter["incomplete_receipts"] += 1
-                        status = "incompleto"
-                    elif len(matching) == 1:
-                        counter["complete_receipts"] += 1
-                        field = {
-                            "aplicavel": "applicable_units",
-                            "nao_aplicavel": "not_applicable_units",
-                            "indeterminado": "indeterminate_units",
-                        }[applicability]
-                        counter[field] += 1
-                assessments[module_id].append(
-                    {
-                        "operation_id": call.get("operation_id"),
-                        "turn_id": turn_id,
-                        "call_id": str(call.get("call_id") or "") or None,
-                        "phase": expected_phase,
-                        "applicability": applicability,
-                        "receipt_status": status,
-                        "assessment_state": (
-                            "falha_instrumentacao_recibo_ausente"
-                            if status == "ausente"
-                            else "falha_instrumentacao_recibo_duplicado"
-                            if status == "duplicado"
-                            else "falha_instrumentacao_recibo_incompleto"
-                            if status == "incompleto"
-                            else "nao_aplicavel"
-                            if applicability == "nao_aplicavel"
-                            else "evidencia_insuficiente"
-                            if applicability == "indeterminado"
-                            else "aplicavel"
-                        ),
-                        "evidence": {
-                            "command_sha256": hashlib.sha256(
-                                str(call.get("command") or "").encode("utf-8")
-                            ).hexdigest(),
-                            "output_sha256": (
-                                hashlib.sha256(
-                                    str(call.get("output_text") or "").encode("utf-8")
-                                ).hexdigest()
-                                if call.get("output_seen") else None
-                            ),
-                            "marker": (
-                                f"{module_id}|{expected_phase or '*'}|"
-                                f"{applicability or status}"
-                            ),
-                        },
-                    }
-                )
+    for activity in ledger.get("activities") or []:
+        module_id = str(activity.get("module_id") or "")
+        if module_id not in counters:
+            continue
+        counter = counters[module_id]
+        status = str(activity.get("receipt_state") or "")
+        applicability = activity.get("applicability")
+        receipt_count = int(activity.get("receipt_count") or 0)
+        counter["activity_units"] += 1
+        counter["receipts"] += receipt_count
+        if status == "ausente":
+            counter["missing_receipts"] += 1
+        elif status == "incompleto":
+            counter["incomplete_receipts"] += 1
+        elif status == "duplicado":
+            counter["duplicate_receipts"] += max(1, receipt_count - 1)
+            counter["incomplete_receipts"] += 1
+        elif status == "completo":
+            counter["complete_receipts"] += 1
+            field = {
+                "aplicavel": "applicable_units",
+                "nao_aplicavel": "not_applicable_units",
+                "indeterminado": "indeterminate_units",
+            }.get(str(applicability))
+            if field:
+                counter[field] += 1
+        assessments[module_id].append(
+            {
+                "activity_id": activity.get("atividade_id"),
+                "operation_id": activity.get("operacao_id"),
+                "turn_id": activity.get("turn_id"),
+                "call_id": activity.get("parent_call_id"),
+                "phase": activity.get("fase"),
+                "object_ref": activity.get("objeto_ref"),
+                "applicability": applicability,
+                "receipt_status": status,
+                "assessment_state": activity.get("assessment_state"),
+                "evidence": copy.deepcopy(activity.get("evidence") or {}),
+            }
+        )
+
+    for receipt in ledger.get("orphan_receipts") or []:
+        module_id = str(receipt.get("module_id") or "")
+        if module_id in counters:
+            counters[module_id]["orphan_receipts"] += 1
 
     result: dict[str, dict[str, Any]] = {}
     for module_id, counter in counters.items():
@@ -2276,6 +2515,7 @@ def _module_coverage_gates(turns: list[dict[str, Any]]) -> dict[str, dict[str, A
                 counter["missing_receipts"] == 0
                 and counter["incomplete_receipts"] == 0
                 and counter["duplicate_receipts"] == 0
+                and counter["orphan_receipts"] == 0
                 and complete == activity
             ),
             "assessments": assessments[module_id],
@@ -4694,6 +4934,7 @@ def _build_modular_ledger(
         "cost_closure": closure,
         "corrections": [],
         "semantic_audits": [],
+        "quality_assessments": [],
         "player_feedback": [],
     }
 
@@ -4706,6 +4947,7 @@ def apply_modular_adjudications(
     result = copy.deepcopy(ledger)
     result.setdefault("corrections", [])
     result.setdefault("semantic_audits", [])
+    result.setdefault("quality_assessments", [])
     result.setdefault("player_feedback", [])
     corrections = adjudications.get("corrections", []) if isinstance(adjudications, dict) else adjudications
     if not isinstance(corrections, list):
@@ -4808,6 +5050,202 @@ def apply_modular_adjudications(
                 "guardrails_compensable": False,
             }
         )
+
+    quality_assessments = adjudications.get("quality_assessments", [])
+    if not isinstance(quality_assessments, list):
+        raise RolloutError(
+            "adjudicações modulares: quality_assessments precisa ser lista"
+        )
+    catalog = _load_modular_catalog()
+    module_by_id, _, _, _ = _catalog_indexes(catalog)
+    known_refs = {
+        str(item.get("interaction_ref"))
+        for item in result.get("interactions") or []
+        if item.get("interaction_ref")
+    }
+    known_assessment_ids = {
+        str(item.get("assessment_id"))
+        for item in result.get("quality_assessments") or []
+        if item.get("assessment_id")
+    }
+    known_assessment_units = {
+        (
+            str(item.get("interaction_ref") or ""),
+            str(item.get("module_id") or ""),
+            str(item.get("criterion_id") or ""),
+        )
+        for item in result.get("quality_assessments") or []
+    }
+    eligibility_states = {"sim", "nao", "indeterminada"}
+    activation_states = {"presente", "ausente", "indeterminada"}
+    quality_states = {"adequada", "inadequada", "indeterminada", "nao_aplicavel"}
+    adjudication_states = {
+        "pendente",
+        "confirmada",
+        "parcial",
+        "nao_confirmada",
+        "indeterminada",
+    }
+    evidence_sources = {
+        "rollout",
+        "interaction",
+        "receipt",
+        "player_feedback",
+        "canonical",
+        "other",
+    }
+    for index, assessment in enumerate(quality_assessments, 1):
+        if not isinstance(assessment, dict):
+            raise RolloutError(f"avaliação de qualidade {index} não é objeto")
+        if assessment.get("schema_quality_assessment") != QUALITY_ASSESSMENT_SCHEMA:
+            raise RolloutError(
+                f"avaliação de qualidade {index} exige "
+                f"schema_quality_assessment={QUALITY_ASSESSMENT_SCHEMA}"
+            )
+        assessment_id = str(assessment.get("assessment_id") or "").strip()
+        if not assessment_id:
+            raise RolloutError(f"avaliação de qualidade {index} exige assessment_id")
+        if assessment_id in known_assessment_ids:
+            raise RolloutError(
+                f"assessment_id de qualidade duplicado: {assessment_id}"
+            )
+        interaction_ref = str(assessment.get("interaction_ref") or "")
+        if interaction_ref not in known_refs:
+            raise RolloutError(
+                f"avaliação de qualidade aponta para interação inexistente: {interaction_ref}"
+            )
+        module_id = str(assessment.get("module_id") or "")
+        module = module_by_id.get(module_id)
+        if module is None:
+            raise RolloutError(
+                f"avaliação de qualidade aponta para módulo inexistente: {module_id}"
+            )
+        criterion_id = str(assessment.get("criterion_id") or "")
+        criterion_ids = {
+            str(item.get("id") or "")
+            for item in module.get("indicadores_especializados") or []
+        }
+        if criterion_id not in criterion_ids:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: critério {criterion_id!r} "
+                f"não pertence ao módulo {module_id}"
+            )
+        capability_id = assessment.get("capability_id")
+        capability_ids = {
+            str(item.get("id") or "") for item in module.get("subcapacidades") or []
+        }
+        if capability_id is not None and str(capability_id) not in capability_ids:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: subcapacidade "
+                f"{capability_id!r} não pertence ao módulo {module_id}"
+            )
+        assessment_unit = (interaction_ref, module_id, criterion_id)
+        if assessment_unit in known_assessment_units:
+            raise RolloutError(
+                "avaliação de qualidade duplicada para "
+                f"{interaction_ref}/{module_id}/{criterion_id}"
+            )
+        evaluator = str(assessment.get("evaluator") or "").strip()
+        if not evaluator:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id} exige evaluator"
+            )
+        eligibility = assessment.get("eligibility")
+        activation = assessment.get("activation")
+        quality = assessment.get("quality")
+        if eligibility not in eligibility_states:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: eligibility inválida"
+            )
+        if activation not in activation_states:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: activation inválida"
+            )
+        if quality not in quality_states:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: quality inválida"
+            )
+        if activation == "ausente" and quality != "nao_aplicavel":
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: ativação ausente exige "
+                "quality=nao_aplicavel"
+            )
+        if activation == "indeterminada" and quality not in {
+            "indeterminada",
+            "nao_aplicavel",
+        }:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: ativação indeterminada "
+                "não admite qualidade conclusiva"
+            )
+        evidence = assessment.get("evidence")
+        if not isinstance(evidence, list) or not evidence:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: evidence não pode ser vazio"
+            )
+        normalized_evidence: list[dict[str, str]] = []
+        for evidence_index, item in enumerate(evidence, 1):
+            if not isinstance(item, dict):
+                raise RolloutError(
+                    f"avaliação de qualidade {assessment_id}: evidência "
+                    f"{evidence_index} não é objeto"
+                )
+            source = item.get("source")
+            locator = str(item.get("locator") or "").strip()
+            observation = str(item.get("observation") or "").strip()
+            visibility = item.get("visibility")
+            if source not in evidence_sources or not locator or not observation:
+                raise RolloutError(
+                    f"avaliação de qualidade {assessment_id}: evidência "
+                    f"{evidence_index} incompleta"
+                )
+            if visibility not in {"publica", "reservada"}:
+                raise RolloutError(
+                    f"avaliação de qualidade {assessment_id}: visibility inválida"
+                )
+            if visibility == "reservada":
+                locator = "sha256:" + hashlib.sha256(
+                    locator.encode("utf-8")
+                ).hexdigest()
+                observation = "sha256:" + hashlib.sha256(
+                    observation.encode("utf-8")
+                ).hexdigest()
+            normalized_evidence.append(
+                {
+                    "source": str(source),
+                    "locator": locator,
+                    "observation": observation,
+                    "visibility": str(visibility),
+                }
+            )
+        adjudication = assessment.get("adjudication")
+        if not isinstance(adjudication, dict):
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id} exige adjudication"
+            )
+        state = adjudication.get("state")
+        reason = str(adjudication.get("reason") or "").strip()
+        if state not in adjudication_states or not reason:
+            raise RolloutError(
+                f"avaliação de qualidade {assessment_id}: adjudicação inválida"
+            )
+        normalized = {
+            "schema_quality_assessment": QUALITY_ASSESSMENT_SCHEMA,
+            "assessment_id": assessment_id,
+            "interaction_ref": interaction_ref,
+            "module_id": module_id,
+            "capability_id": str(capability_id) if capability_id is not None else None,
+            "criterion_id": criterion_id,
+            "evaluator": evaluator,
+            "eligibility": eligibility,
+            "activation": activation,
+            "quality": quality,
+            "evidence": normalized_evidence,
+            "adjudication": {"state": state, "reason": reason},
+        }
+        result["quality_assessments"].append(normalized)
+        known_assessment_ids.add(assessment_id)
+        known_assessment_units.add(assessment_unit)
 
     feedback_items = adjudications.get("player_feedback", [])
     if not isinstance(feedback_items, list):
@@ -4961,6 +5399,8 @@ def telemetry_view(report: dict[str, Any], evaluation_series: str) -> dict[str, 
         result.pop("executed_operations_schema", None)
         result.pop("operation_outcomes", None)
         result.pop("operation_outcomes_schema", None)
+        result.pop("module_activities", None)
+        result.pop("module_activities_schema", None)
         result["narrative_systems_schema"] = LEGACY_NARRATIVE_SYSTEMS_SCHEMA
         return result
     if evaluation_series == "modules-v2":
@@ -5021,7 +5461,10 @@ def analyze(
             "ausência de consulta é medida separadamente e nunca conta como dia calmo"
         ),
     }
-    coverage_gates = _module_coverage_gates(ordered)
+    activity_ledger = _module_activity_ledger(ordered)
+    report["module_activities_schema"] = MODULE_ACTIVITY_SCHEMA
+    report["module_activities"] = activity_ledger
+    coverage_gates = _module_coverage_gates(ordered, activity_ledger)
     report["module_coverage_gates"] = coverage_gates
     for item, turn in zip(report.get("per_narration_turn") or [], narration):
         item.update(_observation_summary([turn]))
@@ -5035,6 +5478,7 @@ def analyze(
         for label in (
             "preferred cronica orchestration phases inferred from command lines",
             "operation outcomes derived per correlated result; fulfilled envelopes are not success evidence",
+            "module activities keyed by operation, module, phase and opaque object reference; receipts matched one-to-one inside the same operation",
             "narrative-system attribution inferred from command and tool-output markers",
             "Task47 declaration inferred from cronica preparar flags; objective sidequest eligibility comes from a versioned receipt or adjudication",
             "canonical quest integration comes from per-mission receipts; sidequest activity without coverage is an instrumentation failure, never N/D",

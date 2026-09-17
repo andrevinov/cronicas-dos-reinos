@@ -480,6 +480,31 @@ continua disponível apenas para snapshots legados. Desde a RM-11, o gerador
 padrão publica `modules-v2`, versões por módulo e liga eventos a referências de
 interação.
 
+O mesmo JSON publica `executed_operations`, `operation_outcomes` e
+`module_activities`. O último é a fonte primária da cobertura: cada linha liga
+operação, módulo, fase, objeto opaco e uma ocorrência individual de recibo.
+
+O gerador 4.1.0 propaga a cobertura fail-closed até
+`scorecard.agregacao_modular`: componentes bloqueados são excluídos das médias,
+e os denominadores válidos permanecem explícitos no JSON e no relatório.
+
+O gerador 4.2.0 lê `quality_assessments` de
+`adjudicacoes-modulares.json` e publica `avaliacoes-qualidade.json`. Cada
+avaliação liga interação, módulo e critério a evidência estruturada e
+adjudicação. Somente confirmações entram nos denominadores; conformidade
+operacional continua em campos próprios e não fabrica qualidade.
+
+O gerador 4.3.0 remove o ranking que misturava déficit e tokens. Ele publica
+filas independentes para reparo do medidor, problemas da experiência e
+investigação de custo. O custo é atribuição contábil não causal e não altera as
+duas primeiras filas.
+
+O gerador 4.4.0 recebe `--entrada-medicao` e usa os snapshots embutidos como
+autoridade única. Antes da análise, valida o prefixo do rollout, hashes de
+código e versões do ambiente. O pacote inclui `proveniencia-medicao.json`; o
+scorecard bloqueia conclusão quando a entrada não é reproduzível ou o resultado
+de uma operação permanece ausente, ambíguo ou insuficiente.
+
 Durante sessão ativa, `cronica preparar/concluir` reserva e completa a unidade
 ON no ledger append-only. Para OFF/RECALL/operacional, registrar o par já
 redigido sem avançar o jogo:
@@ -495,8 +520,8 @@ manifestação concreta do jogador; não aceita nota de módulo. `interacao list
 --sessao N` materializa a visão de leitura sem reescrever o ledger.
 
 O aceite integrado da RM-12 roda em diretório temporário, confere os nove
-episódios ancorados, versões, identidades, regeneração e orçamento, sem criar uma
-sessão canônica:
+episódios ancorados, versões, identidades, regeneração, orçamento e a amostra
+externa real, sem criar uma sessão canônica:
 
 ```bash
 poetry run python ferramentas/aceitacao_modular_v2.py check
@@ -505,6 +530,16 @@ poetry run python ferramentas/aceitacao_modular_v2.py check
 Antes do primeiro jogo v2, o resultado saudável é
 `pronta_para_primeira_sessao_real`. A baseline técnica serve à regressão; a
 baseline operacional só nasce do primeiro rollout real encerrado.
+
+A validação externa pode ser executada isoladamente com:
+
+```bash
+poetry run python ferramentas/validar_amostra_externa_avaliacao.py
+```
+
+O `preflight` também executa o corpus completo de 226 verificações. Pacote real
+com proveniência ausente, conclusão bloqueada, falha de instrumentação,
+violação crítica ou referência não única permanece pendente.
 
 ## Fachadas modulares de sidequest
 

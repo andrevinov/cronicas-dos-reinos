@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cronicas-dos-reinos.local/schemas/conclusao-medicao-v1.schema.json",
+  "title": "Gate de conclusão da medição",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_conclusao_medicao",
+    "permitida",
+    "entrada_congelada",
+    "reproducao_verificada",
+    "bloqueios",
+    "limitacoes",
+    "regra"
+  ],
+  "properties": {
+    "schema_conclusao_medicao": {"const": 1},
+    "permitida": {"type": "boolean"},
+    "entrada_congelada": {"type": "boolean"},
+    "reproducao_verificada": {"type": "boolean"},
+    "bloqueios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["codigo"],
+        "properties": {
+          "codigo": {
+            "enum": [
+              "correlacao_ambigua",
+              "resultado_operacao_ausente",
+              "evidencia_operacional_insuficiente",
+              "erro_detector",
+              "falha_instrumentacao_modular",
+              "entrada_nao_congelada"
+            ]
+          },
+          "operation_ids": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          },
+          "module_ids": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 1},
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "limitacoes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["codigo", "escopo", "gravidade", "mensagem"],
+        "properties": {
+          "codigo": {"type": "string"},
+          "escopo": {"type": "string"},
+          "gravidade": {"const": "limitacao"},
+          "mensagem": {"type": "string"},
+          "linha": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "regra": {"type": "string", "minLength": 1}
+  }
+}

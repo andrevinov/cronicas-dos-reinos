@@ -28,8 +28,10 @@ TESTS = ROOT / "tests"
 FAST_FILES: tuple[str, ...] = (
     "test_adversarios.py",
     "test_ameacas.py",
+    "test_agregacao_avaliacao.py",
     "test_dungeons.py",
     "test_analisar_rollout.py",
+    "test_analisar_rollout_atividades.py",
     "test_analisar_rollout_operacoes.py",
     "test_analisar_rollout_resultados.py",
     "test_analisar_rollout_sistemas.py",
@@ -41,7 +43,9 @@ FAST_FILES: tuple[str, ...] = (
     "test_corpus_avaliacao.py",
     "test_context_and_memory_module_v2.py",
     "test_entrada.py",
+    "test_filas_prioridade_avaliacao.py",
     "test_interacoes_narrativas.py",
+    "test_integracao_entrada_medicao.py",
     "test_mecanica_dnd_5_5e.py",
     "test_metodos_agentes.py",
     "test_narrative_delivery_module_v2.py",
@@ -49,6 +53,7 @@ FAST_FILES: tuple[str, ...] = (
     "test_politica_acesso.py",
     "test_poetry_setup.py",
     "test_preflight.py",
+    "test_qualidade_interacao_avaliacao.py",
     "test_qualidade_abordagem.py",
     "test_rolar_lote.py",
     "test_rules_catalog.py",
@@ -58,6 +63,7 @@ FAST_FILES: tuple[str, ...] = (
     "test_turn_and_session_orchestration_module_v2.py",
     "test_test_execution_profiles.py",
     "test_test_policy_contract.py",
+    "test_validacao_externa_avaliacao.py",
 )
 
 # Os domínios são deliberadamente sobrepostos: uma regressão pode pertencer a

@@ -1,0 +1,10 @@
+schema_conhecimento_incremental: 1
+sessao: 24
+fragmentos:
+- transacao: s024-9fa0958bf5a74f7e
+  titulo: Ren vigiou o restaurante até depois do meio-dia. Às 12h14, identificou a chegada solitária do homem do
+    casaco cinza, chamado de senhor Mori por Aiko, e ouviu Mori instruí-la a negar que o vira e a fazer Tanaka esperar
+    enquanto mandava alguém avisá-lo. Mori permanece dentro do restaurante.
+  arquivo: personagens/jogador/conhecimento/incrementais/sessao-024/tx-s024-9fa0958bf5a74f7e.md
+  bytes: 519
+quantidade: 1

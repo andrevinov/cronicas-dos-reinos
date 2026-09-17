@@ -1,0 +1,116 @@
+{
+  "schema_pacote_avaliacao": 2,
+  "sessao_id": "024",
+  "serie_avaliacao": "modules-v2",
+  "natureza": "avaliacao_pos_hoc_derivada; não altera cânone",
+  "fonte": {
+    "arquivo": "fonte-congelada.jsonl",
+    "sha256": "8be6e5f5068f3dbf21abdb02339f7d5499b854abdc0efd1d744b8e5e9965b55f",
+    "bytes": 2098214,
+    "entrada_id": "c1f63b92d7e3a0e4fbeb1b1ea77a9aeac8d2a318130f80247fba51a61874c295",
+    "codex_session_id": "01a0aac8-9b23-7c12-9520-be10b50ed451",
+    "inicio_rollout": "2026-09-16T15:14:36.922000+00:00",
+    "fim_rollout": "2026-09-17T02:29:27.543000+00:00",
+    "bruto_copiado_para_repo": false
+  },
+  "proveniencia_medicao": {
+    "modo": "entrada_congelada",
+    "entrada_id": "c1f63b92d7e3a0e4fbeb1b1ea77a9aeac8d2a318130f80247fba51a61874c295",
+    "conclusao_reprodutivel_permitida": true
+  },
+  "versoes": {
+    "gerador": "4.4.0",
+    "telemetria": 3,
+    "detector_modular": "4.6.0",
+    "catalogo_modulos": "5.0.0",
+    "metas": "3.0.0",
+    "contrato_avaliacao": "5.0.0"
+  },
+  "versoes_modulos": [
+    {
+      "module_id": "context_and_memory",
+      "module_implementation_version": "1.0.2",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "turn_and_session_orchestration",
+      "module_implementation_version": "1.0.2",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "narrative_delivery",
+      "module_implementation_version": "1.0.2",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "rules_and_character_state",
+      "module_implementation_version": "1.0.1",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "sidequest_authoring",
+      "module_implementation_version": "2.0.1",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "sidequest_lifecycle",
+      "module_implementation_version": "1.0.1",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "canonical_quest_integration",
+      "module_implementation_version": "2.0.0",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "npc_continuity_and_social_behavior",
+      "module_implementation_version": "1.1.0",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "scene_world_projection",
+      "module_implementation_version": "1.0.1",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "world_boundary_resolution",
+      "module_implementation_version": "1.0.1",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "causal_narrative_routing",
+      "module_implementation_version": "1.0.1",
+      "module_evaluation_version": "4.0.0"
+    },
+    {
+      "module_id": "adversarial_operations",
+      "module_implementation_version": "1.0.1",
+      "module_evaluation_version": "4.0.0"
+    }
+  ],
+  "amostra": {
+    "turnos_narrativos": 9,
+    "interacoes": 13,
+    "modulos_catalogados": 12,
+    "eventos_modulares": 103,
+    "avaliacoes_qualidade": 0,
+    "tokens_narrativos": 5406799,
+    "tokens_atribuidos_pais": 5406799
+  },
+  "avisos_medicao": [],
+  "artefatos": {
+    "telemetria": "telemetria.json",
+    "turnos": "turnos.csv",
+    "eventos_modulares": "eventos-modulares.csv",
+    "resumo_modulos": "resumo-modulos.csv",
+    "resumo_modulos_json": "resumo-modulos.json",
+    "interacoes": "interacoes.json",
+    "manifestacoes_jogador": "manifestacoes-jogador.json",
+    "avaliacoes_qualidade": "avaliacoes-qualidade.json",
+    "adjudicacoes_modulares": "adjudicacoes-modulares.json",
+    "validade_medicao": "validade-medicao.json",
+    "scorecard": "scorecard.json",
+    "proveniencia_medicao": "proveniencia-medicao.json",
+    "relatorio": "relatorio.md"
+  }
+}

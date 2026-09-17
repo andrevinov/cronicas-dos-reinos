@@ -1,0 +1,80 @@
+{
+  "expectativas": [
+    {
+      "evidence": {
+        "marker": "estado_terminal_sucesso",
+        "source": "saida_operacao"
+      },
+      "justificativa": "O preparo publicou estado terminal preparado; isso prova sucesso da operação.",
+      "operation_index": 0,
+      "parent_call_id": "call_B6L4Vb3mFVTCqHHrJV93SOaE",
+      "state": "sucesso"
+    },
+    {
+      "evidence": {
+        "marker": "falha_terminal",
+        "source": "saida_operacao"
+      },
+      "justificativa": "A saída começa com FALHA DE CONSULTA; a falha é da operação consultada.",
+      "operation_index": 0,
+      "parent_call_id": "call_A3v7fRSd9eqDvwOoQMNyVDeG",
+      "state": "falha_operacional"
+    },
+    {
+      "evidence": {
+        "marker": "resultado_ausente",
+        "source": "correlacao"
+      },
+      "justificativa": "A chamada agrupada encaminhou textos sem índice ou envelope por resultado; não há atribuição segura à primeira operação.",
+      "operation_index": 0,
+      "parent_call_id": "call_PxLHFBI4d4ioFk4NmDhdOqrI",
+      "state": "resultado_ausente"
+    },
+    {
+      "evidence": {
+        "marker": "resultado_ausente",
+        "source": "correlacao"
+      },
+      "justificativa": "A chamada agrupada encaminhou textos sem índice ou envelope por resultado; não há atribuição segura à segunda operação.",
+      "operation_index": 1,
+      "parent_call_id": "call_PxLHFBI4d4ioFk4NmDhdOqrI",
+      "state": "resultado_ausente"
+    },
+    {
+      "evidence": {
+        "marker": "sem_sinal_terminal",
+        "source": "saida_operacao"
+      },
+      "justificativa": "Falha é o resultado diegético do d20, não prova falha operacional; o envelope não preservou código terminal.",
+      "operation_index": 0,
+      "parent_call_id": "call_y74x4rtThRJu0nAC2k9Xcycg",
+      "state": "evidencia_insuficiente"
+    },
+    {
+      "evidence": {
+        "marker": "sem_sinal_terminal",
+        "source": "saida_operacao"
+      },
+      "justificativa": "Sucesso nas rolagens é resultado de domínio, não prova por si o término do processo; o envelope não preservou código terminal.",
+      "operation_index": 0,
+      "parent_call_id": "call_E9LiqRIeo2ysK2p54u37OFdB",
+      "state": "evidencia_insuficiente"
+    }
+  ],
+  "natureza": "expectativas semânticas estabelecidas por inspeção do rollout real, fora do corpus de desenvolvimento e sem usar notas produzidas pelo avaliador",
+  "regra": "comparar identidade, estado e marcador de evidência; valores de domínio como Sucesso/Falha de uma rolagem nunca substituem o estado operacional",
+  "resumo": {
+    "by_state": {
+      "evidencia_insuficiente": 2,
+      "falha_operacional": 1,
+      "resultado_ausente": 2,
+      "sucesso": 1
+    },
+    "detector_errors": 0,
+    "insufficient_evidence": 2,
+    "operational_failures": 1,
+    "operations": 6
+  },
+  "schema_gabarito_validacao_externa": 1,
+  "validacao_id": "s022-recorte-historico-v1"
+}

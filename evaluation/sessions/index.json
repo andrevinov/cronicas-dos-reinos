@@ -193,6 +193,68 @@
         "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
       },
       "caminho": "023"
+    },
+    {
+      "sessao_id": "024",
+      "serie_avaliacao": "modules-v2",
+      "chave_comparabilidade": [
+        "modules-v2",
+        "5.0.0",
+        "3.0.0"
+      ],
+      "status_avaliacao": "bloqueada_instrumentacao",
+      "nota_geral_0a100": 85.1,
+      "faixa_geral": "saudavel",
+      "eixos": {
+        "calibracao": {
+          "nota_0a100": 100.0,
+          "peso": 30
+        },
+        "eficacia_integridade": {
+          "nota_0a100": 85.72,
+          "peso": 30
+        },
+        "confiabilidade": {
+          "nota_0a100": 80.56,
+          "peso": 20
+        },
+        "economia": {
+          "nota_0a100": 74.11,
+          "peso": 15
+        },
+        "fluidez": {
+          "nota_0a100": 43.06,
+          "peso": 5
+        }
+      },
+      "indicadores_globais": {
+        "turnos_narrativos": 9,
+        "interacoes_observadas": 12,
+        "interacoes_com_referencia_exata": 9,
+        "input_tokens": 5352780,
+        "cached_input_tokens": 5086976,
+        "uncached_input_tokens_aprox": 265804,
+        "output_tokens": 54019,
+        "reducao_input_bruto_baseline": 0.722955,
+        "inferencias_por_turno": 7.0,
+        "tools_por_turno": 6.0,
+        "orquestracao_por_turno": 2.889,
+        "fracao_par_cronica_exato": 0.666667,
+        "fracao_l0_l2_limpo": 0.333333,
+        "fracao_turnos_com_raw": 0.555556,
+        "raw_read_calls": 12,
+        "schema_discovery_calls": 2,
+        "compactacoes": 0,
+        "latencia_mediana_segundos": 146.789,
+        "latencia_p90_segundos": 265.214,
+        "latencia_maxima_segundos": 288.402,
+        "turnos_acima_300_segundos": 0
+      },
+      "confianca": {
+        "sessao": "provisoria",
+        "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
+      },
+      "caminho": "024"
     }
   ]
 }

@@ -1,0 +1,94 @@
+schema_handoff: 1
+natureza: memoria_compacta_de_retomada
+sessao: 24
+checkpoint:
+  tipo: sessao
+  estado: sessao_encerrada
+  modo: conversa_com_silva_apos_operacao_sete_nomes
+  personagem:
+    nome: Ren Kagehira
+    nivel: 7
+    classe: Monge
+    subclasse: Guerreiro das Sombras
+  recursos:
+    pv:
+      atuais: 52
+      maximos: 52
+    focus:
+      atuais: 7
+      maximos: 7
+    ca: 17
+    deslocamento: 55 pés
+    dinheiro_po: 37.61999999999999
+  tempo:
+    data: 23 Eleasis, 1372 DR
+    hora_aproximada: '13:00'
+    periodo: noite de 21 Eleasis, com Ren no circo dos Mooney
+    clima: névoa baixa se dissipando sobre Ravens Bluff; ruas e telhados úmidos
+  localizacao:
+    plano: Material
+    mundo: Toril
+    continente: Faerûn
+    regiao: The Vast
+    cidade: Ravens Bluff
+    area: Circo dos Mooney
+    ponto_exato: na entrada do acampamento do circo dos Mooney, sob o disfarce de Tanaka
+continuidade:
+  resumo_imediato: Ren despediu-se de Maerra e chegou ao exterior do restaurante de Aiko às 11:35 como Tanaka. Observa
+    a entrada principal e a boca do beco lateral do lado oposto da rua, à sombra de um beiral; não tem vista da
+    porta dos fundos. O estabelecimento atende normalmente. O homem do casaco cinza ainda não apareceu à sua vista;
+    Aiko havia anunciado sua visita para depois do meio-dia, sem hora exata.
+  prazos_e_alertas: A cativa e as provas estão sob custódia da Night Watch, supervisionadas por Luath; Ren deixou
+    o posto antes de seguir ao circo.
+eventos_recentes:
+- batch: s024-cena-b4def9e649597448
+  transacao: s024-9afb1791bfcc09e7
+  resumo: Ren tentou substituir a ameaça aberta por uma abordagem conciliadora e perguntou a Mori para quem ele
+    trabalha, afirmando conhecer seus chefes. Mori percebeu a prontidão física sob o disfarce, não revelou nomes
+    nem facção e exigiu que Ren pronunciasse primeiro um nome verdadeiro, alertando-o sobre fazê-lo diante de Aiko.
+- batch: s024-cena-b4def9e649597448
+  transacao: s024-471198e527a72349
+  resumo: Ren ofereceu a Mori cooperação como agente duplo, apresentando proteção e aviso contra o risco de ser
+    descartado pelos próprios empregadores. O argumento reduziu a dificuldade, mas Mori recusou por falta de prova,
+    apresentou um terceiro futuro no qual alerta os empregadores e exigiu, para considerar conversa futura longe
+    de testemunhas, um nome verdadeiro e conhecimento interno verificável. Mori prepara-se para part…
+- batch: s024-cena-b4def9e649597448
+  transacao: s024-0b332f2890f8d87a
+  resumo: Ren mostrou a Mori um bilhete com Masao Hirasawa, Juppongatana, Kurobane Jinzaburo e Kajikawa Shizune.
+    A tentativa de ocultá-lo falhou, e Aiko viu Masao Hirasawa e Juppongatana, embora não as duas últimas linhas.
+    Mori reconheceu que Ren não agia inteiramente no escuro, permaneceu sentado e aceitou ouvir uma única condição
+    antes de decidir se parte.
+- batch: s024-cena-b4def9e649597448
+  transacao: s024-f969c59851f9ba24
+  resumo: Ren condicionou a saída de Mori à segurança de Aiko, dos empregados, clientes e restaurante. Mori prometeu
+    não feri-los, não ordenar, pagar ou sugerir dano e não prejudicar o estabelecimento, ressalvando que não controla
+    toda pessoa da cidade. Devolveu o bilhete e deixou o restaurante sem aderir à cooperação.
+- batch: s024-cena-b4def9e649597448
+  transacao: s024-23b0a378a23b9a7b
+  resumo: 'Ren pediu perdão a Aiko, explicou que Mori trabalha para homens perigosos e reconheceu ter usado as informações
+    dela para alcançá-lo. Aiko reagiu com firmeza: não exigiu os nomes, mas pediu respostas práticas sobre fechar
+    o restaurante, dispensar empregados, risco de retorno e segurança para abrir no dia seguinte.'
+- batch: s024-cena-b4def9e649597448
+  transacao: s024-0e3072cb50aa7759
+  resumo: Ren reconheceu que Aiko já corria risco porque o restaurante era usado pelo grupo de Mori, afirmou que
+    ela pode abrir no dia seguinte e prometeu fazer o que estiver ao seu alcance para compensar e proteger Aiko
+    e os seus. Aiko decidiu abrir, pediu que Tanaka não decida sozinho o que ela pode suportar e o mandou partir
+    antes que Mori se afastasse demais. Ren saiu para iniciar a perseguição.
+- batch: s024-sessao-3d75c1fa9f4df456
+  transacao: s024-12ca4d75e3095b47
+  resumo: Ren alcançou visualmente Mori e o seguiu pelos telhados. Mori usou reflexos numa banca de latoeiro, confirmou
+    um ruído no alto e entrou numa passagem comercial coberta com quatro saídas, rompendo a linha de visão. Mori
+    não identificou visualmente o perseguidor, mas agiu como quem detectou uma cauda; Ren perdeu o alvo às 12h33.
+- batch: s024-sessao-3d75c1fa9f4df456
+  transacao: s024-81903669910b2c83
+  resumo: Ren abandonou a busca imediata por Mori e retornou normalmente ao circo dos Mooney como senhor Tanaka.
+    O trajeto ocorreu sem interrupção; chegou à entrada do acampamento às 13h00, frustrado com a fuga, mas considerando
+    preservadas a promessa de Mori sobre Aiko e a possibilidade de futura cooperação.
+fontes:
+  estado: estado/estado-atual.yaml
+  tempo: estado/tempo.yaml
+  ficha: personagens/jogador/ficha.yaml
+  transcricao_fria: sessoes/024/transcricao.md
+politica:
+  retomada_normal: usar este handoff, runtime e eventos pendentes
+  transcricao: somente se memória compacta e busca histórica forem insuficientes

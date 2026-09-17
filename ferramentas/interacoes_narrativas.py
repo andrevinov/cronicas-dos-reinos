@@ -535,8 +535,10 @@ def adjudicate_feedback(
     raise InteractionError(f"feedback inexistente: {feedback_id}")
 
 
-def materialize(repo: Path, session: int) -> dict[str, Any]:
-    records = load_events(repo, session)
+def materialize_records(records: list[dict[str, Any]], session: int) -> dict[str, Any]:
+    """Materializa um snapshot já selecionado sem reler o ledger vivo."""
+    if not isinstance(records, list) or any(not isinstance(item, dict) for item in records):
+        raise InteractionError("snapshot de interações precisa ser uma lista de objetos")
     release_sets = {
         str(event["release_set_id"]): event
         for event in records
@@ -599,6 +601,10 @@ def materialize(repo: Path, session: int) -> dict[str, Any]:
         "interactions": interactions,
         "player_feedback": feedback,
     }
+
+
+def materialize(repo: Path, session: int) -> dict[str, Any]:
+    return materialize_records(load_events(repo, session), session)
 
 
 def _read_payload(path: Path | None) -> dict[str, Any]:

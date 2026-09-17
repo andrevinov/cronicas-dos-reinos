@@ -311,7 +311,13 @@ def _aggregate_property(generator: Any, session_id: str, report: dict[str, Any],
 def _acceptance_property(acceptance: Any, output: Path, module_rows: list[dict[str, Any]], root: Path) -> bool:
     package = root / "evaluation/sessions/990"
     package.mkdir(parents=True)
-    for name in ("manifest.json", "scorecard.json", "interacoes.json", "resumo-modulos.json"):
+    for name in (
+        "manifest.json",
+        "scorecard.json",
+        "interacoes.json",
+        "resumo-modulos.json",
+        "proveniencia-medicao.json",
+    ):
         (package / name).write_bytes((output / name).read_bytes())
     (root / "evaluation/sessions/index.json").write_text(json.dumps({"sessoes": [{"sessao_id": "990", "serie_avaliacao": "modules-v2", "caminho": "990"}]}), encoding="utf-8")
     state = acceptance.first_real_session_status(root)
@@ -333,9 +339,10 @@ def _evaluate_case(case: dict[str, Any], base: Path, config: dict[str, str], ana
     analyzer._CATALOG_V2_PATH = sources["catalogo"]
     output = work / case["case_id"] / "pacote"
     result = generator.generate_session_evaluation(
-        rollout, session_id="990", output_dir=output,
-        catalog_path=sources["catalogo"], targets_path=sources["metas"], baseline_path=sources["baseline"],
-        validity_path=sources["validade"], adjudications_path=sources["adjudicacoes"], interactions_path=sources["interacoes"],
+        rollout,
+        session_id="990",
+        output_dir=output,
+        measurement_input=frozen,
     )
     report = _json(output / "telemetria.json")
     modules = _json(output / "resumo-modulos.json")["modulos"]

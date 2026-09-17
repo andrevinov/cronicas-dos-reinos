@@ -5,16 +5,18 @@ Esta é a receita canônica para transformar cada rollout concluído em um pacot
 o cânone. O único dado criado durante o jogo é a identidade append-only das
 interações, necessária para ligar evidência posterior ao par correto.
 
-O reparo do instrumento passa a ter um
+O instrumento usa um
 [contrato de entrada e unidades](contrato-entrada-medicao.md), com uma porta
-separada para congelar fontes antes da medição. A atividade 1 não muda o gerador
-nem corrige suas notas; o procedimento abaixo continua descrevendo o fluxo
-existente até sua integração nas atividades seguintes.
+separada para congelar fontes antes da medição. Desde o gerador 4.4.0, essa
+entrada é a autoridade da execução reproduzível; fontes mutáveis não são
+consultadas novamente.
 
 O [corpus independente de regressão](corpus-regressao-avaliacao.md) fixa as
-expectativas das correções antes de alterar o detector. Enquanto as atividades
-3–9 não forem concluídas, seu comando estrito reprova o avaliador e discrimina
-falha do instrumento de erro no próprio corpus.
+expectativas das correções antes de alterar o detector. As atividades 3–9
+corrigem extração, classificação, unidades, agregação, qualidade, filas e
+reprodução. A atividade 10 fecha o corpus em 226/226 e adiciona
+[validação externa e aceite fail-closed](validacao-externa-e-aceite.md) sobre
+um recorte real da sessão 022.
 
 Desde o detector 4.3.0, chamadas agrupadas são decompostas conforme o contrato
 de [operações executadas](operacoes-executadas-rollout.md). A contagem nativa do
@@ -25,6 +27,19 @@ O detector 4.4.0 aplica a
 [classificação de resultados](classificacao-resultados-rollout.md) antes da
 cobertura modular. Falha operacional, ausência de recibo, inaplicabilidade,
 evidência insuficiente e erro do detector permanecem estados independentes.
+
+O detector 4.5.0 materializa essas obrigações no
+[ledger de atividades modulares](ledger-atividades-modulares.md). Os gates de
+cobertura são uma projeção das linhas identificadas e não uma segunda contagem
+paralela.
+
+O detector 4.6.0 acrescenta o ledger de
+[qualidade adjudicada por interação](qualidade-por-interacao.md). Critério,
+evidência, elegibilidade, ativação e adjudicação ficam explícitos; a ausência de
+evento automático não apaga uma oportunidade perdida. O gerador conserva
+conformidade operacional e qualidade em métricas distintas. Na versão 4.4.0,
+ele também publica `proveniencia-medicao.json` e
+`scorecard.conclusao_medicao`.
 
 ## Fontes e unidades
 
@@ -50,8 +65,10 @@ uma nota de jogo e não inaugura a curva longitudinal.
 
 Se um pacote real já existir com respostas sem referência única, o aceite real
 permanece `pendente`, com a quantidade de respostas afetadas no diagnóstico.
-Isso não reprova a prontidão técnica nem autoriza corrigir retroativamente as
-referências no histórico ou aceitar a sessão como baseline operacional.
+O mesmo ocorre com proveniência ausente, conclusão bloqueada, falha de
+instrumentação ou violação crítica. Isso não reprova a prontidão técnica nem
+autoriza corrigir retroativamente o histórico ou aceitar a sessão como baseline
+operacional. O pacote 023 permanece pendente por esses critérios.
 
 ## 1. Durante a sessão
 
@@ -73,30 +90,33 @@ Isso não avança tempo, mundo ou personagem. O texto original é preservado com
 percepção pendente; módulo, subcapacidade e verdade medida são camadas de
 adjudicação separadas.
 
-## 2. Gerar o pacote automático
+## 2. Congelar a entrada e gerar o pacote
 
-Após encerrar a sessão:
+Após encerrar a sessão, primeiro preparar a entrada com todas as fontes que
+devem participar:
 
 ```bash
-poetry run python ferramentas/gerar-avaliacao-sessao.py \
-  /caminho/para/rollout.jsonl \
-  --sessao-id 022
+poetry run python ferramentas/entrada_medicao.py preparar \
+  /caminho/para/rollout.jsonl --sessao-id 022 \
+  --saida /tmp/entrada-s022.json \
+  --interacoes /caminho/manifestacoes-jogador-sessao-022.json \
+  --adjudicacoes /caminho/adjudicacoes-modulares.json \
+  --validade /caminho/validade-medicao.json
 ```
 
-Destino padrão: `evaluation/sessions/022/`. Para fornecer exportação do painel
-ou adjudicações externas:
+Em seguida, gerar somente com a autoridade congelada:
 
 ```bash
 poetry run python ferramentas/gerar-avaliacao-sessao.py \
   /caminho/para/rollout.jsonl \
   --sessao-id 022 \
-  --interacoes /caminho/manifestacoes-jogador-sessao-022.json \
-  --adjudicacoes-modulares /caminho/adjudicacoes-modulares.json \
-  --validade /caminho/validade-medicao.json
+  --entrada-medicao /tmp/entrada-s022.json
 ```
 
-Sem `--interacoes`, o gerador usa automaticamente o ledger da sessão, quando
-existe. A regeneração preserva manifestações e adjudicações já empacotadas.
+Destino padrão: `evaluation/sessions/022/`. Fontes opcionais omitidas ficam
+explicitamente ausentes. O gerador não procura o ledger da sessão nem reaproveita
+arquivos do diretório de saída. O modo direto sem `--entrada-medicao` existe
+para compatibilidade, mas o scorecard bloqueia conclusão reproduzível.
 
 ## 3. Adjudicar sem apagar observação
 
@@ -165,14 +185,19 @@ Por sessão: calibração 30%, eficácia 30%, confiabilidade 20%, economia 15% e
 fluidez 5%. N/D é excluído e os pesos restantes são renormalizados. Não existe
 eixo numérico do jogador.
 
-Prioridade combina 70% do déficit de experiência/desempenho e 30% da parcela de
-custo. Zero atividade e inaplicabilidade confirmada não geram déficit; uma falha
-de instrumentação usa déficit 100 para não desaparecer no fim da fila. Casos
-indeterminados continuam provisórios sem nota inventada. `sem_evidencia`,
-`evidencia_insuficiente` e **inaplicabilidade confirmada** são estados
-diferentes. Se nenhuma oportunidade elegível exercitou
-autoria ou oferta de sidequest, o gate é reportado separadamente e nem déficit
-nem custo exposto entram na prioridade do módulo.
+Desde o gerador 4.1.0, a
+[agregação fail-closed](agregacao-fail-closed.md) remove componentes de módulos
+bloqueados antes de calcular os eixos. `agregacao_modular` expõe módulos
+incluídos, bloqueados e o denominador válido de cada eixo. Enquanto houver
+bloqueio, a nota restante é parcial e não autoriza conclusão sobre a sessão.
+
+Desde o contrato 5.0.0, não existe prioridade global. A
+[fila de reparo do medidor](filas-prioridade-e-custo.md) usa somente falhas de
+instrumentação; a fila de problemas da experiência exige qualidade por
+interação adjudicada; a fila de investigação de custo usa somente a atribuição
+contábil de tokens. Custo não altera as outras filas e nunca é apresentado como
+causa. `sem_evidencia`, `evidencia_insuficiente` e **inaplicabilidade
+confirmada** continuam estados diferentes.
 
 Uma sessão é provisória. Estabilidade exige ao menos três sessões comparáveis e
 dez oportunidades por módulo.
@@ -189,6 +214,7 @@ evaluation/sessions/<id>/
 ├── resumo-modulos.json
 ├── interacoes.json
 ├── manifestacoes-jogador.json
+├── avaliacoes-qualidade.json
 ├── adjudicacoes-modulares.json
 ├── validade-medicao.json
 ├── scorecard.json

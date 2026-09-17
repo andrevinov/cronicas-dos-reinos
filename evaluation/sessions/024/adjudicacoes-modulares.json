@@ -1,0 +1,27 @@
+{
+  "schema_adjudicacoes_modulares": 2,
+  "corrections": [],
+  "semantic_audits": [],
+  "quality_assessments": [],
+  "player_feedback": [
+    {
+      "adjudication": {
+        "reason": null,
+        "state": "pendente"
+      },
+      "event_type": "player_feedback",
+      "expectation": "A escrita discretamente protegida deveria ter sido resolvida sem teste, pois Aiko não tentava ler e tinha fortes razões para evitar o conteúdo; Mori também não deveria detectar automaticamente um vislumbre tão breve.",
+      "feedback_id": "feedback-31fef4f805001c964b82",
+      "interaction_ref": "S024-I0005",
+      "observation": "Foi exigido teste de Prestidigitação CD 13; a falha fez Aiko ler parte do bilhete e Mori detectar imediatamente que ela o havia lido.",
+      "original_text": "Eu, André Carvalho, se quiser escrever algo sem que alguém que não está interessado em ver ou que correria risco de vida se visse, consigo fazer isso 100% das vezes. Esse teste de Prestidigitação pra esconder as letras de um papel que essa moça sabe que se ler vai morrer e que ela não estava ativamente procurando ler é uma piada. Agora, o senhor Mori detectou que a mulher leu em uma fração de segundos. Tem algo errado aí, rs. Mas vamos aceitar os fatos.",
+      "perceived_impact": "moderado",
+      "perceived_type": "sobreativacao_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-16T16:07:49.572798Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": null
+    }
+  ]
+}

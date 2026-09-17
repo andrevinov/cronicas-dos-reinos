@@ -208,3 +208,18 @@ densidade e adequação social exigem adjudicação fundamentada; sua agregaçã
 reprodução podem ser determinísticas depois de registrada a adjudicação.
 Não existe garantia de recuperar evidência que um rollout não contém, nem de
 avaliar corretamente um formato futuro que ainda não foi especificado.
+
+## Estado após o reparo
+
+As atividades 1–10 implementaram as condições técnicas acima. O corpus de
+desenvolvimento termina com 226/226 verificações aprovadas; uma amostra real da
+sessão 022, mantida fora desse corpus e aberta depois das correções 3–9, termina
+com 6/6 resultados operacionais compatíveis com seu gabarito independente. O
+`preflight` executa ambos os gates.
+
+O aceite agora verifica entrada congelada, proveniência, conclusão de medição,
+agregação modular, falhas de instrumentação, violações críticas e referências
+de interação. Por isso o pacote 023 arquivado recebe `pendente`, em vez de ser
+aceito depois de uma correção apenas cosmética nas referências. Essa sessão não
+é reescrita nem promovida a baseline. A validação prospectiva continua sendo a
+próxima sessão real produzida integralmente pelos contratos corrigidos.

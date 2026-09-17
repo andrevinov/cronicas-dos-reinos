@@ -11,8 +11,10 @@ A atividade 1 do reparo publica `contrato-medicao.json`, contratos locais em
 fontes e versões selecionadas, sem copiar o bruto ou recalcular notas.
 
 Uso e limites: [contrato de entrada e unidades](../docs/agente/engenharia/contrato-entrada-medicao.md).
-O gerador descrito abaixo ainda não consome essa entrada; sua integração e as
-correções de extração e notas pertencem às atividades seguintes.
+Desde a atividade 9, o gerador 4.4.0 consome essa entrada como autoridade única,
+valida código e ambiente antes da análise e publica a proveniência e o gate de
+conclusão. Contrato:
+[reprodutibilidade do pacote](../docs/agente/engenharia/reprodutibilidade-pacote-avaliacao.md).
 
 ## Corpus de regressão
 
@@ -32,12 +34,45 @@ A atividade 4 publica `operation_outcomes`, com resultado e fonte de evidência
 por operação, e tipa separadamente os estados da cobertura modular. Semântica e
 precedência: [classificação de resultados](../docs/agente/engenharia/classificacao-resultados-rollout.md).
 
+A atividade 5 publica `module_activities`, com identidade por operação, módulo,
+fase e objeto opaco. Recibos são ligados um a um; duplicações, `units` agregados
+e órfãos permanecem visíveis. Contrato:
+[ledger de atividades modulares](../docs/agente/engenharia/ledger-atividades-modulares.md).
+
+A atividade 6 aplica o bloqueio até o scorecard. Componentes de módulos com
+falha de instrumentação são excluídos antes das médias, e o pacote publica os
+denominadores válidos e a natureza parcial da nota restante. Contrato:
+[agregação fail-closed](../docs/agente/engenharia/agregacao-fail-closed.md).
+
+A atividade 7 publica avaliações de qualidade por interação, módulo e critério.
+Cada registro exige evidência e adjudicação; oportunidades perdidas são
+observáveis mesmo sem evento automático, e conformidade operacional permanece
+separada da qualidade. Contrato:
+[qualidade adjudicada por interação](../docs/agente/engenharia/qualidade-por-interacao.md).
+
+A atividade 8 remove o ranking misto. Reparo do medidor, problemas da
+experiência e investigação de custo usam filas independentes; tokens aparecem
+como atribuição contábil sem inferência causal. Contrato:
+[filas de decisão e atribuição contábil](../docs/agente/engenharia/filas-prioridade-e-custo.md).
+
+A atividade 9 integra o corte congelado ao gerador, impede leituras implícitas
+de fontes mutáveis, compara código e ambiente e exige igualdade byte a byte na
+aceitação técnica. Correlação ambígua, resultado ausente, evidência insuficiente
+e erro do detector bloqueiam conclusões dependentes sem apagar fatos observados.
+
+A atividade 10 fecha o corpus em 226/226, promove-o ao `preflight` e adiciona
+`validacao-externa-v1/`: um recorte real e hash-ancorado da sessão 022 com seis
+resultados operacionais conferidos por gabarito independente. O aceite real
+agora exige proveniência reproduzível, conclusão permitida, agregação completa,
+ausência de falha de instrumentação e referências únicas. A sessão 023 continua
+pendente e não é transformada retroativamente em baseline.
+
 ## Série de produção
 
 `modules-v2` é a série de produção desde a RM-11. Ela usa:
 
 - `catalogo-modulos-v2.json`: os doze módulos-pai e suas subcapacidades;
-- `metas-avaliacao-v2.json`: pesos, faixas, confiança e prioridade;
+- `metas-avaliacao-v2.json`: pesos, faixas, confiança e filas de decisão;
 - `catalogo-guardrails-v2.json`: propriedades críticas fora da média;
 - `module-releases.json`: log append-only das versões de implementação e de
   avaliação, mais o mapa explícito `current_releases` para a release vigente de
@@ -63,16 +98,17 @@ versões SemVer do catálogo. Uma alteração adiciona outra entrada com `releas
 
 ## Pacote por sessão
 
-O gerador de produção consome o rollout e, quando disponível, o ledger
-append-only `sessoes/NNN/interacoes.jsonl`. Ele publica:
+O gerador de produção consome o prefixo congelado do rollout e os snapshots
+selecionados explicitamente. Ele publica:
 
 - telemetria e eventos ligados por `interaction_id`/`interaction_ref`;
-- ranking somente dos doze módulos-pai;
+- três filas independentes somente entre os doze módulos-pai;
 - drilldown diagnóstico das subcapacidades;
-- custo aditivo no pai e apenas exposição na subcapacidade;
+- atribuição contábil aditiva no pai e apenas exposição na subcapacidade;
 - versões de implementação e avaliação vigentes;
 - manifestações concretas do jogador e sua adjudicação;
 - guardrails fora da média;
+- proveniência reproduzível e gate explícito de conclusão;
 - scorecard e relatório da sessão.
 
 Não existe nota numérica direta do jogador na série v2. Uma manifestação só

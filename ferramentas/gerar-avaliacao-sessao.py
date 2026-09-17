@@ -9,11 +9,15 @@ evidência permanecem vazios/N/D.
 from __future__ import annotations
 
 import argparse
+import copy
 import csv
 import hashlib
+import importlib.metadata
 import importlib.util
 import json
+import platform
 import sys
+import tempfile
 from collections import OrderedDict
 from datetime import datetime
 from pathlib import Path
@@ -30,7 +34,21 @@ DEFAULT_TARGETS = ROOT / "evaluation" / "metas-avaliacao-v2.json"
 DEFAULT_BASELINE = ROOT / "baseline" / "rollout-2026-08-15.json"
 PACKAGE_SCHEMA = 1
 PACKAGE_SCHEMA_V2 = 2
-GENERATOR_VERSION = "4.0.0"
+GENERATOR_VERSION = "4.4.0"
+AGGREGATION_SCHEMA = 1
+PRIORITY_QUEUES_SCHEMA = 1
+PROVENANCE_SCHEMA = 1
+CONCLUSION_SCHEMA = 1
+
+CRITICAL_EVALUATOR_FILES = frozenset(
+    {
+        "ferramentas/gerar-avaliacao-sessao.py",
+        "ferramentas/analisar-rollout.py",
+        "ferramentas/_analisar_rollout_core.py",
+        "ferramentas/entrada_medicao.py",
+        "ferramentas/interacoes_narrativas.py",
+    }
+)
 
 AUDIT_COLUMNS = (
     "modulo",
@@ -128,6 +146,175 @@ def _sha256(path: Path) -> str:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def _frozen_snapshot(bundle: dict[str, Any], name: str) -> Any | None:
+    snapshot = (bundle.get("snapshots") or {}).get(name) or {}
+    return snapshot.get("conteudo") if snapshot.get("estado") == "presente" else None
+
+
+def _validate_frozen_runtime(
+    bundle: dict[str, Any], rollout: Path, session_id: str
+) -> tuple[bytes, dict[str, Any]]:
+    """Valida a autoridade congelada antes que o pacote possa ser criado."""
+    from ferramentas import entrada_medicao
+
+    if not isinstance(bundle, dict):
+        raise EvaluationError("entrada de medição precisa ser um objeto JSON")
+    diagnostics = list(entrada_medicao.validate_input(bundle))
+    structural_blockers = [
+        item for item in diagnostics if item.get("gravidade") == "bloqueio"
+    ]
+    if structural_blockers:
+        codes = ", ".join(
+            sorted(
+                {
+                    f"{item.get('codigo')}:{item.get('escopo')}"
+                    for item in structural_blockers
+                }
+            )
+        )
+        raise EvaluationError(f"entrada de medição bloqueada antes da análise: {codes}")
+    if bundle.get("sessao_id") != session_id:
+        diagnostics.append(
+            entrada_medicao.diagnostic(
+                "sessao_divergente",
+                "sessao_id",
+                "A sessão solicitada diverge da entrada congelada.",
+            )
+        )
+
+    declared_code = bundle.get("codigo_sha256") or {}
+    missing_critical = sorted(CRITICAL_EVALUATOR_FILES - set(declared_code))
+    if missing_critical:
+        diagnostics.append(
+            entrada_medicao.diagnostic(
+                "codigo_critico_ausente",
+                "codigo_sha256",
+                f"Arquivos críticos ausentes: {missing_critical}.",
+            )
+        )
+    for relative, expected in sorted(declared_code.items()):
+        candidate = (ROOT / relative).resolve()
+        try:
+            candidate.relative_to(ROOT)
+        except (ValueError, TypeError):
+            diagnostics.append(
+                entrada_medicao.diagnostic(
+                    "caminho_codigo_invalido",
+                    f"codigo.{relative}",
+                    "O arquivo declarado precisa permanecer dentro do repositório.",
+                )
+            )
+            continue
+        if not candidate.is_file():
+            diagnostics.append(
+                entrada_medicao.diagnostic(
+                    "codigo_ausente", f"codigo.{relative}", "Arquivo declarado não existe."
+                )
+            )
+        elif _sha256(candidate) != expected:
+            diagnostics.append(
+                entrada_medicao.diagnostic(
+                    "codigo_alterado",
+                    f"codigo.{relative}",
+                    "O código corrente diverge do hash congelado.",
+                )
+            )
+
+    current_environment = {
+        "python": platform.python_version(),
+        "PyYAML": importlib.metadata.version("PyYAML"),
+    }
+    for name, current in current_environment.items():
+        if (bundle.get("ambiente") or {}).get(name) != current:
+            diagnostics.append(
+                entrada_medicao.diagnostic(
+                    "ambiente_alterado",
+                    f"ambiente.{name}",
+                    f"Versão corrente {current} diverge da versão congelada.",
+                )
+            )
+    blockers = [item for item in diagnostics if item.get("gravidade") == "bloqueio"]
+    if blockers:
+        codes = ", ".join(
+            sorted({f"{item.get('codigo')}:{item.get('escopo')}" for item in blockers})
+        )
+        raise EvaluationError(f"entrada de medição bloqueada antes da análise: {codes}")
+    try:
+        source = entrada_medicao.read_frozen_source(bundle, rollout)
+    except entrada_medicao.InputContractError as exc:
+        raise EvaluationError(f"fonte congelada inválida: {exc}") from exc
+
+    snapshots = bundle.get("snapshots") or {}
+    provenance = {
+        "schema_proveniencia_medicao": PROVENANCE_SCHEMA,
+        "modo": "entrada_congelada",
+        "entrada_id": bundle.get("entrada_id"),
+        "status_entrada": bundle.get("status"),
+        "conclusao_reprodutivel_permitida": True,
+        "fonte": {
+            "perfil": (bundle.get("fonte") or {}).get("perfil"),
+            "corte_bytes": (bundle.get("fonte") or {}).get("corte_bytes"),
+            "sha256": (bundle.get("fonte") or {}).get("sha256"),
+        },
+        "contrato": {
+            "sha256": (bundle.get("contrato") or {}).get("sha256"),
+            "versao": ((bundle.get("contrato") or {}).get("conteudo") or {}).get(
+                "versao_contrato"
+            ),
+        },
+        "snapshots": {
+            name: {
+                "estado": snapshot.get("estado"),
+                "sha256": snapshot.get("sha256"),
+                "formato": snapshot.get("formato"),
+            }
+            for name, snapshot in sorted(snapshots.items())
+        },
+        "contratos_modulos": {
+            name: {
+                "estado": snapshot.get("estado"),
+                "sha256": snapshot.get("sha256"),
+            }
+            for name, snapshot in sorted((bundle.get("contratos_modulos") or {}).items())
+        },
+        "codigo_sha256": dict(sorted(declared_code.items())),
+        "ambiente": dict(sorted((bundle.get("ambiente") or {}).items())),
+        "diagnosticos": diagnostics,
+    }
+    return source, provenance
+
+
+def _direct_provenance(rollout: Path) -> dict[str, Any]:
+    return {
+        "schema_proveniencia_medicao": PROVENANCE_SCHEMA,
+        "modo": "direto_nao_congelado",
+        "entrada_id": None,
+        "status_entrada": "nao_fornecida",
+        "conclusao_reprodutivel_permitida": False,
+        "fonte": {
+            "perfil": "codex_jsonl_v1",
+            "corte_bytes": rollout.stat().st_size,
+            "sha256": _sha256(rollout),
+        },
+        "contrato": {"sha256": None, "versao": None},
+        "snapshots": {},
+        "contratos_modulos": {},
+        "codigo_sha256": {},
+        "ambiente": {
+            "PyYAML": importlib.metadata.version("PyYAML"),
+            "python": platform.python_version(),
+        },
+        "diagnosticos": [
+            {
+                "codigo": "entrada_nao_congelada",
+                "escopo": "entrada",
+                "gravidade": "limitacao",
+                "mensagem": "Execução compatível sem autoridade de entrada reproduzível.",
+            }
+        ],
+    }
 
 
 def _parse_timestamp(value: Any) -> datetime | None:
@@ -951,6 +1138,91 @@ def _ratio_score(numerator: int, denominator: int) -> float | None:
     return round(numerator / denominator * 100, 2) if denominator else None
 
 
+def _interaction_quality_metrics(
+    assessments: list[dict[str, Any]],
+) -> dict[str, Any]:
+    """Agrega apenas adjudicações conclusivas, preservando os denominadores."""
+
+    confirmed = [
+        item
+        for item in assessments
+        if (item.get("adjudication") or {}).get("state") == "confirmada"
+    ]
+    matrix = {
+        "verdadeiro_positivo": 0,
+        "verdadeiro_negativo": 0,
+        "falso_positivo": 0,
+        "falso_negativo": 0,
+    }
+    quality_values: list[bool] = []
+    scoreable_ids: set[str] = set()
+    indeterminate_confirmed = 0
+    for item in confirmed:
+        assessment_id = str(item.get("assessment_id") or "")
+        eligibility = item.get("eligibility")
+        activation = item.get("activation")
+        classification = None
+        if eligibility == "sim" and activation == "presente":
+            classification = "verdadeiro_positivo"
+        elif eligibility == "sim" and activation == "ausente":
+            classification = "falso_negativo"
+        elif eligibility == "nao" and activation == "presente":
+            classification = "falso_positivo"
+        elif eligibility == "nao" and activation == "ausente":
+            classification = "verdadeiro_negativo"
+        if classification is not None:
+            matrix[classification] += 1
+            scoreable_ids.add(assessment_id)
+
+        quality = item.get("quality")
+        if activation == "presente" and quality in {"adequada", "inadequada"}:
+            quality_values.append(quality == "adequada")
+            scoreable_ids.add(assessment_id)
+        if classification is None and not (
+            activation == "presente" and quality in {"adequada", "inadequada"}
+        ):
+            indeterminate_confirmed += 1
+
+    recall = _ratio_score(
+        matrix["verdadeiro_positivo"],
+        matrix["verdadeiro_positivo"] + matrix["falso_negativo"],
+    )
+    specificity = _ratio_score(
+        matrix["verdadeiro_negativo"],
+        matrix["verdadeiro_negativo"] + matrix["falso_positivo"],
+    )
+    opportunity_score = _score_average((recall, specificity))
+    quality_score = _ratio_score(sum(quality_values), len(quality_values))
+    return {
+        "recebidas": len(assessments),
+        "confirmadas": len(confirmed),
+        "pendentes": sum(
+            (item.get("adjudication") or {}).get("state") == "pendente"
+            for item in assessments
+        ),
+        "pontuaveis": len(scoreable_ids),
+        "nao_pontuaveis": len(assessments) - len(scoreable_ids),
+        "confirmadas_indeterminadas": indeterminate_confirmed,
+        "criterios_pontuaveis": sorted(
+            {
+                str(item.get("criterion_id") or "")
+                for item in confirmed
+                if str(item.get("assessment_id") or "") in scoreable_ids
+            }
+        ),
+        "matriz_oportunidade": matrix,
+        "denominador_oportunidade": sum(matrix.values()),
+        "oportunidades_perdidas": matrix["falso_negativo"],
+        "nota_oportunidade_0a100": opportunity_score,
+        "denominador_qualidade": len(quality_values),
+        "qualidade_inadequada": sum(not value for value in quality_values),
+        "nota_qualidade_0a100": quality_score,
+        "nota_experiencia_0a100": _score_average(
+            (opportunity_score, quality_score)
+        ),
+    }
+
+
 def _manifestation_data(
     session_id: str, output_dir: Path, explicit_path: Path | None
 ) -> dict[str, Any]:
@@ -980,6 +1252,103 @@ def _manifestation_data(
         "session": int(session_id) if session_id.isdigit() else session_id,
         "interactions": list(interactions.values()),
         "player_feedback": list(feedback.values()),
+    }
+
+
+def _frozen_manifestation_data(snapshot: Any, session_id: str) -> dict[str, Any]:
+    expected_session: int | str = int(session_id) if session_id.isdigit() else session_id
+    if snapshot is None:
+        return {
+            "schema_narrative_interactions": 1,
+            "session": expected_session,
+            "interactions": [],
+            "player_feedback": [],
+        }
+    if isinstance(snapshot, list):
+        from ferramentas import interacoes_narrativas
+
+        if not session_id.isdigit():
+            raise EvaluationError("ledger JSONL congelado exige sessão numérica")
+        try:
+            return interacoes_narrativas.materialize_records(snapshot, int(session_id))
+        except interacoes_narrativas.InteractionError as exc:
+            raise EvaluationError(f"snapshot de interações inválido: {exc}") from exc
+    if not isinstance(snapshot, dict):
+        raise EvaluationError("snapshot de interações precisa ser objeto ou ledger JSONL")
+    if snapshot.get("schema_narrative_interactions") != 1:
+        raise EvaluationError("schema do snapshot de interações não suportado")
+    if snapshot.get("session") != expected_session:
+        raise EvaluationError("sessão do snapshot de interações diverge da entrada")
+    for field in ("interactions", "player_feedback"):
+        if not isinstance(snapshot.get(field), list) or any(
+            not isinstance(item, dict) for item in snapshot[field]
+        ):
+            raise EvaluationError(f"{field} do snapshot de interações precisa ser lista de objetos")
+    return copy.deepcopy(snapshot)
+
+
+def _frozen_object(snapshot: Any, name: str, default: dict[str, Any]) -> dict[str, Any]:
+    if snapshot is None:
+        return copy.deepcopy(default)
+    if not isinstance(snapshot, dict):
+        raise EvaluationError(f"snapshot congelado {name} precisa ser objeto JSON")
+    return copy.deepcopy(snapshot)
+
+
+def _measurement_conclusion(
+    report: dict[str, Any], scorecard: dict[str, Any], provenance: dict[str, Any]
+) -> dict[str, Any]:
+    outcome_codes = {
+        "resultado_ambiguo": "correlacao_ambigua",
+        "resultado_ausente": "resultado_operacao_ausente",
+        "evidencia_insuficiente": "evidencia_operacional_insuficiente",
+        "erro_detector": "erro_detector",
+    }
+    grouped: dict[str, list[str]] = {state: [] for state in outcome_codes}
+    for operation in (report.get("operation_outcomes") or {}).get("operations") or []:
+        state = str(operation.get("state") or "")
+        if state in grouped:
+            grouped[state].append(str(operation.get("operation_id") or "sem_id"))
+    blockers = [
+        {
+            "codigo": outcome_codes[state],
+            "operation_ids": sorted(operation_ids),
+        }
+        for state, operation_ids in grouped.items()
+        if operation_ids
+    ]
+    modular = scorecard.get("agregacao_modular") or {}
+    blocked_modules = [
+        str(item.get("module_id") or "")
+        for item in modular.get("modulos_bloqueados") or []
+    ]
+    if blocked_modules:
+        blockers.append(
+            {
+                "codigo": "falha_instrumentacao_modular",
+                "module_ids": sorted(blocked_modules),
+            }
+        )
+    reproducible = bool(provenance.get("conclusao_reprodutivel_permitida"))
+    if not reproducible:
+        blockers.append({"codigo": "entrada_nao_congelada"})
+    limitations = [
+        item
+        for item in provenance.get("diagnosticos") or []
+        if item.get("gravidade") == "limitacao"
+    ]
+    return {
+        "schema_conclusao_medicao": CONCLUSION_SCHEMA,
+        "permitida": not blockers,
+        "entrada_congelada": provenance.get("modo") == "entrada_congelada",
+        "reproducao_verificada": reproducible,
+        "bloqueios": blockers,
+        "limitacoes": limitations,
+        "regra": (
+            "qualquer correlação ambígua, resultado ausente, evidência insuficiente, "
+            "erro do detector, falha de instrumentação ou entrada não congelada "
+            "impede conclusão dependente; fatos observados permanecem consultáveis"
+        ),
     }
 
 
@@ -1015,6 +1384,7 @@ def _module_summary_v2(
     events = list(ledger.get("events") or [])
     feedback = list(ledger.get("player_feedback") or [])
     semantic_audits = list(ledger.get("semantic_audits") or [])
+    quality_assessments = list(ledger.get("quality_assessments") or [])
     cost_by_module = {
         item["module_id"]: item for item in ledger.get("module_parent_costs") or []
     }
@@ -1115,6 +1485,12 @@ def _module_summary_v2(
             if item.get("perceived_type") == "possivel_guardrail"
             and (item.get("adjudication") or {}).get("state") == "confirmada"
         ]
+        module_quality_assessments = [
+            item
+            for item in quality_assessments
+            if item.get("module_id") == module_id
+        ]
+        quality_metrics = _interaction_quality_metrics(module_quality_assessments)
         missed_opportunities = sum(
             item.get("perceived_type") == "oportunidade_percebida" for item in confirmed
         )
@@ -1449,6 +1825,16 @@ def _module_summary_v2(
             )
         if effects and not all(effects):
             problems.append(f"{sum(not value for value in effects)} efeito(s) inadequado(s)")
+        if quality_metrics["oportunidades_perdidas"]:
+            problems.append(
+                f"{quality_metrics['oportunidades_perdidas']} oportunidade(s) "
+                "adjudicada(s) sem ativação"
+            )
+        if quality_metrics["qualidade_inadequada"]:
+            problems.append(
+                f"{quality_metrics['qualidade_inadequada']} critério(s) de qualidade "
+                "adjudicado(s) como inadequado(s)"
+            )
         if confirmed_guardrails:
             problems.append(
                 f"{len(confirmed_guardrails)} guardrail(s) confirmado(s), tratado(s) fora da média"
@@ -1614,6 +2000,55 @@ def _module_summary_v2(
                 ),
                 "precisao_efeito": efficacy,
                 "efeitos_avaliaveis": len(effects),
+                "nota_conformidade_operacional_0a100": efficacy,
+                "efeitos_conformidade_operacional_avaliaveis": len(effects),
+                "avaliacoes_qualidade_recebidas": quality_metrics["recebidas"],
+                "avaliacoes_qualidade_confirmadas": quality_metrics["confirmadas"],
+                "avaliacoes_qualidade_pendentes": quality_metrics["pendentes"],
+                "avaliacoes_qualidade_pontuaveis": quality_metrics["pontuaveis"],
+                "avaliacoes_qualidade_nao_pontuaveis": quality_metrics[
+                    "nao_pontuaveis"
+                ],
+                "avaliacoes_qualidade_confirmadas_indeterminadas": quality_metrics[
+                    "confirmadas_indeterminadas"
+                ],
+                "criterios_qualidade_pontuaveis": quality_metrics[
+                    "criterios_pontuaveis"
+                ],
+                "matriz_oportunidade_qualitativa": quality_metrics[
+                    "matriz_oportunidade"
+                ],
+                "denominador_oportunidade_qualitativa": quality_metrics[
+                    "denominador_oportunidade"
+                ],
+                "oportunidades_qualitativas_perdidas": quality_metrics[
+                    "oportunidades_perdidas"
+                ],
+                "nota_oportunidade_interacao_0a100": quality_metrics[
+                    "nota_oportunidade_0a100"
+                ],
+                "denominador_qualidade_interacao": quality_metrics[
+                    "denominador_qualidade"
+                ],
+                "qualidade_interacao_inadequada": quality_metrics[
+                    "qualidade_inadequada"
+                ],
+                "nota_qualidade_interacao_0a100": quality_metrics[
+                    "nota_qualidade_0a100"
+                ],
+                "nota_experiencia_interacao_0a100": quality_metrics[
+                    "nota_experiencia_0a100"
+                ],
+                "qualidade_interacao_status": (
+                    "adjudicada"
+                    if quality_metrics["pontuaveis"]
+                    else "pendente"
+                    if quality_metrics["recebidas"]
+                    and quality_metrics["pendentes"]
+                    else "indeterminada"
+                    if quality_metrics["recebidas"]
+                    else "nao_avaliada"
+                ),
                 "tokens_totais_atribuidos_fracionados": attributed,
                 "participacao_tokens_fracionados_pct": round(attributed / total_tokens * 100, 4) if total_tokens else 0,
                 "latencia_exposta_mediana_segundos": latency_median,
@@ -1683,44 +2118,191 @@ def _module_summary_v2(
                 "subcapacidades": capabilities,
             }
         )
-    priority_policy = targets.get("prioridade") or {}
-    experience_weight = float(priority_policy.get("peso_deficit_experiencia") or 0.7)
-    cost_weight = float(priority_policy.get("peso_participacao_custo") or 0.3)
+    return _assign_priority_queues(rows)
+
+
+def _instrumentation_repair_counts(row: dict[str, Any]) -> tuple[int, int]:
+    """Return affected and expected units without mixing in accounting cost."""
+    generic_expected = _number(row.get("unidades_avaliativas_obrigatorias"))
+    if generic_expected is not None:
+        expected = int(generic_expected)
+        affected = sum(
+            int(_number(row.get(key)) or 0)
+            for key in (
+                "recibos_cobertura_ausentes",
+                "recibos_cobertura_incompletos",
+                "recibos_cobertura_duplicados",
+            )
+        )
+        return affected, expected
+
+    canonical_expected = _number(row.get("unidades_sidequest_observadas"))
+    if canonical_expected is not None:
+        expected = int(canonical_expected)
+        affected = sum(
+            int(_number(row.get(key)) or 0)
+            for key in (
+                "recibos_integracao_ausentes",
+                "recibos_integracao_incompletos",
+                "recibos_integracao_duplicados",
+            )
+        )
+        return affected, expected
+
+    return 0, 0
+
+
+def _assign_priority_queues(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Assign three deterministic, independent decision queues in catalog order."""
     for row in rows:
-        performance = _number(row["nota_desempenho_provisoria_0a100"])
-        inapplicable = row.get("aplicabilidade_avaliacao") in {
-            "nao_exercitada",
-            "nao_aplicavel",
-            "sem_atividade",
-        }
-        instrumentation_failure = (
+        blocked = bool(
             row.get("aplicabilidade_avaliacao") == "falha_instrumentacao"
+            or row.get("avaliacao_ativacao") == "falha de instrumentação"
         )
-        evidence_deficit = (
-            100.0
-            if instrumentation_failure
-            else 0.0
-            if inapplicable
-            else 100 - performance
-            if performance is not None
-            else 50.0
+        affected, expected = _instrumentation_repair_counts(row)
+        if blocked:
+            # An inconsistent historical row may carry the failure label without
+            # counters. The label is still evidence of one affected unit.
+            repair_affected = max(1, affected)
+            repair_expected = max(1, expected, repair_affected)
+            repair_score = round(
+                min(100.0, repair_affected / repair_expected * 100.0), 2
+            )
+        else:
+            repair_affected = 0
+            repair_expected = expected
+            repair_score = None
+
+        experience = _number(row.get("nota_experiencia_interacao_0a100"))
+        quality_denominator = int(
+            _number(row.get("avaliacoes_qualidade_pontuaveis")) or 0
         )
-        priority_cost_share = (
-            0.0
-            if inapplicable
-            else float(row["participacao_tokens_fracionados_pct"])
+        experience_score = (
+            round(100.0 - experience, 2)
+            if experience is not None and quality_denominator > 0
+            else None
         )
-        row["pontuacao_prioridade_0a100"] = round(
-            experience_weight * evidence_deficit
-            + cost_weight * priority_cost_share,
-            2,
+        attributed_tokens = int(
+            _number(row.get("tokens_totais_atribuidos_fracionados")) or 0
         )
-        row["custo_exposto_participa_prioridade"] = not inapplicable
-        row["prioridade_provisoria"] = performance is None
-    rows.sort(key=lambda row: (-float(row["pontuacao_prioridade_0a100"]), row["modulo"]))
-    for rank, row in enumerate(rows, 1):
-        row["prioridade_rank"] = rank
+        token_share = round(
+            float(_number(row.get("participacao_tokens_fracionados_pct")) or 0),
+            4,
+        )
+
+        row.update(
+            {
+                "filas_prioridade_schema": PRIORITY_QUEUES_SCHEMA,
+                "fila_reparo_medidor_rank": None,
+                "pontuacao_reparo_medidor_0a100": repair_score,
+                "reparo_medidor_unidades_afetadas": repair_affected,
+                "reparo_medidor_unidades_obrigatorias": repair_expected,
+                "fila_experiencia_rank": None,
+                "pontuacao_prioridade_experiencia_0a100": experience_score,
+                "fila_experiencia_denominador_adjudicado": quality_denominator,
+                "fila_investigacao_custo_rank": None,
+                "custo_atribuicao_contabil": {
+                    "metodo": "divisao_inteira_igual_entre_modulos_pais_observados_no_turno_com_classe_controle_separada",
+                    "tokens_atribuidos": attributed_tokens,
+                    "participacao_sessao_pct": token_share,
+                    "causalidade_inferida": False,
+                    "uso_permitido": "reconciliacao_contabil_e_triagem_para_investigacao",
+                },
+                # Campos preservados para leitores antigos. Não representam mais
+                # uma decisão na série v2.
+                "prioridade_rank": None,
+                "pontuacao_prioridade_0a100": None,
+                "custo_exposto_participa_prioridade": False,
+                "prioridade_provisoria": None,
+                "prioridade_legada_descontinuada": True,
+                "justificativa_prioridade": (
+                    "Não existe ranking global: reparo do medidor, problema da "
+                    "experiência e custo contábil usam filas independentes."
+                ),
+            }
+        )
+
+    repair_queue = sorted(
+        (
+            row
+            for row in rows
+            if row.get("pontuacao_reparo_medidor_0a100") is not None
+        ),
+        key=lambda row: (
+            -float(row["pontuacao_reparo_medidor_0a100"]),
+            -int(row["reparo_medidor_unidades_afetadas"]),
+            str(row.get("modulo") or ""),
+        ),
+    )
+    experience_queue = sorted(
+        (
+            row
+            for row in rows
+            if row.get("pontuacao_prioridade_experiencia_0a100") is not None
+        ),
+        key=lambda row: (
+            -float(row["pontuacao_prioridade_experiencia_0a100"]),
+            -int(row["fila_experiencia_denominador_adjudicado"]),
+            str(row.get("modulo") or ""),
+        ),
+    )
+    cost_queue = sorted(
+        (
+            row
+            for row in rows
+            if int(
+                (row.get("custo_atribuicao_contabil") or {}).get(
+                    "tokens_atribuidos", 0
+                )
+            )
+            > 0
+        ),
+        key=lambda row: (
+            -int(row["custo_atribuicao_contabil"]["tokens_atribuidos"]),
+            str(row.get("modulo") or ""),
+        ),
+    )
+    for rank, row in enumerate(repair_queue, 1):
+        row["fila_reparo_medidor_rank"] = rank
+    for rank, row in enumerate(experience_queue, 1):
+        row["fila_experiencia_rank"] = rank
+    for rank, row in enumerate(cost_queue, 1):
+        row["fila_investigacao_custo_rank"] = rank
     return rows
+
+
+def _priority_queues_summary(module_rows: list[dict[str, Any]]) -> dict[str, Any]:
+    def ranked_ids(field: str) -> list[str]:
+        ranked = [row for row in module_rows if row.get(field) is not None]
+        ranked.sort(key=lambda row: (int(row[field]), str(row.get("modulo") or "")))
+        return [str(row.get("modulo") or "") for row in ranked]
+
+    return {
+        "schema": PRIORITY_QUEUES_SCHEMA,
+        "ranking_global_existe": False,
+        "custo_e_experiencia_misturados": False,
+        "reparo_medidor": {
+            "module_ids": ranked_ids("fila_reparo_medidor_rank"),
+            "regra": (
+                "somente falhas de instrumentação; severidade é a proporção de "
+                "unidades obrigatórias afetadas"
+            ),
+        },
+        "problemas_experiencia": {
+            "module_ids": ranked_ids("fila_experiencia_rank"),
+            "regra": (
+                "somente qualidade por interação adjudicada; prioridade é "
+                "100 menos a nota de experiência"
+            ),
+        },
+        "investigacao_custo": {
+            "module_ids": ranked_ids("fila_investigacao_custo_rank"),
+            "regra": (
+                "ordem por tokens atribuídos contabilmente; não infere custo causal"
+            ),
+            "causalidade_inferida": False,
+        },
+    }
 
 
 def _scorecard_v2(
@@ -1757,13 +2339,57 @@ def _scorecard_v2(
             float((targets.get("metas_globais") or {}).get("fracao_l0_l2_limpo") or 0.8),
         ),
     }
+    def instrumentation_blocked(row: dict[str, Any]) -> bool:
+        return bool(
+            row.get("aplicabilidade_avaliacao") == "falha_instrumentacao"
+            or row.get("avaliacao_ativacao") == "falha de instrumentação"
+        )
+
+    blocked_rows = [row for row in module_rows if instrumentation_blocked(row)]
+    non_evaluable_rows = [
+        row
+        for row in module_rows
+        if not instrumentation_blocked(row)
+        and row.get("aplicabilidade_avaliacao") != "aplicavel"
+    ]
+    evaluable_rows = [
+        row
+        for row in module_rows
+        if not instrumentation_blocked(row)
+        and row.get("aplicabilidade_avaliacao") == "aplicavel"
+    ]
+    blocked_module_ids = sorted(str(row.get("modulo") or "") for row in blocked_rows)
+
+    def modular_components(key: str) -> tuple[list[float], list[str]]:
+        values: list[float] = []
+        module_ids: list[str] = []
+        for row in evaluable_rows:
+            value = _number(row.get(key))
+            if value is None:
+                continue
+            values.append(value)
+            module_ids.append(str(row.get("modulo") or ""))
+        return values, module_ids
+
+    calibration_values, calibration_modules = modular_components(
+        "nota_calibracao_0a100"
+    )
+    efficacy_values, efficacy_modules = modular_components(
+        "nota_eficacia_integridade_0a100"
+    )
+    reliability_values, reliability_modules = modular_components(
+        "nota_confiabilidade_proxy_0a100"
+    )
+    reliability_global = {
+        "par_cronica_exato": pair_score,
+        "referencia_interacao_exatamente_uma_vez": visible_rate,
+    }
     axes = {
-        "calibracao": _score_average(row.get("nota_calibracao_0a100") for row in module_rows),
-        "eficacia_integridade": _score_average(row.get("nota_eficacia_integridade_0a100") for row in module_rows),
+        "calibracao": _score_average(calibration_values),
+        "eficacia_integridade": _score_average(efficacy_values),
         "confiabilidade": _score_average((
-            _score_average(row.get("nota_confiabilidade_proxy_0a100") for row in module_rows),
-            pair_score,
-            visible_rate,
+            _score_average(reliability_values),
+            *reliability_global.values(),
         )),
         "economia": _score_average(economy.values()),
         "fluidez": _latency_score(
@@ -1794,15 +2420,96 @@ def _scorecard_v2(
                 "module_id": suggestion.get("module_id") or item.get("player_module_id"),
             }
         )
+    valid_axes = [key for key, value in axes.items() if value is not None]
+    aggregation = {
+        "schema": AGGREGATION_SCHEMA,
+        "status": (
+            "bloqueada_instrumentacao" if blocked_rows else "completa"
+        ),
+        "conclusao_permitida": not blocked_rows,
+        "nota_parcial_componentes_validos": bool(blocked_rows),
+        "modulos_catalogados": len(module_rows),
+        "modulos_incluidos": len(evaluable_rows),
+        "modulos_bloqueados": [
+            {
+                "module_id": str(row.get("modulo") or ""),
+                "motivo": "falha_instrumentacao",
+                "diagnostico": str(
+                    row.get("principais_problemas_de_ativacao") or ""
+                ),
+            }
+            for row in sorted(blocked_rows, key=lambda item: str(item.get("modulo") or ""))
+        ],
+        "modulos_nao_avaliaveis": [
+            {
+                "module_id": str(row.get("modulo") or ""),
+                "motivo": str(row.get("aplicabilidade_avaliacao") or "indeterminado"),
+            }
+            for row in sorted(
+                non_evaluable_rows, key=lambda item: str(item.get("modulo") or "")
+            )
+        ],
+        "denominadores": {
+            "calibracao": {
+                "componentes_validos": len(calibration_values),
+                "module_ids": calibration_modules,
+                "modulos_bloqueados_excluidos": blocked_module_ids,
+            },
+            "eficacia_integridade": {
+                "componentes_validos": len(efficacy_values),
+                "module_ids": efficacy_modules,
+                "modulos_bloqueados_excluidos": blocked_module_ids,
+            },
+            "confiabilidade": {
+                "componentes_modulares_validos": len(reliability_values),
+                "module_ids": reliability_modules,
+                "componentes_globais_validos": [
+                    key
+                    for key, value in reliability_global.items()
+                    if value is not None
+                ],
+                "modulos_bloqueados_excluidos": blocked_module_ids,
+            },
+            "economia": {
+                "componentes_globais_validos": [
+                    key for key, value in economy.items() if value is not None
+                ]
+            },
+            "fluidez": {
+                "componentes_globais_validos": (
+                    ["latencia_sessao"] if axes["fluidez"] is not None else []
+                )
+            },
+            "nota_geral": {
+                "eixos_validos": valid_axes,
+                "eixos_sem_evidencia": [
+                    key for key, value in axes.items() if value is None
+                ],
+                "pesos_renormalizados": True,
+            },
+        },
+        "regra": (
+            "componentes de módulos com falha de instrumentação são excluídos "
+            "antes das médias; a nota restante é parcial e não autoriza conclusão"
+        ),
+    }
     return {
         "schema_scorecard_sessao": PACKAGE_SCHEMA_V2,
         "sessao_id": session_id,
         "serie_avaliacao": "modules-v2",
-        "status_avaliacao": "comprometida" if critical else "provisoria",
+        "status_avaliacao": (
+            "comprometida"
+            if critical
+            else "bloqueada_instrumentacao"
+            if blocked_rows
+            else "provisoria"
+        ),
         "nota_geral_0a100": overall,
         "faixa_geral": _status(overall, targets),
         "eixos": {key: {"nota_0a100": value, "peso": (targets.get("pesos_sessao") or {}).get(key)} for key, value in axes.items()},
         "componentes": {"economia": economy, "confiabilidade": {"par_cronica_exato": pair_score, "referencia_interacao_exatamente_uma_vez": visible_rate}},
+        "agregacao_modular": aggregation,
+        "filas_prioridade": _priority_queues_summary(module_rows),
         "indicadores_globais": {
             "turnos_narrativos": int(narration.get("turns") or 0),
             "interacoes_observadas": len(interactions),
@@ -1831,13 +2538,42 @@ def _scorecard_v2(
             "confirmadas_ou_parciais": sum((item.get("adjudication") or {}).get("state") in {"confirmada", "parcial"} for item in ledger.get("player_feedback") or []),
             "guardrails_confirmados": len(confirmed_feedback_guardrails),
         },
+        "qualidade_interacao": {
+            "avaliacoes_recebidas": sum(
+                int(row.get("avaliacoes_qualidade_recebidas") or 0)
+                for row in module_rows
+            ),
+            "avaliacoes_confirmadas": sum(
+                int(row.get("avaliacoes_qualidade_confirmadas") or 0)
+                for row in module_rows
+            ),
+            "avaliacoes_pontuaveis": sum(
+                int(row.get("avaliacoes_qualidade_pontuaveis") or 0)
+                for row in module_rows
+            ),
+            "oportunidades_perdidas": sum(
+                int(row.get("oportunidades_qualitativas_perdidas") or 0)
+                for row in module_rows
+            ),
+            "modulos_com_nota_qualidade": sum(
+                row.get("nota_qualidade_interacao_0a100") is not None
+                for row in module_rows
+            ),
+            "regra": (
+                "somente adjudicações confirmadas com critério e evidência "
+                "entram nos denominadores; conformidade operacional permanece separada"
+            ),
+        },
         "violacoes_criticas": critical,
         "guardrails_participam_media": False,
         "confianca": {"sessao": "provisoria", "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"},
         "observacoes": [
             "N/D é excluído e os pesos restantes são renormalizados.",
+            "Componentes de módulos bloqueados são excluídos antes de qualquer eixo ou nota geral.",
             "Manifestações do jogador são evidência adjudicada, nunca nota direta.",
-            "Custo pai é aditivo; custo de subcapacidade é somente exposição.",
+            "Qualidade por interação exige critério e evidência adjudicados; conformidade operacional não a substitui.",
+            "Reparo do medidor, problemas da experiência e investigação de custo usam filas independentes.",
+            "Custo pai é atribuição contábil aditiva; não prova custo causal. Custo de subcapacidade é somente exposição.",
         ],
     }
 
@@ -1845,26 +2581,103 @@ def _scorecard_v2(
 def _report_markdown_v2(
     manifest: dict[str, Any], scorecard: dict[str, Any], module_rows: list[dict[str, Any]]
 ) -> str:
+    aggregation = scorecard.get("agregacao_modular") or {}
+    conclusion = scorecard.get("conclusao_medicao") or {}
+    blocked = aggregation.get("modulos_bloqueados") or []
+    score_label = (
+        "Desempenho observado sem autorização de conclusão"
+        if conclusion.get("permitida") is False
+        else "Desempenho operacional parcial sobre componentes válidos"
+        if blocked
+        else "Desempenho operacional provisório"
+    )
+    conclusion_codes = [
+        str(item.get("codigo") or "") for item in conclusion.get("bloqueios") or []
+    ]
+    aggregation_lines = [
+        (
+            "- Conclusão da medição: permitida."
+            if conclusion.get("permitida") is True
+            else "- Conclusão da medição: bloqueada por "
+            + (", ".join(conclusion_codes) or "motivo não identificado")
+            + "."
+        ),
+        f"- Entrada congelada: {'sim' if conclusion.get('entrada_congelada') else 'não'}.",
+        f"- Agregação modular: {aggregation.get('status', 'N/D')}.",
+        (
+            f"- Módulos incluídos: {aggregation.get('modulos_incluidos', 'N/D')} de "
+            f"{aggregation.get('modulos_catalogados', 'N/D')}."
+        ),
+        (
+            "- Módulos bloqueados excluídos: "
+            + (
+                ", ".join(str(item.get("module_id")) for item in blocked)
+                if blocked
+                else "nenhum"
+            )
+            + "."
+        ),
+    ]
     return "\n".join(
         [
             f"# Avaliação modular v2 — sessão {manifest['sessao_id']}",
             "",
             "> Artefato pós-hoc de engenharia; não altera cânone.",
             "",
-            f"**Nota geral provisória:** {scorecard.get('nota_geral_0a100', 'N/D')} / 100 ({scorecard.get('faixa_geral', 'N/D')}).",
+            f"**{score_label}:** {scorecard.get('nota_geral_0a100', 'N/D')} / 100 ({scorecard.get('faixa_geral', 'N/D')}).",
             "",
-            "## Ranking dos módulos-pai",
+            *aggregation_lines,
+            "",
+            "## Módulos-pai e filas independentes",
             "",
             _markdown_table(
-                ["Prioridade", "Módulo", "Implementação", "Avaliação", "Ativação", "Desempenho", "Custo", "Confiança"],
-                [[row["prioridade_rank"], row["modulo"], row["versao_implementacao"], row["versao_avaliacao"], row["avaliacao_ativacao"], row["nota_desempenho_provisoria_0a100"], row["tokens_totais_atribuidos_fracionados"], row["confianca_amostra_sessao"]] for row in module_rows],
+                [
+                    "Reparo",
+                    "Experiência",
+                    "Custo contábil",
+                    "Módulo",
+                    "Implementação",
+                    "Avaliação",
+                    "Ativação",
+                    "Desempenho operacional",
+                    "Qualidade por interação",
+                    "Denominador de qualidade",
+                    "Custo",
+                    "Confiança",
+                ],
+                [
+                    [
+                        row["fila_reparo_medidor_rank"],
+                        row["fila_experiencia_rank"],
+                        row["fila_investigacao_custo_rank"],
+                        row["modulo"],
+                        row["versao_implementacao"],
+                        row["versao_avaliacao"],
+                        row["avaliacao_ativacao"],
+                        row["nota_desempenho_provisoria_0a100"],
+                        row["nota_qualidade_interacao_0a100"],
+                        row["denominador_qualidade_interacao"],
+                        row["tokens_totais_atribuidos_fracionados"],
+                        row["confianca_amostra_sessao"],
+                    ]
+                    for row in module_rows
+                ],
             ),
             "",
             "## Validade",
             "",
             f"- Manifestações registradas: {scorecard['manifestacoes']['total']}.",
+            (
+                "- Qualidade por interação: "
+                f"{scorecard['qualidade_interacao']['avaliacoes_pontuaveis']} "
+                "avaliação(ões) pontuável(is), "
+                f"{scorecard['qualidade_interacao']['oportunidades_perdidas']} "
+                "oportunidade(s) perdida(s)."
+            ),
             f"- Violações críticas: {len(scorecard.get('violacoes_criticas') or [])}; não participam da média.",
-            "- Subcapacidades são diagnóstico e não concorrem no ranking.",
+            "- Não existe ranking global; custo não altera a prioridade de experiência nem a fila de reparo.",
+            "- Tokens são rateados para reconciliação contábil e triagem; o rateio não demonstra causalidade.",
+            "- Subcapacidades são diagnóstico e não concorrem nas filas.",
             "- Uma sessão é provisória; comparação estável exige amostra mínima e régua compatível.",
             "",
         ]
@@ -1882,12 +2695,29 @@ def _generate_session_evaluation_v2(
     validity_path: Path | None,
     adjudications_path: Path | None,
     interactions_path: Path | None,
+    manifestations_data: dict[str, Any] | None = None,
+    adjudications_data: dict[str, Any] | None = None,
+    validity_data: dict[str, Any] | None = None,
+    provenance: dict[str, Any] | None = None,
+    source_descriptor: dict[str, Any] | None = None,
+    analyzer_catalog_path: Path | None = None,
 ) -> dict[str, Any]:
     analyzer = _load_module(ANALYZER_PATH, "avaliacao_sessao_analisar_rollout_v2")
-    report = analyzer.analyze(rollout)
+    previous_catalog_path = getattr(analyzer, "_CATALOG_V2_PATH", None)
+    if analyzer_catalog_path is not None:
+        analyzer._CATALOG_V2_PATH = analyzer_catalog_path
+    try:
+        report = analyzer.analyze(rollout)
+    finally:
+        if analyzer_catalog_path is not None:
+            analyzer._CATALOG_V2_PATH = previous_catalog_path
     ledger = dict(report.get("modular_ledger_v2") or {})
     output_dir.mkdir(parents=True, exist_ok=True)
-    manifestations = _manifestation_data(session_id, output_dir, interactions_path)
+    manifestations = (
+        copy.deepcopy(manifestations_data)
+        if manifestations_data is not None
+        else _manifestation_data(session_id, output_dir, interactions_path)
+    )
     ledger["interactions"] = _merge_interactions(
         list(ledger.get("interactions") or []), manifestations.get("interactions") or []
     )
@@ -1921,10 +2751,11 @@ def _generate_session_evaluation_v2(
         )
     adjudications_file = output_dir / "adjudicacoes-modulares.json"
     selected_adjudications = adjudications_path or (adjudications_file if adjudications_file.is_file() else None)
-    adjudications = _load_json(selected_adjudications) if selected_adjudications else {
+    adjudications = copy.deepcopy(adjudications_data) if adjudications_data is not None else _load_json(selected_adjudications) if selected_adjudications else {
         "schema_adjudicacoes_modulares": 2,
         "corrections": [],
         "semantic_audits": [],
+        "quality_assessments": [],
         "player_feedback": [],
     }
     known_refs = {item.get("interaction_ref") for item in ledger.get("interactions") or []}
@@ -1939,6 +2770,9 @@ def _generate_session_evaluation_v2(
     adjudications["schema_adjudicacoes_modulares"] = 2
     adjudications["player_feedback"] = list(combined_feedback.values())
     ledger = analyzer.apply_modular_adjudications(ledger, adjudications)
+    adjudications["quality_assessments"] = list(
+        ledger.get("quality_assessments") or []
+    )
     report["modular_ledger_v2"] = ledger
 
     raw_narration, source_times = _raw_turns(rollout, analyzer)
@@ -1956,7 +2790,7 @@ def _generate_session_evaluation_v2(
 
     validity_file = output_dir / "validade-medicao.json"
     selected_validity = validity_path or (validity_file if validity_file.is_file() else None)
-    validity = _load_json(selected_validity) if selected_validity else {
+    validity = copy.deepcopy(validity_data) if validity_data is not None else _load_json(selected_validity) if selected_validity else {
         "schema_validade_medicao": 2,
         "sessao_id": session_id,
         "metricas_adjudicadas": {},
@@ -1978,6 +2812,18 @@ def _generate_session_evaluation_v2(
     scorecard = _scorecard_v2(
         session_id, report, ledger, module_rows, validity, baseline, targets, latencies
     )
+    provenance = provenance or _direct_provenance(rollout)
+    conclusion = _measurement_conclusion(report, scorecard, provenance)
+    scorecard["conclusao_medicao"] = conclusion
+    if not conclusion["permitida"] and scorecard.get("status_avaliacao") == "provisoria":
+        evidence_codes = {
+            "correlacao_ambigua",
+            "resultado_operacao_ausente",
+            "evidencia_operacional_insuficiente",
+            "erro_detector",
+        }
+        if any(item.get("codigo") in evidence_codes for item in conclusion["bloqueios"]):
+            scorecard["status_avaliacao"] = "bloqueada_evidencia"
 
     _write_json(output_dir / "telemetria.json", report)
     _write_csv(output_dir / "turnos.csv", list(turn_rows[0]) if turn_rows else ["ordinal"], turn_rows)
@@ -1986,11 +2832,27 @@ def _generate_session_evaluation_v2(
     _write_csv(output_dir / "resumo-modulos.csv", list(module_rows[0]), module_rows)
     _write_json(output_dir / "resumo-modulos.json", {"schema_resumo_modulos": 2, "serie_avaliacao": "modules-v2", "modulos": module_rows})
     _write_json(output_dir / "interacoes.json", {"schema_narrative_interactions": 1, "interactions": ledger.get("interactions") or []})
+    _write_json(
+        output_dir / "avaliacoes-qualidade.json",
+        {
+            "schema_avaliacoes_qualidade": 1,
+            "natureza": (
+                "adjudicação pós-hoc por interação, módulo e critério; "
+                "não altera cânone"
+            ),
+            "regra_pontuacao": (
+                "somente state=confirmada entra nos denominadores; pendente, "
+                "parcial, não confirmada e indeterminada permanecem visíveis"
+            ),
+            "assessments": ledger.get("quality_assessments") or [],
+        },
+    )
     manifestations["player_feedback"] = ledger.get("player_feedback") or []
     _write_json(output_dir / "manifestacoes-jogador.json", manifestations)
     _write_json(adjudications_file, adjudications)
     _write_json(validity_file, validity)
     _write_json(output_dir / "scorecard.json", scorecard)
+    _write_json(output_dir / "proveniencia-medicao.json", provenance)
 
     versions = {
         "gerador": GENERATOR_VERSION,
@@ -2000,20 +2862,37 @@ def _generate_session_evaluation_v2(
         "metas": targets.get("versao_metas"),
         "contrato_avaliacao": targets.get("contrato_avaliacao"),
     }
+    manifest_source = {
+        **(source_descriptor or {}),
+        "arquivo": (source_descriptor or {}).get("arquivo", rollout.name),
+        "sha256": (source_descriptor or {}).get("sha256", _sha256(rollout)),
+        "bytes": (source_descriptor or {}).get("bytes", rollout.stat().st_size),
+        "codex_session_id": (report.get("source") or {}).get("session_id"),
+        "inicio_rollout": source_times.get("inicio"),
+        "fim_rollout": source_times.get("fim"),
+        "bruto_copiado_para_repo": False,
+    }
     manifest = {
         "schema_pacote_avaliacao": PACKAGE_SCHEMA_V2,
         "sessao_id": session_id,
         "serie_avaliacao": "modules-v2",
         "natureza": "avaliacao_pos_hoc_derivada; não altera cânone",
-        "fonte": {"arquivo": rollout.name, "sha256": _sha256(rollout), "bytes": rollout.stat().st_size, "codex_session_id": (report.get("source") or {}).get("session_id"), "inicio_rollout": source_times.get("inicio"), "fim_rollout": source_times.get("fim"), "bruto_copiado_para_repo": False},
+        "fonte": manifest_source,
+        "proveniencia_medicao": {
+            "modo": provenance["modo"],
+            "entrada_id": provenance["entrada_id"],
+            "conclusao_reprodutivel_permitida": provenance[
+                "conclusao_reprodutivel_permitida"
+            ],
+        },
         "versoes": versions,
         "versoes_modulos": [
             {"module_id": item["id"], "module_implementation_version": item["versao_implementacao"], "module_evaluation_version": item["versao_avaliacao"]}
             for item in session_catalog
         ],
-        "amostra": {"turnos_narrativos": len(turn_rows), "interacoes": len(ledger.get("interactions") or []), "modulos_catalogados": len(module_rows), "eventos_modulares": len(events), "tokens_narrativos": total_tokens, "tokens_atribuidos_pais": sum(int(item.get("total_tokens") or 0) for item in ledger.get("module_parent_costs") or [])},
+        "amostra": {"turnos_narrativos": len(turn_rows), "interacoes": len(ledger.get("interactions") or []), "modulos_catalogados": len(module_rows), "eventos_modulares": len(events), "avaliacoes_qualidade": len(ledger.get("quality_assessments") or []), "tokens_narrativos": total_tokens, "tokens_atribuidos_pais": sum(int(item.get("total_tokens") or 0) for item in ledger.get("module_parent_costs") or [])},
         "avisos_medicao": warnings,
-        "artefatos": {"telemetria": "telemetria.json", "turnos": "turnos.csv", "eventos_modulares": "eventos-modulares.csv", "resumo_modulos": "resumo-modulos.csv", "resumo_modulos_json": "resumo-modulos.json", "interacoes": "interacoes.json", "manifestacoes_jogador": "manifestacoes-jogador.json", "adjudicacoes_modulares": "adjudicacoes-modulares.json", "validade_medicao": "validade-medicao.json", "scorecard": "scorecard.json", "relatorio": "relatorio.md"},
+        "artefatos": {"telemetria": "telemetria.json", "turnos": "turnos.csv", "eventos_modulares": "eventos-modulares.csv", "resumo_modulos": "resumo-modulos.csv", "resumo_modulos_json": "resumo-modulos.json", "interacoes": "interacoes.json", "manifestacoes_jogador": "manifestacoes-jogador.json", "avaliacoes_qualidade": "avaliacoes-qualidade.json", "adjudicacoes_modulares": "adjudicacoes-modulares.json", "validade_medicao": "validade-medicao.json", "scorecard": "scorecard.json", "proveniencia_medicao": "proveniencia-medicao.json", "relatorio": "relatorio.md"},
     }
     _write_json(output_dir / "manifest.json", manifest)
     (output_dir / "relatorio.md").write_text(_report_markdown_v2(manifest, scorecard, module_rows), encoding="utf-8")
@@ -2034,19 +2913,122 @@ def generate_session_evaluation(
     validity_path: Path | None = None,
     adjudications_path: Path | None = None,
     interactions_path: Path | None = None,
+    measurement_input: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if not rollout.is_file():
         raise EvaluationError(f"rollout inexistente: {rollout}")
-    catalog_data = _load_json(catalog_path)
+    frozen_source: bytes | None = None
+    provenance: dict[str, Any] | None = None
+    manifestations_data: dict[str, Any] | None = None
+    adjudications_data: dict[str, Any] | None = None
+    validity_data: dict[str, Any] | None = None
+    if measurement_input is not None:
+        frozen_source, provenance = _validate_frozen_runtime(
+            measurement_input, rollout, session_id
+        )
+        catalog_data = _frozen_snapshot(measurement_input, "catalogo")
+        targets = _frozen_snapshot(measurement_input, "metas")
+        baseline = _frozen_snapshot(measurement_input, "baseline")
+        if not all(isinstance(item, dict) for item in (catalog_data, targets, baseline)):
+            raise EvaluationError("snapshots obrigatórios congelados precisam ser objetos JSON")
+        manifestations_data = _frozen_manifestation_data(
+            _frozen_snapshot(measurement_input, "interacoes"), session_id
+        )
+        adjudications_data = _frozen_object(
+            _frozen_snapshot(measurement_input, "adjudicacoes"),
+            "adjudicacoes",
+            {
+                "schema_adjudicacoes_modulares": 2,
+                "corrections": [],
+                "semantic_audits": [],
+                "quality_assessments": [],
+                "player_feedback": [],
+            },
+        )
+        if adjudications_data.get("schema_adjudicacoes_modulares") != 2:
+            raise EvaluationError("schema do snapshot de adjudicações não suportado")
+        adjudications_data.setdefault("quality_assessments", [])
+        for field in (
+            "corrections",
+            "semantic_audits",
+            "quality_assessments",
+            "player_feedback",
+        ):
+            values = adjudications_data.get(field)
+            if not isinstance(values, list) or any(
+                not isinstance(item, dict) for item in values
+            ):
+                raise EvaluationError(
+                    f"{field} do snapshot de adjudicações precisa ser lista de objetos"
+                )
+        validity_data = _frozen_object(
+            _frozen_snapshot(measurement_input, "validade"),
+            "validade",
+            {
+                "schema_validade_medicao": 2,
+                "sessao_id": session_id,
+                "metricas_adjudicadas": {},
+                "correcoes": [],
+                "violacoes_criticas": [],
+            },
+        )
+        if validity_data.get("schema_validade_medicao") != 2:
+            raise EvaluationError("schema do snapshot de validade não suportado")
+        if str(validity_data.get("sessao_id")) != session_id:
+            raise EvaluationError("sessão do snapshot de validade diverge da entrada")
+        if not isinstance(validity_data.get("metricas_adjudicadas"), dict):
+            raise EvaluationError("métricas do snapshot de validade precisam ser objeto")
+        for field in ("correcoes", "violacoes_criticas"):
+            values = validity_data.get(field)
+            if not isinstance(values, list) or any(
+                not isinstance(item, dict) for item in values
+            ):
+                raise EvaluationError(
+                    f"{field} do snapshot de validade precisa ser lista de objetos"
+                )
+    else:
+        catalog_data = _load_json(catalog_path)
+        targets = _load_json(targets_path)
+        baseline = _load_json(baseline_path)
     catalog = catalog_data.get("modulos") or []
     if not isinstance(catalog, list) or not catalog:
         raise EvaluationError("catálogo de módulos vazio ou inválido")
     module_ids = [str(module.get("id") or "") for module in catalog]
     if any(not module_id for module_id in module_ids) or len(module_ids) != len(set(module_ids)):
         raise EvaluationError("IDs de módulos vazios ou duplicados")
-    targets = _load_json(targets_path)
-    baseline = _load_json(baseline_path)
     if catalog_data.get("schema_catalogo_modulos") == 2:
+        if frozen_source is not None:
+            assert provenance is not None
+            with tempfile.TemporaryDirectory(prefix="avaliacao-congelada-") as temporary:
+                frozen_dir = Path(temporary)
+                frozen_rollout = frozen_dir / "fonte-congelada.jsonl"
+                frozen_catalog = frozen_dir / "catalogo-congelado.json"
+                frozen_rollout.write_bytes(frozen_source)
+                _write_json(frozen_catalog, catalog_data)
+                source = measurement_input.get("fonte") or {}
+                source_descriptor = {
+                    "arquivo": "fonte-congelada.jsonl",
+                    "sha256": source.get("sha256"),
+                    "bytes": source.get("corte_bytes"),
+                    "entrada_id": measurement_input.get("entrada_id"),
+                }
+                return _generate_session_evaluation_v2(
+                    frozen_rollout,
+                    session_id=session_id,
+                    output_dir=output_dir,
+                    catalog_data=catalog_data,
+                    targets=targets,
+                    baseline=baseline,
+                    validity_path=None,
+                    adjudications_path=None,
+                    interactions_path=None,
+                    manifestations_data=manifestations_data,
+                    adjudications_data=adjudications_data,
+                    validity_data=validity_data,
+                    provenance=provenance,
+                    source_descriptor=source_descriptor,
+                    analyzer_catalog_path=frozen_catalog,
+                )
         return _generate_session_evaluation_v2(
             rollout,
             session_id=session_id,
@@ -2057,7 +3039,10 @@ def generate_session_evaluation(
             validity_path=validity_path,
             adjudications_path=adjudications_path,
             interactions_path=interactions_path,
+            provenance=_direct_provenance(rollout),
         )
+    if measurement_input is not None:
+        raise EvaluationError("entrada congelada só admite o catálogo modular v2")
     analyzer = _load_module(ANALYZER_PATH, "avaliacao_sessao_analisar_rollout")
     report = analyzer.analyze(rollout)
     if catalog_data.get("schema_catalogo_modulos") == 1 and hasattr(analyzer, "telemetry_view"):
@@ -2185,9 +3170,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("rollout", type=Path)
     parser.add_argument("--sessao-id", required=True, help="ID canônico da sessão, por exemplo 021")
     parser.add_argument("--saida", type=Path, help="diretório do pacote; padrão evaluation/sessions/<id>")
-    parser.add_argument("--catalogo", type=Path, default=DEFAULT_CATALOG)
-    parser.add_argument("--metas", type=Path, default=DEFAULT_TARGETS)
-    parser.add_argument("--baseline", type=Path, default=DEFAULT_BASELINE)
+    parser.add_argument("--entrada-medicao", type=Path, help="JSON imutável produzido por entrada_medicao.py preparar")
+    parser.add_argument("--catalogo", type=Path)
+    parser.add_argument("--metas", type=Path)
+    parser.add_argument("--baseline", type=Path)
     parser.add_argument("--auditoria", type=Path, help="CSV semântico usado para semear/atualizar o pacote")
     parser.add_argument("--validade", type=Path, help="JSON de adjudicação da qualidade da medição")
     parser.add_argument("--adjudicacoes-modulares", type=Path, help="JSON v2 de correções, auditorias e manifestações")
@@ -2200,17 +3186,34 @@ def main() -> int:
     args = build_parser().parse_args()
     output = args.saida or ROOT / "evaluation" / "sessions" / str(args.sessao_id)
     try:
+        explicit_sources = {
+            "catalogo": args.catalogo,
+            "metas": args.metas,
+            "baseline": args.baseline,
+            "auditoria": args.auditoria,
+            "validade": args.validade,
+            "adjudicacoes-modulares": args.adjudicacoes_modulares,
+            "interacoes": args.interacoes,
+        }
+        if args.entrada_medicao and any(explicit_sources.values()):
+            selected = sorted(name for name, value in explicit_sources.items() if value)
+            raise EvaluationError(
+                "--entrada-medicao é a única autoridade; remova fontes paralelas: "
+                + ", ".join(selected)
+            )
+        measurement_input = _load_json(args.entrada_medicao) if args.entrada_medicao else None
         result = generate_session_evaluation(
             args.rollout,
             session_id=str(args.sessao_id),
             output_dir=output,
-            catalog_path=args.catalogo,
-            targets_path=args.metas,
-            baseline_path=args.baseline,
+            catalog_path=args.catalogo or DEFAULT_CATALOG,
+            targets_path=args.metas or DEFAULT_TARGETS,
+            baseline_path=args.baseline or DEFAULT_BASELINE,
             audit_path=args.auditoria,
             validity_path=args.validade,
             adjudications_path=args.adjudicacoes_modulares,
             interactions_path=args.interacoes,
+            measurement_input=measurement_input,
         )
     except (EvaluationError, OSError, ValueError) as exc:
         print(f"FALHA DE AVALIAÇÃO — {exc}")

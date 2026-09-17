@@ -6,7 +6,7 @@
   const INTEGER = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 0 });
   const AXIS_LABELS = {
     calibracao: "Calibração",
-    eficacia_integridade: "Eficácia",
+    eficacia_integridade: "Eficácia operacional",
     confiabilidade: "Confiabilidade",
     economia: "Economia",
     fluidez: "Fluidez",
@@ -197,6 +197,10 @@
     return state.sessionEntry?.serie_avaliacao === "modules-v2";
   }
 
+  function hasIndependentPriorityQueues() {
+    return state.scorecard?.filas_prioridade?.schema === 1;
+  }
+
   function comparisonKey(entry) {
     if (Array.isArray(entry.chave_comparabilidade) && entry.chave_comparabilidade.length) {
       return JSON.stringify(entry.chave_comparabilidade);
@@ -288,9 +292,19 @@
     const original = number(state.scorecard.nota_geral_0a100);
     const score = preview.score;
     const hasPlayer = !isV2() && preview.player !== null;
+    const aggregation = state.scorecard.agregacao_modular || {};
+    const aggregationBlocked = isV2() && aggregation.conclusao_permitida === false;
+    const measurementConclusion = state.scorecard.conclusao_medicao || {};
+    const conclusionBlocked = isV2() && measurementConclusion.permitida === false;
     $("#overallScore").textContent = formatScore(score);
     $("#overallBand").textContent = scoreBand(score);
-    $("#scoreMode").textContent = hasPlayer ? "Prévia com sua percepção" : "Nota auditada provisória";
+    $("#scoreMode").textContent = conclusionBlocked
+      ? "Desempenho observado · conclusão bloqueada"
+      : aggregationBlocked
+      ? "Desempenho operacional parcial · instrumentação bloqueada"
+      : hasPlayer
+        ? "Prévia com sua percepção"
+        : "Desempenho operacional provisório";
     const ring = $("#scoreRing");
     ring.style.setProperty("--score", clamp(score || 0));
     ring.style.setProperty("--ring-color", scoreColor(score));
@@ -311,7 +325,12 @@
     const entries = comparableSessions();
     const currentIndex = entries.findIndex((item) => item.sessao_id === state.sessionEntry.sessao_id);
     const previous = currentIndex > 0 ? number(entries[currentIndex - 1].nota_geral_0a100) : null;
-    if (previous === null) {
+    if (conclusionBlocked) {
+      const reasons = (measurementConclusion.bloqueios || []).map((item) => item.codigo).join(", ");
+      $("#scoreDelta").textContent = `Conclusão bloqueada${reasons ? `: ${reasons}` : ""}`;
+    } else if (aggregationBlocked) {
+      $("#scoreDelta").textContent = "Conclusão bloqueada; componentes inválidos foram excluídos";
+    } else if (previous === null) {
       $("#scoreDelta").textContent = hasPlayer && original !== null
         ? `${formatScore(score - original)} ponto(s) pela percepção local`
         : "Primeira medição";
@@ -323,10 +342,16 @@
 
   function renderHeader() {
     const metrics = state.scorecard.indicadores_globais || {};
+    const aggregation = state.scorecard.agregacao_modular || {};
+    const conclusion = state.scorecard.conclusao_medicao || {};
+    const aggregationSummary = aggregation.modulos_catalogados === undefined
+      ? `${state.modules.length} módulos catalogados`
+      : `${aggregation.modulos_incluidos} de ${aggregation.modulos_catalogados} módulos incluídos`;
     $("#sessionTitle").textContent = `Sessão ${state.sessionEntry.sessao_id}`;
     $("#confidenceLabel").textContent = state.scorecard.confianca?.sessao || "N/D";
-    $("#sessionSummary").textContent = `${INTEGER.format(metrics.turnos_narrativos || 0)} turnos narrativos, ${state.modules.length} módulos catalogados e ${formatTokens(metrics.input_tokens)} tokens de entrada auditados.`;
-    $("#evaluationStatus").textContent = `Avaliação ${state.scorecard.status_avaliacao || "N/D"}`;
+    $("#sessionSummary").textContent = `${INTEGER.format(metrics.turnos_narrativos || 0)} turnos narrativos, ${aggregationSummary} e ${formatTokens(metrics.input_tokens)} tokens de entrada observados.`;
+    const conclusionLabel = conclusion.permitida === false ? " · conclusão bloqueada" : "";
+    $("#evaluationStatus").textContent = `Avaliação ${state.scorecard.status_avaliacao || "N/D"}${conclusionLabel}`;
     $("#seriesStatus").textContent = isV2() ? "modules-v2" : "legado v1";
     $("#moduleCount").textContent = `${state.modules.length} módulos catalogados`;
     $("#reportLink").href = `../sessions/${state.sessionEntry.caminho}/relatorio.md`;
@@ -347,7 +372,15 @@
       fill.style.setProperty("--width", `${clamp(score || 0)}%`);
       fill.style.setProperty("--bar-color", scoreColor(score));
       bar.append(fill);
-      card.append(top, bar, create("small", "", `Peso ${item.peso}% · ${scoreBand(score)}`));
+      const denominator = state.scorecard.agregacao_modular?.denominadores?.[key];
+      const validComponents = denominator
+        ? (denominator.componentes_validos ?? denominator.componentes_modulares_validos ?? 0)
+          + (denominator.componentes_globais_validos?.length || 0)
+        : null;
+      const denominatorLabel = validComponents === null
+        ? ""
+        : ` · ${validComponents} componente(s) válido(s)`;
+      card.append(top, bar, create("small", "", `Peso ${item.peso}% · ${scoreBand(score)}${denominatorLabel}`));
       container.append(card);
     }
   }
@@ -473,12 +506,24 @@
     const scored = state.modules.filter((module) => number(previewModuleScore(module)) !== null);
     const best = [...scored].sort((a, b) => previewModuleScore(b) - previewModuleScore(a))[0];
     const worst = [...scored].sort((a, b) => previewModuleScore(a) - previewModuleScore(b))[0];
-    const priority = [...state.modules].sort((a, b) => (number(a.prioridade_rank) ?? 999) - (number(b.prioridade_rank) ?? 999))[0];
-    const costly = [...state.modules].sort((a, b) => number(b.tokens_totais_atribuidos_fracionados) - number(a.tokens_totais_atribuidos_fracionados))[0];
-    const entries = [
+    const firstRanked = (field) => [...state.modules]
+      .filter((module) => number(module[field]) !== null)
+      .sort((a, b) => number(a[field]) - number(b[field]))[0];
+    const repair = firstRanked("fila_reparo_medidor_rank");
+    const experience = firstRanked("fila_experiencia_rank");
+    const costly = hasIndependentPriorityQueues()
+      ? firstRanked("fila_investigacao_custo_rank")
+      : [...state.modules].sort((a, b) => number(b.tokens_totais_atribuidos_fracionados) - number(a.tokens_totais_atribuidos_fracionados))[0];
+    const entries = hasIndependentPriorityQueues() ? [
       ["↑", "Melhor nota", best, best ? formatScore(previewModuleScore(best)) : "N/D"],
       ["↓", "Pior nota", worst, worst ? formatScore(previewModuleScore(worst)) : "N/D"],
-      ["!", "Maior prioridade", priority, priority ? `#${priority.prioridade_rank}` : "N/D"],
+      ["!", "Reparo do medidor", repair, repair ? `#${repair.fila_reparo_medidor_rank}` : "fila vazia"],
+      ["◇", "Problema da experiência", experience, experience ? `#${experience.fila_experiencia_rank}` : "sem adjudicação"],
+      ["¤", "Maior atribuição contábil", costly, costly ? formatTokens(costly.tokens_totais_atribuidos_fracionados) : "N/D"],
+    ] : [
+      ["↑", "Melhor nota", best, best ? formatScore(previewModuleScore(best)) : "N/D"],
+      ["↓", "Pior nota", worst, worst ? formatScore(previewModuleScore(worst)) : "N/D"],
+      ["!", "Maior prioridade", firstRanked("prioridade_rank"), firstRanked("prioridade_rank") ? `#${firstRanked("prioridade_rank").prioridade_rank}` : "N/D"],
       ["¤", "Maior custo", costly, costly ? formatTokens(costly.tokens_totais_atribuidos_fracionados) : "N/D"],
     ];
     const container = $("#insights");
@@ -512,6 +557,8 @@
       return activationMatch && (!search || haystack.includes(search));
     });
     const sorters = {
+      experiencia: (a, b) => (number(a.fila_experiencia_rank) ?? 999) - (number(b.fila_experiencia_rank) ?? 999) || String(a.modulo).localeCompare(String(b.modulo)),
+      reparo: (a, b) => (number(a.fila_reparo_medidor_rank) ?? 999) - (number(b.fila_reparo_medidor_rank) ?? 999) || String(a.modulo).localeCompare(String(b.modulo)),
       prioridade: (a, b) => (number(a.prioridade_rank) ?? 999) - (number(b.prioridade_rank) ?? 999),
       pior: (a, b) => (number(previewModuleScore(a)) ?? Infinity) - (number(previewModuleScore(b)) ?? Infinity),
       melhor: (a, b) => (number(previewModuleScore(b)) ?? -Infinity) - (number(previewModuleScore(a)) ?? -Infinity),
@@ -550,9 +597,35 @@
       const meta = create("div", "module-meta");
       meta.append(
         create("span", `pill ${activationClass(module.avaliacao_ativacao)}`, module.avaliacao_ativacao),
-        create("span", "pill", `Prioridade #${module.prioridade_rank ?? "N/D"}`),
         create("span", "pill", `Confiança ${module.confianca_amostra_sessao}`),
       );
+      if (hasIndependentPriorityQueues()) {
+        if (number(module.fila_reparo_medidor_rank) !== null) {
+          meta.append(create("span", "pill over", `Reparo #${module.fila_reparo_medidor_rank}`));
+        }
+        if (number(module.fila_experiencia_rank) !== null) {
+          meta.append(create("span", "pill", `Experiência #${module.fila_experiencia_rank}`));
+        }
+        if (number(module.fila_investigacao_custo_rank) !== null) {
+          meta.append(create("span", "pill", `Custo contábil #${module.fila_investigacao_custo_rank}`));
+        }
+      } else {
+        meta.append(create("span", "pill", `Prioridade #${module.prioridade_rank ?? "N/D"}`));
+      }
+      const interactionQuality = number(module.nota_qualidade_interacao_0a100);
+      const interactionOpportunity = number(module.nota_oportunidade_interacao_0a100);
+      meta.append(create(
+        "span",
+        `pill ${interactionQuality === null ? "" : interactionQuality >= 80 ? "ok" : "over"}`.trim(),
+        `Qualidade adjudicada ${formatScore(interactionQuality)}`,
+      ));
+      if (interactionOpportunity !== null) {
+        meta.append(create(
+          "span",
+          "pill",
+          `Oportunidades adjudicadas ${formatScore(interactionOpportunity)}`,
+        ));
+      }
       const gateCompliance = number(module.gate_oportunidade_conformidade_pct);
       if (gateCompliance !== null) {
         meta.append(create("span", "pill ok", `Declaração ${formatPercent(gateCompliance, true)}`));
@@ -596,8 +669,10 @@
       const values = [
         ["Turnos", INTEGER.format(module.turnos_detectados || 0)],
         ["Chamadas observadas", INTEGER.format(module.chamadas_detectadas || 0)],
-        ["Custo", formatTokens(module.tokens_totais_atribuidos_fracionados)],
-        ["Parcela", formatPercent(module.participacao_tokens_fracionados_pct, true)],
+        ["Qualidade", formatScore(interactionQuality)],
+        ["Critérios válidos", INTEGER.format(module.denominador_qualidade_interacao || 0)],
+        [hasIndependentPriorityQueues() ? "Custo contábil" : "Custo", formatTokens(module.tokens_totais_atribuidos_fracionados)],
+        [hasIndependentPriorityQueues() ? "Rateio" : "Parcela", formatPercent(module.participacao_tokens_fracionados_pct, true)],
       ];
       for (const [label, value] of values) {
         const stat = create("div", "module-stat");
@@ -630,6 +705,26 @@
           `Auditoria semântica: ${INTEGER.format(module.dimensoes_semanticas_avaliadas)} dimensão(ões) avaliadas; ${INTEGER.format(module.dimensoes_semanticas_inadequadas || 0)} inadequada(s).`,
         ));
       }
+      if ((module.avaliacoes_qualidade_recebidas || 0) > 0) {
+        details.append(create(
+          "p",
+          "",
+          `Qualidade por interação: ${INTEGER.format(module.avaliacoes_qualidade_pontuaveis || 0)} de ${INTEGER.format(module.avaliacoes_qualidade_recebidas || 0)} avaliação(ões) entram nos denominadores; ${INTEGER.format(module.avaliacoes_qualidade_pendentes || 0)} pendente(s), ${INTEGER.format(module.denominador_qualidade_interacao || 0)} critério(s) de qualidade e ${INTEGER.format(module.denominador_oportunidade_qualitativa || 0)} oportunidade(s) pontuável(is), incluindo ${INTEGER.format(module.oportunidades_qualitativas_perdidas || 0)} perdida(s).`,
+        ));
+      } else {
+        details.append(create(
+          "p",
+          "",
+          "Qualidade por interação não adjudicada. Os efeitos operacionais abaixo não substituem avaliação de qualidade.",
+        ));
+      }
+      if (module.nota_conformidade_operacional_0a100 !== undefined) {
+        details.append(create(
+          "p",
+          "",
+          `Conformidade operacional: ${formatScore(module.nota_conformidade_operacional_0a100)} em ${INTEGER.format(module.efeitos_conformidade_operacional_avaliaveis || 0)} efeito(s). Esta medida permanece separada da qualidade por interação.`,
+        ));
+      }
       if (module.gate_oportunidade_preparos !== null && module.gate_oportunidade_preparos !== undefined) {
         details.append(create(
           "p",
@@ -651,10 +746,14 @@
           `Integração canônica: ${INTEGER.format(module.unidades_sidequest_observadas || 0)} atividade(s), ${INTEGER.format(module.avaliacoes_integracao_recebidas || 0)} recibo(s) completo(s), ${INTEGER.format(module.recibos_integracao_ausentes || 0)} ausente(s), ${INTEGER.format(module.recibos_integracao_incompletos || 0)} incompleto(s) e ${INTEGER.format(module.recibos_integracao_duplicados || 0)} replay(s). Casos pontuáveis únicos: ${INTEGER.format(module.avaliacoes_integracao_pontuaveis || 0)}; não pontuáveis: ${INTEGER.format(module.avaliacoes_integracao_nao_pontuaveis || 0)}. Matriz: VP ${INTEGER.format(module.verdadeiros_positivos || 0)}, VN ${INTEGER.format(module.verdadeiros_negativos || 0)}, FP ${INTEGER.format(module.falsos_positivos || 0)}, FN ${INTEGER.format(module.falsos_negativos || 0)}.`,
         ));
       }
-      if (module.custo_exposto_participa_prioridade === false) {
-        details.append(create("p", "", module.modulo === "sidequest_authoring"
-          ? "O custo exibido é exposição não causal e não participa da prioridade enquanto a autoria não for exercitada."
-          : "O custo exibido é exposição não causal e não participa da prioridade quando nenhuma operação do módulo era aplicável."));
+      if (hasIndependentPriorityQueues()) {
+        details.append(create(
+          "p",
+          "",
+          "O custo exibido é uma atribuição contábil por rateio igual entre módulos-pai observados no turno. Ele serve para reconciliação e triagem de investigação; não demonstra custo causal e não altera as filas de experiência ou reparo.",
+        ));
+      } else if (module.custo_exposto_participa_prioridade === false) {
+        details.append(create("p", "", "O custo exibido é exposição não causal e não participa da prioridade."));
       }
       if (module.justificativa_prioridade) details.append(create("p", "", module.justificativa_prioridade));
       const release = state.releases.find((item) => item.module_id === module.modulo
@@ -928,6 +1027,7 @@
     ]);
     state.scorecard = scorecard;
     state.modules = moduleSummary.modulos || [];
+    $("#moduleSort").value = hasIndependentPriorityQueues() ? "experiencia" : "prioridade";
     if (entry.serie_avaliacao === "modules-v2") {
       const [interactionData, manifestationData] = await Promise.all([
         fetchJSON(`${base}/interacoes.json`),

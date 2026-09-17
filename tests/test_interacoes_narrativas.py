@@ -198,6 +198,18 @@ class NarrativeInteractionTest(unittest.TestCase):
             "1.0.2",
         )
 
+    def test_snapshot_jsonl_materializa_sem_reler_o_ledger(self) -> None:
+        interactions.record_exchange(
+            self.repo,
+            interaction_class="OFF",
+            input_text="[Entrada congelada]",
+            response_text="[Resposta congelada]",
+        )
+        records = interactions.load_events(self.repo, 22)
+        expected = interactions.materialize(self.repo, 22)
+        interactions.ledger_path(self.repo, 22).write_text("", encoding="utf-8")
+        self.assertEqual(interactions.materialize_records(records, 22), expected)
+
 
 if __name__ == "__main__":
     unittest.main()

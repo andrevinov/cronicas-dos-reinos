@@ -26,7 +26,9 @@ from typing import Any
 import yaml
 
 from ferramentas import catalogo_avaliacao as catalog_contract
+from ferramentas import entrada_medicao
 from ferramentas import interacoes_narrativas as interactions
+from ferramentas import validar_amostra_externa_avaliacao as external_validation
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -59,9 +61,11 @@ EXPECTED_ARTIFACTS = {
     "resumo-modulos.json",
     "interacoes.json",
     "manifestacoes-jogador.json",
+    "avaliacoes-qualidade.json",
     "adjudicacoes-modulares.json",
     "validade-medicao.json",
     "scorecard.json",
+    "proveniencia-medicao.json",
     "relatorio.md",
 }
 REFERENCE_RE = re.compile(r"^S900-I\d{4}$")
@@ -381,15 +385,30 @@ def _generate_technical_package(
     materialized_path.write_text(
         json.dumps(materialized, ensure_ascii=False, indent=2), encoding="utf-8"
     )
-    output = sandbox / "package"
+    selected_catalog = sandbox / "catalogo-selecionado.json"
+    selected_catalog.write_bytes((source_repo / CATALOG).read_bytes())
+    sources = dict(entrada_medicao.DEFAULT_SOURCES)
+    sources.update(
+        {
+            "catalogo": selected_catalog,
+            "interacoes": materialized_path,
+            "adjudicacoes": None,
+            "validade": None,
+        }
+    )
+    frozen = entrada_medicao.prepare_input(
+        source_repo / ROLLOUT,
+        session_id=str(FIXTURE_SESSION),
+        source_paths=sources,
+    )
+    if frozen["status"] == "bloqueada":
+        raise ModularAcceptanceError("entrada técnica congelada ficou bloqueada")
+    output = sandbox / "package-a"
     first = generator.generate_session_evaluation(
         source_repo / ROLLOUT,
         session_id=str(FIXTURE_SESSION),
         output_dir=output,
-        catalog_path=source_repo / CATALOG,
-        targets_path=source_repo / "evaluation/metas-avaliacao-v2.json",
-        baseline_path=source_repo / "baseline/rollout-2026-08-15.json",
-        interactions_path=materialized_path,
+        measurement_input=frozen,
     )
     manifest_before = copy.deepcopy(first["manifest"])
     feedback_before = _load_json(
@@ -398,27 +417,44 @@ def _generate_technical_package(
 
     changed_catalog = _load_json(source_repo / CATALOG, CATALOG.as_posix())
     changed_catalog["modulos"][0]["versao_implementacao"] = "9.0.0"
-    changed_catalog_path = sandbox / "catalogo-corrente-alterado.json"
-    changed_catalog_path.write_text(
+    selected_catalog.write_text(
         json.dumps(changed_catalog, ensure_ascii=False), encoding="utf-8"
     )
+    materialized_path.write_text("{}", encoding="utf-8")
+    repeated_output = sandbox / "package-b"
     second = generator.generate_session_evaluation(
         source_repo / ROLLOUT,
         session_id=str(FIXTURE_SESSION),
-        output_dir=output,
-        catalog_path=changed_catalog_path,
-        targets_path=source_repo / "evaluation/metas-avaliacao-v2.json",
-        baseline_path=source_repo / "baseline/rollout-2026-08-15.json",
-        interactions_path=materialized_path,
+        output_dir=repeated_output,
+        measurement_input=frozen,
     )
     if manifest_before["versoes_modulos"] != second["manifest"]["versoes_modulos"]:
         raise ModularAcceptanceError("regeneração reescreveu versões históricas da interação")
     feedback_after = _load_json(
-        output / "manifestacoes-jogador.json", "manifestação regenerada"
+        repeated_output / "manifestacoes-jogador.json", "manifestação regenerada"
     )["player_feedback"]
     if feedback_before != feedback_after or len(feedback_after) != 1:
         raise ModularAcceptanceError("regeneração perdeu ou duplicou manifestação do jogador")
 
+    first_bytes = {
+        path.name: path.read_bytes() for path in output.iterdir() if path.is_file()
+    }
+    second_bytes = {
+        path.name: path.read_bytes()
+        for path in repeated_output.iterdir()
+        if path.is_file()
+    }
+    if first_bytes != second_bytes:
+        changed = sorted(
+            name
+            for name in first_bytes.keys() | second_bytes.keys()
+            if first_bytes.get(name) != second_bytes.get(name)
+        )
+        raise ModularAcceptanceError(
+            f"mesma entrada congelada não reproduziu bytes: {changed}"
+        )
+
+    output = repeated_output
     manifest = second["manifest"]
     scorecard = second["scorecard"]
     module_rows = _load_json(output / "resumo-modulos.json", "resumo modular")["modulos"]
@@ -429,8 +465,34 @@ def _generate_technical_package(
         raise ModularAcceptanceError("pacote técnico possui conjunto de artefatos divergente")
     if manifest.get("serie_avaliacao") != "modules-v2" or len(module_rows) != 12:
         raise ModularAcceptanceError("pacote técnico não contém a série e os doze módulos pais")
-    if [row.get("prioridade_rank") for row in module_rows] != list(range(1, 13)):
-        raise ModularAcceptanceError("ranking técnico não contém uma linha por módulo pai")
+    if any(row.get("prioridade_rank") is not None for row in module_rows):
+        raise ModularAcceptanceError("ranking global legado reapareceu na série v2")
+    queues = scorecard.get("filas_prioridade") or {}
+    if queues.get("ranking_global_existe") is not False:
+        raise ModularAcceptanceError("scorecard não descontinuou o ranking global")
+    if queues.get("custo_e_experiencia_misturados") is not False:
+        raise ModularAcceptanceError("scorecard misturou custo e experiência")
+    queue_fields = {
+        "reparo_medidor": "fila_reparo_medidor_rank",
+        "problemas_experiencia": "fila_experiencia_rank",
+        "investigacao_custo": "fila_investigacao_custo_rank",
+    }
+    for queue_name, rank_field in queue_fields.items():
+        ranked = sorted(
+            (row for row in module_rows if row.get(rank_field) is not None),
+            key=lambda row: int(row[rank_field]),
+        )
+        if [row.get(rank_field) for row in ranked] != list(range(1, len(ranked) + 1)):
+            raise ModularAcceptanceError(f"fila {queue_name} possui ranks não contíguos")
+        expected_ids = [str(row.get("modulo") or "") for row in ranked]
+        if ((queues.get(queue_name) or {}).get("module_ids") or []) != expected_ids:
+            raise ModularAcceptanceError(f"fila {queue_name} diverge das linhas modulares")
+    if any(
+        (row.get("custo_atribuicao_contabil") or {}).get("causalidade_inferida")
+        is not False
+        for row in module_rows
+    ):
+        raise ModularAcceptanceError("rateio contábil foi apresentado como custo causal")
     if "jogador" in (scorecard.get("eixos") or {}):
         raise ModularAcceptanceError("nota numérica do jogador reapareceu no scorecard v2")
     observed_responses = [item for item in packaged_interactions if item.get("response_present")]
@@ -455,6 +517,8 @@ def _generate_technical_package(
         "manifest": manifest,
         "scorecard": scorecard,
         "regeneracao_idempotente": True,
+        "reproducao_byte_a_byte": True,
+        "entrada_id": frozen["entrada_id"],
         "versoes_historicas_preservadas": True,
     }
 
@@ -511,22 +575,115 @@ def first_real_session_status(repo: Path) -> dict[str, Any]:
     if "jogador" in (scorecard.get("eixos") or {}):
         raise ModularAcceptanceError("primeira sessão real contém nota numérica do jogador")
     missing_references = sum(not item.get("visible_exactly_once") for item in observed)
-    if not observed or missing_references:
+
+    blockers: list[dict[str, Any]] = []
+
+    def block(code: str, detail: str) -> None:
+        if not any(item["codigo"] == code for item in blockers):
+            blockers.append({"codigo": code, "detalhe": detail})
+
+    if not observed:
+        block("interacoes_observadas_ausentes", "nenhuma resposta final observada")
+    if missing_references:
+        block(
+            "referencia_interacao_nao_unica",
+            f"{missing_references} resposta(s) sem interaction_ref visível exatamente uma vez",
+        )
+
+    manifest_provenance = manifest.get("proveniencia_medicao")
+    if not isinstance(manifest_provenance, dict):
+        block("proveniencia_manifesto_ausente", "manifesto não declara a entrada congelada")
+        manifest_provenance = {}
+    if manifest_provenance.get("modo") != "entrada_congelada":
+        block("entrada_nao_congelada", "modo de proveniência não é entrada_congelada")
+    if manifest_provenance.get("conclusao_reprodutivel_permitida") is not True:
+        block("reproducao_nao_verificada", "manifesto não autoriza conclusão reproduzível")
+    entry_id = manifest_provenance.get("entrada_id")
+    if not isinstance(entry_id, str) or re.fullmatch(r"[0-9a-f]{64}", entry_id) is None:
+        block("entrada_id_invalido", "entrada_id ausente ou fora do formato SHA-256")
+
+    artifact_name = (manifest.get("artefatos") or {}).get("proveniencia_medicao")
+    provenance: dict[str, Any] = {}
+    if not isinstance(artifact_name, str) or not artifact_name:
+        block("artefato_proveniencia_nao_declarado", "manifesto não referencia proveniencia-medicao.json")
+    else:
+        provenance_path = (package / artifact_name).resolve()
+        if not provenance_path.is_relative_to(package) or not provenance_path.is_file():
+            block("artefato_proveniencia_ausente", "artefato de proveniência declarado não existe no pacote")
+        else:
+            provenance = _load_json(provenance_path, "proveniência da primeira sessão real")
+    if provenance:
+        if provenance.get("schema_proveniencia_medicao") != 1:
+            block("schema_proveniencia_invalido", "artefato de proveniência não usa schema 1")
+        if provenance.get("modo") != "entrada_congelada":
+            block("entrada_nao_congelada", "artefato de proveniência não registra entrada congelada")
+        if provenance.get("conclusao_reprodutivel_permitida") is not True:
+            block("reproducao_nao_verificada", "artefato de proveniência não autoriza reprodução")
+        if provenance.get("entrada_id") != entry_id:
+            block("entrada_id_divergente", "manifesto e artefato de proveniência divergem")
+        if any(
+            item.get("gravidade") == "bloqueio"
+            for item in provenance.get("diagnosticos") or []
+            if isinstance(item, dict)
+        ):
+            block("proveniencia_bloqueada", "proveniência contém diagnóstico bloqueante")
+
+    conclusion = scorecard.get("conclusao_medicao")
+    if not isinstance(conclusion, dict) or conclusion.get("schema_conclusao_medicao") != 1:
+        block("conclusao_medicao_ausente", "scorecard não publica conclusão de medição schema 1")
+        conclusion = {}
+    if conclusion.get("entrada_congelada") is not True:
+        block("conclusao_sem_entrada_congelada", "conclusão não confirma entrada congelada")
+    if conclusion.get("reproducao_verificada") is not True:
+        block("conclusao_sem_reproducao", "conclusão não confirma reprodução")
+    if conclusion.get("permitida") is not True or conclusion.get("bloqueios"):
+        block("conclusao_medicao_bloqueada", "conclusão do scorecard está bloqueada")
+
+    aggregation = scorecard.get("agregacao_modular")
+    if not isinstance(aggregation, dict) or aggregation.get("schema") != 1:
+        block("agregacao_modular_ausente", "scorecard não publica agregação modular schema 1")
+        aggregation = {}
+    if (
+        aggregation.get("status") != "completa"
+        or aggregation.get("conclusao_permitida") is not True
+        or aggregation.get("modulos_bloqueados")
+    ):
+        block("agregacao_modular_bloqueada", "agregação contém falha de instrumentação")
+    blocked_modules = sorted(
+        str(item.get("modulo") or item.get("module_id") or "sem_id")
+        for item in modules.get("modulos") or []
+        if item.get("aplicabilidade_avaliacao") == "falha_instrumentacao"
+    )
+    if blocked_modules:
+        block(
+            "modulos_com_falha_instrumentacao",
+            f"módulos bloqueados: {', '.join(blocked_modules)}",
+        )
+    if scorecard.get("violacoes_criticas"):
+        block("violacoes_criticas", "scorecard contém violação crítica")
+    if str(scorecard.get("status_avaliacao") or "").startswith("bloqueada"):
+        block("status_avaliacao_bloqueado", "status do scorecard está bloqueado")
+
+    common = {
+        "sessao_id": entry["sessao_id"],
+        "interacoes_observadas": len(observed),
+        "interacoes_sem_referencia_unica": missing_references,
+        "status_avaliacao": scorecard.get("status_avaliacao"),
+        "entrada_id": entry_id,
+    }
+    if blockers:
         return {
             "estado": "pendente",
             "aceite_final": False,
-            "motivo": "primeira sessão real não possui respostas auditáveis com referência única em todas elas",
-            "sessao_id": entry["sessao_id"],
-            "interacoes_observadas": len(observed),
-            "interacoes_sem_referencia_unica": missing_references,
-            "status_avaliacao": scorecard.get("status_avaliacao"),
+            "motivo": "pacote real não satisfaz todos os critérios fail-closed do aceite",
+            "bloqueios": blockers,
+            **common,
         }
     return {
         "estado": "aceita",
         "aceite_final": True,
-        "sessao_id": entry["sessao_id"],
-        "interacoes_observadas": len(observed),
-        "status_avaliacao": scorecard.get("status_avaliacao"),
+        "bloqueios": [],
+        **common,
     }
 
 
@@ -537,11 +694,15 @@ def check(repo: Path = ROOT) -> dict[str, Any]:
         episodes = run_episode_anchors(repo, anchors)
         releases = validate_release_history(repo)
         technical = technical_acceptance(repo)
+        external = external_validation.validate_external_sample(repo)
+        if external.get("ok") is not True:
+            raise ModularAcceptanceError("amostra externa real divergiu do gabarito independente")
         real = first_real_session_status(repo)
     except (
         ModularAcceptanceError,
         catalog_contract.EvaluationCatalogError,
         interactions.InteractionError,
+        external_validation.ExternalValidationError,
     ) as exc:
         return {"schema_aceitacao_modular_v2": SCHEMA, "ok": False, "erros": [str(exc)]}
     return {
@@ -553,6 +714,7 @@ def check(repo: Path = ROOT) -> dict[str, Any]:
         "execucao_episodios": episodes,
         "releases": releases,
         "aceitacao_tecnica": technical,
+        "validacao_externa": external,
         "primeira_sessao_real": real,
         "contrato": {
             "fixture_inaugura_serie_real": False,

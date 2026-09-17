@@ -1,15 +1,14 @@
 # Contrato de entrada e unidades de medição
 
-Atividade 1 do reparo do instrumento de avaliação: contrato `1.0.0`, schema de
-entrada `1`. A porta executável prepara e valida a entrada da medição pós-hoc.
-Ela não executa operações do rollout nem altera campanha, ledger ou pacotes
-anteriores.
+Atividade 1 do reparo do instrumento de avaliação, integrada ao gerador pela
+atividade 9: contrato `1.0.0`, schema de entrada `1`. A porta executável prepara
+e valida a entrada da medição pós-hoc. Ela não executa operações do rollout nem
+altera campanha, ledger ou pacotes anteriores.
 
-O gerador de avaliações existente ainda não consome esta entrada. A separação
-das operações, a interpretação dos resultados e recibos, as notas e o aceite
-de ponta a ponta pertencem às atividades seguintes. `status: valida` abaixo
-certifica somente o envelope, a integridade das fontes e as unidades declaradas;
-não certifica o desempenho da sessão.
+`status: valida` certifica o envelope, a integridade das fontes e as unidades
+declaradas; não certifica o desempenho da sessão. O gerador 4.4.0 usa esse
+documento como autoridade única, volta a validar todos os hashes e o ambiente
+antes da análise e publica a decisão separada em `conclusao_medicao`.
 
 ## Preparar e verificar
 
@@ -20,6 +19,10 @@ poetry run python ferramentas/entrada_medicao.py preparar \
 
 poetry run python ferramentas/entrada_medicao.py validar \
   /tmp/entrada-s023.json --rollout /caminho/rollout.jsonl
+
+poetry run python ferramentas/gerar-avaliacao-sessao.py \
+  /caminho/rollout.jsonl --sessao-id 023 \
+  --entrada-medicao /tmp/entrada-s023.json
 ```
 
 Sem corte explícito, o preparo captura o tamanho disponível ao abrir o arquivo.
@@ -66,8 +69,16 @@ as versões de implementação e avaliação **selecionadas para a medição**; 
 não comprova qual implementação rodou historicamente. São registrados hashes
 dos arquivos Python de `ferramentas/`, `pyproject.toml` e `poetry.lock`, além das
 versões de Python e PyYAML. Hashes identificam o código, mas não o arquivam.
-Executar uma medição reproduzível ainda exigirá disponibilizar e conferir esse
-código na integração das próximas atividades.
+Na geração, cada caminho de código precisa continuar dentro do repositório e
+seu conteúdo deve corresponder ao hash. Os cinco componentes críticos do
+avaliador precisam estar declarados. Python e PyYAML também precisam conservar
+as versões congeladas. Divergência falha antes de criar o diretório do pacote.
+
+No modo `--entrada-medicao`, não se pode fornecer catálogo, metas, baseline,
+interações, adjudicações ou validade em paralelo. Os snapshots embutidos são a
+única autoridade. O gerador não relê o ledger vivo, um pacote anterior ou os
+arquivos originais desses snapshots. Somente o rollout bruto continua externo,
+e apenas o prefixo de bytes cujo hash foi congelado é lido.
 
 ## Unidades independentes
 
@@ -122,4 +133,9 @@ contrato e saídas em texto ou lista de blocos. Tipo desconhecido ou JSON invál
 gera diagnóstico com linha e bloqueia a entrada. Conteúdo de comandos e recibos
 não é interpretado nesta etapa. O comando retorna `0` para entrada válida ou
 limitada e `1` para bloqueada; limitações ficam sempre na saída. Os testes estão
-em `tests/test_entrada_medicao.py` e usam cenários temporários isolados.
+em `tests/test_entrada_medicao.py` e
+`tests/test_integracao_entrada_medicao.py`, com cenários temporários isolados.
+
+O contrato de reprodução do pacote, a proveniência publicada e os bloqueios de
+conclusão estão em
+[reprodutibilidade do pacote](reprodutibilidade-pacote-avaliacao.md).

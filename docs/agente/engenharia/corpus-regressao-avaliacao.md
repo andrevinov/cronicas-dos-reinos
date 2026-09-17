@@ -101,18 +101,56 @@ resultados: 224 checks aprovados e 2 reprovados. Uma promessa entregue não
 promove mais uma operação cujo resultado próprio contém erro ou recusa. As duas
 falhas preservadas pertencem à agregação bloqueada e ao aceite final.
 
-O comando estrito permanece vermelho ao fim da atividade 2 por desenho. Ele
-não integra ainda `preflight`: as atividades 3–9 removem as reprovações e a
-atividade 10 promove o corpus ao gate final depois da amostra real reservada.
+O snapshot `resultado-atividade-05.json` preserva 224 checks aprovados e 2
+reprovados após introduzir o ledger primário de atividades. Os totais conhecidos
+não mudam porque o corpus já esperava a cobertura por atividade; agora cada
+total possui identidade e recibo individual auditável. As duas falhas restantes
+continuam reservadas à agregação bloqueada e ao aceite final.
+
+O snapshot `resultado-atividade-06.json` registra a propagação fail-closed até o
+scorecard: 225 checks aprovados e 1 reprovado. Alterar componentes internos dos
+sete módulos bloqueados não muda mais eixos nem nota geral. A única falha
+preservada é o aceite final, reservado à atividade 10.
+
+O snapshot `resultado-atividade-07.json` mantém 225 checks aprovados e 1
+reprovado depois de introduzir qualidade adjudicada por interação. O corpus
+confirma que manifestação pendente e ausência de auditoria não fabricam
+qualidade; os testes da atividade cobrem também critérios, evidências,
+denominadores e oportunidades perdidas. A única falha preservada continua sendo
+o aceite final.
+
+O snapshot `resultado-atividade-08.json` mantém 225 checks aprovados e 1
+reprovado depois de separar reparo do medidor, problemas da experiência e
+investigação de custo. Testes metamórficos próprios garantem que mudar o rateio
+de tokens não muda as filas de reparo ou experiência. A única falha preservada
+continua sendo o aceite final.
+
+O snapshot `resultado-atividade-09.json` mantém 225 checks aprovados e 1
+reprovado depois de fazer o executor consumir a entrada congelada. A aceitação
+técnica compara todos os bytes de duas gerações, e os testes adversariais cobrem
+alteração posterior do rollout e das fontes, hash de código, ambiente, formato
+desconhecido, correlação ambígua e resultado ausente. A única falha preservada
+continua sendo o aceite externo da atividade 10.
+
+O snapshot `resultado-atividade-10.json` registra o fechamento: 226 checks
+aprovados e nenhuma falha. O aceite recusa agora pacotes com instrumentação
+bloqueada mesmo quando todas as referências visíveis são únicas. O comando
+estrito integra `preflight` como gate final.
+
+A amostra histórica real reservada foi validada separadamente em
+`evaluation/validacao-externa-v1/`. Ela não foi acrescentada aos 19 casos nem
+usada para recalcular seus gabaritos. Contrato e limites:
+[validação externa e aceite fail-closed](validacao-externa-e-aceite.md).
+
 Os testes permanentes verificam o contrato, adulterações e seis controles de
-ponta a ponta sem esconder as reprovações conhecidas.
+ponta a ponta, além do resultado final integral.
 
 ## Limites
 
 O corpus é o conjunto de desenvolvimento da correção. Ele impede que o código
 seja ajustado apenas aos outputs que ele mesmo gera, mas não substitui validação
-externa. A amostra real de outra sessão permanece reservada para a atividade 10
-e não será usada para escolher as correções das atividades 3–9.
+externa. A amostra real da sessão 022 foi aberta na atividade 10, depois das
+correções 3–9, e permanece em conjunto e comando próprios.
 
 Os casos estruturais não avaliam literatura automaticamente. Qualidade narrativa
 exige critérios, evidência e adjudicação humana explícita; aqui se testa somente

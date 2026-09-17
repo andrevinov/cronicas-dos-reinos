@@ -137,6 +137,71 @@ class InitialCorpusResultTest(unittest.TestCase):
         self.assertEqual(result["aprovados"], 224)
         self.assertEqual(result["falhas"], 2)
 
+    def test_activity_5_result_preserves_the_primary_activity_ledger_milestone(self):
+        path = corpus.DEFAULT_CORPUS.parent / "resultado-atividade-05.json"
+        result = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(result["schema_resultado_corpus_regressao"], 1)
+        self.assertEqual(result["status"], "reprovado")
+        self.assertEqual(result["checks"], 226)
+        self.assertEqual(result["aprovados"], 224)
+        self.assertEqual(result["falhas"], 2)
+        self.assertEqual(
+            {
+                (item["case_id"], item["check_id"])
+                for item in result["resultados"]
+                if item["ok"] is False
+            },
+            {
+                ("agregado_com_modulos_bloqueados", "agregado-invariante"),
+                ("aceite_com_instrumentacao_falha", "aceite-recusado"),
+            },
+        )
+
+    def test_activity_6_result_preserves_the_fail_closed_aggregation_milestone(self):
+        path = corpus.DEFAULT_CORPUS.parent / "resultado-atividade-06.json"
+        result = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(result["schema_resultado_corpus_regressao"], 1)
+        self.assertEqual(result["status"], "reprovado")
+        self.assertEqual(result["checks"], 226)
+        self.assertEqual(result["aprovados"], 225)
+        self.assertEqual(result["falhas"], 1)
+        self.assertEqual(
+            {
+                (item["case_id"], item["check_id"])
+                for item in result["resultados"]
+                if item["ok"] is False
+            },
+            {("aceite_com_instrumentacao_falha", "aceite-recusado")},
+        )
+
+    def test_activity_7_result_preserves_the_interaction_quality_milestone(self):
+        path = corpus.DEFAULT_CORPUS.parent / "resultado-atividade-07.json"
+        result = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(result["schema_resultado_corpus_regressao"], 1)
+        self.assertEqual(result["status"], "reprovado")
+        self.assertEqual(result["checks"], 226)
+        self.assertEqual(result["aprovados"], 225)
+        self.assertEqual(result["falhas"], 1)
+        self.assertEqual(
+            {
+                (item["case_id"], item["check_id"])
+                for item in result["resultados"]
+                if item["ok"] is False
+            },
+            {("aceite_com_instrumentacao_falha", "aceite-recusado")},
+        )
+
+    def test_final_result_preserves_the_fully_green_corpus(self):
+        path = corpus.DEFAULT_CORPUS.parent / "resultado-atividade-10.json"
+        result = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(result["schema_resultado_corpus_regressao"], 1)
+        self.assertEqual(result["status"], "aprovado")
+        self.assertEqual(result["casos_executados"], 19)
+        self.assertEqual(result["checks"], 226)
+        self.assertEqual(result["aprovados"], 226)
+        self.assertEqual(result["falhas"], 0)
+        self.assertFalse(any(item["ok"] is False for item in result["resultados"]))
+
 
 if __name__ == "__main__":
     unittest.main()

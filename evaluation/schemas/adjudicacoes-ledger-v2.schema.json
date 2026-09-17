@@ -50,6 +50,12 @@
         }
       }
     },
+    "quality_assessments": {
+      "type": "array",
+      "items": {
+        "$ref": "avaliacoes-qualidade-interacao-v1.schema.json#/$defs/assessment"
+      }
+    },
     "player_feedback": {
       "type": "array",
       "items": {

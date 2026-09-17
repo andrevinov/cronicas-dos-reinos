@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "atividades-modulares-rollout.schema.json",
+  "title": "Ledger primário de atividades modulares do rollout",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "activities", "orphan_receipts", "summary", "regra"],
+  "properties": {
+    "schema": {"const": 1},
+    "activities": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/activity"}
+    },
+    "orphan_receipts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/orphanReceipt"}
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "activities",
+        "by_receipt_state",
+        "complete",
+        "instrumentation_failures",
+        "orphan_receipts"
+      ],
+      "properties": {
+        "activities": {"type": "integer", "minimum": 0},
+        "by_receipt_state": {
+          "type": "object",
+          "additionalProperties": {"type": "integer", "minimum": 0}
+        },
+        "complete": {"type": "integer", "minimum": 0},
+        "instrumentation_failures": {"type": "integer", "minimum": 0},
+        "orphan_receipts": {"type": "integer", "minimum": 0}
+      }
+    },
+    "regra": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command_sha256", "output_sha256", "marker"],
+      "properties": {
+        "command_sha256": {"$ref": "#/$defs/sha256"},
+        "output_sha256": {
+          "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+        },
+        "marker": {"type": "string", "minLength": 1}
+      }
+    },
+    "activity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "atividade_id",
+        "operacao_id",
+        "parent_call_id",
+        "turn_id",
+        "module_id",
+        "fase",
+        "objeto_ref",
+        "operation_state",
+        "receipt_state",
+        "assessment_state",
+        "applicability",
+        "receipt_count",
+        "receipt_units",
+        "schema_recibo",
+        "receipt_occurrence_ids",
+        "evidence"
+      ],
+      "properties": {
+        "atividade_id": {"type": "string", "pattern": "^atividade:[0-9a-f]{64}$"},
+        "operacao_id": {"type": "string", "minLength": 1},
+        "parent_call_id": {"type": ["string", "null"]},
+        "turn_id": {"type": "string"},
+        "module_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "fase": {"type": "string", "minLength": 1},
+        "objeto_ref": {"type": "string", "pattern": "^[a-z0-9_]+:sha256:[0-9a-f]{64}$"},
+        "operation_state": {"const": "sucesso"},
+        "receipt_state": {"enum": ["completo", "ausente", "incompleto", "duplicado"]},
+        "assessment_state": {
+          "enum": [
+            "aplicavel",
+            "nao_aplicavel",
+            "evidencia_insuficiente",
+            "falha_instrumentacao_recibo_ausente",
+            "falha_instrumentacao_recibo_incompleto",
+            "falha_instrumentacao_recibo_duplicado"
+          ]
+        },
+        "applicability": {
+          "enum": ["aplicavel", "nao_aplicavel", "indeterminado", null]
+        },
+        "receipt_count": {"type": "integer", "minimum": 0},
+        "receipt_units": {"type": "integer", "minimum": 0},
+        "schema_recibo": {"enum": [1, null]},
+        "receipt_occurrence_ids": {
+          "type": "array",
+          "items": {"type": "string", "pattern": "^recibo-ocorrencia:[0-9a-f]{64}$"}
+        },
+        "evidence": {"$ref": "#/$defs/evidence"}
+      }
+    },
+    "orphanReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "occurrence_id",
+        "operacao_id",
+        "parent_call_id",
+        "turn_id",
+        "module_id",
+        "fase",
+        "applicability",
+        "units",
+        "reason"
+      ],
+      "properties": {
+        "occurrence_id": {"type": "string", "pattern": "^recibo-ocorrencia:[0-9a-f]{64}$"},
+        "operacao_id": {"type": "string", "minLength": 1},
+        "parent_call_id": {"type": ["string", "null"]},
+        "turn_id": {"type": "string"},
+        "module_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "fase": {"type": "string", "minLength": 1},
+        "applicability": {"enum": ["aplicavel", "nao_aplicavel", "indeterminado"]},
+        "units": {"type": "integer", "minimum": 0},
+        "reason": {"const": "sem_atividade_compativel_na_operacao"}
+      }
+    }
+  }
+}

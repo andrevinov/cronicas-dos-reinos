@@ -907,7 +907,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "rules_and_character_state"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertTrue(all(event["detector_version"] == "4.4.0" for event in events))
+        self.assertTrue(all(event["detector_version"] == "4.6.0" for event in events))
 
     def test_rm10_nao_ativa_em_narrativa_pura_ou_delta_generico_de_local(self) -> None:
         rows = self.base_rows() + [
@@ -1567,7 +1567,7 @@ class ModularTelemetryTest(unittest.TestCase):
         self.assertEqual(access["observed_result"], "contexto_l0_suficiente")
         self.assertEqual(access["observable_evidence"], ["turn:l0_context_sufficient"])
         self.assertTrue(access["effect_observed"])
-        self.assertEqual(access["detector_version"], "4.4.0")
+        self.assertEqual(access["detector_version"], "4.6.0")
 
     def test_rm07_detecta_aprofundamento_raw_e_leitura_redundante(self) -> None:
         rows = [record("session_meta", {"session_id": "session-fixture", "cwd": "/fixture"})]
@@ -1878,7 +1878,7 @@ class ModularTelemetryTest(unittest.TestCase):
         )
         self.assertEqual(social["eligibility_observed"], "sim")
         self.assertEqual(social["activation_observed"], "decisao")
-        self.assertEqual(social["detector_version"], "4.4.0")
+        self.assertEqual(social["detector_version"], "4.6.0")
 
     def test_rm05_observa_persistencia_social_como_efeito(self) -> None:
         rows = self.base_rows() + [
@@ -2015,7 +2015,7 @@ class ModularTelemetryTest(unittest.TestCase):
             if row["module_id"] == "adversarial_operations"
         )
         self.assertGreater(parent["total_tokens"], 0)
-        self.assertEqual(integrity[0]["detector_version"], "4.4.0")
+        self.assertEqual(integrity[0]["detector_version"], "4.6.0")
 
     def test_rm06_operacao_simples_nao_ativa_subcapacidade_concorrente(self) -> None:
         rows = self.base_rows() + [
