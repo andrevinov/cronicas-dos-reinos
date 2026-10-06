@@ -12,12 +12,15 @@ import sys
 import permanencia_espacial_idempotencia as _stay_idempotency  # noqa: F401
 import cronica_politica_civica as _impl
 
-if __name__ == "__main__":
-    raise SystemExit(_impl.main())
-
 _base = _impl._base
 for _name in dir(_impl):
     if not _name.startswith("__") and not hasattr(_base, _name):
         setattr(_base, _name, getattr(_impl, _name))
+
+import preparo_espacial
+preparo_espacial.install(_base)
+
+if __name__ == "__main__":
+    raise SystemExit(_impl.main())
 
 sys.modules[__name__] = _base

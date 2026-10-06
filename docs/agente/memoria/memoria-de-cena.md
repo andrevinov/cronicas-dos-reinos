@@ -8,6 +8,14 @@ existentes e seus deltas pendentes. `cronica sessao status`, `cronica sessao ini
 projeção completa. Não há avaliador de IA, scheduler, varredura de todos os NPCs,
 novo banco de memórias ou terceira chamada ritual.
 
+Com vínculo explícito, a identidade espacial usa `localizacao.local_id` e conserva
+`ponto_exato`: alias diferente não cria outro lugar e outro ponto não é fundido
+automaticamente. Overlay e compilação de elenco usam a mesma normalização espacial.
+Saída legada sem vínculo invalida o ID anterior. Se nem o pacote mínimo de memória
+couber, o preparo falha; não entrega somente um aviso fingindo que a memória foi
+entregue. Campos adicionais continuam sujeitos ao orçamento compartilhado e ao
+aprofundamento dirigido explícito.
+
 A memória relevante continua classificando campos e oferecendo aprofundamento dirigido; a
 memória durável continua registrando acontecimentos anotados. O pacote distingue dados de
 cada NPC e compartilha compromissos uma única vez. Informação atribuída a alguém
@@ -28,7 +36,11 @@ Repetir `--participante` fornece o elenco completo, substituindo o anterior.
 `--sem-participantes` declara uma cena sem NPCs. O jogador não executa esses
 comandos; continuam sendo parte do trabalho do narrador.
 
-Sem essas flags, a mesma `cena-id`, no mesmo local, recupera o elenco salvo.
+Sem essas flags, uma interação no mesmo local recupera o elenco confirmado,
+mesmo com outra `cena-id`. O `cena_id` do elenco identifica a cena física e permanece
+estável; o `scene_id` do pedido identifica a interação. Trocar apenas esse ID não
+encerra a cena física nem abre outra janela social. Local desconhecido não prova
+continuidade.
 Os `--npc` de um gatilho real também podem acrescentar participantes conhecidos;
 `--participante` é diferente: só informa memória, **não abre um encontro**, não
 cria stub, não avalia presença incidental e não acorda sidequest.
@@ -59,7 +71,12 @@ writers e da captura de memória durável. O mesmo buffer, histórico e checkpoi
 fonte canônica. Sem mudança, não há delta extra; repetir a transação não duplica
 nem ressuscita um elenco antigo.
 
-Cena nova, entrada em local ou trânsito não herdam automaticamente o elenco.
+Entrada em local ou trânsito não herdam automaticamente o elenco. Permanência
+validada conserva o local e o elenco. Uma cena efetivamente encerrada no mesmo
+local exige registro explícito de saída: `--sem-participantes` declara lista vazia,
+ou o concluir registra `valor: null` no delta completo abaixo para tornar o elenco
+desconhecido. Seleção de memória nova não comprova presença no mesmo preparo;
+quem foi retirado da declaração completa deixa de ter presença para iniciativa.
 Deslocamento narrado que altera área/ponto exato invalida a presença anterior.
 Quando a própria narração estabelece quem chegou/saiu/seguiu junto, o concluir
 pode transportar um único `set` operacional do registro completo, coerente com
@@ -74,7 +91,10 @@ a localização resultante do mesmo turno:
 
 Os nomes de local acima são exemplos, não alterações da campanha. A lista final
 exige IDs existentes; não se aceitam subcampos concorrentes ou registro apontando
-para outra cena/local. `valor: null` registra ausência de elenco conhecido.
+para outro local. Na continuidade física, `cena_id` pode conservar o ID do elenco
+anterior; uma nova cena física explicitamente estabelecida usa o ID do pedido.
+Após deslocamento, somente o ID do pedido é válido. `valor: null` registra ausência
+de elenco conhecido. O registro e os tickets mantêm o schema existente.
 Ticket com elenco usa a conclusão unificada; um reparo repete o mesmo concluir,
 não separa confirmar/registrar.
 
@@ -139,3 +159,17 @@ redundantes. Estado/índices e metadados de elenco têm custo explícito; nenhum
 redução de tokens nativos ou melhoria literária é declarada sem o benchmark de
 episódios equivalentes do benchmark narrativo. Os dados da campanha não são fixtures desses
 testes e não são alterados para instalar esta funcionalidade.
+
+### Composição de permanência, iniciativa e compromisso
+
+O preparo de permanência usa um envelope YAML compacto. A medição considera os
+bytes efetivamente publicados, com proveniência agregada compartilhada por aliases,
+e reserva o recibo posterior dentro dos mesmos 8 KiB. O pacote de memória mantém
+seu teto de 4 KiB. Proveniência agregada identifica a orquestração inteira; não
+atribui todas as leituras ao produtor espacial isolado.
+
+Quando a projeção e a iniciativa ocupam o envelope, o compromisso ou os medidores
+podem exigir aprofundamento. Usar a lacuna indicada e a consulta dirigida antes
+de narrar; o marcador não substitui o fato. O episódio integrado demonstra essa
+composição com consultas materiais, não uma garantia de que tudo sempre cabe
+inline. Nenhuma consulta de avaliação é adicionada ao turno comum.

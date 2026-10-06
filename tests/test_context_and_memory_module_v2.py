@@ -78,7 +78,7 @@ class ContextAndMemoryModuleContractTest(unittest.TestCase):
         )
 
         self.assertGreaterEqual(int(catalog["versao_catalogo"].split(".")[0]), 5)
-        self.assertEqual(module["versao_implementacao"], "1.0.2")
+        self.assertEqual(module["versao_implementacao"], context_memory.IMPLEMENTATION_VERSION)
         self.assertGreaterEqual(int(module["versao_avaliacao"].split(".")[0]), 4)
         self.assertEqual(
             {item["id"] for item in module["subcapacidades"]},

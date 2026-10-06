@@ -22,7 +22,7 @@ MAX_FRAGMENT_BYTES = 12 * 1024
 MAX_PARTICIPANTS = 6
 ID = re.compile(r"^[a-z][a-z0-9_]{0,63}$")
 COLLECTIONS = {"informacoes_recebidas", "memorias_importantes"}
-COMMON = {"id", "tipo", "participantes", "evidencia"}
+COMMON = {"id", "tipo", "participantes", "evidencia", "identidades_percebidas"}
 FIELDS = {
     "promessa": {"operacao", "compromisso", "compromisso_id", "anterior"},
     "informacao": {"emissor", "destinatario", "canal", "estatuto", "texto"},
@@ -120,11 +120,21 @@ def _facts(transaction: dict) -> list[dict]:
         if not isinstance(source, str) or quote not in source:
             raise DurableMemoryError("evidência de memória não é literal no campo indicado")
         fact["evidencia"] = {"campo": proof["campo"], "trecho": quote}
+        if "identidades_percebidas" in fact:
+            identities = fact["identidades_percebidas"]
+            if not isinstance(identities, dict) or not identities or set(identities) - set(people):
+                raise DurableMemoryError("identidades_percebidas exige participantes e nomes presentes na evidência")
+            for person, name in identities.items():
+                name = _text(name, "identidade percebida", 80)
+                if name not in quote:
+                    raise DurableMemoryError("identidade percebida não é literal na evidência do fato")
+                identities[person] = name
         result.append(fact)
     return result
 
 
-def compile_transaction(transaction: dict, transaction_id: str, session: int) -> tuple[dict, list[dict]]:
+def compile_transaction(transaction: dict, transaction_id: str, session: int, *,
+                        memory_targets: dict[tuple[str, str], str] | None = None) -> tuple[dict, list[dict]]:
     """Compila sem ler o save; só o schema de compromisso é delegado ao domínio."""
     facts = _facts(transaction)
     transaction_id = scoped_transaction_id(transaction_id, session)
@@ -142,6 +152,8 @@ def compile_transaction(transaction: dict, transaction_id: str, session: int) ->
         eid = event_id(transaction_id, fact["id"], session)
         memory = {"id": eid, "tipo": kind, "fonte": f"transacao:{transaction_id}",
                   "participantes": people, "evidencia": fact["evidencia"], "registro_sha256": digest}
+        if "identidades_percebidas" in fact:
+            memory["identidades_percebidas"] = deepcopy(fact["identidades_percebidas"])
         anchors = [person for person in people if person != "ren"]
         collection = "memorias_importantes"
         if kind == "promessa":
@@ -215,7 +227,10 @@ def compile_transaction(transaction: dict, transaction_id: str, session: int) ->
                 else:
                     collection = "informacoes_recebidas"
         for npc in anchors:
-            generated.append({"alvo": f"relacao:{npc}", "op": "append", "caminho": collection,
+            target = (memory_targets or {}).get((npc, eid), f"relacao:{npc}")
+            if target not in {f"relacao:{npc}", f"npc:{npc}"}:
+                raise DurableMemoryError("destino de memória precisa pertencer ao participante canônico")
+            generated.append({"alvo": target, "op": "append", "caminho": collection,
                               "valor": deepcopy(memory)})
     for delta in generated:
         if delta["op"] in ("set", "remove", "inc"):
@@ -280,17 +295,26 @@ class _State:
         self.documents: dict[str, tuple[dict, str]] = {}
         self.entries: dict[str, dict] = {}
 
+    def index(self, plural: str) -> dict:
+        if plural not in self.indices:
+            path = self.repo / f"estado/{plural}/index.yaml"
+            mapping = _load(path).get(plural) if path.is_file() else {}
+            if not isinstance(mapping, dict):
+                raise DurableMemoryError(f"índice de {plural} inválido")
+            self.indices[plural] = mapping
+        return self.indices[plural]
+
+    def memory_target(self, npc: str) -> str:
+        target = f"relacao:{npc}" if npc in self.index("relacoes") else f"npc:{npc}"
+        self.entity(target)  # Índice e fragmento precisam confirmar a identidade.
+        return target
+
     def entity(self, target: str) -> dict:
         import transacoes
         if target not in self.documents:
             kind, npc = target.split(":")
             plural = "relacoes" if kind == "relacao" else "npcs"
-            if plural not in self.indices:
-                mapping = _load(self.repo / f"estado/{plural}/index.yaml").get(plural)
-                if not isinstance(mapping, dict):
-                    raise DurableMemoryError(f"índice de {plural} inválido")
-                self.indices[plural] = mapping
-            entry = self.indices[plural].get(npc)
+            entry = self.index(plural).get(npc)
             if not isinstance(entry, dict):
                 raise DurableMemoryError(f"{target}: ID canônico não indexado; não criar identidade por aproximação")
             path = _path(self.repo, entry.get("arquivo"), f"estado/{plural}")
@@ -302,6 +326,31 @@ class _State:
             self.entries[target] = entry
         doc, kind = self.documents[target]
         return doc[kind]
+
+    def historical_target(self, npc: str, value: dict, collection: str, txid: str) -> str:
+        """Recupera destino de um retry consolidado, inclusive após novo vínculo."""
+        matches = []
+        for kind, plural in (("relacao", "relacoes"), ("npc", "npcs")):
+            if npc not in self.index(plural):
+                continue
+            target = f"{kind}:{npc}"
+            current = self.entity(target).get(collection, [])
+            if not isinstance(current, list):
+                raise DurableMemoryError("coleção de memória inválida")
+            if any(isinstance(item, dict) and item.get("id") == value["id"] for item in current):
+                matches.append(target)
+                continue
+            relative = self.entries[target].get("historico", f"historico/{plural}/{npc}.yaml")
+            path = _path(self.repo, relative, f"historico/{plural}")
+            history = _load(path) if path.exists() else {}
+            if any(old.get("caminho") == collection and isinstance(old.get("valor"), dict)
+                   and old["valor"].get("id") == value["id"]
+                   for event in history.get("eventos_pos_migracao", []) if event.get("transacao") == txid
+                   for old in event.get("deltas", []) if old.get("alvo") == target):
+                matches.append(target)
+        if len(matches) > 1:
+            raise DurableMemoryError("memória duplicada em destinos canônicos; exige reconciliação explícita")
+        return matches[0] if matches else self.memory_target(npc)
 
     def check_sizes(self) -> None:
         for target, (doc, _) in self.documents.items():
@@ -341,8 +390,9 @@ def _verify_consolidated(state: _State, writer: dict) -> None:
             continue
         if target not in histories:
             npc = target.split(":")[1]
-            relative = state.entries[target].get("historico", f"historico/relacoes/{npc}.yaml")
-            path = _path(state.repo, relative, "historico/relacoes")
+            plural = "relacoes" if target.startswith("relacao:") else "npcs"
+            relative = state.entries[target].get("historico", f"historico/{plural}/{npc}.yaml")
+            path = _path(state.repo, relative, f"historico/{plural}")
             histories[target] = _load(path) if path.exists() else {}
         history = histories[target]
         found = any(
@@ -375,21 +425,42 @@ def prepare_transaction(repo: Path, transaction: dict) -> dict:
     txid = scoped_transaction_id(transacoes.stable_transaction_id(transaction, session), session)
     try:
         writer, facts = compile_transaction(transaction, txid, session)
-        record = transacoes.build_pending_record(writer, session)
         pending = transacoes.load_pending(repo)
-        for old in pending:
-            if old["id"] == txid:
-                if transacoes.record_fingerprint(old) != transacoes.record_fingerprint(record):
-                    raise DurableMemoryError("retry pendente diverge do acontecimento original")
-                return writer
+        old = next((item for item in pending if item["id"] == txid), None)
         state = _State(repo, pending)
-        if _already_consolidated(repo, session, txid):
+        consolidated = old is None and _already_consolidated(repo, session, txid)
+        targets = {}
+        for delta in writer["deltas"]:
+            value = delta.get("valor")
+            if (delta.get("caminho") not in COLLECTIONS or delta.get("op") != "append"
+                    or not isinstance(value, dict) or "registro_sha256" not in value
+                    or not delta.get("alvo", "").startswith("relacao:")):
+                continue
+            npc = delta["alvo"].split(":")[1]
+            if old is not None:
+                previous = [d["alvo"] for d in old["deltas"]
+                    if d.get("caminho") == delta["caminho"] and isinstance(d.get("valor"), dict)
+                    and d["valor"].get("id") == value["id"]
+                    and d.get("alvo") in {f"npc:{npc}", f"relacao:{npc}"}]
+                target = previous[0] if len(previous) == 1 else delta["alvo"]
+            elif consolidated:
+                target = state.historical_target(npc, value, delta["caminho"], txid)
+            else:
+                target = state.memory_target(npc)
+            targets[npc, value["id"]] = target
+        writer, facts = compile_transaction(transaction, txid, session, memory_targets=targets)
+        record = transacoes.build_pending_record(writer, session)
+        if old is not None:
+            if transacoes.record_fingerprint(old) != transacoes.record_fingerprint(record):
+                raise DurableMemoryError("retry pendente diverge do acontecimento original")
+            return writer
+        if consolidated:
             _verify_consolidated(state, writer)
             return writer
         for fact in facts:
             for npc in fact["participantes"]:
                 if npc != "ren":
-                    state.entity(f"relacao:{npc}")
+                    state.memory_target(npc)
         active = None
         if any(fact["tipo"] == "promessa" for fact in facts):
             base = _load(repo / "estado/estado-atual.yaml")

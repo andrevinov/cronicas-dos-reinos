@@ -129,7 +129,7 @@ def _conversation_profile(value: Any, label: str) -> dict[str, Any]:
     return result
 
 
-def lookup(repo: Path, kind: str, term: str) -> tuple[dict[str, Any] | None, list[str], list[str]]:
+def lookup(repo: Path, kind: str, term: str, *, exact_npc: bool = False) -> tuple[dict[str, Any] | None, list[str], list[str]]:
     """Retorna paleta compacta, fontes e candidatos sem varrer o cenário inteiro.
 
     Locais são normalizados pelo registro canônico antes de consultar a textura.
@@ -160,6 +160,12 @@ def lookup(repo: Path, kind: str, term: str) -> tuple[dict[str, Any] | None, lis
         return None, list(dict.fromkeys([*canonical_sources, INDEX_PATH.as_posix()])), []
 
     ranked: list[tuple[int, str, dict[str, Any]]] = []
+    if kind == "npcs" and exact_npc:
+        from contexto_core import resolve_npc_reference
+        actor = resolve_npc_reference([mapping], query_term)
+        if actor is None:
+            return None, [INDEX_PATH.as_posix()], []
+        mapping = {actor: mapping[actor]}
     for key, raw_entry in mapping.items():
         if not isinstance(raw_entry, dict):
             continue

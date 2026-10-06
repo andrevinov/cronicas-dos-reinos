@@ -129,6 +129,29 @@ Nos blocos do narrador, o agente deve:
 9. apresentar a nova situação;
 10. devolver o controle ao jogador.
 
+### Expandir a intenção sem decidir por Ren
+
+Antes de escrever a prosa, distinguir:
+
+- **Intenção autorizada:** ação, fala, espera, pensamento ou emoção fornecidos
+  pelo jogador. Pode ser dramatizada com os meios já estabelecidos, sem acrescentar
+  estratégia, duração voluntária, acordo ou mudança de objetivo.
+- **Consequência externa:** mundo, regras ou NPCs podem impedir, interromper ou
+  contrariar essa intenção. Usar uma causa estabelecida ou resolvida pelo fluxo
+  do mundo; mostrar o impedimento e seus efeitos perceptíveis. Não fabricar um
+  obstáculo para justificar uma decisão que o narrador quis atribuir a Ren.
+- **Decisão nova:** se continuar exige escolher esperar, outro caminho, responder,
+  aceitar uma proposta ou mudar o plano, terminar na situação em que essa escolha
+  existe. O jogador fornece a próxima ação. Não encerrar por reflexo com um menu.
+
+Exemplos contrastados: “volta normalmente ao circo”, com saída livre, permite
+narrar o retorno; não permite “espera alguns minutos antes de sair”. “Espera três
+minutos e depois volta” autoriza essa espera, sujeita às fronteiras reais do mundo.
+Uma ponte fechada por avaria pode interromper o retorno; narrar a recusa do vigia
+e o bloqueio, deixando para o jogador a escolha de esperar, discutir ou desviar.
+O vigia pode recusar passagem por sua responsabilidade, sem pedir autorização a
+Ren; essa autonomia não decide como Ren reage.
+
 A resposta do narrador **não possui um teto normal de frases ou parágrafos**. Sua densidade é adaptativa: ação mecânica simples pode ser resolvida brevemente; cena social relevante, apresentação de NPC, entrada em lugar novo, revelação, conflito emocional, conclusão de arco ou momento atmosférico deve receber espaço suficiente para ser vivido.
 
 Não alongar uma ação simples apenas para atingir volume. Do mesmo modo, não condensar uma cena importante em relatório factual só porque os fatos mínimos já foram determinados.

@@ -33,6 +33,12 @@ Compressão temporal continua usando uma única consulta `endpoints.py fronteira
 O endpoint delega a composição para `world_boundary_resolution` e não acrescenta
 um ritual ao turno curto.
 
+Usar `--data-alvo` e `--hora-alvo` para o **fim** pretendido. O início é o tempo
+efetivo da sessão, incluindo buffer; zero não autoriza compressão. A saída declara
+duração e limite narrável. Interrupção passa pelo concluir no limite, checkpoint e
+resolução existente; continuação retorna por consulta do alvo restante e novo
+preparo. [Contrato e exemplo de janela](../operacao/endpoints-deterministicos.md).
+
 Quando a barreira bloquear o preparo, a resolução em lote passa pela fachada:
 
 ```bash
@@ -107,3 +113,16 @@ poetry run python ferramentas/causal_narrative_routing.py check
 
 O preflight chama essas fachadas. A aceitação integrada de vivacidade permanece
 uma regressão independente: ela prova o encadeamento, mas não vira quarto módulo.
+
+### Nova interação após resolução da permanência
+
+A reserva continua congelada por local/data/período. Um ticket emitido quando a
+pressão já estava concluída contém `pressao_ja_concluida: true`; sua conclusão
+não repete o bloco espacial anterior e rejeita uma decisão nova sobre ele. O
+retry do ticket originalmente ativo continua exigindo o mesmo bloco literal.
+A revalidação confere o estado canônico antes de aceitar o marcador.
+
+O preparo de uma nova interação mostra o recibo da pressão concluída, sem repetir
+premissas ou candidatos como matéria ativa. O controle canônico e a captura
+histórica conservam os dados completos. Pressão concluída deixa de bloquear a
+iniciativa social; os demais gates e o limite de uma abertura por janela continuam.

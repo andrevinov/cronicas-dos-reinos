@@ -299,6 +299,17 @@ def iniciar(repo: Path, *, fail_after: int | None = None) -> dict[str, Any]:
     }
 
 
+_EVIDENCE_START = iniciar
+
+
+def iniciar(repo: Path, *, fail_after: int | None = None) -> dict[str, Any]:
+    import evidencias_sessao
+    evidencias_sessao.prepare_storage(repo)
+    result = _EVIDENCE_START(repo, fail_after=fail_after)
+    result["evidencias_sessao"] = evidencias_sessao.capture(repo, "iniciar")
+    return result
+
+
 def status(repo: Path) -> dict[str, Any]:
     if not (repo / STATE_PATH).is_file() or not (repo / CONTEXT_PATH).is_file():
         return {"disponivel": False}

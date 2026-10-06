@@ -1,0 +1,16 @@
+schema_historico_npc: 2
+id: mori
+origem: reparo-operacional-por-fonte-canonica
+eventos_pos_migracao:
+- tipo: identidade_operacional_recuperada
+  instalado_em: '2026-10-06'
+  nome: senhor Mori
+  classificacao_inicial: persistente_sem_agenda
+  fonte:
+    arquivo: personagens/jogador/conhecimento/incrementais/sessao-024/tx-s024-9fa0958bf5a74f7e.md
+    sessao: '024'
+    transacao: s024-9fa0958bf5a74f7e
+    trecho: Aiko chamou o homem do casaco cinza de senhor Mori; ele mandou negar que estivera ali e fazer Tanaka
+      esperar enquanto alguém o avisava.
+  motivo: Identidade narrada e conhecida por Ren sem registro operacional; não altera histórico nem justifica rolagens
+    passadas.

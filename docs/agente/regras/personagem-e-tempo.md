@@ -104,3 +104,10 @@ O runtime deriva `prazos_e_alertas` de `estado/tempo.yaml` e só aceita o campo 
 Data, hora aproximada, período do dia e clima continuam com espelhamento/consistência rígidos onde a arquitetura exigir; a exceção é específica para o campo textual `prazo_relevante`.
 
 Para viagens considerar distância, terreno, transporte, ritmo, clima, interrupções e regras da edição. Não deslocar o personagem instantaneamente na narrativa sem considerar tempo e consequências, salvo magia ou elipse explicitamente adotada.
+
+Antes de comprimir uma espera, viagem, sono ou trabalho, consultar a fronteira com
+**data e hora finais pretendidas** (`--data-alvo`, `--hora-alvo`). O início deriva
+do tempo efetivo com pendências; consultar início até início não cobre a ação.
+Narrar e registrar somente até o limite retornado. Interrupção exige checkpoint e
+resolução antes de nova consulta/preparo para o restante. Turno curto não acrescenta
+esse ritual. Ver [contrato temporal](../operacao/endpoints-deterministicos.md).

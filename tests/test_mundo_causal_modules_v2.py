@@ -52,9 +52,13 @@ class WorldCausalModuleContractTest(unittest.TestCase):
             for module in catalog["modulos"]
         }
         self.assertGreaterEqual(int(catalog["versao_catalogo"].split(".")[0]), 5)
-        self.assertTrue(
-            all(versions[facade.MODULE_ID] == "1.0.1" for facade in facades)
-        )
+        # Versões evoluem independentemente; o catálogo acompanha cada release.
+        history = json.loads((ROOT / "evaluation/module-releases.json").read_text(encoding="utf-8"))
+        releases = {r["release_id"]: r for r in history["releases"]}
+        for facade in facades:
+            current = releases[history["current_releases"][facade.MODULE_ID]]
+            self.assertEqual(versions[facade.MODULE_ID], current["implementation_version"])
+        self.assertEqual(versions[projection.MODULE_ID], projection.IMPLEMENTATION_VERSION)
 
     def test_hot_path_depende_das_fachadas_sem_nova_orquestracao(self) -> None:
         self.assertIs(cronica._core.cena_mundo, projection)

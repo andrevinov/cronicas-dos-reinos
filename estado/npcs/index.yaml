@@ -3,7 +3,7 @@ natureza: indice_medidores_npcs
 escala: estado/npcs/escala.yaml
 contrato_relacional: estado/npcs/relacionamento-v1.yaml
 fonte_legada: historico/legado/medidores-npcs-pre-etapa-6.yaml
-quantidade: 44
+quantidade: 45
 npcs:
   nera_vell:
     nome: Nera Vell
@@ -423,3 +423,12 @@ npcs:
     arquivo: estado/npcs/darran_vell.yaml
     historico: historico/npcs/darran_vell.yaml
     bytes_fragmento: 824
+  mori:
+    nome: senhor Mori
+    aliases:
+    - Mori
+    - homem do casaco cinza
+    persistencia: persistente_sem_agenda
+    arquivo: estado/npcs/mori.yaml
+    historico: historico/npcs/mori.yaml
+    bytes_fragmento: 1298

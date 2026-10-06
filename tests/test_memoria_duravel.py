@@ -80,6 +80,13 @@ class DurableMemoryContractTest(unittest.TestCase):
             with self.subTest(key=key), self.assertRaises(memory.DurableMemoryError):
                 self.compile(tx)
 
+    def test_identidade_percebida_exige_participante_e_evidencia_literal(self):
+        for identities in ({}, {"terceiro": "Silva"}, {"ren": "Shinta"}, {"ren": 7}):
+            with self.subTest(identities=identities), self.assertRaises(memory.DurableMemoryError):
+                tx = transaction()
+                tx["memoria"]["fatos"][0]["identidades_percebidas"] = identities
+                self.compile(tx)
+
     def test_participantes_exigem_ids_distintos_e_ren(self):
         for people in (["silva_fixture", "nera_fixture"], ["ren", "ren"], ["ren"],
                        ["ren", "../silva"], ["ren", {}], ["ren"] + ["npc_" + str(i) for i in range(6)]):

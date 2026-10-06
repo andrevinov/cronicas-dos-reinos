@@ -16,6 +16,8 @@ import memoria_cena as memory
 import retomada_cronica
 import checkpoint
 import transacoes
+import iniciativa_elenco as initiative
+import iniciativa_elenco_estado as initiative_receipts
 import test_memoria_duravel_integracao as fixtures
 
 
@@ -159,11 +161,99 @@ class SceneMemoryIntegrationTest(unittest.TestCase):
         self.assertEqual(following["itens"], {})
         self.assertFalse(following["aprofundamento_necessario"])
 
-    def test_cena_nova_nao_herda_elenco_antigo(self):
+    def test_nova_interacao_no_mesmo_local_preserva_cena_fisica(self):
         self.establish()
+        base = self.prepare()[memory.KEY]["recibo"]
         self.scene = "outra-cena"
-        out = self.prepare()[memory.KEY]
-        self.assertIsNone(out["participantes"])
+        out = self.prepare()
+        payload = cronica.decode_ticket(out["ticket"])
+        self.assertIn("silva_fixture", out[memory.KEY]["itens"])
+        self.assertEqual(payload[memory.TICKET_KEY]["elenco"]["cena_id"], "memoria-fixture")
+        tx = self.simple("segunda-fala")
+        self.assertEqual(memory.compile_cast(payload, tx, repo=self.repo), tx)
+        self.assertEqual(self.prepare(memory_base_in_context=base)[memory.KEY]["modo"], "delta")
+        cronica.conclude(self.repo, out["ticket"], tx)
+
+    def test_selecao_prospectiva_nao_promove_novo_npc_a_presente(self):
+        self.establish()
+        self.scene = "interacao-com-mencao"
+        out = self.prepare(["nera_fixture"], initiative_interlocutors=["nera_fixture", "silva_fixture"])
+        rows = out[initiative.PUBLIC_KEY]["itens"]
+        self.assertTrue(all(row["presenca"] == "ausente" for row in rows))
+        contexts = {row["npc_id"]: row["contexto_npc"] for row in rows}
+        self.assertEqual(contexts["nera_fixture"], "mencionado")
+        self.assertEqual(contexts["silva_fixture"], "apenas_conhecido")
+        self.assertIsNone(out[initiative.PUBLIC_KEY]["selecionada"])
+
+    def test_identidade_social_preservada_nao_fabrica_iniciativa_dirigida_a_ren(self):
+        self.establish()
+        path = "estado/npcs/silva_fixture.yaml"
+        doc = yaml.safe_load((self.repo / path).read_text())
+        doc["npc"].update(identidade_relacional="tanaka")
+        doc["npc"]["medidores"]["confianca"] = 8
+        self.f.write(path, doc)
+        out = self.prepare(initiative_interlocutors=["silva_fixture"])
+        row = out[initiative.PUBLIC_KEY]["itens"][0]
+        self.assertEqual(row["presenca"], "elenco_cena")
+        self.assertEqual(row["motivo_automatico"], "indisponibilidade")
+        self.assertIsNone(out[initiative.PUBLIC_KEY]["selecionada"])
+
+    def test_mudanca_de_ponto_exato_invalida_presenca_na_proxima_interacao(self):
+        self.establish()
+        out = self.prepare()
+        cronica.conclude(self.repo, out["ticket"], self.simple("mudanca-ponto", [
+            {"alvo": "estado", "op": "set", "caminho": "localizacao.ponto_exato", "valor": "junto ao portao"}]))
+        self.scene = "apos-deslocamento"
+        following = self.prepare(initiative_interlocutors=["silva_fixture"])
+        self.assertEqual(following[initiative.PUBLIC_KEY]["itens"][0]["presenca"], "ausente")
+        self.assertIsNone(following[initiative.PUBLIC_KEY]["selecionada"])
+
+    def test_cena_encerrada_explicitamente_nao_ressuscita_elenco_no_mesmo_local(self):
+        self.establish()
+        out = self.prepare()
+        cronica.conclude(self.repo, out["ticket"], self.simple("encerramento-fisico", [
+            {"alvo": "estado", "op": "set", "caminho": memory.CAST_PATH, "valor": None}]))
+        self.scene = "outra-cena"
+        self.assertIsNone(self.prepare()[memory.KEY]["participantes"])
+
+    def test_iniciativa_nao_reabre_ao_renomear_interacao_apos_checkpoint_e_retry(self):
+        path = "estado/npcs/silva_fixture.yaml"
+        doc = yaml.safe_load((self.repo / path).read_text())
+        doc["npc"]["medidores"]["confianca"] = 8
+        self.f.write(path, doc)
+        self.establish()
+        first = self.prepare(initiative_interlocutors=["silva_fixture"])
+        self.assertEqual(first[initiative.PUBLIC_KEY]["itens"][0]["presenca"], "elenco_cena")
+        self.assertIsNotNone(first[initiative.PUBLIC_KEY]["selecionada"])
+        text = "Silva pergunta se Ren pretende continuar a conversa."
+        tx = {**self.simple("abertura-social"), "narracao": text,
+              initiative.TRANSACTION_KEY: {
+                  "decisao_id": first[initiative.PUBLIC_KEY]["selecionada"],
+                  "resultado": "apresentada", "evidencia_literal": text}}
+        cronica.conclude(self.repo, first["ticket"], tx)
+        consolidar.consolidate(self.repo, "cena")
+        before = self.f.hashes()
+        # Novo processo: nem presença nem recibo dependem da memória do Python.
+        script = (
+            "import json,sys; from pathlib import Path; import cronica; "
+            "print(json.dumps(cronica.prepare(Path(sys.argv[1]), "
+            "scene_id='fala-apos-retomada', sidequest_signal=None, "
+            "initiative_interlocutors=['silva_fixture']),ensure_ascii=False))"
+        )
+        cold = subprocess.run([sys.executable, "-c",
+            "import sys; sys.path.insert(0,sys.argv.pop(1)); " + script,
+            str(Path(cronica.__file__).parent), str(self.repo)],
+            check=True, capture_output=True, text=True)
+        following = json.loads(cold.stdout)
+        row = following[initiative.PUBLIC_KEY]["itens"][0]
+        self.assertEqual(row["presenca"], "elenco_cena")
+        self.assertEqual(row["motivo_automatico"], "repeticao_sem_causa_nova")
+        self.assertEqual(first[initiative.PUBLIC_KEY]["janela_id"], following[initiative.PUBLIC_KEY]["janela_id"])
+        self.assertIsNone(following[initiative.PUBLIC_KEY]["selecionada"])
+        self.assertEqual(before, self.f.hashes())
+        cronica.conclude(self.repo, first["ticket"], tx)
+        self.assertEqual(before, self.f.hashes())
+        self.assertEqual(len(initiative_receipts.load(self.repo)["decisoes"]), 1)
 
     def test_deslocamento_nao_teletransporta_aliado_na_retomada(self):
         self.establish()

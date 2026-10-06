@@ -22,6 +22,7 @@ import politica_acesso as _access
 
 FACADE_SCHEMA = 2
 MODULE_ID = "context_and_memory"
+IMPLEMENTATION_VERSION = "1.0.7"
 CAPABILITIES = (
     "routed_context_access",
     "scene_and_durable_memory",
@@ -259,12 +260,13 @@ def durable_persistence_observation(
         elif target == "estado" and str(delta.get("caminho") or "").startswith("compromissos"):
             destinations.add("compromissos")
         elif target.startswith("npc:"):
-            destinations.add("medidores_npc")
+            destinations.add("memoria_npc" if delta.get("caminho") in _durable_engine.COLLECTIONS else "medidores_npc")
         elif target.startswith("relacao:"):
             destinations.add("memoria_relacional")
     return {
         "schema_context_and_memory": FACADE_SCHEMA,
         "module_id": MODULE_ID,
+        "captura_declarada": True,
         "transacao_id": compiled.get("id"),
         "fatos_esperados": len(facts),
         "fatos_validados": len(facts),
@@ -281,11 +283,17 @@ def publish_memory_persistence(
     """Publica o recibo somente depois de o writer transacional retornar."""
 
     if observation is None:
+        result[MEMORY_PERSISTENCE_KEY] = {
+            "captura_declarada": False,
+            "resultado_modular": "captura_memoria_nao_declarada",
+            "efeito_materializado": False,
+            "cobertura": "indeterminada_sem_anotacao",
+        }
         return attach_coverage(
             result,
             module_id=MODULE_ID,
             phase="concluir",
-            applicability="nao_aplicavel",
+            applicability="indeterminado",
         )
     out = copy.deepcopy(observation)
     transaction = result.get("transacao") if isinstance(result, dict) else None

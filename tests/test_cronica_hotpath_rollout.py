@@ -116,18 +116,24 @@ class NeutralTurnRegressionTest(unittest.TestCase):
         self.assertFalse(result["cena"]["confirmada"])
         self.assertEqual(result["transacao"]["id"], "tx-neutral-1")
 
-    def test_flags_locais_parciais_falham_com_instrucao_de_omissao(self):
+    def test_flags_locais_parciais_falham_sem_dispensa_da_obrigacao_espacial(self):
+        # Erro de entrada não autoriza descartar o gatilho; recibo fica isolado.
+        import tempfile
+        with tempfile.TemporaryDirectory() as temporary:
+            self._assert_incomplete_location(Path(temporary))
+
+    def _assert_incomplete_location(self, repo):
         with self.assertRaises(cronica.CronicaError) as caught:
             cronica.prepare(
-                ROOT,
+                repo,
                 scene_id="s013-local-incompleto",
                 danger="baixa",
                 sidequest_signal=None,
             )
         text = str(caught.exception)
         self.assertIn("gatilho local incompleto", text)
-        self.assertIn("omita os quatro", text)
-        self.assertIn("--cena-id", text)
+        self.assertIn("Complete o gatilho", text)
+        self.assertIn("não retire uma obrigação espacial", text)
 
 
 class RolloutLocationRegressionTest(unittest.TestCase):

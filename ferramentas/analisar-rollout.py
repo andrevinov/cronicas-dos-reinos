@@ -5523,7 +5523,7 @@ def adjudicate_rollout(ledger, adjudications, path, ordered=None):
     """Porta da revisão: recarrega só o rollout escolhido, nunca o estado vivo."""
     ordered = ordered if ordered is not None else _scan_observations(path, None)[0]
     public, private = _experience.frames(ordered, _load_modular_catalog(), _visible_response, _turn_operations,
-                                         hashlib.sha256(path.read_bytes()).hexdigest())
+                                         hashlib.sha256(path.read_bytes()).hexdigest(), globals().get("_FROZEN_SESSION_EVIDENCE"))
     imported = copy.deepcopy(adjudications)
     if isinstance(imported, dict):
         try:
@@ -5744,7 +5744,7 @@ def analyze(
     ledger = _build_modular_ledger(report, narration, catalog, ordered)
     ledger["module_coverage_gates"] = copy.deepcopy(coverage_gates)
     public, private = _experience.frames(ordered, catalog, _visible_response, _turn_operations,
-                                         hashlib.sha256(path.read_bytes()).hexdigest())
+                                         hashlib.sha256(path.read_bytes()).hexdigest(), globals().get("_FROZEN_SESSION_EVIDENCE"))
     ledger["experience_review"] = _experience.summarize(public, [])
     automatic = _experience.verify_reviews(_experience.deterministic_assessments(private), private)
     if automatic:

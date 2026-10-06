@@ -14,6 +14,8 @@ do jogador, preservando agência, sigilo e dificuldade justa.
 
 ## Documentos
 
+- [Próximo ciclo: correção e validação por sessão](../correcao-e-validacao-por-sessao/roadmap-2026-10-06.md): proposta de reparos delimitados, captura de evidências e aceite antes de novo jogo; entregas contam parcialmente nas AMVs.
+- [Revisão integral da 024](revisao-integral-s024-2026-10-06.md): achados concretos, reprodução de presença e limites das fontes históricas.
 - [Roadmap datado](roadmap-2026-10-04.md): prioridades, dependências e aceite global.
 - [Diagnóstico e evidências](diagnostico-2026-10-04.md): defeitos observados e hipóteses que precisam de validação.
 - [Matriz de desativação e remoção](matriz-de-desativacao-2026-10-04.md): candidatos, propriedades protegidas e substituições necessárias.
@@ -43,3 +45,13 @@ tarefa: não aprova o runtime nem supre as fontes e amostras que continuam ausen
 As tarefas aproveitam os doze módulos existentes. O catálogo modular não será
 reinventado. O [roadmap anterior](../modulos-v2/README.md) permanece como contexto
 da arquitetura; esta proposta corrige insuficiências descobertas depois dele.
+
+- [Entrega parcial RCV-03: obrigação espacial e envelope](../correcao-e-validacao-por-sessao/entrega-rcv03-2026-10-06.md).
+
+- [Entrega parcial RCV-04: janela temporal efetiva](../correcao-e-validacao-por-sessao/entrega-rcv04-2026-10-06.md).
+
+- [Entrega parcial RCV-05: agência na prosa e revisão contrastada](../correcao-e-validacao-por-sessao/entrega-rcv05-2026-10-06.md).
+
+- [Entrega parcial RCV-06: interlocutor recuperado por fonte](../correcao-e-validacao-por-sessao/entrega-rcv06-2026-10-06.md).
+
+- [Entrega parcial RCV-07: evidências causais preservadas](../correcao-e-validacao-por-sessao/entrega-rcv07-2026-10-06.md).

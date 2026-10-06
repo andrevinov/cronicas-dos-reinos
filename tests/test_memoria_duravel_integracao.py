@@ -302,6 +302,136 @@ class DurableMemoryIntegrationTest(unittest.TestCase):
             cronica.conclude(self.repo, self.token, tx)
         self.assertEqual(before, self.hashes())
 
+    def without_relation(self):
+        path = "estado/relacoes/index.yaml"
+        index = yaml.safe_load((self.repo / path).read_text())
+        entry = index["relacoes"].pop("silva_fixture")
+        index["quantidade"] = len(index["relacoes"])
+        self.write(path, index)
+        return entry
+
+    def test_npc_sem_relacao_conserva_promessa_informacao_e_persona_na_retomada_fria(self):
+        self.without_relation()
+        self.write("estado/npcs/silva_fixture.yaml", {
+            "id": "silva_fixture", "schema_npc": 2, "npc": {"nome": "Silva (fixture)"}})
+        prepared = cronica.prepare(self.repo, scene_id="conversa-tanaka", sidequest_signal=None,
+                                  memory_participants=["silva_fixture"])
+        promise = "Tanaka prometeu proteger Silva enquanto ela permanecesse no restaurante."
+        info = "Tanaka disse a Silva que a ponte caiu, mas somente como rumor."
+        tx = {"id": "fatos-tanaka", "jogador": "Prometo proteger Silva no restaurante.",
+              "narracao": promise + " " + info, "resumo": "Promessa limitada e rumor transmitido.",
+              "modo": "interação", "deltas": [], "memoria": {"versao": 1, "fatos": [
+                  {"id": "protecao", "tipo": "promessa", "participantes": ["ren", "silva_fixture"],
+                   "evidencia": {"campo": "narracao", "trecho": promise},
+                   "identidades_percebidas": {"ren": "Tanaka"}, "operacao": "registrar",
+                   "compromisso": {"tipo": "compromisso", "resumo": promise}},
+                  {"id": "ponte", "tipo": "informacao", "participantes": ["ren", "silva_fixture", "nera_fixture"],
+                   "evidencia": {"campo": "narracao", "trecho": info},
+                   "identidades_percebidas": {"ren": "Tanaka"}, "emissor": "ren",
+                   "destinatario": "silva_fixture", "canal": "presencial", "estatuto": "rumor", "texto": info}
+              ]}}
+        before = self.hashes()
+        cronica.conclude(self.repo, prepared["ticket"], tx)
+        after = self.hashes()
+        self.assertEqual({p for p in before.keys() | after.keys() if before.get(p) != after.get(p)},
+                         {"runtime/eventos-pendentes.jsonl", "sessoes/003/transcricao.md"})
+        npc = contexto.command_npc(self.repo, "silva_fixture")["resultado"]["medidores"]["dados"]
+        self.assertNotIn("medidores", npc)
+        self.assertEqual(npc["memorias_importantes"][0]["identidades_percebidas"], {"ren": "Tanaka"})
+        self.assertEqual(npc["informacoes_recebidas"][0]["estatuto"], "rumor")
+        self.assertNotIn("informacoes_recebidas", self.relation("nera_fixture"))
+        consolidar.consolidate(self.repo, "cena")
+        code = (
+            "import json,sys;from pathlib import Path;sys.path.insert(0,sys.argv[1]);"
+            "import cronica,contexto;repo=Path(sys.argv[2]);"
+            "print(json.dumps({'preparo':cronica.prepare(repo,scene_id='retomada-tanaka',sidequest_signal=None),"
+            "'npc':contexto.command_npc(repo,'silva_fixture')},ensure_ascii=False))"
+        )
+        cold = subprocess.run([sys.executable, "-c", code, str(TOOLS), str(self.repo)],
+                              text=True, capture_output=True, check=True)
+        result = json.loads(cold.stdout)
+        self.assertIn(promise, cold.stdout)
+        self.assertIn(info, cold.stdout)
+        self.assertEqual(result["preparo"]["memoria_cena"]["modo"], "completa")
+        self.assertIn("medidores", result["preparo"]["memoria_cena"]["itens"]["silva_fixture"])
+        before = self.hashes()
+        cronica.conclude(self.repo, prepared["ticket"], tx)
+        self.assertEqual(before, self.hashes())
+        self.assertEqual(len(self.active()), 1)
+
+    def test_retry_preserva_destino_npc_se_relacao_for_cadastrada_depois(self):
+        entry = self.without_relation()
+        tx = self.promise()
+        cronica.conclude(self.repo, self.token, tx)
+        index = yaml.safe_load((self.repo / "estado/relacoes/index.yaml").read_text())
+        index["relacoes"]["silva_fixture"] = entry
+        index["quantidade"] = len(index["relacoes"])
+        self.write("estado/relacoes/index.yaml", index)
+        before = self.hashes()
+        cronica.conclude(self.repo, self.token, tx)
+        self.assertEqual(before, self.hashes())
+        consolidar.consolidate(self.repo, "cena")
+        npc_path = "estado/npcs/silva_fixture.yaml"
+        doc = yaml.safe_load((self.repo / npc_path).read_text())
+        doc["npc"]["memorias_importantes"] = []
+        self.write(npc_path, doc)  # Marca arquivada; o histórico canônico conserva o evento.
+        before = self.hashes()
+        cronica.conclude(self.repo, self.token, tx)
+        self.assertEqual(before, self.hashes())
+        changed = deepcopy(tx)
+        changed["memoria"]["fatos"][0]["compromisso"]["resumo"] = "Outra promessa."
+        with self.assertRaises(ValueError):
+            cronica.conclude(self.repo, self.token, changed)
+        self.assertEqual(before, self.hashes())
+
+    def test_fallback_npc_nao_admite_delta_manual_concorrente(self):
+        self.without_relation()
+        tx = self.promise()
+        tx["deltas"] = [{"alvo": "npc:silva_fixture", "op": "set",
+                         "caminho": "memorias_importantes", "valor": []}]
+        before = self.hashes()
+        with self.assertRaisesRegex(ValueError, "concorre"):
+            cronica.conclude(self.repo, self.token, tx)
+        self.assertEqual(before, self.hashes())
+
+    def test_informacao_recebida_por_ren_sem_relacao_nao_duplica_conhecimento(self):
+        self.without_relation()
+        text = "Silva disse a Ren que a ponte caiu, mas somente como rumor."
+        tx = self.tx("relato-sem-relacao", "informacao", text,
+                     emissor="silva_fixture", destinatario="ren", canal="presencial", estatuto="rumor")
+        cronica.conclude(self.repo, self.token, tx)
+        consolidar.consolidate(self.repo, "cena")
+        before = self.hashes()
+        cronica.conclude(self.repo, self.token, tx)
+        self.assertEqual(before, self.hashes())
+        self.assertTrue(contexto.command_knowledge(self.repo, "ponte")["resultado"]["encontrado"])
+
+    def test_retirada_da_anotacao_apos_erro_nao_declara_cobertura_completa(self):
+        tx = self.promise()
+        tx["memoria"]["fatos"][0]["evidencia"]["trecho"] = "Outra promessa que não está na narração."
+        before = self.hashes()
+        with self.assertRaises(ValueError):
+            cronica.conclude(self.repo, self.token, tx)
+        self.assertEqual(before, self.hashes())
+        tx.pop("memoria")
+        result = cronica.conclude(self.repo, self.token, tx)
+        self.assertEqual(result[context_memory.MEMORY_PERSISTENCE_KEY]["cobertura"], "indeterminada_sem_anotacao")
+        self.assertIn("context_and_memory|concluir|indeterminado|1",
+                      result["cobertura_avaliacao_modular"]["recibos"])
+
+    def test_promessa_sem_relacao_pode_ser_cumprida_sem_ressuscitar_em_retry(self):
+        self.without_relation()
+        original = self.promise()
+        cronica.conclude(self.repo, self.token, original)
+        close = self.complete("cumprir")
+        cronica.conclude(self.repo, self.token, close)
+        consolidar.consolidate(self.repo, "cena")
+        before = self.hashes()
+        cronica.conclude(self.repo, self.token, original)
+        cronica.conclude(self.repo, self.token, close)
+        self.assertEqual(before, self.hashes())
+        self.assertFalse(self.active())
+
     def test_fragmento_excedido_falha_antes_de_contaminar_buffer(self):
         self.write("estado/relacoes/silva_fixture.yaml", {"id": "silva_fixture", "relacao": {
             "nome": "Silva fixture", "detalhe": "x" * memory.MAX_FRAGMENT_BYTES}})
@@ -352,6 +482,8 @@ class DurableMemoryIntegrationTest(unittest.TestCase):
             self.assertNotIn("memoria", prepared)
             result = cronica.conclude(self.repo, prepared["ticket"], tx)
         self.assertEqual(result["transacao"]["deltas"], 0)
+        self.assertFalse(result[context_memory.MEMORY_PERSISTENCE_KEY]["captura_declarada"])
+        self.assertEqual(result[context_memory.MEMORY_PERSISTENCE_KEY]["cobertura"], "indeterminada_sem_anotacao")
         # Ausência de anotação não é prova de ausência de promessa na prosa.
         self.assertFalse(self.active())
 

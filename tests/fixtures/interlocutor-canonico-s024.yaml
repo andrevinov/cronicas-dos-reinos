@@ -1,0 +1,43 @@
+natureza: snapshot_historico_isolado
+data_instalacao: '2026-10-06'
+motivo: Provar recuperação fria do vínculo canônico instalado na RCV-06 sem fixar o estado vivo futuro.
+fragmento:
+  schema_npc: 2
+  natureza: medidores_npc_atuais
+  id: mori
+  npc:
+    nome: senhor Mori
+    persistencia: persistente_sem_agenda
+    identidade:
+      estatuto: Nome usado por Aiko; identidade civil não confirmada.
+      descricao_observada: homem do casaco cinza
+      fonte:
+        arquivo: personagens/jogador/conhecimento/incrementais/sessao-024/tx-s024-9fa0958bf5a74f7e.md
+        sessao: '024'
+        transacao: s024-9fa0958bf5a74f7e
+        trecho: Aiko chamou o homem do casaco cinza de senhor Mori; ele mandou negar que estivera ali e fazer Tanaka
+          esperar enquanto alguém o avisava.
+      lacunas:
+      - nome civil e eventual identidade secreta
+      - objetivos e planos atuais
+      - capacidades e recursos quantificados
+      - localização e presença atuais
+    origem_identidade:
+      tipo: reparo_operacional_por_fonte_canonica
+      instalado_em: '2026-10-06'
+      sessao_fonte: '024'
+      motivo: Identidade narrada e conhecida por Ren sem registro operacional; não altera histórico nem justifica
+        rolagens passadas.
+    notas_de_consistencia:
+    - O último confronto não estabelece presença na cena atual.
+    - Conduta passada não define bônus, habilidades, empregadores ou plano executado.
+    - Para acontecimentos do confronto e da perseguição, consultar sessoes/024/resumo.md de forma dirigida.
+entrada_indice:
+  nome: senhor Mori
+  aliases:
+  - Mori
+  - homem do casaco cinza
+  persistencia: persistente_sem_agenda
+  arquivo: estado/npcs/mori.yaml
+  historico: historico/npcs/mori.yaml
+  bytes_fragmento: 1298

@@ -23,6 +23,7 @@ import yaml
 import _cronica_turn_core as core
 import endpoints
 import microeventos_transito
+import narrative_delivery
 import qualidade_abordagem
 import rodape_turno
 import turno
@@ -47,8 +48,8 @@ def _validate_local_contract(
     if any_local and not all_local:
         raise core.CronicaError(
             "gatilho local incompleto. Use --local, --acao, --tier e --periculosidade juntos "
-            "somente ao entrar/explorar um local. Em turno comum sem gatilho local, omita os quatro "
-            "e use apenas --cena-id (mais NPC/tag somente se já forem fatos pertinentes)."
+            "somente ao entrar/explorar um local. Complete o gatilho da entrada; "
+            "não retire uma obrigação espacial para contornar erro de preparo."
         )
 
 
@@ -151,13 +152,13 @@ def _transaction_contract() -> dict[str, Any]:
         "comando": "cronica concluir --ticket <ticket> <<'JSON'",
         "campos": {
             "jogador": "<ON resolvido do jogador>",
-            "narracao": "<prosa diegética; mecânica explícita somente em linha MECÂNICA — ...>",
+            "narracao": narrative_delivery.narration_instruction(),
             "resumo": "<resumo curto do que mudou>",
             "modo": "<interação|exploração|combate|descanso|descoberta ou modo coerente>",
             "deltas": [],
         },
         "mecanica": "Se houver número/CD/CA/rolagem explícita na narração, usar linha própria iniciada por `MECÂNICA — `.",
-        "disciplina": "Não chamar --help nem ler implementação para descobrir este contrato; esta saída é autoritativa.",
+        "disciplina": "Não chamar --help nem ler implementação para descobrir este contrato; esta saída é autoritativa. Falha de memoria não dispensa a captura de fato novo.",
     }
 
 
@@ -165,7 +166,8 @@ def _decorate(result: dict[str, Any], *, reactive: bool) -> dict[str, Any]:
     result = dict(result)
     result["reativa"] = reactive
     result["contrato_conclusao"] = _transaction_contract()
-    if "permanencia_espacial" in result:
+    if ("permanencia_espacial" in result or "transito_urbano" in result
+            or (result.get("ids") or {}).get("local")):
         # Instruções estáticas ficam em referência; avaliações e gates permanecem.
         for key in (
             "sidequest_emergente_task46", "progresso_sidequests_task49",
@@ -175,6 +177,10 @@ def _decorate(result: dict[str, Any], *, reactive: bool) -> dict[str, Any]:
             result["contrato_conclusao"].pop(key, None)
         result["contrato_conclusao"]["contratos_complementares"] = (
             "docs/agente/operacao/contratos-complementares-conclusao.md"
+        )
+        result["contrato_conclusao"]["retry_espacial"] = (
+            "Ticket conserva entrada/permanência/trânsito. Se falhar, repetir cena-id e gatilho; "
+            "corrigir a causa sem retirar a projeção. Preparo neutro não resolve essa obrigação."
         )
     next_step = dict(result.get("proximo_passo") or {})
     next_step.update(
@@ -343,7 +349,7 @@ def prepare(
             "gates": [_transit_gate(public)],
             "modificadores": modifiers,
             "transito_urbano": public,
-            "fontes_lidas": list(public.get("fontes_lidas") or []),
+            "fontes_lidas": public.get("fontes_lidas") or [],
             "proximo_passo": {},
         }
         return _decorate(result, reactive=False)

@@ -2,16 +2,16 @@
   "schema_module_releases": 2,
   "natureza": "histórico imutável de versões avaliáveis; não é estado canônico",
   "current_releases": {
-    "context_and_memory": "context_and_memory/impl-1.0.2/eval-4.1.0",
-    "turn_and_session_orchestration": "turn_and_session_orchestration/impl-1.0.2/eval-4.1.0",
-    "narrative_delivery": "narrative_delivery/impl-1.0.2/eval-4.1.0",
+    "context_and_memory": "context_and_memory/impl-1.0.7/eval-4.1.0",
+    "turn_and_session_orchestration": "turn_and_session_orchestration/impl-1.0.5/eval-4.1.0",
+    "narrative_delivery": "narrative_delivery/impl-1.0.3/eval-4.1.0",
     "rules_and_character_state": "rules_and_character_state/impl-1.0.1/eval-4.1.0",
     "sidequest_authoring": "sidequest_authoring/impl-2.0.1/eval-4.1.0",
     "sidequest_lifecycle": "sidequest_lifecycle/impl-1.0.1/eval-4.1.0",
     "canonical_quest_integration": "canonical_quest_integration/impl-2.0.0/eval-4.1.0",
-    "npc_continuity_and_social_behavior": "npc_continuity_and_social_behavior/impl-1.1.0/eval-4.1.0",
-    "scene_world_projection": "scene_world_projection/impl-1.0.1/eval-4.1.0",
-    "world_boundary_resolution": "world_boundary_resolution/impl-1.0.1/eval-4.1.0",
+    "npc_continuity_and_social_behavior": "npc_continuity_and_social_behavior/impl-1.1.5/eval-4.1.0",
+    "scene_world_projection": "scene_world_projection/impl-1.0.3/eval-4.1.0",
+    "world_boundary_resolution": "world_boundary_resolution/impl-1.0.2/eval-4.1.0",
     "causal_narrative_routing": "causal_narrative_routing/impl-1.0.1/eval-4.1.0",
     "adversarial_operations": "adversarial_operations/impl-1.0.1/eval-4.1.0"
   },
@@ -790,6 +790,361 @@
       "fixtures": [
         "tests/test_experiencia_avaliacao.py",
         "evaluation/aceite-avaliacao-v1/manifest.json"
+      ]
+    },
+    {
+      "release_id": "npc_continuity_and_social_behavior/impl-1.1.1/eval-4.1.0",
+      "module_id": "npc_continuity_and_social_behavior",
+      "implementation_version": "1.1.1",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.1.0",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "scene-cast-physical-continuity-v1",
+      "reason": "Presença e janela social conservam a cena física entre interações; saída explícita invalida presença e a projeção mantém schema e identidade social exigidos pelo consumidor.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_memoria_cena.py",
+        "tests/test_memoria_cena_iniciativa.py",
+        "tests/test_memoria_cena_integracao.py"
+      ]
+    },
+    {
+      "release_id": "context_and_memory/impl-1.0.3/eval-4.1.0",
+      "module_id": "context_and_memory",
+      "implementation_version": "1.0.3",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.2",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "durable-memory-existing-npc-v1",
+      "reason": "Memória factual em NPC canônico sem vínculo relacional, persona percebida com evidência, destino estável em retry e cobertura indeterminada quando a anotação é omitida.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_memoria_duravel.py",
+        "tests/test_memoria_duravel_integracao.py",
+        "tests/test_context_and_memory_module_v2.py"
+      ]
+    },
+    {
+      "release_id": "npc_continuity_and_social_behavior/impl-1.1.2/eval-4.1.0",
+      "module_id": "npc_continuity_and_social_behavior",
+      "implementation_version": "1.1.2",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.1.1",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "durable-memory-existing-npc-v1",
+      "reason": "Memória factual em NPC canônico sem vínculo relacional, persona percebida com evidência, destino estável em retry e cobertura indeterminada quando a anotação é omitida.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_memoria_duravel.py",
+        "tests/test_memoria_duravel_integracao.py",
+        "tests/test_context_and_memory_module_v2.py"
+      ]
+    },
+    {
+      "release_id": "context_and_memory/impl-1.0.4/eval-4.1.0",
+      "module_id": "context_and_memory",
+      "implementation_version": "1.0.4",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.3",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "spatial-preparation-preserved-v1",
+      "reason": "Identidade espacial compartilhada com local_id, overlay que invalida vínculo legado na saída e erro explícito quando nem a memória mínima cabe.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_preparo_espacial_integracao.py",
+        "tests/test_cronica_hotpath_rollout.py",
+        "tests/test_memoria_cena_integracao.py"
+      ]
+    },
+    {
+      "release_id": "npc_continuity_and_social_behavior/impl-1.1.3/eval-4.1.0",
+      "module_id": "npc_continuity_and_social_behavior",
+      "implementation_version": "1.1.3",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.1.2",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "spatial-preparation-preserved-v1",
+      "reason": "Elenco usa vínculo espacial canônico sem fundir pontos exatos; compilação e overlay preservam identidade no mesmo local e invalidam presença após saída.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_preparo_espacial_integracao.py",
+        "tests/test_cronica_hotpath_rollout.py",
+        "tests/test_memoria_cena_integracao.py"
+      ]
+    },
+    {
+      "release_id": "scene_world_projection/impl-1.0.2/eval-4.1.0",
+      "module_id": "scene_world_projection",
+      "implementation_version": "1.0.2",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.1",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "spatial-preparation-preserved-v1",
+      "reason": "Permanência resolve local efetivo por fontes e deltas pendentes; entrada materializada vincula ID e saída elimina vínculo antigo, com projeção e reservas conservadas em retry.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_preparo_espacial_integracao.py",
+        "tests/test_cronica_hotpath_rollout.py",
+        "tests/test_memoria_cena_integracao.py"
+      ]
+    },
+    {
+      "release_id": "turn_and_session_orchestration/impl-1.0.3/eval-4.1.0",
+      "module_id": "turn_and_session_orchestration",
+      "implementation_version": "1.0.3",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.2",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "spatial-preparation-preserved-v1",
+      "reason": "Porta pública conserva obrigação espacial após falha de preparo, bloqueia desvio neutro e abre espaço para memória ao referenciar instruções estáticas redundantes.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_preparo_espacial_integracao.py",
+        "tests/test_cronica_hotpath_rollout.py",
+        "tests/test_memoria_cena_integracao.py"
+      ]
+    },
+    {
+      "release_id": "world_boundary_resolution/impl-1.0.2/eval-4.1.0",
+      "module_id": "world_boundary_resolution",
+      "implementation_version": "1.0.2",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.1",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "effective-temporal-window-v1",
+      "reason": "Início efetivo inclui buffer da sessão; CLI explicita alvo final e saída declara duração, limite e ausência de autorização em duração zero, preservando os motores e resoluções existentes.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_janela_temporal_integracao.py",
+        "tests/test_fronteira_mundo.py",
+        "tests/test_endpoints_deterministicos.py"
+      ]
+    },
+    {
+      "release_id": "narrative_delivery/impl-1.0.3/eval-4.1.0",
+      "module_id": "narrative_delivery",
+      "implementation_version": "1.0.3",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.2",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "authorized-intention-narration-v1",
+      "reason": "Contrato de preparo distingue intenção autorizada, consequência causal externa e decisão nova do jogador; revisão contrastada de respostas novas pelo fluxo avaliativo existente.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_agencia_narrativa_integracao.py",
+        "tests/fixtures/agencia-narrativa.json",
+        "tests/test_narrative_delivery_module_v2.py"
+      ]
+    },
+    {
+      "release_id": "context_and_memory/impl-1.0.5/eval-4.1.0",
+      "module_id": "context_and_memory",
+      "implementation_version": "1.0.5",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.4",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "canonical-interlocutor-binding-v1",
+      "reason": "Consulta e memória compartilham resolução explícita de identidade; aliases não fundem atores e ambiguidade falha. Cadastro de Mori recuperado por fonte canônica sem capacidades ou presença retroativas.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_interlocutor_canonico.py",
+        "tests/fixtures/interlocutor-canonico-s024.yaml"
+      ]
+    },
+    {
+      "release_id": "npc_continuity_and_social_behavior/impl-1.1.4/eval-4.1.0",
+      "module_id": "npc_continuity_and_social_behavior",
+      "implementation_version": "1.1.4",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.1.3",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "canonical-interlocutor-binding-v1",
+      "reason": "Consulta e memória compartilham resolução explícita de identidade; aliases não fundem atores e ambiguidade falha. Cadastro de Mori recuperado por fonte canônica sem capacidades ou presença retroativas.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_interlocutor_canonico.py",
+        "tests/fixtures/interlocutor-canonico-s024.yaml"
+      ]
+    },
+    {
+      "release_id": "context_and_memory/impl-1.0.6/eval-4.1.0",
+      "module_id": "context_and_memory",
+      "implementation_version": "1.0.6",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.5",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "session-causal-evidence-v1",
+      "reason": "Lifecycle preserva conteúdo causal reservado e deltas antes da consolidação; revisão reconstrói o instante sem reler save futuro ou acrescentar captura ao turno comum.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_evidencias_sessao.py",
+        "tests/test_unified_session_lifecycle.py",
+        "tests/test_revisao_sessao.py"
+      ]
+    },
+    {
+      "release_id": "turn_and_session_orchestration/impl-1.0.4/eval-4.1.0",
+      "module_id": "turn_and_session_orchestration",
+      "implementation_version": "1.0.4",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.3",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "session-causal-evidence-v1",
+      "reason": "Lifecycle preserva conteúdo causal reservado e deltas antes da consolidação; revisão reconstrói o instante sem reler save futuro ou acrescentar captura ao turno comum.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_evidencias_sessao.py",
+        "tests/test_unified_session_lifecycle.py",
+        "tests/test_revisao_sessao.py"
+      ]
+    },
+    {
+      "release_id": "context_and_memory/impl-1.0.7/eval-4.1.0",
+      "module_id": "context_and_memory",
+      "implementation_version": "1.0.7",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.6",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "integrated-episode-acceptance-v1",
+      "reason": "Episódio integrado revelou excesso no orçamento de permanência+NPC+promessa, confusão entre retry e nova interação e pressão resolvida ainda bloqueando iniciativa. Representação/proveniência compactas, medição efetiva, marcador de preparo após conclusão e gate de pressão ativa conservam teto, memória recuperável, idempotência e reserva.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_episodio_integrado.py",
+        "tests/fixtures/episodio-integrado.json",
+        "tests/test_preparo_espacial_integracao.py"
+      ]
+    },
+    {
+      "release_id": "turn_and_session_orchestration/impl-1.0.5/eval-4.1.0",
+      "module_id": "turn_and_session_orchestration",
+      "implementation_version": "1.0.5",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.4",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "integrated-episode-acceptance-v1",
+      "reason": "Episódio integrado revelou excesso no orçamento de permanência+NPC+promessa, confusão entre retry e nova interação e pressão resolvida ainda bloqueando iniciativa. Representação/proveniência compactas, medição efetiva, marcador de preparo após conclusão e gate de pressão ativa conservam teto, memória recuperável, idempotência e reserva.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_episodio_integrado.py",
+        "tests/fixtures/episodio-integrado.json",
+        "tests/test_preparo_espacial_integracao.py"
+      ]
+    },
+    {
+      "release_id": "npc_continuity_and_social_behavior/impl-1.1.5/eval-4.1.0",
+      "module_id": "npc_continuity_and_social_behavior",
+      "implementation_version": "1.1.5",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.1.4",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "integrated-episode-acceptance-v1",
+      "reason": "Episódio integrado revelou excesso no orçamento de permanência+NPC+promessa, confusão entre retry e nova interação e pressão resolvida ainda bloqueando iniciativa. Representação/proveniência compactas, medição efetiva, marcador de preparo após conclusão e gate de pressão ativa conservam teto, memória recuperável, idempotência e reserva.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_episodio_integrado.py",
+        "tests/fixtures/episodio-integrado.json",
+        "tests/test_preparo_espacial_integracao.py"
+      ]
+    },
+    {
+      "release_id": "scene_world_projection/impl-1.0.3/eval-4.1.0",
+      "module_id": "scene_world_projection",
+      "implementation_version": "1.0.3",
+      "evaluation_version": "4.1.0",
+      "previous": {
+        "implementation_version": "1.0.2",
+        "evaluation_version": "4.1.0"
+      },
+      "implementation_change": "patch",
+      "evaluation_change": "none",
+      "effective_date": "2026-10-06",
+      "source_revision": "integrated-episode-acceptance-v1",
+      "reason": "Episódio integrado revelou excesso no orçamento de permanência+NPC+promessa, confusão entre retry e nova interação e pressão resolvida ainda bloqueando iniciativa. Representação/proveniência compactas, medição efetiva, marcador de preparo após conclusão e gate de pressão ativa conservam teto, memória recuperável, idempotência e reserva.",
+      "compatibility": "compatible",
+      "fixtures": [
+        "tests/test_episodio_integrado.py",
+        "tests/fixtures/episodio-integrado.json",
+        "tests/test_preparo_espacial_integracao.py"
       ]
     }
   ]

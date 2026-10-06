@@ -1,0 +1,172 @@
+{
+  "schema": 1,
+  "data": "2026-10-06",
+  "natureza": "snapshot_historico_de_recuperacao_operacional_e_sandbox",
+  "motivo": "Provar vínculo recuperado na instalação RCV-06 sem fixar estado futuro ou reproduzir confronto histórico como sessão nova.",
+  "consulta_real_em_processo_frio": {
+    "consulta": {
+      "comando": "npc",
+      "termo": "Mori"
+    },
+    "nivel": "L2",
+    "fontes": [
+      "estado/npcs/index.yaml",
+      "estado/relacoes/index.yaml",
+      "estado/npcs/mori.yaml"
+    ],
+    "resultado": {
+      "encontrado": true,
+      "medidores": {
+        "id": "mori",
+        "dados": {
+          "nome": "senhor Mori",
+          "persistencia": "persistente_sem_agenda",
+          "identidade": {
+            "estatuto": "Nome usado por Aiko; identidade civil não confirmada.",
+            "descricao_observada": "homem do casaco cinza",
+            "fonte": {
+              "arquivo": "personagens/jogador/conhecimento/incrementais/sessao-024/tx-s024-9fa0958bf5a74f7e.md",
+              "sessao": "024",
+              "transacao": "s024-9fa0958bf5a74f7e",
+              "trecho": "Aiko chamou o homem do casaco cinza de senhor Mori; ele mandou negar que estivera ali e fazer Tanaka esperar enquanto alguém o avisava."
+            },
+            "lacunas": [
+              "nome civil e eventual identidade secreta",
+              "objetivos e planos atuais",
+              "capacidades e recursos quantificados",
+              "localização e presença atuais"
+            ]
+          },
+          "origem_identidade": {
+            "tipo": "reparo_operacional_por_fonte_canonica",
+            "instalado_em": "2026-10-06",
+            "sessao_fonte": "024",
+            "motivo": "Identidade narrada e conhecida por Ren sem registro operacional; não altera histórico nem justifica rolagens passadas."
+          },
+          "notas_de_consistencia": [
+            "O último confronto não estabelece presença na cena atual.",
+            "Conduta passada não define bônus, habilidades, empregadores ou plano executado.",
+            "Para acontecimentos do confronto e da perseguição, consultar sessoes/024/resumo.md de forma dirigida."
+          ]
+        }
+      },
+      "relacao": null
+    }
+  },
+  "preparo_frio_isolado": {
+    "memoria_cena": {
+      "versao": 1,
+      "modo": "completa",
+      "itens": {
+        "mori": {
+          "encontrado": true,
+          "dominios_ausentes": [
+            "relacao",
+            "textura_narrativa"
+          ],
+          "medidores": {
+            "dados": {
+              "identidade": {
+                "estatuto": "Nome usado por Aiko; identidade civil não confirmada.",
+                "descricao_observada": "homem do casaco cinza",
+                "fonte": {
+                  "arquivo": "personagens/jogador/conhecimento/incrementais/sessao-024/tx-s024-9fa0958bf5a74f7e.md",
+                  "sessao": "024",
+                  "transacao": "s024-9fa0958bf5a74f7e",
+                  "trecho": "Aiko chamou o homem do casaco cinza de senhor Mori; ele mandou negar que estivera ali e fazer Tanaka esperar enquanto alguém o avisava."
+                },
+                "lacunas": [
+                  "nome civil e eventual identidade secreta",
+                  "objetivos e planos atuais",
+                  "capacidades e recursos quantificados",
+                  "localização e presença atuais"
+                ]
+              },
+              "nome": "senhor Mori",
+              "notas_de_consistencia": [
+                "Para acontecimentos do confronto e da perseguição, consultar sessoes/024/resumo.md de forma dirigida."
+              ]
+            }
+          },
+          "memoria_relevante": {
+            "aprofundamento_necessario": true,
+            "campos_pendentes": 3,
+            "primeiro_campo": "/medidores/dados/notas_de_consistencia",
+            "consulta": "poetry run python ferramentas/contexto.py npc mori --campo /medidores/dados/notas_de_consistencia",
+            "indices_origem": {
+              "/medidores/dados/notas_de_consistencia": [
+                2
+              ]
+            }
+          }
+        }
+      },
+      "aprofundamento_necessario": true,
+      "fontes": [
+        "cenario/texturas/index.yaml",
+        "estado/estado-atual.yaml",
+        "estado/npcs/index.yaml",
+        "estado/npcs/mori.yaml",
+        "estado/relacoes/index.yaml",
+        "runtime/eventos-pendentes.jsonl"
+      ],
+      "recibo": {
+        "versao": 1,
+        "escopo": "23a19f5f78ed759eb5d89fa6",
+        "itens": {
+          "mori": "d4752d2d9c81b77364cb00df"
+        }
+      }
+    },
+    "iniciativa_elenco": {
+      "schema_iniciativa_elenco": 1,
+      "sistema": "iniciativa_social",
+      "janela_id": "cena-67174229f6c77b0ec51a",
+      "janela_tipo": "cena",
+      "interlocutores": [
+        "mori"
+      ],
+      "selecionada": null,
+      "itens": [
+        {
+          "decisao_id": "ini-fd8e7646204b3b8689f1",
+          "npc_id": "mori",
+          "presenca": "elenco_cena",
+          "requer_decisao": false,
+          "resultado_automatico": "nao_elegivel",
+          "motivo_automatico": "indisponibilidade",
+          "pressao_superior": null,
+          "reutilizado": false,
+          "contexto_npc": "presente"
+        }
+      ],
+      "regra": "participante, presença/contactabilidade e interlocutor são distintos; no máximo uma abertura por janela; Ren conserva sua resposta",
+      "metricas": {
+        "interlocutores": 1,
+        "aberturas": 0,
+        "elegiveis_por_presenca_ou_contato": 1,
+        "silencios_explicitos": 1,
+        "repeticoes_bloqueadas": 0,
+        "contextos": {
+          "presente": 1,
+          "contactavel": 0,
+          "mencionado": 0,
+          "apenas_conhecido": 0
+        },
+        "consultas_adicionais_por_npc": 0,
+        "chamadas_ia": 0,
+        "rng_novo": 0,
+        "scheduler_novo": 0,
+        "scan_global": 0
+      }
+    },
+    "tamanho_bytes": 7978,
+    "sem_escrita": true
+  },
+  "fontes_sha256": {
+    "estado/npcs/mori.yaml": "c2d09d87246f42ea4fcac2ac9b771681247e6b92c776b3640986bcff144e8a48",
+    "historico/npcs/mori.yaml": "d4aeed27db709dbc94dbedac1c896cd1ca5a6a2c854b457e5cebe0096d00cc7b",
+    "personagens/jogador/conhecimento/incrementais/sessao-024/tx-s024-9fa0958bf5a74f7e.md": "d6d096395ca8727ae68c7f2d6e9547f2f6090d833463c7d7aeace241738502e2",
+    "sessoes/024/resumo.md": "7308183e268c9a7e59762a2e792a448505d861bea7c5c88463c441827689e783"
+  }
+}

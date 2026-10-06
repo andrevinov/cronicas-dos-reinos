@@ -303,7 +303,10 @@ def command_npc(repo: Path, term: str) -> dict[str, Any]:
     # A textura é uma extensão da mesma consulta dirigida; não exige uma segunda
     # inferência nem busca ampla. Também permite que NPCs ainda sem medidor tenham
     # presença narrativa compacta.
-    texture, texture_sources, texture_candidates = texturas.lookup(repo, "npcs", term)
+    actor = (result.get("medidores") or result.get("relacao") or {}).get("id")
+    texture, texture_sources, texture_candidates = texturas.lookup(repo, "npcs", actor or term, exact_npc=True)
+    if actor is not None and texture is not None and texture.get("id") != actor:
+        raise ValueError("textura narrativa resolve outro NPC; corrigir o índice antes de narrar")
     if texture is not None:
         result["textura_narrativa"] = texture
         result["encontrado"] = True

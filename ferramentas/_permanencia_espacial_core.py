@@ -159,26 +159,11 @@ def _prune(state: dict[str, Any]) -> None:
 
 
 def _current_location(repo: Path) -> tuple[str, list[str]]:
-    path = repo / "estado/estado-atual.yaml"
     try:
-        state = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-    except (OSError, yaml.YAMLError) as exc:
-        raise SpatialPermanenceError(f"não foi possível ler local consolidado: {exc}") from exc
-    location = state.get("localizacao") if isinstance(state, dict) else None
-    if not isinstance(location, dict):
-        raise SpatialPermanenceError(
-            "--permanencia-local exige local consolidado em estado/estado-atual.yaml"
-        )
-    raw = location.get("local_id") or location.get("area")
-    if not isinstance(raw, str) or not raw.strip():
-        raise SpatialPermanenceError(
-            "--permanencia-local exige local atual consolidado; não inventar local a partir da cena"
-        )
-    try:
-        resolved = locais.resolve(repo, raw)
-    except locais.LocationError as exc:
+        resolved = locais.current(repo)
+    except (OSError, ValueError, yaml.YAMLError) as exc:
         raise SpatialPermanenceError(str(exc)) from exc
-    return resolved["local_id"], ["estado/estado-atual.yaml", *resolved.get("fontes_lidas", [])]
+    return resolved["local_id"], resolved["fontes_lidas"]
 
 
 def resolve_location(repo: Path, supplied: str | None = None) -> tuple[str, list[str]]:
@@ -573,10 +558,14 @@ def prepare(
     }
 
 
-def validate_ticket(meta: Any) -> dict[str, str]:
+def validate_ticket(meta: Any) -> dict[str, Any]:
     if not isinstance(meta, dict):
         raise SpatialPermanenceError("ticket de permanência deve ser mapa")
     expected = {"schema", "avaliacao_id", "digest", "local_id", "data", "periodo"}
+    if "pressao_ja_concluida" in meta:
+        expected.add("pressao_ja_concluida")
+        if meta["pressao_ja_concluida"] is not True:
+            raise SpatialPermanenceError("marcador de pressão concluída inválido")
     if set(meta) != expected or meta.get("schema") != SCHEMA:
         raise SpatialPermanenceError("ticket de permanência possui campos divergentes")
     result = {
@@ -588,6 +577,8 @@ def validate_ticket(meta: Any) -> dict[str, str]:
     }
     if len(result["digest"]) != 64 or any(ch not in "0123456789abcdef" for ch in result["digest"]):
         raise SpatialPermanenceError("digest do ticket de permanência inválido")
+    if meta.get("pressao_ja_concluida"):
+        result["pressao_ja_concluida"] = True
     return result
 
 
@@ -602,6 +593,8 @@ def revalidate(repo: Path, meta: Any) -> dict[str, Any]:
             raise SpatialPermanenceError("avaliação espacial divergiu do ticket")
     if record.get("digest") != normalized["digest"] or record.get("digest") != _record_digest(record):
         raise SpatialPermanenceError("avaliação espacial mudou; prepare novamente")
+    if normalized.get("pressao_ja_concluida") and record.get("estado") not in RESULTS:
+        raise SpatialPermanenceError("pressão do ticket já não está concluída; prepare novamente")
     return _public(record, reused=True)
 
 

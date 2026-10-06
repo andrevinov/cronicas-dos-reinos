@@ -291,13 +291,16 @@ class EndpointAdapterTest(unittest.TestCase):
             endpoints.fronteira_mundo,
             "query",
             return_value={
-                "inicio": {},
-                "alvo": {},
+                "inicio": {"data": "14 Eleasis, 1372 DR", "hora": "21:20"},
+                "alvo": {"data": "14 Eleasis, 1372 DR", "hora": "22:00"},
                 "interromper": False,
                 "fronteira": None,
                 "fontes_lidas": [],
             },
-        ) as boundary_call:
+        ) as boundary_call, mock.patch.object(
+            endpoints.fronteira_torneio, "augment_endpoint",
+            side_effect=lambda _repo, projected, **kwargs: projected,
+        ):
             endpoints.boundary(ROOT, date="14 Eleasis, 1372 DR", hour="22:00")
         boundary_call.assert_called_once()
 

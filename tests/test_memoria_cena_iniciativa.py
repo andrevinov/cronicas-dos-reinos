@@ -147,6 +147,37 @@ class SceneMemoryInitiativeCompositionTest(unittest.TestCase):
         self.assertEqual(item["presenca"], "elenco_cena")
         self.assertIsNotNone(out[initiative.PUBLIC_KEY]["selecionada"])
 
+    def test_interacao_renomeada_preserva_presenca_e_janela_fisica(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with (
+                layer.interlocutors(["nera_vell"]),
+                mock.patch.object(memory, "load_scene", return_value=(FakeReader(), self.state(), [], self.saved())),
+                mock.patch.object(memory, "documents", return_value={"nera_vell": self.social_doc()}),
+                mock.patch.object(memory, "project", return_value=self.memory_pack()),
+            ):
+                first = layer.attach(Path(tmp), self.prepared(self.payload()),
+                    decode_ticket=core.decode_ticket, encode_ticket=core.encode_ticket)
+                following = layer.attach(Path(tmp), self.prepared(self.payload(scene_id="segunda-fala")),
+                    decode_ticket=core.decode_ticket, encode_ticket=core.encode_ticket)
+        self.assertEqual(following[initiative.PUBLIC_KEY]["itens"][0]["presenca"], "elenco_cena")
+        self.assertEqual(first[initiative.PUBLIC_KEY]["janela_id"], following[initiative.PUBLIC_KEY]["janela_id"])
+        payload = core.decode_ticket(following["ticket"])
+        self.assertEqual(payload["cena"]["scene_id"], "segunda-fala")
+        self.assertEqual(payload[memory.TICKET_KEY]["elenco"], self.saved())
+
+    def test_saida_explicita_invalida_presenca_no_proprio_preparo(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with (
+                layer.interlocutors(["nera_vell"]),
+                mock.patch.object(memory, "load_scene", return_value=(FakeReader(), self.state(), [], self.saved())),
+                mock.patch.object(memory, "documents", return_value={}),
+                mock.patch.object(memory, "project", return_value=self.memory_pack()),
+            ):
+                out = layer.attach(Path(tmp), self.prepared(self.payload()),
+                    decode_ticket=core.decode_ticket, encode_ticket=core.encode_ticket, participants=[])
+        self.assertEqual(out[initiative.PUBLIC_KEY]["itens"][0]["presenca"], "ausente")
+        self.assertIsNone(out[initiative.PUBLIC_KEY]["selecionada"])
+
     def test_sem_interlocutor_delega_byte_logicamente(self):
         sentinel = {"sem_nv16": True}
         with tempfile.TemporaryDirectory() as tmp:

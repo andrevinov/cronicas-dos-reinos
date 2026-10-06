@@ -188,7 +188,7 @@
         "knowledge_secrecy",
         "canonical_consistency"
       ],
-      "versao_implementacao": "1.0.2",
+      "versao_implementacao": "1.0.7",
       "versao_avaliacao": "4.1.0"
     },
     {
@@ -370,7 +370,7 @@
         "player_agency",
         "canonical_consistency"
       ],
-      "versao_implementacao": "1.0.2",
+      "versao_implementacao": "1.0.5",
       "versao_avaliacao": "4.1.0"
     },
     {
@@ -545,7 +545,7 @@
         "knowledge_secrecy",
         "roll_integrity"
       ],
-      "versao_implementacao": "1.0.2",
+      "versao_implementacao": "1.0.3",
       "versao_avaliacao": "4.1.0"
     },
     {
@@ -1414,7 +1414,7 @@
         "knowledge_secrecy",
         "canonical_consistency"
       ],
-      "versao_implementacao": "1.1.0",
+      "versao_implementacao": "1.1.5",
       "versao_avaliacao": "4.1.0"
     },
     {
@@ -1569,7 +1569,7 @@
         "knowledge_secrecy",
         "canonical_consistency"
       ],
-      "versao_implementacao": "1.0.1",
+      "versao_implementacao": "1.0.3",
       "versao_avaliacao": "4.1.0"
     },
     {
@@ -1691,7 +1691,7 @@
         "knowledge_secrecy",
         "canonical_consistency"
       ],
-      "versao_implementacao": "1.0.1",
+      "versao_implementacao": "1.0.2",
       "versao_avaliacao": "4.1.0"
     },
     {

@@ -294,3 +294,20 @@ compromissos:
     retomada:
       modo: gatilho_causal
       gatilho: escolha de Ren ou mudança objetiva do mundo que alcance uma fronteira listada
+
+  mori_homem_casaco_cinza:
+    tipo: identidade_npc_por_nome_observado
+    consultas:
+    - mori
+    - senhor_mori
+    - homem_do_casaco_cinza
+    estado: aberto_em_jogo
+    ancoras:
+    - arquivo: estado/npcs/mori.yaml
+      chave: npc.identidade
+    destinos_operacionais:
+    - arquivo: estado/npcs/index.yaml
+      chave: npcs.mori
+    retomada:
+      modo: gatilho_causal
+      gatilho: reencontro ou canal validado com Mori; o cadastro não cria presença, agenda ou ação

@@ -69,6 +69,8 @@ somente o domínio necessário para a tarefa.
 - [`engenharia/benchmark-narrativo.md`](engenharia/benchmark-narrativo.md): protocolo de benchmark;
 - [`engenharia/telemetria-rollouts.md`](engenharia/telemetria-rollouts.md): telemetria pós-hoc;
 - [`engenharia/avaliacao-desempenho-sessoes.md`](engenharia/avaliacao-desempenho-sessoes.md): avaliação uniforme por sessão;
+- [`engenharia/revisao-pos-sessao.md`](engenharia/revisao-pos-sessao.md): revisão semântica efetiva e publicação.
+- [`engenharia/evidencias-sessao.md`](engenharia/evidencias-sessao.md): captura reservada e reconstrução causal por instante.
 - [`engenharia/contrato-entrada-medicao.md`](engenharia/contrato-entrada-medicao.md): entrada congelada e unidades de medição;
 - [`engenharia/corpus-regressao-avaliacao.md`](engenharia/corpus-regressao-avaliacao.md): corpus independente e expectativas do avaliador;
 - [`engenharia/operacoes-executadas-rollout.md`](engenharia/operacoes-executadas-rollout.md): separação entre chamadas e operações executadas;

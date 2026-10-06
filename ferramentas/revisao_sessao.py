@@ -20,11 +20,15 @@ if str(ROOT) not in sys.path:
 from ferramentas import entrada_medicao as frozen
 from ferramentas import experiencia_avaliacao as experience
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 STAGES = experience.CAUSAL_STAGES
 INSTRUCTIONS = """Você é o revisor pós-hoc, separado da produção da cena. Examine
 entrada, fontes anteriores disponíveis, operações, resposta final e cenas
 posteriores. Nunca trate recibo, reclamação ou estado atual como gabarito.
+frozen_state e causal_coverage são fontes do revisor, não prova de entrega ao
+narrador. Consulte o arquivo concreto e a cobertura da família; índice presente
+não garante perfil/contrato completo. Reconstrução parcial ou mudança sem ordem
+exige abstenção delimitada nas conclusões que dependem dessa lacuna.
 Procure causas e obrigações alcançáveis mesmo sem invocação do módulo: iniciativa,
 acordos, planos, consequências, quests, recompensas, cânone, clima e perigo.
 Não force fala, ataque ou quest sem causa, conhecimento e canal legítimos.
@@ -74,7 +78,8 @@ def prepare(rollout, bundle, *, criterion_ids=None, interaction_refs=None, units
         path.write_bytes(data)
         turns = analyzer._scan_observations(path, None)[0]
         public, private = experience.frames(turns, catalog, analyzer._visible_response,
-                                             analyzer._turn_operations, bundle["fonte"]["sha256"])
+                                             analyzer._turn_operations, bundle["fonte"]["sha256"],
+                                             (bundle.get("evidencias_sessao") or {}).get("conteudo"))
     contracts = experience.criteria(catalog)
     if units is not None:
         if any(not isinstance(unit, (list, tuple)) or len(unit) != 2 or not all(isinstance(value, str) for value in unit) for unit in units):
@@ -129,8 +134,10 @@ def cases(request, refs=None, *, source_locators=None, index=False):
         return {"request_id": request["request_id"], "instructions": request["instructions"],
                 "criteria": list(request["rubric"]), "cases": [{
                     "ref": frame["evaluation_ref"], "class": frame["class"], "complete": frame["complete"],
-                    "sources": [{"locator": source["locator"], "kind": source["kind"],
+                "sources": [{"locator": source["locator"], "kind": source["kind"],
                                  "visibility": source["visibility"], "characters": len(request["texts"][source["sha256"]])}
+                                | ({"arquivo": json.loads(request["texts"][source["sha256"]])["arquivo"]}
+                                   if source["kind"] == "frozen_state" else {})
                                 for source in frame["sources"]]} for frame in chosen]}
     if source_locators is not None and set(source_locators) - {source["locator"] for frame in chosen for source in frame["sources"]}:
         raise ValueError("Fonte selecionada fora do caso")

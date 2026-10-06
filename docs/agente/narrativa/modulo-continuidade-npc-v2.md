@@ -21,9 +21,34 @@ manutenção. A fachada não cria cache canônico, estado paralelo, scheduler,
 scan geral de NPCs ou writer canônico. O RNG auxiliar de nomeação só roda sob
 pedido explícito para NPC novo, nunca no preparo de NPC já conhecido.
 
+## Interlocutor já canônico e recuperação por fonte
+
+`contexto.py npc <ID|nome|alias>` e o seletor de participantes resolvem uma
+identidade entre os índices públicos; ID literal vence, aliases homônimos falham
+com os IDs concorrentes. A consulta de NPC preserva abreviações legadas por tokens
+inteiros unívocos, como `nera`; prefixos, substrings e grafia aproximada não
+autorizam carregar um ator. Relação, medidores e textura devem pertencer ao mesmo
+ID. A consulta não abre o elenco reservado para preencher lacunas.
+
+Pessoa já nomeada na ficção, mas sem cadastro, exige recuperação dirigida por
+fonte; não sortear outro nome. Registrar o nome observado e seu estatuto, evidência
+literal, origem do reparo e classificação fria. Não converter nome usado por
+terceiro em identidade civil confirmada, nem desempenho passado em bônus ou plano.
+Mori foi recuperado assim: ID `mori`, aliases `Mori` e `homem do casaco cinza`,
+com fonte no conhecimento da 024. Nome civil, capacidades, objetivos/planos e
+presença atuais continuam lacunas. O cadastro não agenda ações nem cria encontro.
+
+Consulta fria entrega o ID e a fonte; usar `--interlocutor mori` somente com
+presença consolidada ou canal validado. `--participante Mori` pode selecionar
+memória prospectiva e não prova presença. Quando faltam medidores/perfil social,
+a ausência continua explícita; não inventar uma decisão social para completar
+o recibo. Novos objetivos, capacidades ou planos precisam de decisão prospectiva
+legítima, com instante e proveniência, no fluxo do respectivo domínio.
+
 ## NPC novo: identidade e nomeação obrigatória
 
-O domínio dono é `npc_continuity_and_social_behavior`, implementação `1.1.0`.
+O domínio dono é `npc_continuity_and_social_behavior`; a nomeação foi introduzida
+na implementação `1.1.2` e a versão atual é `1.1.4`.
 `npc_stubs` materializa a identidade mínima somente após a confirmação canônica
 da cena. O módulo não decide que um NPC deve existir: essa necessidade vem da
 ficção causal, não do sorteio de nome.
@@ -94,7 +119,7 @@ Nome materializado não pode ser liberado. Proposta abandonada antes da narraç�
 nomeada na ficção exige persistência/correção explícita, nunca cancelamento para
 apagar histórico. `catalogo-nomes` lista filtros disponíveis sem escrever dados.
 
-A régua avaliativa permanece `4.0.0`: esta é uma capacidade operacional aditiva
+A régua avaliativa vigente permanece `4.1.0`: esta é uma capacidade operacional aditiva
 de identidade, não uma alteração na semântica das notas. O recibo modular cobre
 as novas portas, mas não converte reserva de nome em NPC materializado.
 
@@ -170,6 +195,13 @@ inelegibilidade ou adiamento por pressão superior. Uma abertura apresentada
 exige evidência literal e recebe recibo reservado exactly-once depois do writer
 canônico concluir. O recibo não cria encontro, segredo, sidequest, presença nem
 ação de Ren.
+
+A janela comum usa o ID estável da cena física no elenco, mesmo quando a próxima
+interação tem outro `scene_id`. Na permanência, continua usando local/data/período.
+Trocar o ID da fala não perde presença nem libera outra abertura. Saída explícita,
+entrada/trânsito e deslocamento real revalidam a continuidade. Schema e identidade
+relacional da projeção social chegam intactos ao consumidor; presença não funde
+personas nem concede motivo para iniciar.
 
 ## Telemetria e custo
 

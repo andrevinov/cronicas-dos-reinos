@@ -425,9 +425,48 @@ def command_relation(repo: Path, term: str) -> dict[str, Any]:
     return envelope("relacao", term, "L2", sources, result)
 
 
+def resolve_npc_reference(mappings: Iterable[dict], term: str, *, whole_tokens: bool = False) -> str | None:
+    """Uma identidade entre domínios; ID exato vence, homônimo nunca desempata.
+
+    Tokens inteiros preservam consultas legadas como ``nera``. Substrings,
+    prefixos e distância de grafia não resolvem identidade.
+    """
+    mappings = list(mappings)
+    if not isinstance(term, str) or not term.strip():
+        raise ValueError("referência de NPC precisa de ID, nome ou alias")
+    if any(term in mapping for mapping in mappings):
+        return term
+    query = normalize(term)
+    matches = set()
+    token_matches = set()
+    for mapping in mappings:
+        for key, entry in mapping.items():
+            if not isinstance(entry, dict):
+                continue
+            labels = [normalize(key), normalize(entry.get("nome", ""))]
+            aliases = entry.get("aliases") or []
+            if isinstance(aliases, list):
+                labels.extend(normalize(alias) for alias in aliases)
+            if query in labels:
+                matches.add(key)
+            elif whole_tokens and query and any(set(query.split()).issubset(label.split()) for label in labels):
+                token_matches.add(key)
+    matches = matches or token_matches
+    if len(matches) > 1:
+        raise ValueError(f"referência de NPC ambígua: {term}; IDs: {', '.join(sorted(matches))}; use ID canônico")
+    return next(iter(matches), None)
+
+
 def command_npc(repo: Path, term: str) -> dict[str, Any]:
-    med_key, med_entry, med_suggestions, _ = _resolve_index(repo, NPC_INDEX, "npcs", term)
-    rel_key, rel_entry, rel_suggestions, _ = _resolve_index(repo, REL_INDEX, "relacoes", term)
+    npc_index = load_yaml(repo / NPC_INDEX) or {}
+    relation_index = load_yaml(repo / REL_INDEX) or {}
+    meters = npc_index.get("npcs") or {}
+    relations = relation_index.get("relacoes") or {}
+    if not isinstance(meters, dict) or not isinstance(relations, dict):
+        raise ValueError("índice de NPC/relação inválido")
+    entity_id = resolve_npc_reference([meters, relations], term, whole_tokens=True)
+    med_key = rel_key = entity_id
+    med_entry, rel_entry = meters.get(entity_id), relations.get(entity_id)
 
     med_payload, med_fragment = _load_fragment(repo, med_entry, "npc")
     rel_payload, rel_fragment = _load_fragment(repo, rel_entry, "relacao")
@@ -451,7 +490,9 @@ def command_npc(repo: Path, term: str) -> dict[str, Any]:
         if rel_fragment:
             sources.append(rel_fragment)
     if not found:
-        result["candidatos"] = list(dict.fromkeys(med_suggestions + rel_suggestions))[:8]
+        # Sugestões não são autorização para carregar fragmentos por aproximação.
+        result["candidatos"] = list(dict.fromkeys(
+            resolve_entity(meters, term)[2] + resolve_entity(relations, term)[2]))[:8]
 
     return envelope("npc", term, "L2", list(dict.fromkeys(sources)), result)
 

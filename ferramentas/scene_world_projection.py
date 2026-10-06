@@ -22,6 +22,7 @@ import microeventos_locais as _microevents
 import permanencia_espacial as spatial_permanence
 
 FACADE_SCHEMA = 2
+IMPLEMENTATION_VERSION = "1.0.3"
 MODULE_ID = "scene_world_projection"
 CAPABILITIES = ("local_incidents", "persistent_conditions", "spatial_continuity")
 LEGACY_ALIASES = ("world_local_incidents", "persistent_world_conditions")

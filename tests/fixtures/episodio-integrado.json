@@ -1,0 +1,65 @@
+{
+  "natureza": "episódio sintético isolado; autoria nova para aceite de integração em 2026-10-06; não é cânone nem benchmark cego",
+  "steps": [
+    {
+      "id": "prospecto",
+      "jogador": "Chamo por Silva da estrada, sem me aproximar do abrigo.",
+      "narracao": "A estrada está vazia deste lado. O abrigo fica adiante, atrás de uma porta fechada; nenhuma resposta atravessa a distância. Não há um canal confirmado com Silva daqui."
+    },
+    {
+      "id": "entrada",
+      "jogador": "Entro no abrigo e me aproximo da mesa de Silva.",
+      "narracao": "A dobradiça range quando Ren cruza a porta. Silva está à mesa, com o livro de registros aberto. Ela afasta o tinteiro da borda; há espaço livre junto à página que está conferindo."
+    },
+    {
+      "id": "conversa",
+      "jogador": "Pergunto a Silva se posso usar a mesa para conferir o mapa.",
+      "narracao": "Silva prende a folha que estava copiando debaixo de um peso e gira o livro para proteger a tinta fresca. — Pode usar esta ponta. Eu preciso fechar as rotas antes de sair; você consegue trazer o mapa antes das onze e cinquenta? Ela aponta a margem ainda em branco e retoma a conferência dos nomes, deixando a resposta a Ren."
+    },
+    {
+      "id": "promessa",
+      "jogador": "Prometo entregar o mapa a Silva antes das onze e cinquenta.",
+      "narracao": "Ren promete entregar o mapa a Silva antes das onze e cinquenta. Silva anota o horário ao lado da rota incompleta. — Combinado. Vou deixar esta linha aberta até lá. Ela mantém o registro da entrega separado das rotas que já conferiu."
+    },
+    {
+      "id": "nova_interacao",
+      "jogador": "Pergunto o que falta para Silva fechar o registro.",
+      "narracao": "Silva toca a linha que deixou em branco. — O mapa que você prometeu. As outras rotas já estão conferidas; esta fica aberta até as onze e cinquenta. Ela desliza o peso para segurar a página e continua a conferir os nomes da coluna ao lado."
+    },
+    {
+      "id": "espera_limite",
+      "jogador": "Espero no abrigo até 12:14, se nada interromper.",
+      "narracao": "A chuva miúda risca a janela do abrigo. Silva recolhe as folhas já conferidas, mas deixa a linha do mapa sob o peso. — Ainda estou esperando o mapa combinado. Quando o relógio marca onze e cinquenta, ela pousa a pena. — Chegou o horário que combinamos. O mapa não veio. A página fica aberta entre os dois."
+    },
+    {
+      "id": "continuacao",
+      "jogador": "Continuo esperando no mesmo abrigo até 12:14.",
+      "narracao": "Silva reúne as páginas das rotas conferidas num maço e deixa a do mapa sobre a mesa. — Ainda estou esperando o mapa combinado. A chuva segue batendo na janela enquanto a espera prossegue. Às 12:14, a linha ainda está em branco; a entrega continua pendente."
+    },
+    {
+      "id": "retomada_fria",
+      "jogador": "Peço a Silva que confirme o prazo que combinamos.",
+      "narracao": "Silva consulta a anotação na mesma página. — Você prometeu o mapa antes das onze e cinquenta. Agora são doze e quatorze; a entrega continua pendente. Ela conserva a linha aberta, sem dar o acordo por cumprido ou cancelado."
+    }
+  ],
+  "variants": {
+    "correta": {},
+    "memoria_omitida": {
+      "omitir_memoria_promessa": true,
+      "prosa": {
+        "nova_interacao": "Silva franze a testa. — Que mapa? Não combinamos nenhuma entrega. Ela fecha a linha que antes mantinha aberta e trata a conversa como um pedido novo.",
+        "retomada_fria": "Silva procura entre as anotações. — Não há promessa alguma registrada; nunca recebi um prazo de você."
+      }
+    },
+    "espera_passiva": {
+      "prosa": {
+        "entrada": "Ren decide esperar do lado de fora para não incomodar Silva. Ele permanece na estrada, interessado em observar o movimento, e só depois pensa em entrar."
+      }
+    },
+    "fronteira_ignorada": {
+      "prosa": {
+        "espera_limite": "Silva comenta: — Ainda estou esperando o mapa combinado. Nada interrompe a espera de Ren. O intervalo inteiro termina às 12:14, sem prazo relevante ou necessidade de parar antes."
+      }
+    }
+  }
+}

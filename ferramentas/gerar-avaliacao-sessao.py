@@ -2800,8 +2800,10 @@ def _generate_session_evaluation_v2(
     provenance: dict[str, Any] | None = None,
     source_descriptor: dict[str, Any] | None = None,
     analyzer_catalog_path: Path | None = None,
+    session_evidence: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     analyzer = _load_module(ANALYZER_PATH, "avaliacao_sessao_analisar_rollout_v2")
+    analyzer._FROZEN_SESSION_EVIDENCE = session_evidence
     previous_catalog_path = getattr(analyzer, "_CATALOG_V2_PATH", None)
     if analyzer_catalog_path is not None:
         analyzer._CATALOG_V2_PATH = analyzer_catalog_path
@@ -3196,6 +3198,7 @@ def generate_session_evaluation(
                     provenance=provenance,
                     source_descriptor=source_descriptor,
                     analyzer_catalog_path=frozen_catalog,
+                    session_evidence=(measurement_input.get("evidencias_sessao") or {}).get("conteudo"),
                 )
         return _generate_session_evaluation_v2(
             rollout,

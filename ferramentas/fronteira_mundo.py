@@ -228,16 +228,36 @@ def _event_candidates(
     _add(candidates, start, target, when, "eventos_mundo", "baralho_mundial")
 
 
+def effective_time(repo: Path) -> tuple[mundo.WorldInstant, list[str]]:
+    """Início autoritativo com overlay da sessão, sem consolidar ou avançar."""
+    import transacoes
+    start, data = mundo.load_canonical_time(repo)
+    sources = [mundo.TIME_PATH.as_posix()]
+    if not (repo / transacoes.PENDING_PATH).exists():
+        return start, sources
+    state_path = repo / "estado/estado-atual.yaml"
+    session = None
+    if state_path.exists():
+        state = yaml.safe_load(state_path.read_text(encoding="utf-8")) or {}
+        session = (state.get("campanha") or {}).get("sessao_atual")
+        sources.append("estado/estado-atual.yaml")
+    records = transacoes.pending_for_session(transacoes.load_pending(repo), session)
+    effective, _ = transacoes.overlay_target(data, records, "tempo")
+    sources.append(transacoes.PENDING_PATH.as_posix())
+    return mundo.parse_instant(effective.get("data_atual") or effective.get("data"),
+                               effective["hora_aproximada"]), sources
+
+
 def next_boundary(repo: Path, target: mundo.WorldInstant) -> dict[str, Any]:
     """Retorna a primeira fronteira em (tempo_canônico, alvo], sem mutar o repo."""
-    start, _ = mundo.load_canonical_time(repo)
+    start, time_sources = effective_time(repo)
     if target < start:
         raise BoundaryError("o alvo da fronteira não pode ser anterior ao tempo canônico")
 
     agenda = mundo.load_agenda(repo)
     world_state = mundo.load_world_state(repo)
     sources = [
-        mundo.TIME_PATH.as_posix(),
+        *time_sources,
         mundo.AGENDA_PATH.as_posix(),
         mundo.WORLD_STATE_PATH.as_posix(),
     ]

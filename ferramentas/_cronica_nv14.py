@@ -257,17 +257,22 @@ def prepare(*args, **kwargs):
             {_module_coverage.COVERAGE_KEY: legacy_coverage}, allow_unicode=True,
             sort_keys=False,
         ).encode("utf-8"))
+        memory_output_budget = final_budget - _turn_orchestration.RECEIPT_RESERVE_BYTES - interaction_reserve + legacy_coverage_bytes
+        if isinstance(prepared.get("permanencia_espacial"), dict) and type(prepared) is not dict:
+            # O formato compacto permite reservar os bytes reais do recibo
+            # seguinte, sem somar estimativa antiga + compensação histórica.
+            preview = type(prepared)({**prepared, _turn_orchestration.RECEIPT_KEY:
+                                      _turn_orchestration._turn_receipt(prepared, "preparar")})
+            measure = lambda value: len(yaml.safe_dump(value, allow_unicode=True, sort_keys=False).encode("utf-8"))
+            # A fachada de memória e a iniciativa ainda completarão cobertura.
+            receipt_reserve = measure(preview) - measure(prepared) + 192
+            memory_output_budget = final_budget - receipt_reserve - interaction_reserve
         prepared = _scene_memory.attach(
             Path(repo), prepared, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, participants=memory_participants,
             base_in_context=memory_base,
             prospective_participants=prospective,
-            max_output_bytes=(
-                final_budget
-                - _turn_orchestration.RECEIPT_RESERVE_BYTES
-                - interaction_reserve
-                + legacy_coverage_bytes
-            ),
+            max_output_bytes=memory_output_budget,
         )
         prepared = _narrative_interactions.attach_prepare(Path(repo), prepared)
         return _turn_orchestration.publish_turn(

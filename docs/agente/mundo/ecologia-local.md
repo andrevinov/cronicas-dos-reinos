@@ -4,6 +4,25 @@ A ecologia local é uma **restrição de plausibilidade** para cenas incidentais
 
 O índice fica em `cenario/locais/ecologia.yaml` e cobre exatamente os IDs do registro canônico `cenario/locais/index.yaml`.
 
+## Local efetivo e retry espacial
+
+Permanência consulta `estado/estado-atual.yaml` com os deltas pendentes da sessão.
+`localizacao.local_id` é vínculo explícito ao registro; descrição livre não é
+resolvida por proximidade. ID e área cadastrada divergentes exigem correção pela
+fonte. Na porta pública, entrada com mudança narrada de área compila o vínculo no
+mesmo writer; saída sem entrada correspondente remove o ID antigo. Preparar não
+move Ren. Buffer legado que muda área sem vínculo não transporta o ID anterior.
+
+Falha espacial conserva cena e tipo em `runtime/preparo-espacial-pendente.json`.
+Corrigir a causa e repetir o gatilho com o mesmo `--cena-id`; depois concluir o
+ticket espacial. Neutralizar ou trocar o ID não satisfaz a operação. A reserva
+de permanência continua no produtor e não é sorteada novamente.
+
+Se **o jogador desistiu da operação**, a próxima chamada pode declarar
+`--abandonar-preparo-espacial '<motivo factual da desistência>'`. O abandono fica
+em `runtime/preparos-espaciais-abandonados.jsonl`; não remove reservas, planos,
+pendências ou pressões causais. Nunca usar abandono para contornar falha técnica.
+
 ## Consulta dirigida
 
 ```bash

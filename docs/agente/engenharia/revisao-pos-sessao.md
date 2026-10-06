@@ -10,6 +10,10 @@ formulário. A avaliação permanece fora do jogo e não altera cânone.
 1. Congelar a entrada pelo [contrato existente](contrato-entrada-medicao.md),
    com o corte correto até o encerramento, sem incluir manutenção posterior.
    Usar fontes do instante; o save atual não completa silenciosamente o passado.
+   Para sessões com [captura causal](evidencias-sessao.md), selecionar o arquivo
+   encerrado com `entrada_medicao.py --evidencias-sessao`. Consultar
+   `causal_coverage` e arquivos congelados pelo índice privado; fonte de revisão
+   não comprova que foi entregue ao narrador. Lacuna exige abstenção delimitada.
 2. Preparar a revisão integral. O diretório de trabalho contém fontes reservadas:
    precisa ficar fora do repositório servido, com permissão 0700. Arquivos são
    0600; o bruto não é copiado para o projeto.

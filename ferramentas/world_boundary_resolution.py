@@ -20,6 +20,7 @@ import fronteira_vivacidade as _liveness
 import resolver_fronteira as _batch
 
 FACADE_SCHEMA = 2
+IMPLEMENTATION_VERSION = "1.0.2"
 MODULE_ID = "world_boundary_resolution"
 CAPABILITIES = ("temporal_liveness", "pending_batch_resolution")
 LEGACY_ALIASES = ("liveness_boundary", "batch_world_boundary")

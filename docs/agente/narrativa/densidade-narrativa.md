@@ -27,6 +27,13 @@ Nunca tratar os três campos abaixo como versões quase iguais do mesmo texto.
 
 A `narracao` pode ser longa. Seu tamanho é decidido pela importância dramática, não pelo tamanho desejado do JSONL.
 
+Textura não autoriza decisões novas de Ren. Silêncio, hesitação, espera deliberada,
+fala e emoção definitiva dele precisam estar na intenção do jogador; consequências
+involuntárias precisam de causa. NPCs conservam suas próprias decisões e reações.
+Aplicar a distinção intenção/consequência/decisão do
+[`guia-de-narrativa.md`](../../../narracao/principios/guia-de-narrativa.md#expandir-a-intenção-sem-decidir-por-ren)
+antes de expandir a ação em prosa. Densidade e agência são propriedades separadas.
+
 ### 2. `resumo` — compressão operacional
 
 É a lembrança curta do que aconteceu. Deve responder, em poucas frases:

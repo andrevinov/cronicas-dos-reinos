@@ -266,11 +266,15 @@ def prepare_input(
     cutoff_bytes: int | None = None, expected_sha256: str | None = None,
     contract_path: Path = DEFAULT_CONTRACT, modules_directory: Path = DEFAULT_MODULES,
     code_paths: Mapping[str, Path] | None = None,
+    session_evidence: Path | None = None,
 ) -> dict[str, Any]:
     if not re.fullmatch(r"[0-9]{3,}", session_id) or int(session_id) == 0:
         raise InputContractError("sessao_id precisa conter ao menos três dígitos, por exemplo 023.")
     contract = _load_json(contract_path)
     errors = validate_contract(contract)
+    if session_evidence is not None and cutoff_bytes is None:
+        from ferramentas import evidencias_sessao
+        cutoff_bytes = evidencias_sessao.closure_cutoff(rollout, session_id)
     data = _read_prefix(rollout, cutoff_bytes)
     source_hash = hashlib.sha256(data).hexdigest()
     inspected, source_errors = _inspect_source(data, contract)
@@ -320,6 +324,14 @@ def prepare_input(
         "diagnosticos": errors,
         "status": "bloqueada" if any(item["gravidade"] == "bloqueio" for item in errors) else "limitada" if errors else "valida",
     }
+    if session_evidence is not None:
+        from ferramentas import evidencias_sessao
+        captured = _snapshot(session_evidence, "evidencias_sessao", errors)
+        if captured["estado"] == "presente":
+            evidencias_sessao.validate_closed(captured["conteudo"])
+            if captured["conteudo"]["sessao"] != session_id:
+                raise InputContractError("Captura causal pertence a outra sessão")
+        result["evidencias_sessao"] = captured
     result["entrada_id"] = digest(result)
     additional = [item for item in validate_input(result) if item not in errors]
     if additional:
@@ -336,7 +348,7 @@ def validate_input(bundle: Any) -> list[dict[str, Any]]:
     required = {"sessao_id", "escopo_validacao", "fonte", "contrato", "snapshots", "contratos_modulos", "codigo_sha256", "ambiente", "diagnosticos", "status", "entrada_id"}
     if required - set(bundle):
         return [diagnostic("entrada_incompleta", "entrada", f"Campos ausentes: {sorted(required - set(bundle))}")]
-    unknown = set(bundle) - required - {"schema_entrada_medicao"}
+    unknown = set(bundle) - required - {"schema_entrada_medicao", "evidencias_sessao"}
     if unknown:
         errors.append(diagnostic("campos_desconhecidos", "entrada", f"Campos não declarados: {sorted(unknown)}"))
     for name in ("fonte", "contrato", "snapshots", "contratos_modulos", "codigo_sha256", "ambiente"):
@@ -351,6 +363,17 @@ def validate_input(bundle: Any) -> list[dict[str, Any]]:
     if errors and any(item["codigo"] in {"estrutura_invalida", "diagnosticos_invalidos"} for item in errors):
         return errors
     body = {key: value for key, value in bundle.items() if key != "entrada_id"}
+    if "evidencias_sessao" in bundle:
+        blob = bundle["evidencias_sessao"]
+        try:
+            from ferramentas import evidencias_sessao
+            if blob.get("estado") != "presente" or blob.get("sha256") != digest(blob.get("conteudo")):
+                raise ValueError("Snapshot causal ausente ou alterado")
+            evidencias_sessao.validate_closed(blob["conteudo"])
+            if blob["conteudo"]["sessao"] != bundle["sessao_id"]:
+                raise ValueError("Sessão causal divergente")
+        except (ValueError,KeyError,TypeError,AttributeError) as exc:
+            errors.append(diagnostic("evidencias_causais_invalidas", "evidencias_sessao", str(exc)))
     try:
         actual_id = digest(body)
     except (ValueError, TypeError):
@@ -470,6 +493,7 @@ def main() -> int:
     prepare.add_argument("--sessao-id", required=True)
     prepare.add_argument("--saida", required=True, type=Path)
     prepare.add_argument("--corte-bytes", type=int)
+    prepare.add_argument("--evidencias-sessao", type=Path)
     prepare.add_argument("--sha256-esperado")
     prepare.add_argument("--contrato", type=Path, default=DEFAULT_CONTRACT)
     prepare.add_argument("--contratos-modulos", type=Path, default=DEFAULT_MODULES)
@@ -481,10 +505,13 @@ def main() -> int:
     args = parser.parse_args()
     try:
         if args.cmd == "preparar":
+            if args.evidencias_sessao and args.saida.resolve().is_relative_to(ROOT):
+                raise InputContractError("Entrada com fontes causais reservadas deve ficar fora do repositório servido")
             bundle = prepare_input(args.rollout, session_id=args.sessao_id,
                                    source_paths={name: getattr(args, name) for name in SOURCES},
                                    cutoff_bytes=args.corte_bytes, expected_sha256=args.sha256_esperado,
-                                   contract_path=args.contrato, modules_directory=args.contratos_modulos)
+                                   contract_path=args.contrato, modules_directory=args.contratos_modulos,
+                                   session_evidence=args.evidencias_sessao)
             args.saida.parent.mkdir(parents=True, exist_ok=True)
             serialized = canonical_bytes(bundle) + b"\n"
             if args.saida.exists():
@@ -492,6 +519,8 @@ def main() -> int:
                     raise InputContractError("A saída já contém outra entrada; use outro arquivo para preservar a anterior.")
             else:
                 with args.saida.open("xb") as handle:
+                    if args.evidencias_sessao:
+                        os.fchmod(handle.fileno(), 0o600)
                     handle.write(serialized)
             print(json.dumps({"entrada_id": bundle["entrada_id"], "status": bundle["status"],
                               "saida": str(args.saida), "diagnosticos": bundle["diagnosticos"]}, ensure_ascii=False, indent=2))

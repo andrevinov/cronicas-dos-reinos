@@ -60,18 +60,20 @@ def prepare_conclusion(
     public = _stay.revalidate(repo, meta)
     if public["estado"] not in _stay.RESULTS:
         return _BASE_PREPARE_CONCLUSION(repo, meta, transaction)
+    if isinstance(meta, dict) and meta.get("pressao_ja_concluida") is True:
+        return _BASE_PREPARE_CONCLUSION(repo, meta, transaction)
 
-    block = transaction.get("permanencia_espacial")
-    if not isinstance(block, dict):
-        raise _stay.SpatialPermanenceError(
-            "retry de pressão espacial concluída exige repetir o mesmo bloco permanencia_espacial"
-        )
     state = _stay.load_state(repo)
     record = state["avaliacoes"].get(public["avaliacao_id"])
     if not isinstance(record, dict):
         raise _stay.SpatialPermanenceError("retry não encontra avaliação espacial instalada")
     existing = copy.deepcopy(record.get("decisao") or {})
     existing.pop("em", None)
+    block = transaction.get("permanencia_espacial")
+    if not isinstance(block, dict):
+        raise _stay.SpatialPermanenceError(
+            "retry de pressão espacial concluída exige repetir o mesmo bloco permanencia_espacial"
+        )
     if block != existing:
         raise _stay.SpatialPermanenceError(
             "retry de permanência diverge da decisão espacial já instalada"

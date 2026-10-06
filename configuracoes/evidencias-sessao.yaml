@@ -1,0 +1,4 @@
+schema: 1
+ativo: true
+# Arquivo reservado externo ao repo. Sobrescrever base via CRONICAS_EVIDENCIAS_DIR.
+# Padrão: ~/.local/state/cronicas-evidencias/<identidade-do-repo>/<sessao>.json

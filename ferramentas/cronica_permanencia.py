@@ -34,12 +34,14 @@ class _CompactProjection(dict):
     """Projeção pública completa, serializada sem indentação redundante."""
 
 
-yaml.SafeDumper.add_representer(
-    _CompactProjection,
-    lambda dumper, value: dumper.represent_mapping(
-        "tag:yaml.org,2002:map", value.items(), flow_style=True
-    ),
-)
+def _represent_compact(dumper, value):
+    # Não gastar o orçamento em reindentação de um envelope flow. CLI e
+    # medidores usam o mesmo representer; chaves, valores e recibos permanecem.
+    dumper.best_width = 1_000_000
+    return dumper.represent_mapping("tag:yaml.org,2002:map", value.items(), flow_style=True)
+
+
+yaml.SafeDumper.add_representer(_CompactProjection, _represent_compact)
 
 _BASE_BUILD_PARSER = _base.build_parser
 _BASE_RUN_TURN = _base._run_turn
@@ -121,7 +123,8 @@ def _stay_gate(public: dict[str, Any]) -> list[dict[str, Any]]:
     gates: list[dict[str, Any]] = [
         {
             "tipo": "permanencia_espacial",
-            "resultado": "pressao_espacial" if public.get("pressao_primaria") else "calma_espacial",
+            "resultado": ("pressao_ja_concluida" if public.get("estado") in _stay.RESULTS else
+                          "pressao_espacial" if public.get("pressao_primaria") else "calma_espacial"),
             "avaliacao_id": public["avaliacao_id"],
             "local_id": public["local_id"],
             "data": public["data"],
@@ -191,6 +194,19 @@ def _hot_prepare(
         raise _core.CronicaError(f"NV15: {exc}") from exc
     public = planned["publico"]
     meta = planned["ticket"]
+    if public.get("estado") in _stay.RESULTS:
+        meta = {**meta, "pressao_ja_concluida": True}
+        # A reserva permanece integral no controle canônico. Uma interação
+        # nova precisa do recibo/identidade do acontecimento concluído, não da
+        # premissa e instruções de uma decisão que já não será materializada.
+        public = copy.deepcopy(public)
+        public.pop("ecologia", None)
+        public["candidatos"] = []
+        for key, fragment in (("microevento_local", "carta"), ("incidente_local", "incidente")):
+            item = public.get(key) or {}
+            if isinstance(item.get(fragment), dict):
+                item[fragment] = {k: item[fragment][k] for k in ("id", "nome") if k in item[fragment]}
+                item["ja_concluido"] = True
     request = _core._request(
         scene_id=scene_id,
         npcs=[],
@@ -251,7 +267,11 @@ def _hot_prepare(
     result["cobertura_avaliacao_modular"] = planned["cobertura_avaliacao_modular"]
     decorated = _hot._decorate(result, reactive=False)
     decorated["reativa_espacial"] = True
-    return decorated
+    # O envelope completo continua semanticamente idêntico. Iniciativa e
+    # promessa disputam o mesmo teto com a projeção espacial; compactar só o
+    # subbloco não basta quando a composição acrescenta metadados e memória.
+    # A representação também é usada por memoria_cena.size e pela CLI.
+    return _CompactProjection(decorated)
 
 
 def _hot_revalidate(repo: Path, payload: dict[str, Any]) -> dict[str, Any]:

@@ -1076,7 +1076,8 @@ def evaluate(
     repo = Path(repo).resolve()
     if start is None:
         try:
-            start, _ = mundo.load_canonical_time(repo)
+            import fronteira_mundo
+            start, _ = fronteira_mundo.effective_time(repo)
         except mundo.WorldEngineError as exc:
             raise LivenessBoundaryError(str(exc)) from exc
     if target < start:

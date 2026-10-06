@@ -17,6 +17,7 @@ import yaml
 
 import iniciativa_elenco_estado as receipts
 import iniciativa_social
+import memoria_cena
 import pressao_narrativa
 
 SCHEMA = 1
@@ -84,7 +85,12 @@ def _window(payload: dict[str, Any]) -> tuple[str, str, str]:
         identity = {key: stay.get(key) for key in ("local_id", "data", "periodo")}
         if all(isinstance(value, str) and value.strip() for value in identity.values()):
             return "conv-" + _digest(identity)[:20], "permanencia", scene_id
-    return "cena-" + _digest(scene_id)[:20], "cena", scene_id
+    meta = payload.get(memoria_cena.TICKET_KEY) or {}
+    physical = memoria_cena.cast(meta.get("elenco"))
+    physical_scene_id = physical["cena_id"] if physical is not None else scene_id
+    # O recibo identifica a janela física; cena_id continua identificando a
+    # interação que apresentou a abertura, inclusive nos tickets legados.
+    return "cena-" + _digest(physical_scene_id)[:20], "cena", scene_id
 
 
 def _known(npc_id: str, indexes: list[dict[str, Any]]) -> bool:
@@ -154,7 +160,7 @@ def _blockers(prepared: dict[str, Any], payload: dict[str, Any], scene_mode: str
     if isinstance(contact, dict) and contact.get("plano_id"):
         weighted.append((5, "contato_social:" + str(contact["plano_id"])))
     stay = prepared.get("permanencia_espacial")
-    if isinstance(stay, dict) and stay.get("pressao_primaria"):
+    if isinstance(stay, dict) and stay.get("pressao_primaria") and stay.get("exige_decisao_conclusao", True):
         weighted.append((6, "permanencia_espacial:" + str(stay["pressao_primaria"])))
     if (payload.get("cena") or {}).get("npcs"):
         weighted.append((5, "acao_social_solicitada"))

@@ -381,8 +381,8 @@ def pending(repo: Path) -> dict[str, Any]:
 
 
 def boundary(repo: Path, *, date: str, hour: str) -> dict[str, Any]:
-    projected = _base.boundary(repo, date=date, hour=hour)
     try:
+        projected = _base.boundary(repo, date=date, hour=hour)
         augmented = fronteira_torneio.augment_endpoint(
             repo,
             projected,
@@ -391,8 +391,26 @@ def boundary(repo: Path, *, date: str, hour: str) -> dict[str, Any]:
         )
     except (ValueError, _base.mundo.WorldEngineError) as exc:
         raise _base.EndpointError(str(exc)) from exc
-    if augmented is not projected:
-        _base.validate_endpoint(augmented)
+    availability = augmented["disponibilidade"]
+    start = _base.mundo.parse_instant(availability["inicio"]["data"], availability["inicio"]["hora"])
+    target = _base.mundo.parse_instant(date, hour)
+    duration = target.minute - start.minute
+    limit = (augmented.get("proximo_passo") or {}).get("fronteira") or availability["alvo"]
+    availability["janela_consultada"] = {
+        "duracao_minutos": duration,
+        "cobertura": "intervalo" if duration else "instante_sem_compressao",
+        "limite_narravel": limit,
+    }
+    if duration == 0:
+        availability["alvo_inteiro_sem_checkpoint"] = False
+        if not (augmented.get("proximo_passo") or {}).get("fronteira"):
+            augmented["proximo_passo"] = {"acao": "informar_alvo_final_da_compressao"}
+    from _module_facade import attach_coverage
+    zero = duration == 0 and not (augmented.get("proximo_passo") or {}).get("fronteira")
+    attach_coverage(augmented, module_id="world_boundary_resolution", phase="fronteira",
+                    applicability="nao_aplicavel" if zero else "aplicavel",
+                    negative_reason="consulta de duração zero não cobre compressão" if zero else None)
+    _base.validate_endpoint(augmented)
     return augmented
 
 
@@ -419,6 +437,14 @@ def build_parser() -> argparse.ArgumentParser:
         if isinstance(action, argparse._SubParsersAction)
     )
     _add_approach_flags(sub.choices["cena"])
+    frontier = sub.choices["fronteira"]
+    # Mesmo destino e mesma assinatura legada; nomes novos explicitam o fim.
+    for action in frontier._actions:
+        if action.dest in {"data", "hora"}:
+            option = "--" + action.dest + "-alvo"
+            action.option_strings.append(option)
+            frontier._option_string_actions[option] = action
+            action.help = action.dest + " final pretendida; início deriva do tempo efetivo, não deste argumento"
     return parser
 
 

@@ -145,6 +145,30 @@ class SceneCastContractTest(unittest.TestCase):
         out = memory.compile_cast(self.payload(previous=cast()), tx)
         self.assertIsNone(out["deltas"][-1]["valor"])
 
+    def test_continuidade_fisica_exige_local_e_ausencia_de_entrada_ou_transito(self):
+        previous = cast()
+        neutral = {"cena": {"scene_id": "nova-interacao"}}
+        self.assertEqual(memory.continuing_cast(neutral, previous, previous["local"]), previous)
+        cases = [
+            ({"cena": {"scene_id": "nova-interacao", "place": "praca"}}, previous["local"]),
+            ({**neutral, "transito_urbano": {"cidade": "cidade_fixture"}}, previous["local"]),
+            (neutral, {"area": "praça", "ponto_exato": "fonte"}),
+            (neutral, {"area": "porto"}),
+            (neutral, {}),
+        ]
+        for payload, local in cases:
+            with self.subTest(payload=payload, local=local):
+                self.assertIsNone(memory.continuing_cast(payload, previous, local))
+
+    def test_cena_fisica_anterior_so_pode_ser_conservada_com_continuidade(self):
+        payload = self.payload(previous=cast())
+        payload["cena"]["scene_id"] = "nova-interacao"
+        tx = {"deltas": []}
+        self.assertIs(memory.compile_cast(payload, tx), tx)
+        payload["cena"]["place"] = "porto"
+        with self.assertRaisesRegex(memory.SceneMemoryError, "outra cena/local"):
+            memory.compile_cast(payload, tx)
+
     def test_atualizacao_explicita_pode_fechar_elenco_no_mesmo_turno(self):
         tx = {"deltas": [{"alvo": "estado", "op": "set", "caminho": memory.CAST_PATH, "valor": cast([])}]}
         self.assertIs(memory.compile_cast(self.payload(), tx), tx)

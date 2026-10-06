@@ -24,6 +24,56 @@ class LocationError(ValueError):
     pass
 
 
+def effective_state(state: dict, records: list) -> dict:
+    """Overlay espacial compartilhado com a memória, sem leitura adicional."""
+    import transacoes
+    # Normalização só da projeção. O histórico e o buffer permanecem intactos.
+    from copy import deepcopy
+    state = deepcopy(state)
+    for record in records:
+        deltas = record.get("deltas") or []
+        changes_area = any(d.get("alvo") == "estado" and d.get("caminho") in
+                           {"localizacao", "localizacao.area"} for d in deltas)
+        binds_id = any(d.get("alvo") == "estado" and
+                       (d.get("caminho") == "localizacao.local_id" or
+                        (d.get("caminho") == "localizacao" and
+                         isinstance(d.get("valor"), dict) and "local_id" in d["valor"]))
+                       for d in deltas)
+        if changes_area and not binds_id:
+            if isinstance(state.get("localizacao"), dict):
+                state["localizacao"].pop("local_id", None)
+        state, _ = transacoes.overlay_target(state, [record], "estado")
+    return state
+
+
+def current(repo: Path) -> dict[str, Any]:
+    """Local efetivo por fonte e vínculo explícito; nunca por proximidade."""
+    import transacoes
+    source = "estado/estado-atual.yaml"
+    state = _load(repo / source)
+    if not isinstance(state, dict) or not isinstance(state.get("localizacao"), dict):
+        raise LocationError("permanência exige localização canônica em " + source)
+    records = transacoes.pending_for_session(
+        transacoes.load_pending(repo), (state.get("campanha") or {}).get("sessao_atual")
+    )
+    state = effective_state(state, records)
+    location = state.get("localizacao") or {}
+    resolved = resolve(repo, location.get("local_id") or location.get("area"))
+    if (location.get("local_id") and location.get("area")
+            and location["local_id"] != location["area"]):
+        try:
+            area = resolve(repo, location["area"])
+        except LocationError:
+            # O registro deve ser válido mesmo quando a área é prosa descritiva.
+            area = None
+        if area and area["local_id"] != resolved["local_id"]:
+            raise LocationError("local_id e área canônica divergem; corrigir vínculo pela fonte, sem mover Ren")
+    sources = [source, *resolved.get("fontes_lidas", [])]
+    if records:
+        sources.append(transacoes.PENDING_PATH.as_posix())
+    return {**resolved, "fontes_lidas": list(dict.fromkeys(sources))}
+
+
 def configured(repo: Path) -> bool:
     return (repo / INDEX).is_file()
 

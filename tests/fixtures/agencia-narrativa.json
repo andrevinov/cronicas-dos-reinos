@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "data": "2026-10-06",
+  "natureza": "respostas_novas_do_agente_em_cenario_isolado_e_variante_adversarial",
+  "limite": "Autoria e revisão pelo mesmo agente, sem cegamento ou revisor independente. Tests reproduzem estes pareceres; não geram nem julgam nova prosa.",
+  "criterion_id": "narrative_delivery.narrative_density",
+  "cases": [
+    {
+      "id": "retorno_normal",
+      "jogador": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+      "contexto": "Cenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.",
+      "narracao": "Os degraus da escada rangem sob as botas. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés; junto às barracas, os vendedores recolhem as últimas cestas. O senhor Tanaka percorre o caminho habitual até o circo. Na entrada, a lona bate de leve contra o poste, e uma lamparina ilumina o corredor entre as carroças.",
+      "parecer": "A descida e o percurso executam o retorno solicitado pelos meios estabelecidos. A textura pertence ao ambiente; não atribui a Ren espera, motivação, fala, emoção ou escolha adicional. Não cria incidente para atrasar o retorno.",
+      "quality": "adequada",
+      "player_agency": "ok"
+    },
+    {
+      "id": "espera_ordenada",
+      "jogador": "Como senhor Tanaka, Ren espera três minutos no telhado e depois volta ao circo pelo caminho habitual.",
+      "contexto": "Cenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual aberto, retorno automático. Consulta da janela de três minutos não encontrou fronteira ou causa devida. Persona pública: senhor Tanaka.",
+      "narracao": "Durante os três minutos no telhado, a fumaça de uma chaminé próxima se desfaz acima das telhas. Nenhum movimento interrompe a espera. Ao fim do intervalo, o senhor Tanaka desce pela escada e segue pela rua conhecida. A lona do circo já aparece entre os telhados; na entrada, uma lamparina ilumina o corredor entre as carroças.",
+      "parecer": "A espera de três minutos está literalmente autorizada; seu término mantém o retorno pedido. A ausência de interrupção vem da janela resolvida da fixture. A mesma ação que seria indevida no retorno normal é legítima nesta entrada; nenhuma estratégia ou emoção foi inventada.",
+      "quality": "adequada",
+      "player_agency": "ok"
+    },
+    {
+      "id": "interrupcao_externa",
+      "jogador": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+      "contexto": "Cenário sintético, sem efeito na campanha. Ren desceu pela escada livre. O caminho habitual passa pela ponte. Avaria da ponte já estabelecida: duas tábuas centrais cederam; barreira instalada. Vigia presente, responsável por impedir travessias até o reparo; não conhece identidade secreta de Ren. Obstáculo visível, sem rolagem exigida para constatá-lo.",
+      "narracao": "No caminho do circo, a ponte está fechada por uma travessa de madeira. Além dela, duas tábuas cedidas deixam à mostra a água escura. O vigia ergue a mão diante do senhor Tanaka. “Passagem fechada. Ninguém atravessa enquanto o carpinteiro não acabar.” Ele firma os pés ao lado da barreira; atrás dele, o martelo continua batendo. O caminho habitual termina naquele bloqueio.",
+      "parecer": "A avaria e a responsabilidade do vigia estão estabelecidas antes da prosa. A recusa é iniciativa própria do NPC e impede o caminho habitual. A resposta termina no obstáculo: não faz Ren esperar pelo reparo, discutir, aceitar a ordem ou escolher desvio, nem transforma a intenção em sucesso garantido.",
+      "quality": "adequada",
+      "player_agency": "ok"
+    },
+    {
+      "id": "espera_nao_autorizada",
+      "jogador": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+      "contexto": "Cenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.",
+      "narracao": "Ren espera três minutos no telhado para ter certeza de que ninguém o segue. Só então desce pela escada. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés. O senhor Tanaka percorre o caminho habitual e chega ao circo, onde uma lamparina ilumina o corredor entre as carroças.",
+      "parecer": "A entrada autoriza o retorno normal, e o contexto afirma saída livre sem incidente devido. A prosa acrescenta três minutos voluntários e uma intenção de verificar perseguidores, ambas ausentes das fontes. Chegar ao destino e manter textura não compensam essa decisão nova. A causa específica de geração permanece hipótese; a violação é observável no texto.",
+      "quality": "inadequada",
+      "player_agency": "violado"
+    }
+  ]
+}

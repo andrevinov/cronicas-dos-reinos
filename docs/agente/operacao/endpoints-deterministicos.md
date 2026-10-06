@@ -45,11 +45,33 @@ A função subjacente continua sendo `cena_mundo.prepare_scene`. O endpoint não
 
 ```bash
 python3 ferramentas/endpoints.py fronteira \
-  --data "15 Eleasis, 1372 DR" \
-  --hora "07:00"
+  --data-alvo "15 Eleasis, 1372 DR" \
+  --hora-alvo "07:00"
 ```
 
 Usa a mesma consulta de `fronteira_mundo.py`. Se existir fronteira, `proximo_passo` manda resolver apenas até ela e checkpointar antes de continuar. Se não existir, informa que o intervalo inteiro pode ser comprimido. Nenhuma camada é processada pela consulta.
+
+Os argumentos são **o fim pretendido**, nunca a hora atual. `--data` e `--hora`
+continuam aliases de compatibilidade com o mesmo significado. O início vem de
+`estado/tempo.yaml` com overlay dos deltas pendentes da sessão atual; não é digitado
+pelo narrador nem substituído pelo cursor de processamento do mundo.
+
+Conferir `disponibilidade.inicio`, `alvo` e `janela_consultada`: ela informa
+`duracao_minutos`, `cobertura` e `limite_narravel`. Exemplo: início 11:35, alvo
+12:14, causa às 11:50 → janela pretendida de 39 minutos, narração permitida até
+11:50. Duração zero é `instante_sem_compressao`: não comprova a espera de 39 minutos
+e não devolve autorização para comprimir tempo. Informar o alvo final verdadeiro.
+
+Registrar só o instante alcançado pelo writer de `cronica concluir`. Ao interromper,
+checkpoint e resolução causal existentes precedem a continuação: consultar novamente
+o alvo restante a partir do novo tempo efetivo e usar novo `cronica preparar`.
+Permanência usa `--permanencia-local` em cada janela; não saltar o limite nem remover
+o gatilho espacial. Retry repete o concluir anterior, sem novo avanço ou resolução.
+Se o alvo/intenção mudar, a consulta antiga não cobre a nova janela.
+
+Fala/ação curta continua sem consulta adicional de fronteira. A saída é um contrato
+operacional; não é um ticket que imponha sozinho o limite ao writer ou detecte uma
+compressão omitida pelo narrador. A revisão semântica verifica essa correspondência.
 
 ## Pendências do Mundo Vivo
 

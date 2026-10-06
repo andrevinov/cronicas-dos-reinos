@@ -50,5 +50,28 @@ def status(repo: Path) -> dict[str, Any]:
     return result
 
 
+_EVIDENCE_CHECKPOINT = checkpoint
+_EVIDENCE_RECOVER = recover
+
+
+def checkpoint(repo: Path, kind: str) -> dict[str, Any]:
+    import evidencias_sessao
+    evidencias_sessao.capture(repo, "antes_checkpoint")
+    result = _EVIDENCE_CHECKPOINT(repo, kind)
+    result["evidencias_sessao"] = evidencias_sessao.capture(repo, "encerrar" if kind == "sessao" else "checkpoint")
+    return result
+
+
+def recover(repo: Path) -> dict[str, Any]:
+    import evidencias_sessao
+    journal_kind = _lifecycle_journal_kind(repo)
+    evidencias_sessao.prepare_storage(repo)
+    result = _EVIDENCE_RECOVER(repo)
+    phase = "iniciar" if journal_kind == ciclo_sessoes.START_KIND else (
+        "encerrar" if result["ciclo"].get("status") == ciclo_sessoes.STATUS_BETWEEN else "checkpoint")
+    result["evidencias_sessao"] = evidencias_sessao.capture(repo, phase)
+    return result
+
+
 if __name__ == "__main__":
     raise SystemExit(_BASE_MAIN())

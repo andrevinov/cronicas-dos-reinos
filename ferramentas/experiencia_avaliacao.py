@@ -13,7 +13,7 @@ from typing import Any
 
 import yaml
 
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 RUBRIC_VERSION = "objetivos-jogo/1.0.0"
 DIAGNOSES = {"extracao_avaliacao", "comportamento_modulo", "instrucao_dado", "limitacao_fonte"}
 CAUSAL_STAGES = {"causa", "elegibilidade", "selecao", "contexto", "narracao", "persistencia", "recuperacao", "medicao", "indeterminada"}
@@ -29,7 +29,7 @@ def criteria(catalog: dict[str, Any]) -> dict[str, dict[str, Any]]:
             for m in catalog["modulos"] for s in m["subcapacidades"] if s.get("contrato_objetivo")}
 
 
-def frames(turns, catalog, visible, operations, source_sha256=None):
+def frames(turns, catalog, visible, operations, source_sha256=None, session_evidence=None):
     """Devolve descritores exportáveis e textos efêmeros para verificar citações.
 
     OBS identifica uma observação sem inventar interação canônica. Saídas só
@@ -103,6 +103,9 @@ def frames(turns, catalog, visible, operations, source_sha256=None):
                     continue
                 loc = source(kind, body, "reservada", "native/" + parent + "/" + kind)
                 sources[loc]["available_before_response"] = all(op["available_before_response"] for op in related)
+        if session_evidence is not None:
+            from ferramentas import evidencias_sessao
+            evidencias_sessao.add_sources(session_evidence, sources, source)
         descriptor = {"evaluation_ref": key, "interaction_ref": ref,
                       "source_cut_sha256": source_sha256, "rubric_sha256": digest(objectives),
                       "class": "OFF" if input_text.strip().startswith("[") and input_text.strip().endswith("]") and "RODAPE_CANONICO" not in text else "ON",

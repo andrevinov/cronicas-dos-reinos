@@ -1,6 +1,12 @@
 # Contratos complementares de conclusão
 
-Referência operacional das instruções estáticas abreviadas na saída de permanência espacial. Os campos, tickets, avaliações e gates continuam autoritativos na saída de `cronica preparar`.
+Referência operacional das instruções estáticas abreviadas na saída de entrada, permanência e trânsito. Os campos, tickets, avaliações e gates continuam autoritativos na saída de `cronica preparar`.
+
+O contrato breve continua entregando comando, campos, disciplina e regra de retry.
+Somente instruções estáticas repetidas usam esta referência; avaliações, cartas,
+modificadores, fontes, contratos dinâmicos e memória não são apagados para caber.
+Falha espacial conserva a operação: repetir cena e gatilho até conclusão. Ver
+[local efetivo e desistência explícita](../mundo/ecologia-local.md).
 
 ## sidequest_emergente_task46
 

@@ -1,0 +1,10 @@
+{
+  "natureza": "expectativas_separadas_dos_pareceres_registradas_apos_revisao_nova",
+  "data": "2026-10-06",
+  "cases": {
+    "correta": {"failures": [], "not_applicable": 1, "insufficient_sources": 1},
+    "memoria_omitida": {"failures": ["promessa:context_and_memory.scene_and_durable_memory", "promessa:npc_continuity_and_social_behavior.relationship_memory_reputation", "nova_interacao:context_and_memory.scene_and_durable_memory", "retomada_fria:context_and_memory.scene_and_durable_memory"], "not_applicable": 2, "insufficient_sources": 1},
+    "espera_passiva": {"failures": ["entrada:scene_world_projection.spatial_continuity", "entrada:narrative_delivery.narrative_density"], "not_applicable": 1, "insufficient_sources": 1},
+    "fronteira_ignorada": {"failures": ["espera_limite:world_boundary_resolution.temporal_liveness"], "not_applicable": 1, "insufficient_sources": 1}
+  }
+}

@@ -40,7 +40,7 @@ class NarrativeDeliveryContractTest(unittest.TestCase):
         commands = [tuple(item.comando[1:]) for item in preflight.checks(incluir_testes=False)]
 
         self.assertGreaterEqual(int(catalog["versao_catalogo"].split(".")[0]), 5)
-        self.assertEqual(module["versao_implementacao"], "1.0.2")
+        self.assertEqual(module["versao_implementacao"], delivery.IMPLEMENTATION_VERSION)
         self.assertGreaterEqual(int(module["versao_avaliacao"].split(".")[0]), 4)
         self.assertEqual(
             {item["id"] for item in module["subcapacidades"]},

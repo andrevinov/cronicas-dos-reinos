@@ -25,7 +25,11 @@ poetry run python ferramentas/gerar-avaliacao-sessao.py \
   --entrada-medicao /tmp/entrada-s023.json
 ```
 
-Sem corte explícito, o preparo captura o tamanho disponível ao abrir o arquivo.
+Sem corte explícito, o preparo legado captura o tamanho disponível ao abrir o arquivo.
+Com `--evidencias-sessao`, a extensão opcional schema 1 preserva conteúdos
+causais reservados, exige captura encerrada e seleciona o recibo de encerramento
+mais a resposta final. Entrada com essa extensão fica fora do repositório, em
+arquivo 0600. Cobertura e limites: [evidências por sessão](evidencias-sessao.md).
 O corte deve terminar em registros JSON completos. Para selecionar o mesmo
 prefixo de um rollout que continuou crescendo, fornecer `--corte-bytes N` e,
 quando conhecido, `--sha256-esperado HASH`. A verificação lê exatamente esse

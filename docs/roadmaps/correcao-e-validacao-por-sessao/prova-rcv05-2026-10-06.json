@@ -1,0 +1,608 @@
+{
+  "schema": 1,
+  "data": "2026-10-06",
+  "natureza": "snapshot_de_execucao_controlada_historica",
+  "motivo": "Registrar aceite local da RCV-05 sem atualizar sessão 024 ou publicar sessão sintética no dashboard.",
+  "limite": "Autoria e revisão pelo mesmo agente, sem cegamento ou revisor independente. Tests reproduzem estes pareceres; não geram nem julgam nova prosa.",
+  "fonte_fixture_sha256": "4bec1f897d58c8315a4117a3ed1b27794c64eafb760c6aff88940c02cf92c597",
+  "instrucao_consumida": "<prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+  "revisao_semantica": {
+    "schema": 1,
+    "status": "revisada",
+    "scope": "parcial_declarado",
+    "request_id": "8128b2f85982247115aaa9f46fcad5414ec6a9db89127464f0626d8db4a8cffe",
+    "reviewer": {
+      "identity": "Codex/agencia-narrativa-2026-10-06",
+      "role": "revisor_poshoc",
+      "configuration": {
+        "executor": "agente_ativo",
+        "mode": "leitura_semantica_das_fontes",
+        "autoria_e_revisao_mesmo_agente": true
+      }
+    },
+    "units_selected": 4,
+    "units_reviewed": 4,
+    "not_applicable": 0,
+    "insufficient_sources": 0,
+    "blocked_reviews": 0,
+    "method_limit": "Revisão pelo agente, não validação cega por terceiro nem aprovação longitudinal."
+  },
+  "casos": [
+    {
+      "id": "retorno_normal",
+      "jogador": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+      "contexto": "Cenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.",
+      "narracao": "Os degraus da escada rangem sob as botas. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés; junto às barracas, os vendedores recolhem as últimas cestas. O senhor Tanaka percorre o caminho habitual até o circo. Na entrada, a lona bate de leve contra o poste, e uma lamparina ilumina o corredor entre as carroças.",
+      "parecer": "A descida e o percurso executam o retorno solicitado pelos meios estabelecidos. A textura pertence ao ambiente; não atribui a Ren espera, motivação, fala, emoção ou escolha adicional. Não cria incidente para atrasar o retorno.",
+      "quality": "adequada",
+      "player_agency": "ok",
+      "interaction_ref": "S999-I0001",
+      "sources": [
+        {
+          "locator": "S999-I0001/input",
+          "kind": "input",
+          "sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d",
+          "visibility": "publica",
+          "text": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka."
+        },
+        {
+          "locator": "S999-I0001/response",
+          "kind": "response",
+          "sha256": "497ac0430bb53b8089bd54e8f0279dc5ea2b2ec2457b31021c5430abd9d79d72",
+          "visibility": "publica",
+          "text": "Os degraus da escada rangem sob as botas. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés; junto às barracas, os vendedores recolhem as últimas cestas. O senhor Tanaka percorre o caminho habitual até o circo. Na entrada, a lona bate de leve contra o poste, e uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0001"
+        },
+        {
+          "locator": "S999-I0001/t1/fonte/0/output",
+          "kind": "output",
+          "sha256": "f1ed311568bf6a12f6de672ae1db0ea5ad086e0224ffdcf5e92334cd7bae8218",
+          "visibility": "reservada",
+          "available_before_response": true,
+          "text": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>"
+        }
+      ],
+      "parecer_verificado": {
+        "schema_quality_assessment": 1,
+        "assessment_id": "revisao-7eec7037ab680875454a",
+        "interaction_ref": "S999-I0001",
+        "module_id": "narrative_delivery",
+        "capability_id": "narrative_density",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "evaluator": "Codex/agencia-narrativa-2026-10-06",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "evidence": [
+          {
+            "source": "interaction",
+            "locator": "S999-I0001/input",
+            "observation": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+            "visibility": "publica",
+            "source_sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d",
+            "start": 0,
+            "end": 75,
+            "literal": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+            "literal_sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d"
+          },
+          {
+            "source": "interaction",
+            "locator": "S999-I0001/response",
+            "observation": "Os degraus da escada rangem sob as botas. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés; junto às barracas, os vendedores recolhem as últimas cestas. O senhor Tanaka percorre o caminho habitual até o circo. Na entrada, a lona bate de leve contra o poste, e uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0001",
+            "visibility": "publica",
+            "source_sha256": "497ac0430bb53b8089bd54e8f0279dc5ea2b2ec2457b31021c5430abd9d79d72",
+            "start": 0,
+            "end": 365,
+            "literal": "Os degraus da escada rangem sob as botas. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés; junto às barracas, os vendedores recolhem as últimas cestas. O senhor Tanaka percorre o caminho habitual até o circo. Na entrada, a lona bate de leve contra o poste, e uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0001",
+            "literal_sha256": "497ac0430bb53b8089bd54e8f0279dc5ea2b2ec2457b31021c5430abd9d79d72"
+          },
+          {
+            "source": "rollout",
+            "locator": "S999-I0001/t1/fonte/0/output",
+            "observation": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+            "visibility": "reservada",
+            "source_sha256": "f1ed311568bf6a12f6de672ae1db0ea5ad086e0224ffdcf5e92334cd7bae8218",
+            "start": 0,
+            "end": 455,
+            "literal": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+            "literal_sha256": "f1ed311568bf6a12f6de672ae1db0ea5ad086e0224ffdcf5e92334cd7bae8218"
+          }
+        ],
+        "adjudication": {
+          "state": "confirmada",
+          "reason": "A descida e o percurso executam o retorno solicitado pelos meios estabelecidos. A textura pertence ao ambiente; não atribui a Ren espera, motivação, fala, emoção ou escolha adicional. Não cria incidente para atrasar o retorno."
+        },
+        "review": {
+          "schema": 1,
+          "reviewer_role": "revisor_poshoc",
+          "rubric_version": "objetivos-jogo/1.0.0",
+          "configuration": {
+            "engine": "1.2.0",
+            "mode": "leitura_semantica_das_fontes",
+            "reviewer": "Codex/agencia-narrativa-2026-10-06",
+            "executor": "agente_ativo",
+            "autoria_e_revisao_mesmo_agente": true
+          },
+          "frame_sha256": "6ab949e0759c54ef1aaa5816173f6e099da1f928684f10b6de39f793b1f44d0a",
+          "uncertainty": "",
+          "dependency_operation_ids": [],
+          "guardrails": {
+            "player_agency": "ok"
+          },
+          "conflicts": [],
+          "diagnosis": null,
+          "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+          "decision_state": "avaliada",
+          "verification": "verificada"
+        }
+      }
+    },
+    {
+      "id": "espera_ordenada",
+      "jogador": "Como senhor Tanaka, Ren espera três minutos no telhado e depois volta ao circo pelo caminho habitual.",
+      "contexto": "Cenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual aberto, retorno automático. Consulta da janela de três minutos não encontrou fronteira ou causa devida. Persona pública: senhor Tanaka.",
+      "narracao": "Durante os três minutos no telhado, a fumaça de uma chaminé próxima se desfaz acima das telhas. Nenhum movimento interrompe a espera. Ao fim do intervalo, o senhor Tanaka desce pela escada e segue pela rua conhecida. A lona do circo já aparece entre os telhados; na entrada, uma lamparina ilumina o corredor entre as carroças.",
+      "parecer": "A espera de três minutos está literalmente autorizada; seu término mantém o retorno pedido. A ausência de interrupção vem da janela resolvida da fixture. A mesma ação que seria indevida no retorno normal é legítima nesta entrada; nenhuma estratégia ou emoção foi inventada.",
+      "quality": "adequada",
+      "player_agency": "ok",
+      "interaction_ref": "S999-I0002",
+      "sources": [
+        {
+          "locator": "S999-I0002/input",
+          "kind": "input",
+          "sha256": "8b7a17ae7a0cef23f30694a3e4d1561758ede4e8fbfef04788d06fbd33c1cb52",
+          "visibility": "publica",
+          "text": "Como senhor Tanaka, Ren espera três minutos no telhado e depois volta ao circo pelo caminho habitual."
+        },
+        {
+          "locator": "S999-I0002/response",
+          "kind": "response",
+          "sha256": "8b26b584708051bddf037c600dc70d106f2bd2c0fc7375085fc5c21d9aa99b8e",
+          "visibility": "publica",
+          "text": "Durante os três minutos no telhado, a fumaça de uma chaminé próxima se desfaz acima das telhas. Nenhum movimento interrompe a espera. Ao fim do intervalo, o senhor Tanaka desce pela escada e segue pela rua conhecida. A lona do circo já aparece entre os telhados; na entrada, uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0002"
+        },
+        {
+          "locator": "S999-I0002/t2/fonte/0/output",
+          "kind": "output",
+          "sha256": "47df9cfbf653b7098b9299f8e1992cd91f91952a2cdb317d425ec8fd212280b9",
+          "visibility": "reservada",
+          "available_before_response": true,
+          "text": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual aberto, retorno automático. Consulta da janela de três minutos não encontrou fronteira ou causa devida. Persona pública: senhor Tanaka.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>"
+        }
+      ],
+      "parecer_verificado": {
+        "schema_quality_assessment": 1,
+        "assessment_id": "revisao-9773cea52987db576950",
+        "interaction_ref": "S999-I0002",
+        "module_id": "narrative_delivery",
+        "capability_id": "narrative_density",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "evaluator": "Codex/agencia-narrativa-2026-10-06",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "evidence": [
+          {
+            "source": "interaction",
+            "locator": "S999-I0002/input",
+            "observation": "Como senhor Tanaka, Ren espera três minutos no telhado e depois volta ao circo pelo caminho habitual.",
+            "visibility": "publica",
+            "source_sha256": "8b7a17ae7a0cef23f30694a3e4d1561758ede4e8fbfef04788d06fbd33c1cb52",
+            "start": 0,
+            "end": 101,
+            "literal": "Como senhor Tanaka, Ren espera três minutos no telhado e depois volta ao circo pelo caminho habitual.",
+            "literal_sha256": "8b7a17ae7a0cef23f30694a3e4d1561758ede4e8fbfef04788d06fbd33c1cb52"
+          },
+          {
+            "source": "interaction",
+            "locator": "S999-I0002/response",
+            "observation": "Durante os três minutos no telhado, a fumaça de uma chaminé próxima se desfaz acima das telhas. Nenhum movimento interrompe a espera. Ao fim do intervalo, o senhor Tanaka desce pela escada e segue pela rua conhecida. A lona do circo já aparece entre os telhados; na entrada, uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0002",
+            "visibility": "publica",
+            "source_sha256": "8b26b584708051bddf037c600dc70d106f2bd2c0fc7375085fc5c21d9aa99b8e",
+            "start": 0,
+            "end": 365,
+            "literal": "Durante os três minutos no telhado, a fumaça de uma chaminé próxima se desfaz acima das telhas. Nenhum movimento interrompe a espera. Ao fim do intervalo, o senhor Tanaka desce pela escada e segue pela rua conhecida. A lona do circo já aparece entre os telhados; na entrada, uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0002",
+            "literal_sha256": "8b26b584708051bddf037c600dc70d106f2bd2c0fc7375085fc5c21d9aa99b8e"
+          },
+          {
+            "source": "rollout",
+            "locator": "S999-I0002/t2/fonte/0/output",
+            "observation": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual aberto, retorno automático. Consulta da janela de três minutos não encontrou fronteira ou causa devida. Persona pública: senhor Tanaka.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+            "visibility": "reservada",
+            "source_sha256": "47df9cfbf653b7098b9299f8e1992cd91f91952a2cdb317d425ec8fd212280b9",
+            "start": 0,
+            "end": 472,
+            "literal": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual aberto, retorno automático. Consulta da janela de três minutos não encontrou fronteira ou causa devida. Persona pública: senhor Tanaka.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+            "literal_sha256": "47df9cfbf653b7098b9299f8e1992cd91f91952a2cdb317d425ec8fd212280b9"
+          }
+        ],
+        "adjudication": {
+          "state": "confirmada",
+          "reason": "A espera de três minutos está literalmente autorizada; seu término mantém o retorno pedido. A ausência de interrupção vem da janela resolvida da fixture. A mesma ação que seria indevida no retorno normal é legítima nesta entrada; nenhuma estratégia ou emoção foi inventada."
+        },
+        "review": {
+          "schema": 1,
+          "reviewer_role": "revisor_poshoc",
+          "rubric_version": "objetivos-jogo/1.0.0",
+          "configuration": {
+            "engine": "1.2.0",
+            "mode": "leitura_semantica_das_fontes",
+            "reviewer": "Codex/agencia-narrativa-2026-10-06",
+            "executor": "agente_ativo",
+            "autoria_e_revisao_mesmo_agente": true
+          },
+          "frame_sha256": "41f1603c31e74e028023d122e925fa7e3929f124fc1ea20fca745b8156919a2f",
+          "uncertainty": "",
+          "dependency_operation_ids": [],
+          "guardrails": {
+            "player_agency": "ok"
+          },
+          "conflicts": [],
+          "diagnosis": null,
+          "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+          "decision_state": "avaliada",
+          "verification": "verificada"
+        }
+      }
+    },
+    {
+      "id": "interrupcao_externa",
+      "jogador": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+      "contexto": "Cenário sintético, sem efeito na campanha. Ren desceu pela escada livre. O caminho habitual passa pela ponte. Avaria da ponte já estabelecida: duas tábuas centrais cederam; barreira instalada. Vigia presente, responsável por impedir travessias até o reparo; não conhece identidade secreta de Ren. Obstáculo visível, sem rolagem exigida para constatá-lo.",
+      "narracao": "No caminho do circo, a ponte está fechada por uma travessa de madeira. Além dela, duas tábuas cedidas deixam à mostra a água escura. O vigia ergue a mão diante do senhor Tanaka. “Passagem fechada. Ninguém atravessa enquanto o carpinteiro não acabar.” Ele firma os pés ao lado da barreira; atrás dele, o martelo continua batendo. O caminho habitual termina naquele bloqueio.",
+      "parecer": "A avaria e a responsabilidade do vigia estão estabelecidas antes da prosa. A recusa é iniciativa própria do NPC e impede o caminho habitual. A resposta termina no obstáculo: não faz Ren esperar pelo reparo, discutir, aceitar a ordem ou escolher desvio, nem transforma a intenção em sucesso garantido.",
+      "quality": "adequada",
+      "player_agency": "ok",
+      "interaction_ref": "S999-I0003",
+      "sources": [
+        {
+          "locator": "S999-I0003/input",
+          "kind": "input",
+          "sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d",
+          "visibility": "publica",
+          "text": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka."
+        },
+        {
+          "locator": "S999-I0003/response",
+          "kind": "response",
+          "sha256": "aec7e3b5793981cc3a945c65a95fca841a379d4668a540260ef43089d772942f",
+          "visibility": "publica",
+          "text": "No caminho do circo, a ponte está fechada por uma travessa de madeira. Além dela, duas tábuas cedidas deixam à mostra a água escura. O vigia ergue a mão diante do senhor Tanaka. “Passagem fechada. Ninguém atravessa enquanto o carpinteiro não acabar.” Ele firma os pés ao lado da barreira; atrás dele, o martelo continua batendo. O caminho habitual termina naquele bloqueio.\nRODAPE_CANONICO — Interação S999-I0003"
+        },
+        {
+          "locator": "S999-I0003/t3/fonte/0/output",
+          "kind": "output",
+          "sha256": "237a34b1432c447bc886583209f9d206757ca5189b39989a657540a18d8894e7",
+          "visibility": "reservada",
+          "available_before_response": true,
+          "text": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren desceu pela escada livre. O caminho habitual passa pela ponte. Avaria da ponte já estabelecida: duas tábuas centrais cederam; barreira instalada. Vigia presente, responsável por impedir travessias até o reparo; não conhece identidade secreta de Ren. Obstáculo visível, sem rolagem exigida para constatá-lo.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>"
+        }
+      ],
+      "parecer_verificado": {
+        "schema_quality_assessment": 1,
+        "assessment_id": "revisao-d7d7a2ce5b1dfaf71258",
+        "interaction_ref": "S999-I0003",
+        "module_id": "narrative_delivery",
+        "capability_id": "narrative_density",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "evaluator": "Codex/agencia-narrativa-2026-10-06",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "evidence": [
+          {
+            "source": "interaction",
+            "locator": "S999-I0003/input",
+            "observation": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+            "visibility": "publica",
+            "source_sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d",
+            "start": 0,
+            "end": 75,
+            "literal": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+            "literal_sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d"
+          },
+          {
+            "source": "interaction",
+            "locator": "S999-I0003/response",
+            "observation": "No caminho do circo, a ponte está fechada por uma travessa de madeira. Além dela, duas tábuas cedidas deixam à mostra a água escura. O vigia ergue a mão diante do senhor Tanaka. “Passagem fechada. Ninguém atravessa enquanto o carpinteiro não acabar.” Ele firma os pés ao lado da barreira; atrás dele, o martelo continua batendo. O caminho habitual termina naquele bloqueio.\nRODAPE_CANONICO — Interação S999-I0003",
+            "visibility": "publica",
+            "source_sha256": "aec7e3b5793981cc3a945c65a95fca841a379d4668a540260ef43089d772942f",
+            "start": 0,
+            "end": 412,
+            "literal": "No caminho do circo, a ponte está fechada por uma travessa de madeira. Além dela, duas tábuas cedidas deixam à mostra a água escura. O vigia ergue a mão diante do senhor Tanaka. “Passagem fechada. Ninguém atravessa enquanto o carpinteiro não acabar.” Ele firma os pés ao lado da barreira; atrás dele, o martelo continua batendo. O caminho habitual termina naquele bloqueio.\nRODAPE_CANONICO — Interação S999-I0003",
+            "literal_sha256": "aec7e3b5793981cc3a945c65a95fca841a379d4668a540260ef43089d772942f"
+          },
+          {
+            "source": "rollout",
+            "locator": "S999-I0003/t3/fonte/0/output",
+            "observation": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren desceu pela escada livre. O caminho habitual passa pela ponte. Avaria da ponte já estabelecida: duas tábuas centrais cederam; barreira instalada. Vigia presente, responsável por impedir travessias até o reparo; não conhece identidade secreta de Ren. Obstáculo visível, sem rolagem exigida para constatá-lo.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+            "visibility": "reservada",
+            "source_sha256": "237a34b1432c447bc886583209f9d206757ca5189b39989a657540a18d8894e7",
+            "start": 0,
+            "end": 588,
+            "literal": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren desceu pela escada livre. O caminho habitual passa pela ponte. Avaria da ponte já estabelecida: duas tábuas centrais cederam; barreira instalada. Vigia presente, responsável por impedir travessias até o reparo; não conhece identidade secreta de Ren. Obstáculo visível, sem rolagem exigida para constatá-lo.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+            "literal_sha256": "237a34b1432c447bc886583209f9d206757ca5189b39989a657540a18d8894e7"
+          }
+        ],
+        "adjudication": {
+          "state": "confirmada",
+          "reason": "A avaria e a responsabilidade do vigia estão estabelecidas antes da prosa. A recusa é iniciativa própria do NPC e impede o caminho habitual. A resposta termina no obstáculo: não faz Ren esperar pelo reparo, discutir, aceitar a ordem ou escolher desvio, nem transforma a intenção em sucesso garantido."
+        },
+        "review": {
+          "schema": 1,
+          "reviewer_role": "revisor_poshoc",
+          "rubric_version": "objetivos-jogo/1.0.0",
+          "configuration": {
+            "engine": "1.2.0",
+            "mode": "leitura_semantica_das_fontes",
+            "reviewer": "Codex/agencia-narrativa-2026-10-06",
+            "executor": "agente_ativo",
+            "autoria_e_revisao_mesmo_agente": true
+          },
+          "frame_sha256": "e659fd04d111afd34e0c52c77b1b889c7d0b06c8df3d899ec5c68857c80b358b",
+          "uncertainty": "",
+          "dependency_operation_ids": [],
+          "guardrails": {
+            "player_agency": "ok"
+          },
+          "conflicts": [],
+          "diagnosis": null,
+          "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+          "decision_state": "avaliada",
+          "verification": "verificada"
+        }
+      }
+    },
+    {
+      "id": "espera_nao_autorizada",
+      "jogador": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+      "contexto": "Cenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.",
+      "narracao": "Ren espera três minutos no telhado para ter certeza de que ninguém o segue. Só então desce pela escada. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés. O senhor Tanaka percorre o caminho habitual e chega ao circo, onde uma lamparina ilumina o corredor entre as carroças.",
+      "parecer": "A entrada autoriza o retorno normal, e o contexto afirma saída livre sem incidente devido. A prosa acrescenta três minutos voluntários e uma intenção de verificar perseguidores, ambas ausentes das fontes. Chegar ao destino e manter textura não compensam essa decisão nova. A causa específica de geração permanece hipótese; a violação é observável no texto.",
+      "quality": "inadequada",
+      "player_agency": "violado",
+      "interaction_ref": "S999-I0004",
+      "sources": [
+        {
+          "locator": "S999-I0004/input",
+          "kind": "input",
+          "sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d",
+          "visibility": "publica",
+          "text": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka."
+        },
+        {
+          "locator": "S999-I0004/response",
+          "kind": "response",
+          "sha256": "f10977f6327217f0478c4b361e8672bb97884376e11a78ced24e0ded5280e40f",
+          "visibility": "publica",
+          "text": "Ren espera três minutos no telhado para ter certeza de que ninguém o segue. Só então desce pela escada. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés. O senhor Tanaka percorre o caminho habitual e chega ao circo, onde uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0004"
+        },
+        {
+          "locator": "S999-I0004/t4/fonte/0/output",
+          "kind": "output",
+          "sha256": "f1ed311568bf6a12f6de672ae1db0ea5ad086e0224ffdcf5e92334cd7bae8218",
+          "visibility": "reservada",
+          "available_before_response": true,
+          "text": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>"
+        }
+      ],
+      "parecer_verificado": {
+        "schema_quality_assessment": 1,
+        "assessment_id": "revisao-595ef73a17ce1b367010",
+        "interaction_ref": "S999-I0004",
+        "module_id": "narrative_delivery",
+        "capability_id": "narrative_density",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "evaluator": "Codex/agencia-narrativa-2026-10-06",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "inadequada",
+        "evidence": [
+          {
+            "source": "interaction",
+            "locator": "S999-I0004/input",
+            "observation": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+            "visibility": "publica",
+            "source_sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d",
+            "start": 0,
+            "end": 75,
+            "literal": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+            "literal_sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d"
+          },
+          {
+            "source": "interaction",
+            "locator": "S999-I0004/response",
+            "observation": "Ren espera três minutos no telhado para ter certeza de que ninguém o segue. Só então desce pela escada. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés. O senhor Tanaka percorre o caminho habitual e chega ao circo, onde uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0004",
+            "visibility": "publica",
+            "source_sha256": "f10977f6327217f0478c4b361e8672bb97884376e11a78ced24e0ded5280e40f",
+            "start": 0,
+            "end": 326,
+            "literal": "Ren espera três minutos no telhado para ter certeza de que ninguém o segue. Só então desce pela escada. Na rua, o cheiro de pão quente se mistura à fumaça das chaminés. O senhor Tanaka percorre o caminho habitual e chega ao circo, onde uma lamparina ilumina o corredor entre as carroças.\nRODAPE_CANONICO — Interação S999-I0004",
+            "literal_sha256": "f10977f6327217f0478c4b361e8672bb97884376e11a78ced24e0ded5280e40f"
+          },
+          {
+            "source": "rollout",
+            "locator": "S999-I0004/t4/fonte/0/output",
+            "observation": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+            "visibility": "reservada",
+            "source_sha256": "f1ed311568bf6a12f6de672ae1db0ea5ad086e0224ffdcf5e92334cd7bae8218",
+            "start": 0,
+            "end": 455,
+            "literal": "Process exited with code 0\nfase: pronta\nCenário sintético, sem efeito na campanha. Ren está no telhado; a escada está livre. Caminho habitual até o circo conhecido, aberto e sem incidente devido. Persona pública: senhor Tanaka. Retorno automático, sem rolagem.\ncontrato_conclusao.campos.narracao: <prosa diegética: expandir só a intenção autorizada de Ren; consequência externa exige causa; decisão nova volta ao jogador. NPCs agem por objetivos próprios>",
+            "literal_sha256": "f1ed311568bf6a12f6de672ae1db0ea5ad086e0224ffdcf5e92334cd7bae8218"
+          }
+        ],
+        "adjudication": {
+          "state": "confirmada",
+          "reason": "A entrada autoriza o retorno normal, e o contexto afirma saída livre sem incidente devido. A prosa acrescenta três minutos voluntários e uma intenção de verificar perseguidores, ambas ausentes das fontes. Chegar ao destino e manter textura não compensam essa decisão nova. A causa específica de geração permanece hipótese; a violação é observável no texto."
+        },
+        "review": {
+          "schema": 1,
+          "reviewer_role": "revisor_poshoc",
+          "rubric_version": "objetivos-jogo/1.0.0",
+          "configuration": {
+            "engine": "1.2.0",
+            "mode": "leitura_semantica_das_fontes",
+            "reviewer": "Codex/agencia-narrativa-2026-10-06",
+            "executor": "agente_ativo",
+            "autoria_e_revisao_mesmo_agente": true
+          },
+          "frame_sha256": "a9975783625c813e7f81f9543a9f89e0469896b9f2470a75ae03373e53ec7c19",
+          "uncertainty": "",
+          "dependency_operation_ids": [],
+          "guardrails": {
+            "player_agency": "violado"
+          },
+          "conflicts": [],
+          "diagnosis": {
+            "category": "comportamento_modulo",
+            "stage": "narracao",
+            "cause_status": "hipotese",
+            "finding": "A entrada autoriza o retorno normal, e o contexto afirma saída livre sem incidente devido. A prosa acrescenta três minutos voluntários e uma intenção de verificar perseguidores, ambas ausentes das fontes. Chegar ao destino e manter textura não compensam essa decisão nova. A causa específica de geração permanece hipótese; a violação é observável no texto.",
+            "correction": "Executar o retorno sem espera voluntária ou intenção nova; devolver a próxima decisão ao jogador.",
+            "test": "Comparar retorno livre, espera ordenada e impedimento externo estabelecido."
+          },
+          "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+          "decision_state": "avaliada",
+          "verification": "verificada"
+        }
+      }
+    }
+  ],
+  "resultado_publicado": {
+    "estado_experiencia": "violacao_guardrail",
+    "violacoes_guardrail_experiencia": [
+      "revisao-595ef73a17ce1b367010"
+    ],
+    "nota_experiencia_interacao_0a100": null,
+    "fila_experiencia_rank": 1,
+    "fila_experiencia_violacoes_criticas": 1,
+    "experiencia_por_criterio": [
+      {
+        "criterio_id": "narrative_delivery.narrative_density",
+        "objetivo_jogo": "Entregar cena coesa com ações e consequências materialmente pertinentes.",
+        "metricas": {
+          "recebidas": 4,
+          "confirmadas": 4,
+          "pendentes": 0,
+          "pontuaveis": 4,
+          "nao_pontuaveis": 0,
+          "confirmadas_indeterminadas": 0,
+          "criterios_pontuaveis": [
+            "narrative_delivery.narrative_density"
+          ],
+          "matriz_oportunidade": {
+            "verdadeiro_positivo": 4,
+            "verdadeiro_negativo": 0,
+            "falso_positivo": 0,
+            "falso_negativo": 0
+          },
+          "denominador_oportunidade": 4,
+          "oportunidades_perdidas": 0,
+          "nota_oportunidade_0a100": 100.0,
+          "denominador_qualidade": 4,
+          "qualidade_inadequada": 1,
+          "nota_qualidade_0a100": 75.0,
+          "nota_experiencia_0a100": null,
+          "violacoes_guardrail": [
+            "revisao-595ef73a17ce1b367010"
+          ],
+          "proveniencia_legada_nao_revalidada": 0,
+          "revisoes_com_fontes_verificadas": 4
+        }
+      },
+      {
+        "criterio_id": "narrative_delivery.diegetic_mechanics",
+        "objetivo_jogo": "Tornar risco e resultado compreensíveis na experiência do jogador.",
+        "metricas": {
+          "recebidas": 0,
+          "confirmadas": 0,
+          "pendentes": 0,
+          "pontuaveis": 0,
+          "nao_pontuaveis": 0,
+          "confirmadas_indeterminadas": 0,
+          "criterios_pontuaveis": [],
+          "matriz_oportunidade": {
+            "verdadeiro_positivo": 0,
+            "verdadeiro_negativo": 0,
+            "falso_positivo": 0,
+            "falso_negativo": 0
+          },
+          "denominador_oportunidade": 0,
+          "oportunidades_perdidas": 0,
+          "nota_oportunidade_0a100": null,
+          "denominador_qualidade": 0,
+          "qualidade_inadequada": 0,
+          "nota_qualidade_0a100": null,
+          "nota_experiencia_0a100": null,
+          "violacoes_guardrail": [],
+          "proveniencia_legada_nao_revalidada": 0,
+          "revisoes_com_fontes_verificadas": 0
+        }
+      },
+      {
+        "criterio_id": "narrative_delivery.visible_closure",
+        "objetivo_jogo": "Deixar uma situação jogável clara sem decidir por Ren.",
+        "metricas": {
+          "recebidas": 0,
+          "confirmadas": 0,
+          "pendentes": 0,
+          "pontuaveis": 0,
+          "nao_pontuaveis": 0,
+          "confirmadas_indeterminadas": 0,
+          "criterios_pontuaveis": [],
+          "matriz_oportunidade": {
+            "verdadeiro_positivo": 0,
+            "verdadeiro_negativo": 0,
+            "falso_positivo": 0,
+            "falso_negativo": 0
+          },
+          "denominador_oportunidade": 0,
+          "oportunidades_perdidas": 0,
+          "nota_oportunidade_0a100": null,
+          "denominador_qualidade": 0,
+          "qualidade_inadequada": 0,
+          "nota_qualidade_0a100": null,
+          "nota_experiencia_0a100": null,
+          "violacoes_guardrail": [],
+          "proveniencia_legada_nao_revalidada": 0,
+          "revisoes_com_fontes_verificadas": 0
+        }
+      }
+    ],
+    "leitura_experiencia": {
+      "estado": "violacao_critica",
+      "unidades": 12,
+      "com_parecer": 4,
+      "confirmadas_verificadas": 4,
+      "pendencias": 8,
+      "elegiveis": 4,
+      "atendidas": 4,
+      "omitidas": 0,
+      "negativas_validas": 0,
+      "indeterminadas": 8,
+      "assessment_ids": [
+        "revisao-7eec7037ab680875454a",
+        "revisao-9773cea52987db576950",
+        "revisao-d7d7a2ce5b1dfaf71258",
+        "revisao-595ef73a17ce1b367010"
+      ]
+    }
+  },
+  "arquivos_do_pacote_temporario": {
+    "revisao-concluida.json": "c42d085359754fdf96352e494073b01babb0479705aedae5dae5bc846bfae4c3",
+    "relatorio.md": "49034a8baad17a138bbd813d826bdbb94730b8fc67497f2a2702a306a05c92f6",
+    "manifest.json": "a9539da929eb58a2ff39659fd9e9de36b135af3630027e963e6074532a2e2520",
+    "proveniencia-medicao.json": "b156e4d1de82630aa3c3db031dd2047f72e724bbc6904de3de36bccc0b8f14ff",
+    "scorecard.json": "9733df8faa519ef6406a5da3e1b0b22a3c047445494fc9e03f294b3304efb926",
+    "validade-medicao.json": "dfb90f635d86be2e4baabe3a2f7e8e34f38c5315fa2680ba7c994a35ad405371",
+    "adjudicacoes-modulares.json": "301eb8d4ade732d384527be9b25306cb56918cee3c0f566789d8e49f315dba7d",
+    "manifestacoes-jogador.json": "66df3f49031cf26ff4b3b507a81420bd2ad0dc16cb4f10deca52a4e876dcc498",
+    "avaliacoes-qualidade.json": "3a161aa4392b9327133268877531f0bb18247555757f69e07d3973004e280121",
+    "interacoes.json": "3736e7533b3fbcb54bd8007e093eb3fbceb79f2010972e9b2118d70279dded7a",
+    "resumo-modulos.json": "862358870a5bafe37044fe3c9d4d3d3406390bd0b2cab391c134fbf82a5420ba",
+    "resumo-modulos.csv": "c7bd0c7a07c10adc308aefb8d8d8c8809ab3142294d85d2ea0cbdd0cd463facb",
+    "eventos-modulares.csv": "8cc8179e756c1d4f3db50859b0acfde343bb79abd843f6614ac014bcacd4adf7",
+    "turnos.csv": "6bcb99f59e2ccb24142eacac51947e2772046ff8ec21b30cbd08bbbb78f539a8",
+    "telemetria.json": "a1301ad0d3cf285360eea52147004e174b63355ed79f594dcfc37b0af999bee7"
+  }
+}

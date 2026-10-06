@@ -63,7 +63,10 @@ def _ids(value: Any) -> list[str]:
 
 def location(state: dict) -> dict:
     raw = state.get("localizacao") or {}
-    return {k: deepcopy(raw[k]) for k in ("area", "ponto_exato") if k in raw}
+    result = {k: deepcopy(raw[k]) for k in ("area", "ponto_exato") if k in raw}
+    if raw.get("local_id"):
+        result["area"] = raw["local_id"]
+    return result
 
 
 def cast(value: Any) -> dict | None:
@@ -81,6 +84,21 @@ def cast(value: Any) -> dict | None:
         raise SceneMemoryError("local do elenco inválido")
     return {"versao": VERSION, "cena_id": scene, "local": deepcopy(loc),
             "participantes": _ids(value["participantes"])}
+
+
+def continuing_cast(payload: dict, saved: dict | None, current_location: dict) -> dict | None:
+    """Continuidade física confirmada, independente do ID de uma nova interação.
+
+    Entrada/trânsito abrem outro recorte. Permanência validada conserva o local;
+    seleção prospectiva de participantes nunca é usada para provar continuidade.
+    """
+    request = payload.get("cena") or {}
+    stay = isinstance(payload.get("permanencia_espacial"), dict)
+    if (saved is None or saved["local"] != current_location
+            or not any(isinstance(v, str) and v.strip() for v in current_location.values())
+            or (request.get("place") and not stay) or payload.get("transito_urbano")):
+        return None
+    return saved
 
 
 class Reader:
@@ -119,21 +137,20 @@ class Reader:
         return result
 
     def resolve(self, terms: list[str], indexes: list[dict]) -> list[str]:
+        from contexto_core import resolve_npc_reference
         if len(terms) > MAX_PARTICIPANTS:
             raise SceneMemoryError("elenco admite até seis participantes, sem multiplicar orçamento")
         resolved = []
         for term in terms:
             if not isinstance(term, str) or not term.strip():
                 raise SceneMemoryError("participante precisa de ID ou alias explícito")
-            # ID exato vence alias. Nunca usar correspondência aproximada.
-            exact = {term for mapping in indexes if term in mapping}
-            matches = exact or {key for mapping in indexes for key, entry in mapping.items()
-                               if isinstance(entry, dict) and _normalize(term) in
-                               {_normalize(str(v)) for v in [key, entry.get("nome", ""),
-                                                            *(entry.get("aliases") or [])]}}
-            if len(matches) != 1:
+            try:
+                actor = resolve_npc_reference(indexes, term)
+            except ValueError as exc:
+                raise SceneMemoryError(str(exc)) from exc
+            if actor is None:
                 raise SceneMemoryError(f"participante desconhecido ou ambíguo: {term}; use ID canônico")
-            resolved.append(next(iter(matches)))
+            resolved.append(actor)
         return _ids(resolved)
 
 
@@ -146,7 +163,8 @@ def load_scene(repo: Path, records: list | None = None) -> tuple[Reader, dict, l
     records = transacoes.load_pending(reader.repo) if records is None else records
     session = (state.get("campanha") or {}).get("sessao_atual")
     records = transacoes.pending_for_session(records, session) if type(session) is int else records
-    effective, _ = transacoes.overlay_target(state, records, "estado")
+    import locais
+    effective = locais.effective_state(state, records)
     if (reader.repo / transacoes.PENDING_PATH).is_file():
         reader.sources.append(transacoes.PENDING_PATH.as_posix())
     saved = cast((effective.get("estado_narrativo") or {}).get("elenco_cena"))
@@ -229,6 +247,8 @@ def _npc(reader: Reader, person: str, indexes: list[dict], records: list) -> dic
                 compact_dialogue["iniciativa_social"] = {
                     key: deepcopy(social[key])
                     for key in (
+                        "schema_iniciativa_social",
+                        "identidade_relacional",
                         "modo",
                         "pode_iniciar",
                         "exige_motivo",
@@ -357,9 +377,10 @@ def project(docs: dict, *, scope: str, budget: int, base: dict | None = None,
     chosen: dict[int, set[int]] = {}
     out = render(chosen)
     if measure(out) > budget:
-        return {"versao": VERSION, "modo": "completa", "participantes": sorted(docs),
-                "aprofundamento_necessario": True,
-                "aviso": "Sem espaço para memória conjunta; consulte participantes por ID. Não interpretar ausência como esquecimento."}
+        raise SceneMemoryError(
+            "preparo sem espaço para memória indispensável; refine o envelope, "
+            "sem aumentar o teto nem retirar o gatilho espacial"
+        )
     for _, _, _, _, f, index in sorted(candidates):
         trial = {k: set(v) for k, v in chosen.items()}
         trial.setdefault(f, set()).add(index)
@@ -394,9 +415,9 @@ def attach(repo: Path, prepared: dict, *, decode_ticket, encode_ticket,
     payload = decode_ticket(prepared["ticket"])
     request = payload["cena"]
     scene_id = request["scene_id"]
-    same_scene = saved is not None and saved["cena_id"] == scene_id
-    changed_place = bool(request.get("place") or payload.get("transito_urbano"))
-    people = saved["participantes"] if same_scene and not changed_place else None
+    current = continuing_cast(payload, saved, location(state))
+    physical_scene_id = current["cena_id"] if current is not None else scene_id
+    people = list(current["participantes"]) if current is not None else None
     terms = participants if participants is not None else request.get("npcs") or None
     unresolved = []
     if terms is not None:
@@ -409,7 +430,7 @@ def attach(repo: Path, prepared: dict, *, decode_ticket, encode_ticket,
             # O gate anterior pode estar preparando um stub ainda não canônico.
             # Memória não bloqueia seu nascimento nem o inventa antes de confirmar.
             people, unresolved = None, terms
-    selected = (cast({"versao": VERSION, "cena_id": scene_id, "local": location(state),
+    selected = (cast({"versao": VERSION, "cena_id": physical_scene_id, "local": location(state),
                       "participantes": people}) if people is not None else None)
     out = deepcopy(prepared)
     # O ticket contém somente elenco/metadados, nunca biografias ou memórias.
@@ -429,7 +450,7 @@ def attach(repo: Path, prepared: dict, *, decode_ticket, encode_ticket,
         pack = {"versao": VERSION, "modo": "completa", **annotations}
     else:
         docs = documents(reader, state, records, memory_people)
-        scope = digest([VERSION, (state.get("campanha") or {}).get("sessao_atual"), scene_id, location(state)])
+        scope = digest([VERSION, (state.get("campanha") or {}).get("sessao_atual"), physical_scene_id, location(state)])
         # Margem de indentação do envelope YAML. O teste final mede a saída real.
         budget = min(MAX_MEMORY_BYTES, max_output_bytes - size(out) - 300) - (size(annotations) if annotations else 0)
         pack = {**project(docs, scope=scope, budget=budget, base=base, sources=reader.sources), **annotations}
@@ -478,7 +499,11 @@ def _compile_cast(payload: dict, transaction: dict, *, repo: Path | None = None)
     initial_location = meta["local"]
     # Valida o local até quando o elenco é desconhecido.
     cast({"versao": VERSION, "cena_id": scene_id, "local": initial_location, "participantes": []})
-    if selected is not None and (selected["cena_id"] != scene_id or selected["local"] != initial_location):
+    current = continuing_cast(payload, previous, initial_location)
+    allowed_scene_ids = {scene_id}
+    if current is not None:
+        allowed_scene_ids.add(current["cena_id"])
+    if selected is not None and (selected["cena_id"] not in allowed_scene_ids or selected["local"] != initial_location):
         raise SceneMemoryError("elenco pertence a outra cena/local")
     deltas = transaction.get("deltas", [])
     if not isinstance(deltas, list) or any(not isinstance(d, dict) for d in deltas):
@@ -509,6 +534,8 @@ def _compile_cast(payload: dict, transaction: dict, *, repo: Path | None = None)
                 final_location[key] = d.get("valor")
             else:
                 raise SceneMemoryError("mudança de local exige set/remove")
+        elif path == "localizacao.local_id" and d.get("op") == "set" and d.get("valor"):
+            final_location["area"] = d["valor"]
     if len(explicit) > 1:
         raise SceneMemoryError("elenco deve ser substituído uma única vez por turno")
     if explicit:
@@ -517,7 +544,8 @@ def _compile_cast(payload: dict, transaction: dict, *, repo: Path | None = None)
             raise SceneMemoryError("elenco exige set operacional do registro completo ou null")
         final_cast = cast(d["valor"])
         if final_cast is not None:
-            if final_cast["cena_id"] != scene_id or final_cast["local"] != final_location:
+            final_scene_ids = allowed_scene_ids if final_location == initial_location else {scene_id}
+            if final_cast["cena_id"] not in final_scene_ids or final_cast["local"] != final_location:
                 raise SceneMemoryError("elenco final precisa coincidir com a cena/local resultante")
             if repo is not None and final_cast["participantes"]:
                 reader = Reader(repo)

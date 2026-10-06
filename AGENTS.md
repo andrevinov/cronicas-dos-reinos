@@ -81,7 +81,7 @@ Primitivas `endpoints.py cena`, `cena_mundo.py confirmar`, `turno.py registrar` 
 
 **Multi-dia:** projeção espacial automática; início/fim canônico → `condicoes_mundo.py registrar|encerrar`.
 
-**Antes de narrar** intenção que comprime tempo (dormir, esperar, vigiar horas, viajar/trabalhar), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data '<data>' --hora HH:MM`. Se `interromper`, narrar até a fronteira; continuação volta por `cronica preparar`. **Não chamar** em turno curto. Se a compressão for permanência no mesmo local, cada janela volta por `cronica preparar ... --permanencia-local`; declare `--interlocutor` apenas para quem já está presente/contactável. A projeção espacial avalia uma vez por local/data/período e a iniciativa social usa a mesma identidade para não repetir abertura.
+**Antes de narrar** compressão (dormir, esperar, vigiar, viajar/trabalhar), consultar uma vez `poetry run python ferramentas/endpoints.py fronteira --data-alvo '<data final>' --hora-alvo HH:MM`. **Alvo é fim**; início é tempo efetivo com buffer. Zero não autoriza espera. Narrar até `limite_narravel`; interrupção exige checkpoint/resolução e novo `cronica preparar`. **Não chamar em turno curto.** Permanência: cada janela usa `cronica preparar ... --permanencia-local`; `--interlocutor` só presente/contactável. Projeção e iniciativa social reutilizam local/data/período, sem repetir sorteio/abertura.
 
 Durante avanço comum:
 - não atualizar diretamente estado/ficha/relações/conhecimento/consequências/relógios/NPCs;

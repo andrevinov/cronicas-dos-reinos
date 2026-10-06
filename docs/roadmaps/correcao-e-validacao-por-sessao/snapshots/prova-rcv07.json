@@ -1,0 +1,44 @@
+{
+  "natureza": "prova sintética isolada e imutável; não descreve campanha ou sessão real",
+  "motivo": "Demonstrar preservação e revisão do instante antes de modificar o save, incluindo abstenção publicada sem conteúdo reservado.",
+  "data": "2026-10-06",
+  "captura_version": "1.0.0",
+  "sessao_fixture": "004",
+  "snapshot_inicial": "921509b017781750ae9c2afd8ce01b633021269db5714f97d3406c878b0ae6b4",
+  "snapshot_encerramento": "66702d4d2bdab95e6bb477aeaf76f1848da337b1839e357d41e108fc763ae62d",
+  "pacote_sha256": "ea7e3c2ddb98f7296193dad4a043dadc04b5819eadea45261f5f3bd2745201fc",
+  "inicio_preservado": true,
+  "encerrada": true,
+  "registros_preservados": 2,
+  "reconstrucao": {
+    "transacao_anterior": "tx-fonte-2",
+    "lacunas": [],
+    "dinheiro_no_instante": 36,
+    "dinheiro_save_posterior": 999,
+    "hora_no_instante": "18:22",
+    "espelho_hora_estado": "18:22",
+    "causa_nao_selecionada_recuperada": true,
+    "impedimento_legitimo_recuperado": true,
+    "contrato_recuperado": true,
+    "elegibilidade_local_ator_recuperado": "sim",
+    "limite_elegibilidade": "Presença/atuação local e plano são recuperáveis; elegibilidade local não comprova capacidade ou obrigação de agir nesta interação."
+  },
+  "corte": {
+    "inclui_resposta_final": true,
+    "exclui_manutencao": true,
+    "frames": 3,
+    "encerramento_presente": true
+  },
+  "revisao": {
+    "natureza": "replay de abstenção explícita testa pipeline; não é julgamento literário novo",
+    "unidades_on": 2,
+    "abstencoes_publicadas": 2,
+    "criterio": "sidequest_lifecycle.active_reassessment",
+    "segredo_exportado": false,
+    "fonte_de_revisao_nao_prova_entrega_ao_narrador": true
+  },
+  "permissoes": {
+    "arquivo": "0o600",
+    "diretorio": "0o700"
+  }
+}

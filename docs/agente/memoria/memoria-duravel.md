@@ -22,9 +22,14 @@ de cena, não a este contrato de persistência.
 - `id`: identificador local à transação, snake_case, até 64 caracteres;
 - `tipo`: `promessa`, `informacao`, `relacao` ou `marco`;
 - `participantes`: 2 a 6 IDs distintos, incluindo `ren` (o personagem do jogador);
-  os demais são IDs exatos já indexados em `estado/relacoes/index.yaml`;
+  os demais são IDs exatos indexados em relações ou NPCs, com fragmento canônico válido;
 - `evidencia`: `{campo: jogador|narracao, trecho: <trecho literal>}`; 20 a 600
   caracteres presentes no campo indicado do mesmo turno, nunca só no resumo.
+- `identidades_percebidas` opcional: mapa de participante canônico → nome/persona
+  percebida naquele fato. Cada nome, até 80 caracteres, deve aparecer literalmente
+  na evidência. Exemplo sintético: `{"ren":"Tanaka"}` com trecho que atribui a
+  promessa a Tanaka. É proveniência local do fato; não confirma a identidade real,
+  não altera suspeitas nem transfere conhecimento entre personas ou NPCs.
 
 No máximo 8 fatos e 8 KiB de JSON compacto no bloco; a transação compilada
 continua sujeita ao teto existente de deltas. Campos desconhecidos, versão
@@ -72,6 +77,14 @@ O ID novo é `mem_<hash da sessão, transação e id local>`; aparece na consult
 em `estado.compromissos`. As relações recebem uma marca histórica da declaração,
 com fonte `transacao:<id>` e referência ao compromisso, não outro estado ativo.
 
+Quando o participante canônico não tem entrada de relação, essa marca fica em
+`npc:<id>.memorias_importantes`, no fragmento de NPC já existente, com os mesmos
+writer, buffer e checkpoint. Informação recebida usa `npc:<id>.informacoes_recebidas`
+sob a mesma condição. Não são criados relação, confiança, afinidade, medidor ou NPC.
+Índice/fragmento relacional inválido continua erro; não há fallback para ocultá-lo.
+Consulta dirigida de NPC, preparação e retomada recuperam os fatos de ambas as
+fontes. O domínio relacional ausente permanece explícito.
+
 Para `cumprir` ou `cancelar`, usar o mesmo tipo de fato, com nova evidência real,
 `operacao`, `compromisso_id` e `anterior` (registro completo consultado, sem
 `situacao_temporal`, que é derivada). O registro anterior inteiro precisa coincidir
@@ -91,7 +104,8 @@ Emissor e destinatário devem ser participantes distintos; um deles precisa ser
 é entregar. `estatuto` aceita `relato` ou `rumor`, sem confirmar automaticamente
 seu conteúdo. `texto`, com até 220 caracteres, deve estar na evidência literal.
 
-Somente o destinatário NPC recebe `relacao:<id>.informacoes_recebidas`. Outros
+Somente o destinatário NPC recebe `relacao:<id>.informacoes_recebidas` ou o caminho
+equivalente no NPC canônico sem relação. Outros
 participantes não ganham conhecimento por estarem listados. Quando Ren recebe,
 o delta usa `conhecimento/registrar`; o texto durável conserva emissor, canal e
 estatuto mesmo na representação Markdown do conhecimento. Uma marca na relação
@@ -138,6 +152,11 @@ extrair memória. O writer normal mantém sua própria leitura da transcrição 
 verificar/reparar o marcador transacional. Uma promessa antiga não ressuscita ao
 repetir sua criação depois de cumprida.
 
+O destino original também é preservado se uma relação for cadastrada depois da
+captura no NPC. Retry pendente recupera o destino do registro existente; retry
+consolidado consulta marcas/históricos dirigidos da relação e do NPC participante.
+Não migra, duplica nem ressuscita o fato. Destinos duplicados exigem reconciliação.
+
 Interrupção depois do buffer e antes da transcrição usa a recuperação existente:
 repetir o mesmo concluir. O comando separado `cronica registrar` recusa `memoria`;
 primitivas de reparo não são a porta de captura de memória durável.
@@ -160,7 +179,15 @@ completa da narração.** Uma promessa sem anotação ainda pode não virar mem�
 há teste explícito desse limite. Essas narrações anotadas não são novos episódios
 gerados por IA nem substituem a avaliação narrada e integrada do benchmark.
 
-`preparar`, tickets e saída do turno sem fatos não recebem campos novos.
+Tickets conservam seu schema. O contrato público reforça que rejeição da anotação
+não dispensa capturar um fato novo. Sem `memoria`, o compilador continua sem leitura
+extra; a conclusão entrega `memoria_contexto.captura_declarada: false` e cobertura
+`indeterminada_sem_anotacao`. Isso não prova ausência de fatos na prosa. Retirar o
+bloco após erro não produz recibo de memória completa; a revisão semântica deve
+examinar o acontecimento e apontar a omissão quando cabível. Não há detector por
+palavras, armazenamento de tentativa rejeitada ou bloqueio semântico automático.
+
+Com anotação válida, o recibo distingue memória no NPC de alteração de medidores.
 O roteador AGENTS ganha 276 bytes de orientação carregada na inicialização,
 não um novo bloco repetido a cada preparo. Turnos com fatos pagam pela anotação e
 pelos deltas/proveniência; não existe alegação de custo zero para essa persistência.

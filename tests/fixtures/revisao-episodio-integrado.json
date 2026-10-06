@@ -1,0 +1,1213 @@
+{
+  "natureza": "revisao_semantica_nova_assistida_por_casos_conhecidos",
+  "data": "2026-10-06",
+  "limite": "Mesmo agente autor e revisor; sem teste cego. Reaplicação futura destes pareceres testa somente regressão do pipeline.",
+  "cases": {
+    "correta": [
+      {
+        "turn_id": "prospecto",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "nao_aplicavel",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Selecionar Silva na memória não prova encontro. A porta permanece fechada, sem resposta ou canal confirmado; o gate de ausência impede iniciativa legitimamente.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "entrada",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A intenção é entrar e abordar a mesa. A resposta realiza a entrada; o commit estabelece abrigo, mesa e elenco presentes, sem espera imposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "entrada",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A porta, o banco e o movimento do tinteiro situam a ação autorizada. Não há intenção, interesse ou decisão adicional atribuída a Ren.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Silva protege seu trabalho e pede o mapa para fechar suas próprias rotas. A abertura requerida está na prosa e é confirmada literalmente; a resposta de Ren permanece aberta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O tinteiro, a folha e o prazo dão função à descrição e ao diálogo. Há ação própria de Silva e espaço para a escolha seguinte do jogador.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "context_and_memory.knowledge_layer_separation",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O diálogo usa trabalho, presença e prazo acessíveis. Nenhuma pista descoberta autoriza o segredo reservado, que permanece fora da resposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "promessa",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A promessa voluntária aparece literalmente na resposta. O concluir declara e valida um fato, compilando compromissos e memória relacional; a transação efetiva identifica o registro.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "promessa",
+        "criterion_id": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Silva registra o prazo sem inventar entrega ou recompensa. O compromisso tem participantes Ren e Silva e prazo explícito; a futura cobrança dispõe de memória persistida.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "nova_interacao",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A nova preparação entrega o mesmo compromisso com resumo e janela até 11:50. A resposta cobra o mapa prometido, sem tratar conversa anterior como descartável.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "espera_limite",
+        "criterion_id": "world_boundary_resolution.temporal_liveness",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A intenção permite esperar até 12:14 apenas sem interrupção. A consulta fixa 11:50 como limite; prosa, delta e rodapé param ali e deixam a continuação ao jogador.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "espera_limite",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A permanência seleciona uma marca de carga ambígua. Silva confere e corrige o registro; o concluir resolve essa pressão com evidência literal, sem impor tarefa ou ação a Ren.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "world_boundary_resolution.pending_batch_resolution",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O preparo bloqueia antes de narrar. O lote avalia a expiração informativa, admite sem mudança, é aplicado e libera novo preparo. Não há entrega, cancelamento ou evento canônico convertido em no-op.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "world_boundary_resolution.temporal_liveness",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A nova intenção autoriza continuar. A consulta parte de 11:50 e libera 12:14; a pendência já avaliada não é ignorada e o compromisso continua devido.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O preparo reutiliza a mesma janela já resolvida, sem exigir nova decisão literal nem materializar novamente a marca da carga. O estado canônico conserva a resolução anterior.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A pressão espacial concluída deixa de bloquear Silva. A cobrança do mapa é elegível, selecionada, apresentada na resposta e confirmada no commit, uma abertura nesta janela.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Outro processo consulta status e prepara a cena. O mesmo compromisso, prazo 11:50 e janela encerrada são recuperados; a resposta confirma pendência às 12:14, sem inventar cumprimento.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "npc_continuity_and_social_behavior.presence_and_identity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A presença vem do elenco consolidado após a entrada, não do seletor prospectivo. Silva resolve para a identidade existente e continua à mesa na resposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "sidequest_lifecycle.active_reassessment",
+        "state": "fontes_insuficientes",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O estado de missões vivas está ausente nesta fixture. Sem ele, um recibo de não aplicação não demonstra ausência de missão aceita. Este episódio não permite concluir a reavaliação de side quest.",
+        "guardrails": {
+          "player_agency": "indeterminada",
+          "canonical_consistency": "indeterminada"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      }
+    ],
+    "memoria_omitida": [
+      {
+        "turn_id": "prospecto",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "nao_aplicavel",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Selecionar Silva na memória não prova encontro. A porta permanece fechada, sem resposta ou canal confirmado; o gate de ausência impede iniciativa legitimamente.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "entrada",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A intenção é entrar e abordar a mesa. A resposta realiza a entrada; o commit estabelece abrigo, mesa e elenco presentes, sem espera imposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "entrada",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A porta, o banco e o movimento do tinteiro situam a ação autorizada. Não há intenção, interesse ou decisão adicional atribuída a Ren.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Silva protege seu trabalho e pede o mapa para fechar suas próprias rotas. A abertura requerida está na prosa e é confirmada literalmente; a resposta de Ren permanece aberta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O tinteiro, a folha e o prazo dão função à descrição e ao diálogo. Há ação própria de Silva e espaço para a escolha seguinte do jogador.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "context_and_memory.knowledge_layer_separation",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O diálogo usa trabalho, presença e prazo acessíveis. Nenhuma pista descoberta autoriza o segredo reservado, que permanece fora da resposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "promessa",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "inadequada",
+        "reason": "A prosa contém a promessa, mas o chamador omite a anotação exigida. O concluir informa captura_memoria_nao_declarada: não persiste compromisso nem memória relacional. A causa reproduzida é a omissão no payload, não falha do compilador para uma anotação válida.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": [],
+        "diagnosis": {
+          "category": "instrucao_dado",
+          "stage": "persistencia",
+          "cause_status": "confirmada_por_reproducao",
+          "finding": "A prosa contém a promessa, mas o chamador omite a anotação exigida. O concluir informa captura_memoria_nao_declarada: não persiste compromisso nem memória relacional. A causa reproduzida é a omissão no payload, não falha do compilador para uma anotação válida.",
+          "correction": "Registrar a promessa com evidência literal no mesmo concluir; recuperar o compromisso na cena posterior.",
+          "test": "Reexecutar o episódio isolado e revisar intenção, fontes entregues, prosa e recuperação; o caso corrigido deve se distinguir desta variante.",
+          "reproduction_ref": "tests/fixtures/episodio-integrado.json#memoria_omitida"
+        }
+      },
+      {
+        "turn_id": "promessa",
+        "criterion_id": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "inadequada",
+        "reason": "A prosa contém a promessa, mas o chamador omite a anotação exigida. O concluir informa captura_memoria_nao_declarada: não persiste compromisso nem memória relacional. A causa reproduzida é a omissão no payload, não falha do compilador para uma anotação válida.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": [],
+        "diagnosis": {
+          "category": "instrucao_dado",
+          "stage": "persistencia",
+          "cause_status": "confirmada_por_reproducao",
+          "finding": "A prosa contém a promessa, mas o chamador omite a anotação exigida. O concluir informa captura_memoria_nao_declarada: não persiste compromisso nem memória relacional. A causa reproduzida é a omissão no payload, não falha do compilador para uma anotação válida.",
+          "correction": "Registrar a promessa com evidência literal no mesmo concluir; recuperar o compromisso na cena posterior.",
+          "test": "Reexecutar o episódio isolado e revisar intenção, fontes entregues, prosa e recuperação; o caso corrigido deve se distinguir desta variante.",
+          "reproduction_ref": "tests/fixtures/episodio-integrado.json#memoria_omitida"
+        }
+      },
+      {
+        "turn_id": "nova_interacao",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "inadequada",
+        "reason": "A promessa anterior consta da prosa, mas não há compromisso recuperado porque sua anotação foi omitida. Silva nega o acordo sem causa de engano neste caso. A continuidade fica perdida; não há prova de defeito do recuperador sobre memória efetivamente persistida.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": [],
+        "diagnosis": {
+          "category": "comportamento_modulo",
+          "stage": "recuperacao",
+          "cause_status": "hipotese",
+          "finding": "A promessa anterior consta da prosa, mas não há compromisso recuperado porque sua anotação foi omitida. Silva nega o acordo sem causa de engano neste caso. A continuidade fica perdida; não há prova de defeito do recuperador sobre memória efetivamente persistida.",
+          "correction": "Registrar a promessa com evidência literal no mesmo concluir; recuperar o compromisso na cena posterior.",
+          "test": "Reexecutar o episódio isolado e revisar intenção, fontes entregues, prosa e recuperação; o caso corrigido deve se distinguir desta variante."
+        }
+      },
+      {
+        "turn_id": "espera_limite",
+        "criterion_id": "world_boundary_resolution.temporal_liveness",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A intenção permite esperar até 12:14 apenas sem interrupção. A consulta fixa 11:50 como limite; prosa, delta e rodapé param ali e deixam a continuação ao jogador.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "espera_limite",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A permanência seleciona uma marca de carga ambígua. Silva confere e corrige o registro; o concluir resolve essa pressão com evidência literal, sem impor tarefa ou ação a Ren.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "world_boundary_resolution.pending_batch_resolution",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O preparo bloqueia antes de narrar. O lote avalia a expiração informativa, admite sem mudança, é aplicado e libera novo preparo. Não há entrega, cancelamento ou evento canônico convertido em no-op.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "world_boundary_resolution.temporal_liveness",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A nova intenção autoriza continuar. A consulta parte de 11:50 e libera 12:14; a pendência já avaliada não é ignorada e o compromisso continua devido.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O preparo reutiliza a mesma janela já resolvida, sem exigir nova decisão literal nem materializar novamente a marca da carga. O estado canônico conserva a resolução anterior.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "nao_aplicavel",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Sem compromisso persistido, não há causa estruturada elegível de cobrança nesta janela. Não condenar o gate por respeitar ausência de causa; a perda de memória é diagnosticada na promessa.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "inadequada",
+        "reason": "A promessa anterior consta da prosa, mas não há compromisso recuperado porque sua anotação foi omitida. Silva nega o acordo sem causa de engano neste caso. A continuidade fica perdida; não há prova de defeito do recuperador sobre memória efetivamente persistida.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": [],
+        "diagnosis": {
+          "category": "comportamento_modulo",
+          "stage": "recuperacao",
+          "cause_status": "hipotese",
+          "finding": "A promessa anterior consta da prosa, mas não há compromisso recuperado porque sua anotação foi omitida. Silva nega o acordo sem causa de engano neste caso. A continuidade fica perdida; não há prova de defeito do recuperador sobre memória efetivamente persistida.",
+          "correction": "Registrar a promessa com evidência literal no mesmo concluir; recuperar o compromisso na cena posterior.",
+          "test": "Reexecutar o episódio isolado e revisar intenção, fontes entregues, prosa e recuperação; o caso corrigido deve se distinguir desta variante."
+        }
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "npc_continuity_and_social_behavior.presence_and_identity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A presença vem do elenco consolidado após a entrada, não do seletor prospectivo. Silva resolve para a identidade existente e continua à mesa na resposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "sidequest_lifecycle.active_reassessment",
+        "state": "fontes_insuficientes",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O estado de missões vivas está ausente nesta fixture. Sem ele, um recibo de não aplicação não demonstra ausência de missão aceita. Este episódio não permite concluir a reavaliação de side quest.",
+        "guardrails": {
+          "player_agency": "indeterminada",
+          "canonical_consistency": "indeterminada"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      }
+    ],
+    "espera_passiva": [
+      {
+        "turn_id": "prospecto",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "nao_aplicavel",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Selecionar Silva na memória não prova encontro. A porta permanece fechada, sem resposta ou canal confirmado; o gate de ausência impede iniciativa legitimamente.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "entrada",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "inadequada",
+        "reason": "O jogador ordenou entrar. A resposta decide esperar fora, inventa interesse e motivo de cortesia para Ren. Ao mesmo tempo, o commit o coloca dentro com Silva: há violação de agência e contradição entre ficção e estado.",
+        "guardrails": {
+          "player_agency": "violado",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "violado"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": [],
+        "diagnosis": {
+          "category": "comportamento_modulo",
+          "stage": "narracao",
+          "cause_status": "hipotese",
+          "finding": "O jogador ordenou entrar. A resposta decide esperar fora, inventa interesse e motivo de cortesia para Ren. Ao mesmo tempo, o commit o coloca dentro com Silva: há violação de agência e contradição entre ficção e estado.",
+          "correction": "Confrontar a prosa com a ação autorizada, a fronteira narrável e os efeitos antes de concluir.",
+          "test": "Reexecutar o episódio isolado e revisar intenção, fontes entregues, prosa e recuperação; o caso corrigido deve se distinguir desta variante."
+        }
+      },
+      {
+        "turn_id": "entrada",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "inadequada",
+        "reason": "O jogador ordenou entrar. A resposta decide esperar fora, inventa interesse e motivo de cortesia para Ren. Ao mesmo tempo, o commit o coloca dentro com Silva: há violação de agência e contradição entre ficção e estado.",
+        "guardrails": {
+          "player_agency": "violado",
+          "knowledge_secrecy": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": [],
+        "diagnosis": {
+          "category": "comportamento_modulo",
+          "stage": "narracao",
+          "cause_status": "hipotese",
+          "finding": "O jogador ordenou entrar. A resposta decide esperar fora, inventa interesse e motivo de cortesia para Ren. Ao mesmo tempo, o commit o coloca dentro com Silva: há violação de agência e contradição entre ficção e estado.",
+          "correction": "Confrontar a prosa com a ação autorizada, a fronteira narrável e os efeitos antes de concluir.",
+          "test": "Reexecutar o episódio isolado e revisar intenção, fontes entregues, prosa e recuperação; o caso corrigido deve se distinguir desta variante."
+        }
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Silva protege seu trabalho e pede o mapa para fechar suas próprias rotas. A abertura requerida está na prosa e é confirmada literalmente; a resposta de Ren permanece aberta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O tinteiro, a folha e o prazo dão função à descrição e ao diálogo. Há ação própria de Silva e espaço para a escolha seguinte do jogador.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "context_and_memory.knowledge_layer_separation",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O diálogo usa trabalho, presença e prazo acessíveis. Nenhuma pista descoberta autoriza o segredo reservado, que permanece fora da resposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "promessa",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A promessa voluntária aparece literalmente na resposta. O concluir declara e valida um fato, compilando compromissos e memória relacional; a transação efetiva identifica o registro.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "promessa",
+        "criterion_id": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Silva registra o prazo sem inventar entrega ou recompensa. O compromisso tem participantes Ren e Silva e prazo explícito; a futura cobrança dispõe de memória persistida.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "nova_interacao",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A nova preparação entrega o mesmo compromisso com resumo e janela até 11:50. A resposta cobra o mapa prometido, sem tratar conversa anterior como descartável.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "espera_limite",
+        "criterion_id": "world_boundary_resolution.temporal_liveness",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A intenção permite esperar até 12:14 apenas sem interrupção. A consulta fixa 11:50 como limite; prosa, delta e rodapé param ali e deixam a continuação ao jogador.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "espera_limite",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A permanência seleciona uma marca de carga ambígua. Silva confere e corrige o registro; o concluir resolve essa pressão com evidência literal, sem impor tarefa ou ação a Ren.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "world_boundary_resolution.pending_batch_resolution",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O preparo bloqueia antes de narrar. O lote avalia a expiração informativa, admite sem mudança, é aplicado e libera novo preparo. Não há entrega, cancelamento ou evento canônico convertido em no-op.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "world_boundary_resolution.temporal_liveness",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A nova intenção autoriza continuar. A consulta parte de 11:50 e libera 12:14; a pendência já avaliada não é ignorada e o compromisso continua devido.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O preparo reutiliza a mesma janela já resolvida, sem exigir nova decisão literal nem materializar novamente a marca da carga. O estado canônico conserva a resolução anterior.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A pressão espacial concluída deixa de bloquear Silva. A cobrança do mapa é elegível, selecionada, apresentada na resposta e confirmada no commit, uma abertura nesta janela.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Outro processo consulta status e prepara a cena. O mesmo compromisso, prazo 11:50 e janela encerrada são recuperados; a resposta confirma pendência às 12:14, sem inventar cumprimento.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "npc_continuity_and_social_behavior.presence_and_identity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A presença vem do elenco consolidado após a entrada, não do seletor prospectivo. Silva resolve para a identidade existente e continua à mesa na resposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "sidequest_lifecycle.active_reassessment",
+        "state": "fontes_insuficientes",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O estado de missões vivas está ausente nesta fixture. Sem ele, um recibo de não aplicação não demonstra ausência de missão aceita. Este episódio não permite concluir a reavaliação de side quest.",
+        "guardrails": {
+          "player_agency": "indeterminada",
+          "canonical_consistency": "indeterminada"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      }
+    ],
+    "fronteira_ignorada": [
+      {
+        "turn_id": "prospecto",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "nao_aplicavel",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Selecionar Silva na memória não prova encontro. A porta permanece fechada, sem resposta ou canal confirmado; o gate de ausência impede iniciativa legitimamente.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "entrada",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A intenção é entrar e abordar a mesa. A resposta realiza a entrada; o commit estabelece abrigo, mesa e elenco presentes, sem espera imposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "entrada",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A porta, o banco e o movimento do tinteiro situam a ação autorizada. Não há intenção, interesse ou decisão adicional atribuída a Ren.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Silva protege seu trabalho e pede o mapa para fechar suas próprias rotas. A abertura requerida está na prosa e é confirmada literalmente; a resposta de Ren permanece aberta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "narrative_delivery.narrative_density",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O tinteiro, a folha e o prazo dão função à descrição e ao diálogo. Há ação própria de Silva e espaço para a escolha seguinte do jogador.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "conversa",
+        "criterion_id": "context_and_memory.knowledge_layer_separation",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O diálogo usa trabalho, presença e prazo acessíveis. Nenhuma pista descoberta autoriza o segredo reservado, que permanece fora da resposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "promessa",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A promessa voluntária aparece literalmente na resposta. O concluir declara e valida um fato, compilando compromissos e memória relacional; a transação efetiva identifica o registro.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "promessa",
+        "criterion_id": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Silva registra o prazo sem inventar entrega ou recompensa. O compromisso tem participantes Ren e Silva e prazo explícito; a futura cobrança dispõe de memória persistida.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "nova_interacao",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A nova preparação entrega o mesmo compromisso com resumo e janela até 11:50. A resposta cobra o mapa prometido, sem tratar conversa anterior como descartável.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "espera_limite",
+        "criterion_id": "world_boundary_resolution.temporal_liveness",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "inadequada",
+        "reason": "A consulta e o commit fixam a interrupção às 11:50, mas a resposta declara todo o intervalo concluído às 12:14, sem prazo que o corte. O rodapé permanece 11:50. A rotina operacional funcionou; a narração contradiz os fatos entregues.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "violado"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": [],
+        "diagnosis": {
+          "category": "comportamento_modulo",
+          "stage": "narracao",
+          "cause_status": "hipotese",
+          "finding": "A consulta e o commit fixam a interrupção às 11:50, mas a resposta declara todo o intervalo concluído às 12:14, sem prazo que o corte. O rodapé permanece 11:50. A rotina operacional funcionou; a narração contradiz os fatos entregues.",
+          "correction": "Confrontar a prosa com a ação autorizada, a fronteira narrável e os efeitos antes de concluir.",
+          "test": "Reexecutar o episódio isolado e revisar intenção, fontes entregues, prosa e recuperação; o caso corrigido deve se distinguir desta variante."
+        }
+      },
+      {
+        "turn_id": "espera_limite",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A permanência seleciona uma marca de carga ambígua. Silva confere e corrige o registro; o concluir resolve essa pressão com evidência literal, sem impor tarefa ou ação a Ren.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "world_boundary_resolution.pending_batch_resolution",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O preparo bloqueia antes de narrar. O lote avalia a expiração informativa, admite sem mudança, é aplicado e libera novo preparo. Não há entrega, cancelamento ou evento canônico convertido em no-op.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "world_boundary_resolution.temporal_liveness",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A nova intenção autoriza continuar. A consulta parte de 11:50 e libera 12:14; a pendência já avaliada não é ignorada e o compromisso continua devido.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "scene_world_projection.spatial_continuity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O preparo reutiliza a mesma janela já resolvida, sem exigir nova decisão literal nem materializar novamente a marca da carga. O estado canônico conserva a resolução anterior.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "continuacao",
+        "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A pressão espacial concluída deixa de bloquear Silva. A cobrança do mapa é elegível, selecionada, apresentada na resposta e confirmada no commit, uma abertura nesta janela.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "context_and_memory.scene_and_durable_memory",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "Outro processo consulta status e prepara a cena. O mesmo compromisso, prazo 11:50 e janela encerrada são recuperados; a resposta confirma pendência às 12:14, sem inventar cumprimento.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "npc_continuity_and_social_behavior.presence_and_identity",
+        "state": "avaliada",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "A presença vem do elenco consolidado após a entrada, não do seletor prospectivo. Silva resolve para a identidade existente e continua à mesa na resposta.",
+        "guardrails": {
+          "player_agency": "ok",
+          "knowledge_secrecy": "ok",
+          "canonical_consistency": "ok"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      },
+      {
+        "turn_id": "retomada_fria",
+        "criterion_id": "sidequest_lifecycle.active_reassessment",
+        "state": "fontes_insuficientes",
+        "eligibility": "sim",
+        "activation": "presente",
+        "quality": "adequada",
+        "reason": "O estado de missões vivas está ausente nesta fixture. Sem ele, um recibo de não aplicação não demonstra ausência de missão aceita. Este episódio não permite concluir a reavaliação de side quest.",
+        "guardrails": {
+          "player_agency": "indeterminada",
+          "canonical_consistency": "indeterminada"
+        },
+        "uncertainty": "Caso controlado conhecido; não demonstra generalização nem naturalidade longitudinal.",
+        "conflicts": []
+      }
+    ]
+  }
+}

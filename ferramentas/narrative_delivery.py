@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Fachada pública v2 da entrega narrativa.
 
-O módulo observa a prosa que já passou pelo writer e publica um recibo pequeno
+O módulo orienta a expansão da intenção antes da narração, observa a prosa
+que já passou pelo writer e publica um recibo pequeno
 para correlação pós-hoc. Ele não escreve cânone, não reescreve a narração e não
 tenta atribuir qualidade literária a partir de palavras-chave ou comprimento.
 """
@@ -23,6 +24,7 @@ import diegetico
 FACADE_SCHEMA = 2
 RECEIPT_SCHEMA = 1
 MODULE_ID = "narrative_delivery"
+IMPLEMENTATION_VERSION = "1.0.3"
 CAPABILITIES = (
     "narrative_density",
     "diegetic_mechanics",
@@ -60,6 +62,18 @@ GUARDRAIL_STATES = {"ok", "violado", "indeterminado", "nao_aplicavel"}
 
 class NarrativeDeliveryError(ValueError):
     """Contrato inválido de entrega ou adjudicação narrativa."""
+
+
+def narration_instruction() -> str:
+    """Instrução consumida no preparo; revisão semântica continua pós-hoc.
+
+    Não infere intenção nem certifica agência a partir do texto produzido.
+    """
+    return (
+        "<prosa diegética: expandir só a intenção autorizada de Ren; "
+        "consequência externa exige causa; decisão nova volta ao jogador. "
+        "NPCs agem por objetivos próprios>"
+    )
 
 
 def _size(value: Any) -> int:

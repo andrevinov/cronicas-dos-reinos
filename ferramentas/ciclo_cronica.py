@@ -76,6 +76,7 @@ def _compact_checkpoint_result(result: dict[str, Any], phase: str) -> dict[str, 
     return {
         "schema_cronica_sessao": SCHEMA,
         "fase": phase,
+        "evidencias_sessao": result.get("evidencias_sessao"),
         "sessao": memory.get("sessao") or canonical.get("sessao") or cycle.get("sessao"),
         "canonico": {
             "sem_pendencias": bool(canonical.get("sem_pendencias")),
@@ -175,6 +176,7 @@ def session_start(repo: Path, *, fail_after: int | None = None) -> dict[str, Any
     return {
         "schema_cronica_sessao": SCHEMA,
         "fase": "iniciada",
+        "evidencias_sessao": result.get("evidencias_sessao"),
         "sessao_anterior": result.get("sessao_anterior"),
         "sessao": result.get("sessao_iniciada") or result.get("sessao"),
         "recuperada": bool(result.get("recuperada")),

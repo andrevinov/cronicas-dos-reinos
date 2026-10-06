@@ -30,7 +30,7 @@ import personalidade_decisoria as _personality
 import reputacao_publica as _reputation
 
 FACADE_SCHEMA = 2
-IMPLEMENTATION_VERSION = "1.1.0"
+IMPLEMENTATION_VERSION = "1.1.5"
 MODULE_ID = "npc_continuity_and_social_behavior"
 CAPABILITIES = (
     "social_initiative",
