@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cronicas-dos-reinos.local/schemas/apresentacao-avaliacao-v1.schema.json",
+  "title": "Scorecard com validade, cobertura, custo e limites de experiência",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["nota_geral_0a100", "nota_operacional_parcial_0a100", "apresentacao", "custos", "operacoes_recorte_completo"],
+  "properties": {
+    "schema_scorecard_sessao": {"const": 2}, "serie_avaliacao": {"const": "modules-v2"},
+    "sessao_id": {"type": "string"}, "status_avaliacao": {"type": "string"},
+    "faixa_geral": {"enum": ["comprometida", "sem_conclusao_global"]},
+    "agregacao_modular": {"$ref": "agregacao-scorecard-v2.schema.json"},
+    "conclusao_medicao": {"$ref": "conclusao-medicao-v1.schema.json"},
+    "filas_prioridade": {"$ref": "filas-prioridade-v2.schema.json"},
+    "componentes": {"type": "object"}, "confianca": {"type": "object"}, "eixos": {"type": "object"},
+    "experiencia": {"type": "object"}, "indicadores_globais": {"type": "object"},
+    "manifestacoes": {"type": "object"}, "qualidade_interacao": {"type": "object"},
+    "guardrails_participam_media": {"const": false}, "natureza_nota_geral": {"type": "string"},
+    "observacoes": {"type": "array", "items": {"type": "string"}},
+    "violacoes_criticas": {"type": "array", "items": {"type": "object"}},
+    "nota_geral_0a100": {"type": "null"},
+    "nota_operacional_parcial_0a100": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+    "apresentacao": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema", "versao", "validade", "qualidade", "conclusao_global_permitida", "nota_global_publicavel", "cobertura", "regra"],
+      "properties": {
+        "schema": {"const": 1}, "versao": {"type": "string"},
+        "validade": {"enum": ["comprometida_guardrail", "incompleta", "operacao_observavel"]},
+        "qualidade": {"$ref": "#/$defs/estado"},
+        "conclusao_global_permitida": {"const": false}, "nota_global_publicavel": {"type": "null"},
+        "regra": {"type": "string", "minLength": 1},
+        "cobertura": {
+          "type": "object", "additionalProperties": false,
+          "required": ["unidades_interacao_criterio", "com_parecer", "sem_parecer", "confirmadas_verificadas", "estados"],
+          "properties": {
+            "unidades_interacao_criterio": {"$ref": "#/$defs/contagem"},
+            "com_parecer": {"$ref": "#/$defs/contagem"}, "sem_parecer": {"$ref": "#/$defs/contagem"},
+            "confirmadas_verificadas": {"$ref": "#/$defs/contagem"},
+            "estados": {"type": "object", "additionalProperties": {"$ref": "#/$defs/contagem"}}
+          }
+        }
+      }
+    },
+    "custos": {"$ref": "#/$defs/custo"},
+    "operacoes_recorte_completo": {"type": "object", "additionalProperties": {"type": ["number", "null"], "minimum": 0}}
+  },
+  "$defs": {
+    "contagem": {"type": "integer", "minimum": 0},
+    "estado": {"enum": ["nao_avaliada", "fontes_insuficientes", "negativa_valida", "inadequada_no_criterio", "violacao_critica", "amostra_insuficiente_para_generalizar"]},
+    "custo": {
+      "type": "object", "additionalProperties": false,
+      "required": ["unidade", "escopo", "observado", "compartilhado_alocado", "diferenca_fechamento", "exclusivo_observado", "marginal", "estimativa_causal", "regra"],
+      "properties": {
+        "unidade": {"const": "tokens"}, "escopo": {"const": "inferencias_dos_turnos_narrativos"},
+        "observado": {"type": "number", "minimum": 0}, "compartilhado_alocado": {"type": "number", "minimum": 0},
+        "diferenca_fechamento": {"type": "number"}, "exclusivo_observado": {"type": "null"}, "marginal": {"type": "null"},
+        "estimativa_causal": {"const": false}, "regra": {"type": "string"}
+      }
+    },
+    "modulo": {
+      "type": "object", "required": ["versao_implementacao", "versao_avaliacao", "versao_avaliador_revisao", "leitura_experiencia", "comparabilidade", "custo"],
+      "properties": {
+        "versao_implementacao": {"type": "string"}, "versao_avaliacao": {"type": "string"}, "versao_avaliador_revisao": {"type": "string"},
+        "leitura_experiencia": {"type": "object", "required": ["estado", "unidades", "pendencias", "elegiveis", "atendidas", "omitidas", "negativas_validas", "indeterminadas", "assessment_ids"], "properties": {"estado": {"$ref": "#/$defs/estado"}}},
+        "comparabilidade": {"type": "object", "additionalProperties": false, "required": ["qualidade", "custo"], "properties": {"qualidade": {"type": "string", "pattern": "^[a-f0-9]{64}$"}, "custo": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}},
+        "custo": {"type": "object", "required": ["unidade", "escopo", "compartilhado_alocado", "exclusivo_observado", "marginal", "estimativa_causal"]}
+      }
+    }
+  }
+}

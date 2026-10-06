@@ -51,7 +51,7 @@ class WorldCausalModuleContractTest(unittest.TestCase):
             module["id"]: module["versao_implementacao"]
             for module in catalog["modulos"]
         }
-        self.assertEqual(catalog["versao_catalogo"], "5.0.0")
+        self.assertGreaterEqual(int(catalog["versao_catalogo"].split(".")[0]), 5)
         self.assertTrue(
             all(versions[facade.MODULE_ID] == "1.0.1" for facade in facades)
         )

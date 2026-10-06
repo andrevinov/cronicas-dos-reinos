@@ -1,0 +1,81 @@
+{
+  "schema_verificacao_amv04": 1,
+  "natureza": "verificacao_de_entrega_poshoc_nao_altera_campanha",
+  "data": "2026-10-04",
+  "testes_focados": {
+    "executados": 335,
+    "falhas": 0,
+    "segundos": 7.831,
+    "testes_novos_de_experiencia": 14,
+    "limite": "Suite completa e preflight antes de merge não repetidos; falhas preexistentes documentadas na AMV-01."
+  },
+  "corpus_anterior": {
+    "checks": 226,
+    "falhas": 0,
+    "status": "aprovado"
+  },
+  "referencias_g0": {
+    "conjunto": "todos",
+    "casos": 12,
+    "checks": 19,
+    "falhas": 2,
+    "restantes": [
+      {
+        "case_id": "painel_medicao_bloqueada",
+        "check_id": "sem-faixa-saudavel",
+        "destino": "AMV-05"
+      },
+      {
+        "case_id": "painel_medicao_bloqueada",
+        "check_id": "sem-nota-conclusiva",
+        "destino": "AMV-05"
+      }
+    ],
+    "manifest_sha256": "3f2db5a50015c8a763f9aaff490e82ac114e8f194abf94bbc42b7cb9871c1ab2"
+  },
+  "revisao_s024": {
+    "pareceres": 13,
+    "confirmados": 8,
+    "indeterminados": 5,
+    "ancoras_verificadas": 7,
+    "corte_sha256": "8be6e5f5068f3dbf21abdb02339f7d5499b854abdc0efd1d744b8e5e9965b55f",
+    "rubrica": "objetivos-jogo/1.0.0",
+    "bruto_versionado": false,
+    "pacote_historico_preservado": true,
+    "independencia": "Revisão separada do produtor; validação cega ou por terceiro não demonstrada."
+  },
+  "schemas_formais": {
+    "catalogo": true,
+    "adjudicacoes": true,
+    "avaliacoes_qualidade": true,
+    "metodo": "Draft202012Validator com Registry de schemas locais; sem rede"
+  },
+  "preservacao": {
+    "save_sha256": "e12bb7341965e70e584e71b5f8d532e2fa389d82b2dd5626bd2afb280e0064e3",
+    "arquivos_protegidos": 995,
+    "releases_anteriores_intactas": true,
+    "novas_releases_avaliacao": 12,
+    "gates_preflight_removidos": 0
+  },
+  "codigo_e_contratos_sha256": {
+    "ferramentas/experiencia_avaliacao.py": "d945847ce6e31edd3ff12a36e72974095ff1409bb94191a1093aafac5e4c834e",
+    "ferramentas/analisar-rollout.py": "5144f690005884acde1b908dc27755f70eae8d35c368b360fb7516c53c7a110c",
+    "ferramentas/gerar-avaliacao-sessao.py": "472c80f83fefe13d700f564cb400314dc26d660f0f831eb6076cd5a0d82d5a80",
+    "ferramentas/verificar_aceite_avaliacao.py": "2b9379ec31e8efd9e0b866103bcbdeb778ac6b90d3291beb179d29630ff56840",
+    "ferramentas/objetivos_avaliacao.py": "cbf04a1f4e092decac3515d1d33a7d391f8ed68425cbed1df8e6fd7483a19947",
+    "tests/test_experiencia_avaliacao.py": "840662c179c584f1dd05868995877cdca9ee307f3e2e5fc5111da9f2f8ce0fab",
+    "evaluation/catalogo-modulos-v2.json": "df574b3b2d5f7f2325310f9742785027a6848a55514a2d7d4ddae58af272dea6",
+    "evaluation/module-releases.json": "6faf75f3b5907dcf939d04eea4f99c8002c5b94835db3e46f8ce0eb75abe5962",
+    "evaluation/schemas/avaliacoes-qualidade-interacao-v1.schema.json": "1993af7ac0ed404e9ce57186b5f825476b7aa9b6a3c5c9bddae9a1bbdd0028a5",
+    "evaluation/schemas/adjudicacoes-ledger-v2.schema.json": "ec8b292e08083e4b1a3b6403e0163feac2a5738225fb013d3b1b63a0443ddfa7",
+    "evaluation/schemas/catalogo-modulos-v2.schema.json": "2a02e8793a6abe1925a986752cf11e0a8b7fab598682933a9193764cc0fde791",
+    "evaluation/schemas/ledger-modular-v2.schema.json": "f6c347923893409ac189de6b0777775e83e87741728aae12cf2479b9f49e24f7"
+  },
+  "artefatos_sha256": {
+    "resultado-amv04.json": "92c1eab53bd64f38cd9188027b4860932f026a1230411605e1b63dbd93b9c3f1",
+    "pareceres-s024-amv04.json": "091c8febc0ce611255b59f4450e1aefc9f5fb43a99e846b847632c63d5cbc0c7",
+    "experiencia-s024-amv04.json": "2347be93ef585c67b97e926715ad10f030b42c6962f6a037b9be4ad36c4b969b",
+    "relatorio-s024-amv04.md": "d92681f48902de2b7e2c3c60ddffd7c7d720288db568e3e99652ae1a3b0fa110"
+  },
+  "g0": "pendente_dashboard_amv05"
+}

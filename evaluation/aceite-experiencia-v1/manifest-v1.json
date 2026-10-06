@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "date": "2026-10-06",
+  "natureza": "referencia_de_episodios_isolados_congelada_antes_da_medicao",
+  "reference_sha256": {
+    "episodios.json": "8a27f4db441a8e729c826de933ef44b18a858fc5571f1ead0e25ce2dc66ecb75",
+    "gabarito.json": "f9d58eb635d27228d726f33f45efa01f92f5811d899ba358e5b4aac149dd82af"
+  },
+  "independence_limit": "Referência separada da entrada do revisor; não se alega autoria independente ou avaliação cega por terceiro."
+}

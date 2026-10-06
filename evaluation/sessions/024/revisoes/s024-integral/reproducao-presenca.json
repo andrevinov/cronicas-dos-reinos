@@ -1,0 +1,29 @@
+{
+  "natureza": "reproducao_isolada_do_mecanismo_na_implementacao_instalada",
+  "save_real_alterado": false,
+  "perfil_social": "fixture do helper, não ficha histórica de Aiko",
+  "limite": "Confirma a perda de presença por mudança de scene_id; não reconstitui todo o estado histórico nem prova qual fala seria escolhida.",
+  "resultados": [
+    {
+      "caso": "mesma_cena",
+      "presenca": "elenco_cena",
+      "contexto": "presente",
+      "requer_decisao": true,
+      "motivo": null
+    },
+    {
+      "caso": "novo_id_mesmo_local",
+      "presenca": "ausente",
+      "contexto": "mencionado",
+      "requer_decisao": false,
+      "motivo": "ausencia"
+    },
+    {
+      "caso": "permanencia_mesmo_local",
+      "presenca": "elenco_cena",
+      "contexto": "presente",
+      "requer_decisao": true,
+      "motivo": null
+    }
+  ]
+}

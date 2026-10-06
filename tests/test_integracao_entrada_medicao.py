@@ -101,6 +101,64 @@ class FrozenMeasurementIntegrationTest(unittest.TestCase):
             measurement_input=bundle,
         )
 
+    def test_revisao_preserva_original_versoes_e_manifestacao_adjudicada(self):
+        original = self.root / "original"
+        first = self._generate(self._freeze(), original)
+        original_bytes = self._bytes(original)
+        versions = {row["module_id"]: {"implementation_version": row["module_implementation_version"],
+                                       "evaluation_version": row["module_evaluation_version"]}
+                    for row in first["manifest"]["versoes_modulos"]}
+        # Cenário isolado: a fala original é pendente; a decisão posterior é parcial.
+        feedback = json.loads((ROOT / "evaluation/sessions/024/manifestacoes-jogador.json").read_text())["player_feedback"][0]
+        feedback = {**feedback, "feedback_id": "S900-F0001", "interaction_ref": "S900-I0001",
+                    "adjudication": {"state": "pendente", "reason": "manifestação original"}}
+        self.interactions.write_text(json.dumps({"schema_narrative_interactions": 1, "session": 900,
+            "interactions": [{"interaction_ref": "S900-I0001", "module_versions": versions},
+                             {"interaction_id": "I900-0999", "interaction_ref": "S900-I0999", "session": 900,
+                              "ordinal": 999, "class": "OFF", "state": "incomplete", "turn_id": None,
+                              "module_versions": versions}],
+            "player_feedback": [feedback]}), encoding="utf-8")
+        later = copy.deepcopy(feedback)
+        later["adjudication"] = {"state": "parcial", "reason": "fontes insuficientes no critério"}
+        decisions = json.loads(self.adjudications.read_text())
+        decisions["player_feedback"] = [later]
+        self.adjudications.write_text(json.dumps(decisions), encoding="utf-8")
+        bundle = self._freeze()
+        left, right = self.root / "revisao-a", self.root / "revisao-b"
+        for target in (left, right, left):
+            result = self.generator.generate_derived_evaluation(self.rollout, original_dir=original,
+                output_dir=target, revision_id="teste", revision_date="2026-10-04", measurement_input=bundle)
+            self.assertEqual(result["manifest"]["versoes_modulos"], first["manifest"]["versoes_modulos"])
+            self.assertEqual(result["manifest"]["fonte"]["sha256"], first["manifest"]["fonte"]["sha256"])
+            self.assertFalse(result["manifest"]["revisao"]["runtime_posterior_executado"])
+            partial = next(x for x in json.loads((target / "interacoes.json").read_text())["interactions"]
+                           if x.get("observacao_recorte") == "apenas_registro_historico")
+            self.assertIsNone(partial["response_present"])
+            self.assertIsNone(partial["receipt_present"])
+            self.assertEqual(result["scorecard"]["indicadores_globais"]["interacoes_observadas"],
+                             first["scorecard"]["indicadores_globais"]["interacoes_observadas"])
+            saved = json.loads((target / "manifestacoes-jogador.json").read_text())["player_feedback"][0]
+            self.assertEqual(saved["original_text"], feedback["original_text"])
+            self.assertEqual(saved["adjudication"], later["adjudication"])
+        self.assertEqual(self._bytes(left), self._bytes(right))
+        self.assertEqual(self._bytes(original), original_bytes)
+        with self.assertRaisesRegex(self.generator.EvaluationError, "substituir"):
+            self.generator.generate_derived_evaluation(self.rollout, original_dir=original,
+                output_dir=original, revision_id="teste", revision_date="2026-10-04", measurement_input=bundle)
+
+    def test_revisao_rejeita_mudanca_do_recorte_e_das_versoes_jogadas(self):
+        original = self.root / "original"
+        self._generate(self._freeze(), original)
+        bundle = self._freeze()
+        changed_cut = copy.deepcopy(bundle)
+        changed_cut["fonte"]["sha256"] = "a" * 64
+        with self.assertRaisesRegex(self.generator.EvaluationError, "mesmo recorte"):
+            self.generator.generate_derived_evaluation(self.rollout, original_dir=original,
+                output_dir=self.root / "derived", revision_id="teste", revision_date="2026-10-04", measurement_input=changed_cut)
+        with self.assertRaisesRegex(self.generator.EvaluationError, "versões executadas"):
+            self.generator.generate_derived_evaluation(self.rollout, original_dir=original,
+                output_dir=self.root / "derived", revision_id="teste", revision_date="2026-10-04", measurement_input=bundle)
+
     def test_same_entry_reproduces_all_artifact_bytes_and_ignores_later_source_changes(self):
         bundle = self._freeze()
         first = self.root / "first"
@@ -190,7 +248,7 @@ class FrozenMeasurementIntegrationTest(unittest.TestCase):
         script = (
             "const results=await Promise.allSettled(["
             "tools.exec_command({cmd:\"rg -n um docs\"}),"
-            "tools.exec_command({cmd:\"rg -n dois docs\"})]);"
+            "tools.exec_command({cmd:\"poetry run cronica preparar --cena-id dois --sem-oportunidade-sidequest\"})]);"
             "results.forEach((r,i)=>text({i,...r}));"
         )
         nested = "Script completed\nOutput:\n" + json.dumps(

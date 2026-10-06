@@ -15,6 +15,9 @@ dependencies = [
 # Sobe o servidor local do painel de avaliação na porta padrão 18765.
 servidor = "ferramentas.poetry_cli:servidor"
 
+# Revisão pelo agente após a sessão: preparar -> casos -> concluir/publicar.
+avaliar-sessao = "ferramentas.poetry_cli:avaliar_sessao"
+
 # Classifica/valida a linguagem da mesa: ON, OFF e RECALL.
 entrada = "ferramentas.poetry_cli:entrada"
 

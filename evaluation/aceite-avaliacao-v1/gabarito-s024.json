@@ -1,0 +1,142 @@
+{
+  "schema_gabarito_historico_g0": 1,
+  "sessao_id": "024",
+  "natureza": "referencia_historica_nao_reescreve_o_pacote",
+  "autoria": "Revisão de fontes realizada antes das correções do detector; não é julgamento do medidor nem validação cega por terceiro. O recorte reservado é uma reserva de uso, não prova de independência entre autores.",
+  "fonte": {
+    "codex_session_id": "01a0aac8-9b23-7c12-9520-be10b50ed451",
+    "corte_bytes": 2098214,
+    "sha256": "8be6e5f5068f3dbf21abdb02339f7d5499b854abdc0efd1d744b8e5e9965b55f",
+    "bruto_versionado": false,
+    "localizador": "armazenamento local Codex: localizar pelo codex_session_id e conferir prefixo, sem depender de caminho absoluto"
+  },
+  "desenvolvimento": [
+    {
+      "reference_id": "conclusao-024",
+      "interaction_ref": "S024-I0005",
+      "ancoras": [
+        {
+          "linha": 379,
+          "ponteiro": "/payload/output/1/text",
+          "sha256_texto": "e5d8255b0440ad96530d4cd5f0b1c407e64966ca99fd1023f1544921b9b6e5d0"
+        }
+      ],
+      "expectativas": [
+        {
+          "criterio": "turn_and_session_orchestration.transactional_turn",
+          "estado_referencia": "confirmada",
+          "esperado": "estado terminal concluido exige sucesso e escrita canônica coerente",
+          "justificativa": "Saída canônica observada comprova conclusão; não é equivalente à execução do envelope."
+        }
+      ]
+    },
+    {
+      "reference_id": "mecanica-bilhete",
+      "interaction_ref": "S024-I0005",
+      "ancoras": [
+        {
+          "linha": 319,
+          "ponteiro": "/payload/content/0/text",
+          "sha256_texto": "87a8d64e5d741a75bf6548bada773f8222ee222bd3d05c2b2003460a8ac8ad29"
+        },
+        {
+          "linha": 361,
+          "ponteiro": "/payload/input",
+          "sha256_texto": "ed6b87b9c1c6d52dc5f9a37ec4f73e1e246bfeb82e92744bf6bb40a374388077"
+        },
+        {
+          "linha": 384,
+          "ponteiro": "/payload/content/0/text",
+          "sha256_texto": "571f1016229df5cb9c7872fc7bab2e9ccb9f44fcf3688f335f68be52d55071fb"
+        }
+      ],
+      "expectativas": [
+        {
+          "criterio": "rules_and_character_state.roll_execution",
+          "estado_referencia": "confirmada",
+          "esperado": "CD 13 foi declarada antes; resultado 5/falha permanece respeitado na resposta",
+          "justificativa": "Comando de dado antecede a resposta. Sucesso de ferramenta não significa sucesso ficcional."
+        },
+        {
+          "criterio": "rules_and_character_state.rules_resolution",
+          "estado_referencia": "pendente",
+          "esperado": "Revisar necessidade do teste e canais de percepção com ficção anterior, sem confirmar reclamação automaticamente",
+          "justificativa": "Intenção e resultado estão disponíveis. A reclamação não prova ausência de oposição ou incerteza; o olhar, a palidez e a negação de Aiko também precisam ser considerados."
+        }
+      ]
+    },
+    {
+      "reference_id": "acordo-mori",
+      "interaction_ref": "S024-I0006",
+      "ancoras": [
+        {
+          "linha": 455,
+          "ponteiro": "/payload/content/0/text",
+          "sha256_texto": "8ea7d20d4044cee00f4196a4ec8cd4d1bad501340e4c2ad95011a6f93941f785"
+        }
+      ],
+      "expectativas": [
+        {
+          "criterio": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+          "estado_referencia": "confirmada",
+          "esperado": "Promessa é explícita e limitada; cooperação futura não foi aceita",
+          "justificativa": "Resposta estabelece limites de controle; não garante proteção universal nem sucesso futuro."
+        }
+      ]
+    }
+  ],
+  "reservado": [
+    {
+      "reference_id": "emocao-declarada-legitima",
+      "interaction_ref": "S024-I0011",
+      "ancoras": [
+        {
+          "linha": 673,
+          "ponteiro": "/payload/content/0/text",
+          "sha256_texto": "16fdd47f02e72ff593809adae19dd9dc7963ac7811b08e60d29bb4a60020e21b"
+        },
+        {
+          "linha": 710,
+          "ponteiro": "/payload/content/0/text",
+          "sha256_texto": "5f2fd17d0f7e28478157b25a0fb262ada6faf71651d30ca08632586b8854fc1b"
+        }
+      ],
+      "expectativas": [
+        {
+          "criterio": "narrative_delivery.visible_closure",
+          "estado_referencia": "confirmada",
+          "esperado": "Referir frustração declarada pelo jogador não é emoção imposta neste critério específico",
+          "justificativa": "Entrada declara Ren um tanto frustrado; isso não aprova todas as ações narradas nem autoriza outros sentimentos."
+        },
+        {
+          "criterio": "context_and_memory.knowledge_layer_separation",
+          "estado_referencia": "confirmada",
+          "esperado": "Crença sobre proteção e aliança não se converte em garantia do narrador",
+          "justificativa": "Jogador declara crença e possibilidade; promessa limitada precisa continuar distinta de segurança universal."
+        }
+      ]
+    }
+  ],
+  "contexto_historico": {
+    "reconstruivel": [
+      "entrada do jogador e resposta final pelas âncoras",
+      "ordem de preparo, dados e conclusão no corte",
+      "fontes e memória efetivamente entregues nas saídas",
+      "promessa limitada e percepção narrada anteriormente",
+      "versões de módulo registradas nas interações"
+    ],
+    "ausente_ou_parcial": [
+      "snapshot integral de todo o mundo antes de cada turno",
+      "prova de todas as causas fora do recorte",
+      "parecer independente confirmado sobre necessidade do teste contestado"
+    ],
+    "regra": "Não preencher lacuna com estado atual nem converter zero atividade em zero oportunidades."
+  },
+  "criterios_g0": {
+    "erro_operacional_verificavel_tolerado": 0,
+    "falha_critica_confirmada_omitida_tolerada": 0,
+    "qualidade_sem_adjudicacao": "fora do denominador; não avaliável",
+    "revisao_pendente": "não confirma sucesso nem falha",
+    "gate": "Reavaliação 024 e critérios semânticos precisam da entrega AMV-04/05."
+  }
+}

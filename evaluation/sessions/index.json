@@ -68,7 +68,182 @@
         "sessao": "provisoria",
         "motivo": "uma única sessão; estabilidade exige pelo menos três sessões e dez oportunidades por módulo"
       },
-      "caminho": "021"
+      "caminho": "021",
+      "apresentacao": {},
+      "revisao": null,
+      "versoes": {
+        "gerador": 1,
+        "telemetria": 3,
+        "sistemas_narrativos": 1,
+        "catalogo_modulos": 1,
+        "metas": 1
+      },
+      "versoes_modulos": null,
+      "conclusao_medicao": null,
+      "agregacao_modular": null,
+      "series_modulos": [
+        {
+          "module_id": "emergent_sidequest_authoring",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "transactional_sidequest_progress",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "sidequest_progression",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "active_sidequest_reassessment",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "reactive_pressure_routing",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "adversarial_integrity",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "batch_world_boundary",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "npc_social_initiative",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "persistent_world_conditions",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "emergent_sidequest_opportunity",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "canon_bridge",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "quest_rewards",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "liveness_boundary",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "sidequest_success_reactions",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "world_local_incidents",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "secret_canon",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "canonical_secret_quests",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "underground_tournament",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "concurrent_adversarial_operations",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "seven_names_migration_regression",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        }
+      ],
+      "revisoes": []
     },
     {
       "sessao_id": "022",
@@ -79,8 +254,8 @@
         "2.0.0"
       ],
       "status_avaliacao": "provisoria",
-      "nota_geral_0a100": 72.45,
-      "faixa_geral": "atencao",
+      "nota_geral_0a100": null,
+      "faixa_geral": "sem_conclusao_global",
       "eixos": {
         "calibracao": {
           "nota_0a100": 99.24,
@@ -130,7 +305,181 @@
         "sessao": "provisoria",
         "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
       },
-      "caminho": "022"
+      "caminho": "022",
+      "apresentacao": {},
+      "revisao": null,
+      "versoes": {
+        "gerador": "2.0.2",
+        "telemetria": 3,
+        "detector_modular": "3.0.4",
+        "catalogo_modulos": "3.0.0",
+        "metas": "2.0.0",
+        "contrato_avaliacao": "3.0.0"
+      },
+      "versoes_modulos": [
+        {
+          "module_id": "context_and_memory",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "turn_and_session_orchestration",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "narrative_delivery",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "rules_and_character_state",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "sidequest_authoring",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "sidequest_lifecycle",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "canonical_quest_integration",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "npc_continuity_and_social_behavior",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "scene_world_projection",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "world_boundary_resolution",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "causal_narrative_routing",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        },
+        {
+          "module_id": "adversarial_operations",
+          "module_implementation_version": "1.0.0",
+          "module_evaluation_version": "3.0.0"
+        }
+      ],
+      "conclusao_medicao": null,
+      "agregacao_modular": null,
+      "series_modulos": [
+        {
+          "module_id": "causal_narrative_routing",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "world_boundary_resolution",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "adversarial_operations",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "canonical_quest_integration",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "scene_world_projection",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "sidequest_lifecycle",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "context_and_memory",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "turn_and_session_orchestration",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "rules_and_character_state",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "npc_continuity_and_social_behavior",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "narrative_delivery",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "sidequest_authoring",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        }
+      ],
+      "nota_operacional_parcial_0a100": 72.45,
+      "revisoes": []
     },
     {
       "sessao_id": "023",
@@ -141,8 +490,8 @@
         "2.0.0"
       ],
       "status_avaliacao": "provisoria",
-      "nota_geral_0a100": 79.15,
-      "faixa_geral": "atencao",
+      "nota_geral_0a100": null,
+      "faixa_geral": "sem_conclusao_global",
       "eixos": {
         "calibracao": {
           "nota_0a100": 100.0,
@@ -192,7 +541,181 @@
         "sessao": "provisoria",
         "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
       },
-      "caminho": "023"
+      "caminho": "023",
+      "apresentacao": {},
+      "revisao": null,
+      "versoes": {
+        "gerador": "4.0.0",
+        "telemetria": 3,
+        "detector_modular": "4.2.0",
+        "catalogo_modulos": "5.0.0",
+        "metas": "2.0.0",
+        "contrato_avaliacao": "4.0.0"
+      },
+      "versoes_modulos": [
+        {
+          "module_id": "context_and_memory",
+          "module_implementation_version": "1.0.2",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "turn_and_session_orchestration",
+          "module_implementation_version": "1.0.2",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "narrative_delivery",
+          "module_implementation_version": "1.0.2",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "rules_and_character_state",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "sidequest_authoring",
+          "module_implementation_version": "2.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "sidequest_lifecycle",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "canonical_quest_integration",
+          "module_implementation_version": "2.0.0",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "npc_continuity_and_social_behavior",
+          "module_implementation_version": "1.1.0",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "scene_world_projection",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "world_boundary_resolution",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "causal_narrative_routing",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "adversarial_operations",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        }
+      ],
+      "conclusao_medicao": null,
+      "agregacao_modular": null,
+      "series_modulos": [
+        {
+          "module_id": "context_and_memory",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "sidequest_authoring",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "turn_and_session_orchestration",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "npc_continuity_and_social_behavior",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "scene_world_projection",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "world_boundary_resolution",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "causal_narrative_routing",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "sidequest_lifecycle",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "canonical_quest_integration",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "rules_and_character_state",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "narrative_delivery",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "adversarial_operations",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        }
+      ],
+      "nota_operacional_parcial_0a100": 79.15,
+      "revisoes": []
     },
     {
       "sessao_id": "024",
@@ -203,8 +726,8 @@
         "3.0.0"
       ],
       "status_avaliacao": "bloqueada_instrumentacao",
-      "nota_geral_0a100": 85.1,
-      "faixa_geral": "saudavel",
+      "nota_geral_0a100": null,
+      "faixa_geral": "sem_conclusao_global",
       "eixos": {
         "calibracao": {
           "nota_0a100": 100.0,
@@ -254,7 +777,2564 @@
         "sessao": "provisoria",
         "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
       },
-      "caminho": "024"
+      "caminho": "024",
+      "apresentacao": {},
+      "revisao": null,
+      "versoes": {
+        "gerador": "4.4.0",
+        "telemetria": 3,
+        "detector_modular": "4.6.0",
+        "catalogo_modulos": "5.0.0",
+        "metas": "3.0.0",
+        "contrato_avaliacao": "5.0.0"
+      },
+      "versoes_modulos": [
+        {
+          "module_id": "context_and_memory",
+          "module_implementation_version": "1.0.2",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "turn_and_session_orchestration",
+          "module_implementation_version": "1.0.2",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "narrative_delivery",
+          "module_implementation_version": "1.0.2",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "rules_and_character_state",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "sidequest_authoring",
+          "module_implementation_version": "2.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "sidequest_lifecycle",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "canonical_quest_integration",
+          "module_implementation_version": "2.0.0",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "npc_continuity_and_social_behavior",
+          "module_implementation_version": "1.1.0",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "scene_world_projection",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "world_boundary_resolution",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "causal_narrative_routing",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        },
+        {
+          "module_id": "adversarial_operations",
+          "module_implementation_version": "1.0.1",
+          "module_evaluation_version": "4.0.0"
+        }
+      ],
+      "conclusao_medicao": {
+        "schema_conclusao_medicao": 1,
+        "permitida": false,
+        "entrada_congelada": true,
+        "reproducao_verificada": true,
+        "bloqueios": [
+          {
+            "codigo": "resultado_operacao_ausente",
+            "operation_ids": [
+              "01a0aad7-f645-7691-9aca-8b00300da48c/call_E3jNGiJxsoBdejg234UoX02j/0",
+              "01a0aaf1-5dc5-7df1-a642-200c66832150/call_GUqE9eEueQp6p4oqFB2DvM27/0",
+              "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_257zPMw7olRQqwHBUiyNpGCY/0",
+              "01a0ad32-67f0-7e82-b319-d67aaf9fd520/call_csgPWubVnXvlMeUaYn8ap13a/0"
+            ]
+          },
+          {
+            "codigo": "evidencia_operacional_insuficiente",
+            "operation_ids": [
+              "01a0aac8-baee-7d91-a05d-af084bc326de/call_qz4GGUoKTkHfvA8D1U44lHpB/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_66JS1RbDX7ktNtiy2COtQzso/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_GLh7dqT2nOaPa0N9gbWcg0MG/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_Iosm7oGSIW7fQeBVrdUOPLab/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_LPLWXerXH1iauGMGkDf5cBgO/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_PtIFmOCnVECjTnBadXgEGpSA/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_RTH2CrcHlEgvC3R0m0UlsGdd/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_lLttHUMslyv9mIhhie8XVHz0/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_rknFm5BJR7jDwj5qdaTwPfcV/0",
+              "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_sLMuI1ihYMXVmIYI7RLvgf2k/0",
+              "01a0aad7-f645-7691-9aca-8b00300da48c/call_Ff1iFEPlAQSyUM9w2ST6589P/0",
+              "01a0aad7-f645-7691-9aca-8b00300da48c/call_QApyCpLq1C5fddNJV2qnUQqG/0",
+              "01a0aade-5b4e-7661-b38a-31ce71af1f2c/call_LVcXFxzolbGJFt4CAYKpAU3J/0",
+              "01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_YP1XTSAorbD0GSq3TiIdwhUo/0",
+              "01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_gWXhPi9M5lQDq79jA7Bd1syG/0",
+              "01a0aaf1-5dc5-7df1-a642-200c66832150/call_Aii7Rc4SczJpkTFnbsq6gRzg/0",
+              "01a0aaf1-5dc5-7df1-a642-200c66832150/call_OL2BmHEieGb1yrYBk4OZuyjT/0",
+              "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_BEl29QaN3gTSATl8SypjnYwj/0",
+              "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_EohgOIjzJL2B0QjsQzRGlBf9/0",
+              "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_QhCTm9DaqXiFoWnM0Y8eSIM1/0",
+              "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_hitfd4wiLfbbPgO5n5npOCby/0",
+              "01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_pc4RYqISSiJZFWwSYPooZE7Q/0",
+              "01a0ab0f-2670-78c3-974d-851984849264/call_DnlbC8O7wn2ZYksGEjKK1Ya6/0",
+              "01a0ab0f-2670-78c3-974d-851984849264/call_tgVYjtxsaoTPsFNkfoiKrQ3a/0",
+              "01a0ab0f-2670-78c3-974d-851984849264/call_zXnAOyuW4tGfhmZcHKSCfCby/0",
+              "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_3l02KUlddrsl3jJMEQXRTb0e/0",
+              "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_WnQ2OsGbCaouAaPagn5mF5ai/0",
+              "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_dZsy2v0wIv4qv051to3rep69/0",
+              "01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_wQHVJEVGpomus8zU05Tlyoct/0",
+              "01a0ad2f-f078-73d3-8fa1-855c74bf0649/call_zgR45zyvQh4Eg1Lx1MFQS5AV/0"
+            ]
+          },
+          {
+            "codigo": "falha_instrumentacao_modular",
+            "module_ids": [
+              "context_and_memory",
+              "npc_continuity_and_social_behavior",
+              "turn_and_session_orchestration"
+            ]
+          }
+        ],
+        "limitacoes": [
+          {
+            "codigo": "fonte_ausente",
+            "escopo": "adjudicacoes",
+            "gravidade": "limitacao",
+            "mensagem": "Fonte não selecionada; a ausência fica explícita."
+          },
+          {
+            "codigo": "fonte_ausente",
+            "escopo": "validade",
+            "gravidade": "limitacao",
+            "mensagem": "Fonte não selecionada; a ausência fica explícita."
+          }
+        ],
+        "regra": "qualquer correlação ambígua, resultado ausente, evidência insuficiente, erro do detector, falha de instrumentação ou entrada não congelada impede conclusão dependente; fatos observados permanecem consultáveis"
+      },
+      "agregacao_modular": {
+        "schema": 1,
+        "status": "bloqueada_instrumentacao",
+        "conclusao_permitida": false,
+        "nota_parcial_componentes_validos": true,
+        "modulos_catalogados": 12,
+        "modulos_incluidos": 2,
+        "modulos_bloqueados": [
+          {
+            "module_id": "context_and_memory",
+            "motivo": "falha_instrumentacao",
+            "diagnostico": "0 recibo(s) de cobertura ausente(s), 0 incompleto(s) e 0 duplicado(s) em 20 atividade(s) esperada(s); 5 efeito(s) inadequado(s)"
+          },
+          {
+            "module_id": "npc_continuity_and_social_behavior",
+            "motivo": "falha_instrumentacao",
+            "diagnostico": "0 recibo(s) de cobertura ausente(s), 0 incompleto(s) e 0 duplicado(s) em 20 atividade(s) esperada(s)"
+          },
+          {
+            "module_id": "turn_and_session_orchestration",
+            "motivo": "falha_instrumentacao",
+            "diagnostico": "0 recibo(s) de cobertura ausente(s), 0 incompleto(s) e 0 duplicado(s) em 21 atividade(s) esperada(s); 1 efeito(s) inadequado(s)"
+          }
+        ],
+        "modulos_nao_avaliaveis": [
+          {
+            "module_id": "adversarial_operations",
+            "motivo": "sem_atividade"
+          },
+          {
+            "module_id": "canonical_quest_integration",
+            "motivo": "sem_evidencia"
+          },
+          {
+            "module_id": "causal_narrative_routing",
+            "motivo": "nao_aplicavel"
+          },
+          {
+            "module_id": "scene_world_projection",
+            "motivo": "nao_aplicavel"
+          },
+          {
+            "module_id": "sidequest_authoring",
+            "motivo": "indeterminado"
+          },
+          {
+            "module_id": "sidequest_lifecycle",
+            "motivo": "nao_aplicavel"
+          },
+          {
+            "module_id": "world_boundary_resolution",
+            "motivo": "sem_atividade"
+          }
+        ],
+        "denominadores": {
+          "calibracao": {
+            "componentes_validos": 2,
+            "module_ids": [
+              "narrative_delivery",
+              "rules_and_character_state"
+            ],
+            "modulos_bloqueados_excluidos": [
+              "context_and_memory",
+              "npc_continuity_and_social_behavior",
+              "turn_and_session_orchestration"
+            ]
+          },
+          "eficacia_integridade": {
+            "componentes_validos": 2,
+            "module_ids": [
+              "narrative_delivery",
+              "rules_and_character_state"
+            ],
+            "modulos_bloqueados_excluidos": [
+              "context_and_memory",
+              "npc_continuity_and_social_behavior",
+              "turn_and_session_orchestration"
+            ]
+          },
+          "confiabilidade": {
+            "componentes_modulares_validos": 2,
+            "module_ids": [
+              "narrative_delivery",
+              "rules_and_character_state"
+            ],
+            "componentes_globais_validos": [
+              "par_cronica_exato",
+              "referencia_interacao_exatamente_uma_vez"
+            ],
+            "modulos_bloqueados_excluidos": [
+              "context_and_memory",
+              "npc_continuity_and_social_behavior",
+              "turn_and_session_orchestration"
+            ]
+          },
+          "economia": {
+            "componentes_globais_validos": [
+              "reducao_input_bruto",
+              "inferencias_por_turno",
+              "tools_por_turno",
+              "l0_l2_limpo"
+            ]
+          },
+          "fluidez": {
+            "componentes_globais_validos": [
+              "latencia_sessao"
+            ]
+          },
+          "nota_geral": {
+            "eixos_validos": [
+              "calibracao",
+              "eficacia_integridade",
+              "confiabilidade",
+              "economia",
+              "fluidez"
+            ],
+            "eixos_sem_evidencia": [],
+            "pesos_renormalizados": true
+          }
+        },
+        "regra": "componentes de módulos com falha de instrumentação são excluídos antes das médias; a nota restante é parcial e não autoriza conclusão"
+      },
+      "series_modulos": [
+        {
+          "module_id": "context_and_memory",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "turn_and_session_orchestration",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "narrative_delivery",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "rules_and_character_state",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "sidequest_authoring",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "sidequest_lifecycle",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "canonical_quest_integration",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "npc_continuity_and_social_behavior",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "scene_world_projection",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "world_boundary_resolution",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "causal_narrative_routing",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        },
+        {
+          "module_id": "adversarial_operations",
+          "comparabilidade": null,
+          "estado": "nao_avaliada",
+          "qualidade": null,
+          "custo": null,
+          "guardrail": false
+        }
+      ],
+      "nota_operacional_parcial_0a100": 85.1,
+      "revisoes": [
+        {
+          "sessao_id": "024",
+          "serie_avaliacao": "modules-v2",
+          "chave_comparabilidade": [
+            "modules-v2",
+            "5.0.0",
+            "3.0.0"
+          ],
+          "status_avaliacao": "comprometida",
+          "nota_geral_0a100": null,
+          "faixa_geral": "comprometida",
+          "eixos": {
+            "calibracao": {
+              "nota_0a100": 100.0,
+              "peso": 30
+            },
+            "eficacia_integridade": {
+              "nota_0a100": 77.58,
+              "peso": 30
+            },
+            "confiabilidade": {
+              "nota_0a100": 79.81,
+              "peso": 20
+            },
+            "economia": {
+              "nota_0a100": 74.11,
+              "peso": 15
+            },
+            "fluidez": {
+              "nota_0a100": 43.06,
+              "peso": 5
+            }
+          },
+          "indicadores_globais": {
+            "turnos_narrativos": 9,
+            "interacoes_observadas": 12,
+            "interacoes_com_referencia_exata": 9,
+            "input_tokens": 5352780,
+            "cached_input_tokens": 5086976,
+            "uncached_input_tokens_aprox": 265804,
+            "output_tokens": 54019,
+            "reducao_input_bruto_baseline": 0.722955,
+            "inferencias_por_turno": 7.0,
+            "tools_por_turno": 6.0,
+            "orquestracao_por_turno": 2.889,
+            "fracao_par_cronica_exato": 0.666667,
+            "fracao_l0_l2_limpo": 0.333333,
+            "fracao_turnos_com_raw": 0.555556,
+            "raw_read_calls": 12,
+            "schema_discovery_calls": 2,
+            "compactacoes": 0,
+            "latencia_mediana_segundos": 146.789,
+            "latencia_p90_segundos": 265.214,
+            "latencia_maxima_segundos": 288.402,
+            "turnos_acima_300_segundos": 0
+          },
+          "confianca": {
+            "sessao": "provisoria",
+            "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
+          },
+          "caminho": "024/revisoes/amv05",
+          "apresentacao": {
+            "schema": 1,
+            "versao": "1.0.0",
+            "validade": "comprometida_guardrail",
+            "qualidade": "violacao_critica",
+            "conclusao_global_permitida": false,
+            "nota_global_publicavel": null,
+            "cobertura": {
+              "unidades_interacao_criterio": 408,
+              "com_parecer": 13,
+              "sem_parecer": 395,
+              "confirmadas_verificadas": 8,
+              "estados": {
+                "indeterminada": 400,
+                "confirmada": 8
+              }
+            },
+            "regra": "Parecer local não aprova o sistema. Sem cobertura e estabilidade, nenhuma média global conclusiva."
+          },
+          "revisao": {
+            "id": "amv05",
+            "rotulo": "Reavaliação AMV05 · mesma sessão",
+            "natureza": "revisao_poshoc_mesmo_recorte_sem_novo_jogo",
+            "data": "2026-10-04",
+            "manifest_original_sha256": "8ed4ecce452df9eaeb8199bb628427c18895b3fcacfb80822da3ff0fdc966173",
+            "pacote_original_sha256": "62e8971ec883e8925e74384da7b9e3651c01e0fdb1fb26242ed6b67452f55faf",
+            "fonte_original_sha256": "8be6e5f5068f3dbf21abdb02339f7d5499b854abdc0efd1d744b8e5e9965b55f",
+            "entrada_original_id": "c1f63b92d7e3a0e4fbeb1b1ea77a9aeac8d2a318130f80247fba51a61874c295",
+            "runtime_posterior_executado": false
+          },
+          "versoes": {
+            "gerador": "4.8.0",
+            "telemetria": 3,
+            "detector_modular": "4.9.0",
+            "rubrica": "objetivos-jogo/1.0.0",
+            "apresentacao": "1.0.0",
+            "catalogo_modulos": "5.1.0",
+            "metas": "3.0.0",
+            "contrato_avaliacao": "5.0.0"
+          },
+          "versoes_modulos": [
+            {
+              "module_id": "context_and_memory",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "turn_and_session_orchestration",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "narrative_delivery",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "rules_and_character_state",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "sidequest_authoring",
+              "module_implementation_version": "2.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "sidequest_lifecycle",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "canonical_quest_integration",
+              "module_implementation_version": "2.0.0",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "npc_continuity_and_social_behavior",
+              "module_implementation_version": "1.1.0",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "scene_world_projection",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "world_boundary_resolution",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "causal_narrative_routing",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "adversarial_operations",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            }
+          ],
+          "conclusao_medicao": {
+            "schema_conclusao_medicao": 1,
+            "permitida": false,
+            "entrada_congelada": true,
+            "reproducao_verificada": true,
+            "bloqueios": [
+              {
+                "codigo": "resultado_operacao_ausente",
+                "operation_ids": [
+                  "01a0ad32-67f0-7e82-b319-d67aaf9fd520/call_csgPWubVnXvlMeUaYn8ap13a/0"
+                ],
+                "module_ids": [
+                  "context_and_memory",
+                  "narrative_delivery",
+                  "npc_continuity_and_social_behavior",
+                  "rules_and_character_state",
+                  "turn_and_session_orchestration"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "operation_ids": [
+                  "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_66JS1RbDX7ktNtiy2COtQzso/0",
+                  "01a0aad7-f645-7691-9aca-8b00300da48c/call_Ff1iFEPlAQSyUM9w2ST6589P/0",
+                  "01a0aade-5b4e-7661-b38a-31ce71af1f2c/call_LVcXFxzolbGJFt4CAYKpAU3J/0",
+                  "01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_gWXhPi9M5lQDq79jA7Bd1syG/0",
+                  "01a0aaf1-5dc5-7df1-a642-200c66832150/call_OL2BmHEieGb1yrYBk4OZuyjT/0",
+                  "01a0ab0f-2670-78c3-974d-851984849264/call_tgVYjtxsaoTPsFNkfoiKrQ3a/0",
+                  "01a0ab0f-2670-78c3-974d-851984849264/call_zXnAOyuW4tGfhmZcHKSCfCby/0"
+                ],
+                "module_ids": [
+                  "context_and_memory",
+                  "narrative_delivery",
+                  "npc_continuity_and_social_behavior",
+                  "rules_and_character_state",
+                  "turn_and_session_orchestration"
+                ]
+              }
+            ],
+            "limitacoes": [
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aac8-baee-7d91-a05d-af084bc326de/call_qz4GGUoKTkHfvA8D1U44lHpB/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "turn_and_session_orchestration"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_LPLWXerXH1iauGMGkDf5cBgO/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_RTH2CrcHlEgvC3R0m0UlsGdd/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_Iosm7oGSIW7fQeBVrdUOPLab/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_PtIFmOCnVECjTnBadXgEGpSA/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_GLh7dqT2nOaPa0N9gbWcg0MG/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_rknFm5BJR7jDwj5qdaTwPfcV/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_lLttHUMslyv9mIhhie8XVHz0/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_sLMuI1ihYMXVmIYI7RLvgf2k/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0aad7-f645-7691-9aca-8b00300da48c/call_E3jNGiJxsoBdejg234UoX02j/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aad7-f645-7691-9aca-8b00300da48c/call_QApyCpLq1C5fddNJV2qnUQqG/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_YP1XTSAorbD0GSq3TiIdwhUo/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0aaf1-5dc5-7df1-a642-200c66832150/call_GUqE9eEueQp6p4oqFB2DvM27/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf1-5dc5-7df1-a642-200c66832150/call_Aii7Rc4SczJpkTFnbsq6gRzg/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_BEl29QaN3gTSATl8SypjnYwj/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_EohgOIjzJL2B0QjsQzRGlBf9/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_hitfd4wiLfbbPgO5n5npOCby/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_pc4RYqISSiJZFWwSYPooZE7Q/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_QhCTm9DaqXiFoWnM0Y8eSIM1/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab0f-2670-78c3-974d-851984849264/call_DnlbC8O7wn2ZYksGEjKK1Ya6/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_257zPMw7olRQqwHBUiyNpGCY/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_dZsy2v0wIv4qv051to3rep69/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_3l02KUlddrsl3jJMEQXRTb0e/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_wQHVJEVGpomus8zU05Tlyoct/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_WnQ2OsGbCaouAaPagn5mF5ai/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ad2f-f078-73d3-8fa1-855c74bf0649/call_zgR45zyvQh4Eg1Lx1MFQS5AV/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              }
+            ],
+            "regra": "correlação ambígua, resultado ausente ou evidência insuficiente de uma dependência, erro do detector, falha de instrumentação ou entrada não congelada impede conclusão dependente; fatos observados permanecem consultáveis"
+          },
+          "agregacao_modular": {
+            "schema": 1,
+            "status": "completa",
+            "conclusao_permitida": true,
+            "nota_parcial_componentes_validos": false,
+            "modulos_catalogados": 12,
+            "modulos_incluidos": 4,
+            "modulos_bloqueados": [],
+            "modulos_nao_avaliaveis": [
+              {
+                "module_id": "adversarial_operations",
+                "motivo": "sem_atividade"
+              },
+              {
+                "module_id": "canonical_quest_integration",
+                "motivo": "sem_evidencia"
+              },
+              {
+                "module_id": "causal_narrative_routing",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "npc_continuity_and_social_behavior",
+                "motivo": "evidencia_insuficiente"
+              },
+              {
+                "module_id": "scene_world_projection",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "sidequest_authoring",
+                "motivo": "indeterminado"
+              },
+              {
+                "module_id": "sidequest_lifecycle",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "world_boundary_resolution",
+                "motivo": "sem_evidencia"
+              }
+            ],
+            "denominadores": {
+              "calibracao": {
+                "componentes_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "eficacia_integridade": {
+                "componentes_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "confiabilidade": {
+                "componentes_modulares_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "componentes_globais_validos": [
+                  "par_cronica_exato",
+                  "referencia_interacao_exatamente_uma_vez"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "economia": {
+                "componentes_globais_validos": [
+                  "reducao_input_bruto",
+                  "inferencias_por_turno",
+                  "tools_por_turno",
+                  "l0_l2_limpo"
+                ]
+              },
+              "fluidez": {
+                "componentes_globais_validos": [
+                  "latencia_sessao"
+                ]
+              },
+              "nota_geral": {
+                "eixos_validos": [
+                  "calibracao",
+                  "eficacia_integridade",
+                  "confiabilidade",
+                  "economia",
+                  "fluidez"
+                ],
+                "eixos_sem_evidencia": [],
+                "pesos_renormalizados": true
+              }
+            },
+            "regra": "componentes de módulos com falha de instrumentação são excluídos antes das médias; a nota restante é parcial e não autoriza conclusão"
+          },
+          "series_modulos": [
+            {
+              "module_id": "context_and_memory",
+              "comparabilidade": {
+                "qualidade": "5e81f87715407d29569bff9ad50d830fe75d0aafe1e02150fcb437e5e5594c64",
+                "custo": "45bb411ecdfc9d020eabb0ff3bd994a32598f7678d863a3851c4ba7da959c28d"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864536,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "turn_and_session_orchestration",
+              "comparabilidade": {
+                "qualidade": "7f645d2e7ac731bea2f9469e9e4a2ff5c14fa512f60e6149fa077ca0e25d61b8",
+                "custo": "45bb411ecdfc9d020eabb0ff3bd994a32598f7678d863a3851c4ba7da959c28d"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864529,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "narrative_delivery",
+              "comparabilidade": {
+                "qualidade": "ff90f7f818fe853277afdfb385b4d5eac0747258d1742385f33c8650d7d870e5",
+                "custo": "45bb411ecdfc9d020eabb0ff3bd994a32598f7678d863a3851c4ba7da959c28d"
+              },
+              "estado": "violacao_critica",
+              "qualidade": 50.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864535,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": true
+            },
+            {
+              "module_id": "rules_and_character_state",
+              "comparabilidade": {
+                "qualidade": "d707b3e34f2c3cf2a2d302e563e07f11f1b785a43d5b28116afeb1f511a1919a",
+                "custo": "aa7a4369e7f4946248040d9d712a582180253d2b8031370587734ba197676b47"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864533,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "sidequest_authoring",
+              "comparabilidade": {
+                "qualidade": "229e86fc72d7fd78b57d55b599e4f87c11e7e4ca6cb6a9a4e4c4d5aebfcb1825",
+                "custo": "ef4b4b407e429a66855716f54b6ba9532bea7087583c90ddf842b66faaffad7c"
+              },
+              "estado": "nao_avaliada",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864531,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "sidequest_lifecycle",
+              "comparabilidade": {
+                "qualidade": "5186a0cef99d2ff4c868ed055ba65ef4446689086cb11e39e7c311f885b37852",
+                "custo": "aa7a4369e7f4946248040d9d712a582180253d2b8031370587734ba197676b47"
+              },
+              "estado": "fontes_insuficientes",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "canonical_quest_integration",
+              "comparabilidade": {
+                "qualidade": "36aa91d71aef78553c6283a47ab201d61039b8fb9fbfd76079d3809205acd6d0",
+                "custo": "3573a852100ea8e0f0d7ed32946a9b68066c353b07fa4ec871d86d8637c13e19"
+              },
+              "estado": "nao_avaliada",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "npc_continuity_and_social_behavior",
+              "comparabilidade": {
+                "qualidade": "ca29afb63b03dad9298fa162394bf508129cc915f5dc5d58c3881f04eec6873f",
+                "custo": "f868fc8dc00eb12b0e649aab36f12b9ec56464220f18f58204a727dfb328fe73"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 658195,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "scene_world_projection",
+              "comparabilidade": {
+                "qualidade": "9bfdca25482ed13195fc0c03dec3f47355c5222bda2fe0141a589a82b0120df2",
+                "custo": "aa7a4369e7f4946248040d9d712a582180253d2b8031370587734ba197676b47"
+              },
+              "estado": "fontes_insuficientes",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 425940,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "world_boundary_resolution",
+              "comparabilidade": {
+                "qualidade": "9a2b27de43142452c26ebfd0627d8b381d968d0b06e12ba50fc982456f53e123",
+                "custo": "aa7a4369e7f4946248040d9d712a582180253d2b8031370587734ba197676b47"
+              },
+              "estado": "nao_avaliada",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "causal_narrative_routing",
+              "comparabilidade": {
+                "qualidade": "ce709d29442270f26577d64ccce6543f9b3be59be137128cd40995a529f24937",
+                "custo": "aa7a4369e7f4946248040d9d712a582180253d2b8031370587734ba197676b47"
+              },
+              "estado": "fontes_insuficientes",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "adversarial_operations",
+              "comparabilidade": {
+                "qualidade": "072a11884ece9479341ed1170c1e1862bcce1b065ba2978f5f22af8ad4b73209",
+                "custo": "aa7a4369e7f4946248040d9d712a582180253d2b8031370587734ba197676b47"
+              },
+              "estado": "fontes_insuficientes",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            }
+          ],
+          "nota_operacional_parcial_0a100": 82.51,
+          "revisao_id": "amv05"
+        },
+        {
+          "sessao_id": "024",
+          "serie_avaliacao": "modules-v2",
+          "chave_comparabilidade": [
+            "modules-v2",
+            "5.0.0",
+            "3.0.0"
+          ],
+          "status_avaliacao": "comprometida",
+          "nota_geral_0a100": null,
+          "faixa_geral": "comprometida",
+          "eixos": {
+            "calibracao": {
+              "nota_0a100": 100.0,
+              "peso": 30
+            },
+            "eficacia_integridade": {
+              "nota_0a100": 77.58,
+              "peso": 30
+            },
+            "confiabilidade": {
+              "nota_0a100": 79.81,
+              "peso": 20
+            },
+            "economia": {
+              "nota_0a100": 74.11,
+              "peso": 15
+            },
+            "fluidez": {
+              "nota_0a100": 43.06,
+              "peso": 5
+            }
+          },
+          "indicadores_globais": {
+            "turnos_narrativos": 9,
+            "interacoes_observadas": 12,
+            "interacoes_com_referencia_exata": 9,
+            "input_tokens": 5352780,
+            "cached_input_tokens": 5086976,
+            "uncached_input_tokens_aprox": 265804,
+            "output_tokens": 54019,
+            "reducao_input_bruto_baseline": 0.722955,
+            "inferencias_por_turno": 7.0,
+            "tools_por_turno": 6.0,
+            "orquestracao_por_turno": 2.889,
+            "fracao_par_cronica_exato": 0.666667,
+            "fracao_l0_l2_limpo": 0.333333,
+            "fracao_turnos_com_raw": 0.555556,
+            "raw_read_calls": 12,
+            "schema_discovery_calls": 2,
+            "compactacoes": 0,
+            "latencia_mediana_segundos": 146.789,
+            "latencia_p90_segundos": 265.214,
+            "latencia_maxima_segundos": 288.402,
+            "turnos_acima_300_segundos": 0
+          },
+          "confianca": {
+            "sessao": "provisoria",
+            "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
+          },
+          "caminho": "024/revisoes/amv14a-final",
+          "apresentacao": {
+            "schema": 1,
+            "versao": "1.1.0",
+            "validade": "comprometida_guardrail",
+            "qualidade": "violacao_critica",
+            "conclusao_global_permitida": false,
+            "nota_global_publicavel": null,
+            "cobertura": {
+              "unidades_interacao_criterio": 408,
+              "com_parecer": 13,
+              "sem_parecer": 395,
+              "confirmadas_verificadas": 8,
+              "estados": {
+                "indeterminada": 400,
+                "confirmada": 8
+              }
+            },
+            "regra": "Parecer local não aprova o sistema. Sem cobertura e estabilidade, nenhuma média global conclusiva."
+          },
+          "revisao": {
+            "id": "amv14a-final",
+            "rotulo": "Reavaliação AMV14A-FINAL · mesma sessão",
+            "natureza": "revisao_poshoc_mesmo_recorte_sem_novo_jogo",
+            "data": "2026-10-06",
+            "manifest_original_sha256": "8ed4ecce452df9eaeb8199bb628427c18895b3fcacfb80822da3ff0fdc966173",
+            "pacote_original_sha256": "62e8971ec883e8925e74384da7b9e3651c01e0fdb1fb26242ed6b67452f55faf",
+            "fonte_original_sha256": "8be6e5f5068f3dbf21abdb02339f7d5499b854abdc0efd1d744b8e5e9965b55f",
+            "entrada_original_id": "c1f63b92d7e3a0e4fbeb1b1ea77a9aeac8d2a318130f80247fba51a61874c295",
+            "runtime_posterior_executado": false
+          },
+          "versoes": {
+            "gerador": "4.9.0",
+            "telemetria": 3,
+            "detector_modular": "4.9.0",
+            "rubrica": "objetivos-jogo/1.0.0",
+            "apresentacao": "1.1.0",
+            "catalogo_modulos": "5.1.0",
+            "metas": "3.0.0",
+            "contrato_avaliacao": "5.0.0"
+          },
+          "versoes_modulos": [
+            {
+              "module_id": "context_and_memory",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "turn_and_session_orchestration",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "narrative_delivery",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "rules_and_character_state",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "sidequest_authoring",
+              "module_implementation_version": "2.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "sidequest_lifecycle",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "canonical_quest_integration",
+              "module_implementation_version": "2.0.0",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "npc_continuity_and_social_behavior",
+              "module_implementation_version": "1.1.0",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "scene_world_projection",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "world_boundary_resolution",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "causal_narrative_routing",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "adversarial_operations",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            }
+          ],
+          "conclusao_medicao": {
+            "schema_conclusao_medicao": 1,
+            "permitida": false,
+            "entrada_congelada": true,
+            "reproducao_verificada": true,
+            "bloqueios": [
+              {
+                "codigo": "resultado_operacao_ausente",
+                "operation_ids": [
+                  "01a0ad32-67f0-7e82-b319-d67aaf9fd520/call_csgPWubVnXvlMeUaYn8ap13a/0"
+                ],
+                "module_ids": [
+                  "context_and_memory",
+                  "narrative_delivery",
+                  "npc_continuity_and_social_behavior",
+                  "rules_and_character_state",
+                  "turn_and_session_orchestration"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "operation_ids": [
+                  "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_66JS1RbDX7ktNtiy2COtQzso/0",
+                  "01a0aad7-f645-7691-9aca-8b00300da48c/call_Ff1iFEPlAQSyUM9w2ST6589P/0",
+                  "01a0aade-5b4e-7661-b38a-31ce71af1f2c/call_LVcXFxzolbGJFt4CAYKpAU3J/0",
+                  "01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_gWXhPi9M5lQDq79jA7Bd1syG/0",
+                  "01a0aaf1-5dc5-7df1-a642-200c66832150/call_OL2BmHEieGb1yrYBk4OZuyjT/0",
+                  "01a0ab0f-2670-78c3-974d-851984849264/call_tgVYjtxsaoTPsFNkfoiKrQ3a/0",
+                  "01a0ab0f-2670-78c3-974d-851984849264/call_zXnAOyuW4tGfhmZcHKSCfCby/0"
+                ],
+                "module_ids": [
+                  "context_and_memory",
+                  "narrative_delivery",
+                  "npc_continuity_and_social_behavior",
+                  "rules_and_character_state",
+                  "turn_and_session_orchestration"
+                ]
+              }
+            ],
+            "limitacoes": [
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aac8-baee-7d91-a05d-af084bc326de/call_qz4GGUoKTkHfvA8D1U44lHpB/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "turn_and_session_orchestration"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_LPLWXerXH1iauGMGkDf5cBgO/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_RTH2CrcHlEgvC3R0m0UlsGdd/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_Iosm7oGSIW7fQeBVrdUOPLab/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_PtIFmOCnVECjTnBadXgEGpSA/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_GLh7dqT2nOaPa0N9gbWcg0MG/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_rknFm5BJR7jDwj5qdaTwPfcV/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_lLttHUMslyv9mIhhie8XVHz0/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_sLMuI1ihYMXVmIYI7RLvgf2k/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0aad7-f645-7691-9aca-8b00300da48c/call_E3jNGiJxsoBdejg234UoX02j/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aad7-f645-7691-9aca-8b00300da48c/call_QApyCpLq1C5fddNJV2qnUQqG/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_YP1XTSAorbD0GSq3TiIdwhUo/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0aaf1-5dc5-7df1-a642-200c66832150/call_GUqE9eEueQp6p4oqFB2DvM27/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf1-5dc5-7df1-a642-200c66832150/call_Aii7Rc4SczJpkTFnbsq6gRzg/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_BEl29QaN3gTSATl8SypjnYwj/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_EohgOIjzJL2B0QjsQzRGlBf9/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_hitfd4wiLfbbPgO5n5npOCby/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_pc4RYqISSiJZFWwSYPooZE7Q/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_QhCTm9DaqXiFoWnM0Y8eSIM1/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab0f-2670-78c3-974d-851984849264/call_DnlbC8O7wn2ZYksGEjKK1Ya6/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_257zPMw7olRQqwHBUiyNpGCY/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_dZsy2v0wIv4qv051to3rep69/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_3l02KUlddrsl3jJMEQXRTb0e/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_wQHVJEVGpomus8zU05Tlyoct/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_WnQ2OsGbCaouAaPagn5mF5ai/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ad2f-f078-73d3-8fa1-855c74bf0649/call_zgR45zyvQh4Eg1Lx1MFQS5AV/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              }
+            ],
+            "regra": "correlação ambígua, resultado ausente ou evidência insuficiente de uma dependência, erro do detector, falha de instrumentação ou entrada não congelada impede conclusão dependente; fatos observados permanecem consultáveis"
+          },
+          "agregacao_modular": {
+            "schema": 1,
+            "status": "completa",
+            "conclusao_permitida": true,
+            "nota_parcial_componentes_validos": false,
+            "modulos_catalogados": 12,
+            "modulos_incluidos": 4,
+            "modulos_bloqueados": [],
+            "modulos_nao_avaliaveis": [
+              {
+                "module_id": "adversarial_operations",
+                "motivo": "sem_atividade"
+              },
+              {
+                "module_id": "canonical_quest_integration",
+                "motivo": "sem_evidencia"
+              },
+              {
+                "module_id": "causal_narrative_routing",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "npc_continuity_and_social_behavior",
+                "motivo": "evidencia_insuficiente"
+              },
+              {
+                "module_id": "scene_world_projection",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "sidequest_authoring",
+                "motivo": "indeterminado"
+              },
+              {
+                "module_id": "sidequest_lifecycle",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "world_boundary_resolution",
+                "motivo": "sem_evidencia"
+              }
+            ],
+            "denominadores": {
+              "calibracao": {
+                "componentes_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "eficacia_integridade": {
+                "componentes_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "confiabilidade": {
+                "componentes_modulares_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "componentes_globais_validos": [
+                  "par_cronica_exato",
+                  "referencia_interacao_exatamente_uma_vez"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "economia": {
+                "componentes_globais_validos": [
+                  "reducao_input_bruto",
+                  "inferencias_por_turno",
+                  "tools_por_turno",
+                  "l0_l2_limpo"
+                ]
+              },
+              "fluidez": {
+                "componentes_globais_validos": [
+                  "latencia_sessao"
+                ]
+              },
+              "nota_geral": {
+                "eixos_validos": [
+                  "calibracao",
+                  "eficacia_integridade",
+                  "confiabilidade",
+                  "economia",
+                  "fluidez"
+                ],
+                "eixos_sem_evidencia": [],
+                "pesos_renormalizados": true
+              }
+            },
+            "regra": "componentes de módulos com falha de instrumentação são excluídos antes das médias; a nota restante é parcial e não autoriza conclusão"
+          },
+          "series_modulos": [
+            {
+              "module_id": "context_and_memory",
+              "comparabilidade": {
+                "qualidade": "dcdb2049c1a746918b2614c18f9e25baefb28b69027a7ad632b801a365066d9c",
+                "custo": "df26ccb890066e1af62b08de8ed1486e5fac58014a9f675d09c9e514c9437cd2"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864536,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "turn_and_session_orchestration",
+              "comparabilidade": {
+                "qualidade": "9ec31c1ef6b897f0d8ba8f719e166e18f8622aed5a8fd05dd8b4ed699f939a6a",
+                "custo": "df26ccb890066e1af62b08de8ed1486e5fac58014a9f675d09c9e514c9437cd2"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864529,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "narrative_delivery",
+              "comparabilidade": {
+                "qualidade": "3862984b95ac421cb46acdcf3742bed971eda6142bcb648f97e349c0a2368852",
+                "custo": "df26ccb890066e1af62b08de8ed1486e5fac58014a9f675d09c9e514c9437cd2"
+              },
+              "estado": "violacao_critica",
+              "qualidade": 50.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864535,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": true
+            },
+            {
+              "module_id": "rules_and_character_state",
+              "comparabilidade": {
+                "qualidade": "63245ee8e9fec88757c95946a487b99a0c578f7bda216c46d7848250ebd01624",
+                "custo": "fb27f3962bf00ce718e91cba7d0dd8120e8bdd8537cb1c8223510e4eb5c73fa7"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864533,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "sidequest_authoring",
+              "comparabilidade": {
+                "qualidade": "ca0b92824bd7890032b0fa956ef988563c9a62869e02f21875d5712f9d6697a4",
+                "custo": "8462ae02d1cb10275c037fe7af424653a0c8bc06192ebe23f852b7050abce977"
+              },
+              "estado": "nao_avaliada",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864531,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "sidequest_lifecycle",
+              "comparabilidade": {
+                "qualidade": "782d1dca4d8d48e594b45a9425c5c060817dc1b69cff46b43078a581c4cfb846",
+                "custo": "fb27f3962bf00ce718e91cba7d0dd8120e8bdd8537cb1c8223510e4eb5c73fa7"
+              },
+              "estado": "fontes_insuficientes",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "canonical_quest_integration",
+              "comparabilidade": {
+                "qualidade": "d1091db7109cc420a37a9aa2425b0aaffd429000ac31394fd4bc69e0e216cb2c",
+                "custo": "30aa86674f537dbc307124fbc1955955f4055eee2b350ecd6a0b29887fac2152"
+              },
+              "estado": "nao_avaliada",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "npc_continuity_and_social_behavior",
+              "comparabilidade": {
+                "qualidade": "2240e836089d2fff3b9cdf0f8191e5226acc2f330a4033411d9f727c4161a56d",
+                "custo": "949485d4f1ec20aa432fafc7af9256b04474cdf8e9841125c97aacd5dd82aacc"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 658195,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "scene_world_projection",
+              "comparabilidade": {
+                "qualidade": "33947406fa9646a7f37d689ecc4949d351bfebaea668a807ec133d8a2307e12a",
+                "custo": "fb27f3962bf00ce718e91cba7d0dd8120e8bdd8537cb1c8223510e4eb5c73fa7"
+              },
+              "estado": "fontes_insuficientes",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 425940,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "world_boundary_resolution",
+              "comparabilidade": {
+                "qualidade": "8be2c259d75cb69771f0c3d88041029d3e29fc0b6d89ac2538189fecc6abd7af",
+                "custo": "fb27f3962bf00ce718e91cba7d0dd8120e8bdd8537cb1c8223510e4eb5c73fa7"
+              },
+              "estado": "nao_avaliada",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "causal_narrative_routing",
+              "comparabilidade": {
+                "qualidade": "2287777aeff0bf5370fb003eea0e5bf17c59aea7a707a587f2e03227668308ad",
+                "custo": "fb27f3962bf00ce718e91cba7d0dd8120e8bdd8537cb1c8223510e4eb5c73fa7"
+              },
+              "estado": "fontes_insuficientes",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "adversarial_operations",
+              "comparabilidade": {
+                "qualidade": "f3a1ea97105069daea6957717da7b0c6651d2e44fcdb7d2fedea68afa50c8ad0",
+                "custo": "fb27f3962bf00ce718e91cba7d0dd8120e8bdd8537cb1c8223510e4eb5c73fa7"
+              },
+              "estado": "fontes_insuficientes",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            }
+          ],
+          "nota_operacional_parcial_0a100": 82.51,
+          "revisao_id": "amv14a-final"
+        },
+        {
+          "sessao_id": "024",
+          "serie_avaliacao": "modules-v2",
+          "chave_comparabilidade": [
+            "modules-v2",
+            "5.0.0",
+            "3.0.0"
+          ],
+          "status_avaliacao": "comprometida",
+          "nota_geral_0a100": null,
+          "faixa_geral": "comprometida",
+          "eixos": {
+            "calibracao": {
+              "nota_0a100": 100.0,
+              "peso": 30
+            },
+            "eficacia_integridade": {
+              "nota_0a100": 77.58,
+              "peso": 30
+            },
+            "confiabilidade": {
+              "nota_0a100": 79.81,
+              "peso": 20
+            },
+            "economia": {
+              "nota_0a100": 74.11,
+              "peso": 15
+            },
+            "fluidez": {
+              "nota_0a100": 43.06,
+              "peso": 5
+            }
+          },
+          "indicadores_globais": {
+            "turnos_narrativos": 9,
+            "interacoes_observadas": 12,
+            "interacoes_com_referencia_exata": 9,
+            "input_tokens": 5352780,
+            "cached_input_tokens": 5086976,
+            "uncached_input_tokens_aprox": 265804,
+            "output_tokens": 54019,
+            "reducao_input_bruto_baseline": 0.722955,
+            "inferencias_por_turno": 7.0,
+            "tools_por_turno": 6.0,
+            "orquestracao_por_turno": 2.889,
+            "fracao_par_cronica_exato": 0.666667,
+            "fracao_l0_l2_limpo": 0.333333,
+            "fracao_turnos_com_raw": 0.555556,
+            "raw_read_calls": 12,
+            "schema_discovery_calls": 2,
+            "compactacoes": 0,
+            "latencia_mediana_segundos": 146.789,
+            "latencia_p90_segundos": 265.214,
+            "latencia_maxima_segundos": 288.402,
+            "turnos_acima_300_segundos": 0
+          },
+          "confianca": {
+            "sessao": "provisoria",
+            "motivo": "estabilidade exige três sessões comparáveis e a amostra mínima por módulo"
+          },
+          "caminho": "024/revisoes/s024-integral",
+          "apresentacao": {
+            "schema": 1,
+            "versao": "1.1.0",
+            "validade": "comprometida_guardrail",
+            "qualidade": "violacao_critica",
+            "conclusao_global_permitida": false,
+            "nota_global_publicavel": null,
+            "cobertura": {
+              "unidades_interacao_criterio": 408,
+              "com_parecer": 408,
+              "sem_parecer": 0,
+              "confirmadas_verificadas": 271,
+              "estados": {
+                "confirmada": 271,
+                "indeterminada": 137
+              }
+            },
+            "regra": "Parecer local não aprova o sistema. Sem cobertura e estabilidade, nenhuma média global conclusiva."
+          },
+          "revisao": {
+            "id": "s024-integral",
+            "rotulo": "Reavaliação S024-INTEGRAL · mesma sessão",
+            "natureza": "revisao_poshoc_mesmo_recorte_sem_novo_jogo",
+            "data": "2026-10-06",
+            "manifest_original_sha256": "8ed4ecce452df9eaeb8199bb628427c18895b3fcacfb80822da3ff0fdc966173",
+            "pacote_original_sha256": "62e8971ec883e8925e74384da7b9e3651c01e0fdb1fb26242ed6b67452f55faf",
+            "fonte_original_sha256": "8be6e5f5068f3dbf21abdb02339f7d5499b854abdc0efd1d744b8e5e9965b55f",
+            "entrada_original_id": "c1f63b92d7e3a0e4fbeb1b1ea77a9aeac8d2a318130f80247fba51a61874c295",
+            "runtime_posterior_executado": false
+          },
+          "versoes": {
+            "gerador": "4.9.0",
+            "telemetria": 3,
+            "detector_modular": "4.9.0",
+            "rubrica": "objetivos-jogo/1.0.0",
+            "apresentacao": "1.1.0",
+            "catalogo_modulos": "5.1.0",
+            "metas": "3.0.0",
+            "contrato_avaliacao": "5.0.0"
+          },
+          "versoes_modulos": [
+            {
+              "module_id": "context_and_memory",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "turn_and_session_orchestration",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "narrative_delivery",
+              "module_implementation_version": "1.0.2",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "rules_and_character_state",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "sidequest_authoring",
+              "module_implementation_version": "2.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "sidequest_lifecycle",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "canonical_quest_integration",
+              "module_implementation_version": "2.0.0",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "npc_continuity_and_social_behavior",
+              "module_implementation_version": "1.1.0",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "scene_world_projection",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "world_boundary_resolution",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "causal_narrative_routing",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            },
+            {
+              "module_id": "adversarial_operations",
+              "module_implementation_version": "1.0.1",
+              "module_evaluation_version": "4.0.0"
+            }
+          ],
+          "conclusao_medicao": {
+            "schema_conclusao_medicao": 1,
+            "permitida": false,
+            "entrada_congelada": true,
+            "reproducao_verificada": true,
+            "bloqueios": [
+              {
+                "codigo": "resultado_operacao_ausente",
+                "operation_ids": [
+                  "01a0ad32-67f0-7e82-b319-d67aaf9fd520/call_csgPWubVnXvlMeUaYn8ap13a/0"
+                ],
+                "module_ids": [
+                  "context_and_memory",
+                  "narrative_delivery",
+                  "npc_continuity_and_social_behavior",
+                  "rules_and_character_state",
+                  "turn_and_session_orchestration"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "operation_ids": [
+                  "01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_66JS1RbDX7ktNtiy2COtQzso/0",
+                  "01a0aad7-f645-7691-9aca-8b00300da48c/call_Ff1iFEPlAQSyUM9w2ST6589P/0",
+                  "01a0aade-5b4e-7661-b38a-31ce71af1f2c/call_LVcXFxzolbGJFt4CAYKpAU3J/0",
+                  "01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_gWXhPi9M5lQDq79jA7Bd1syG/0",
+                  "01a0aaf1-5dc5-7df1-a642-200c66832150/call_OL2BmHEieGb1yrYBk4OZuyjT/0",
+                  "01a0ab0f-2670-78c3-974d-851984849264/call_tgVYjtxsaoTPsFNkfoiKrQ3a/0",
+                  "01a0ab0f-2670-78c3-974d-851984849264/call_zXnAOyuW4tGfhmZcHKSCfCby/0"
+                ],
+                "module_ids": [
+                  "context_and_memory",
+                  "narrative_delivery",
+                  "npc_continuity_and_social_behavior",
+                  "rules_and_character_state",
+                  "turn_and_session_orchestration"
+                ]
+              }
+            ],
+            "limitacoes": [
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aac8-baee-7d91-a05d-af084bc326de/call_qz4GGUoKTkHfvA8D1U44lHpB/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "turn_and_session_orchestration"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_LPLWXerXH1iauGMGkDf5cBgO/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_RTH2CrcHlEgvC3R0m0UlsGdd/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_Iosm7oGSIW7fQeBVrdUOPLab/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_PtIFmOCnVECjTnBadXgEGpSA/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_GLh7dqT2nOaPa0N9gbWcg0MG/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_rknFm5BJR7jDwj5qdaTwPfcV/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_lLttHUMslyv9mIhhie8XVHz0/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d/call_sLMuI1ihYMXVmIYI7RLvgf2k/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0aad7-f645-7691-9aca-8b00300da48c/call_E3jNGiJxsoBdejg234UoX02j/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aad7-f645-7691-9aca-8b00300da48c/call_QApyCpLq1C5fddNJV2qnUQqG/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaea-3809-7863-ae6b-8df5dc6f9272/call_YP1XTSAorbD0GSq3TiIdwhUo/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0aaf1-5dc5-7df1-a642-200c66832150/call_GUqE9eEueQp6p4oqFB2DvM27/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf1-5dc5-7df1-a642-200c66832150/call_Aii7Rc4SczJpkTFnbsq6gRzg/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_BEl29QaN3gTSATl8SypjnYwj/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_EohgOIjzJL2B0QjsQzRGlBf9/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_hitfd4wiLfbbPgO5n5npOCby/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_pc4RYqISSiJZFWwSYPooZE7Q/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8/call_QhCTm9DaqXiFoWnM0Y8eSIM1/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab0f-2670-78c3-974d-851984849264/call_DnlbC8O7wn2ZYksGEjKK1Ya6/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "resultado_operacao_ausente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_257zPMw7olRQqwHBUiyNpGCY/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_dZsy2v0wIv4qv051to3rep69/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": [
+                  "context_and_memory"
+                ]
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_3l02KUlddrsl3jJMEQXRTb0e/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_wQHVJEVGpomus8zU05Tlyoct/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ab1d-9d4e-70d2-ab6b-caa2af433610/call_WnQ2OsGbCaouAaPagn5mF5ai/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              },
+              {
+                "codigo": "evidencia_operacional_insuficiente",
+                "escopo": "operacao:01a0ad2f-f078-73d3-8fa1-855c74bf0649/call_zgR45zyvQh4Eg1Lx1MFQS5AV/0",
+                "gravidade": "limitacao",
+                "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.",
+                "module_ids": []
+              }
+            ],
+            "regra": "correlação ambígua, resultado ausente ou evidência insuficiente de uma dependência, erro do detector, falha de instrumentação ou entrada não congelada impede conclusão dependente; fatos observados permanecem consultáveis"
+          },
+          "agregacao_modular": {
+            "schema": 1,
+            "status": "completa",
+            "conclusao_permitida": true,
+            "nota_parcial_componentes_validos": false,
+            "modulos_catalogados": 12,
+            "modulos_incluidos": 4,
+            "modulos_bloqueados": [],
+            "modulos_nao_avaliaveis": [
+              {
+                "module_id": "adversarial_operations",
+                "motivo": "sem_atividade"
+              },
+              {
+                "module_id": "canonical_quest_integration",
+                "motivo": "sem_evidencia"
+              },
+              {
+                "module_id": "causal_narrative_routing",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "npc_continuity_and_social_behavior",
+                "motivo": "evidencia_insuficiente"
+              },
+              {
+                "module_id": "scene_world_projection",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "sidequest_authoring",
+                "motivo": "indeterminado"
+              },
+              {
+                "module_id": "sidequest_lifecycle",
+                "motivo": "nao_aplicavel"
+              },
+              {
+                "module_id": "world_boundary_resolution",
+                "motivo": "sem_evidencia"
+              }
+            ],
+            "denominadores": {
+              "calibracao": {
+                "componentes_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "eficacia_integridade": {
+                "componentes_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "confiabilidade": {
+                "componentes_modulares_validos": 4,
+                "module_ids": [
+                  "context_and_memory",
+                  "turn_and_session_orchestration",
+                  "narrative_delivery",
+                  "rules_and_character_state"
+                ],
+                "componentes_globais_validos": [
+                  "par_cronica_exato",
+                  "referencia_interacao_exatamente_uma_vez"
+                ],
+                "modulos_bloqueados_excluidos": []
+              },
+              "economia": {
+                "componentes_globais_validos": [
+                  "reducao_input_bruto",
+                  "inferencias_por_turno",
+                  "tools_por_turno",
+                  "l0_l2_limpo"
+                ]
+              },
+              "fluidez": {
+                "componentes_globais_validos": [
+                  "latencia_sessao"
+                ]
+              },
+              "nota_geral": {
+                "eixos_validos": [
+                  "calibracao",
+                  "eficacia_integridade",
+                  "confiabilidade",
+                  "economia",
+                  "fluidez"
+                ],
+                "eixos_sem_evidencia": [],
+                "pesos_renormalizados": true
+              }
+            },
+            "regra": "componentes de módulos com falha de instrumentação são excluídos antes das médias; a nota restante é parcial e não autoriza conclusão"
+          },
+          "series_modulos": [
+            {
+              "module_id": "context_and_memory",
+              "comparabilidade": {
+                "qualidade": "b61632aae72c7ed6333d04597d2fe1d32cb55f8a7c041b0b08c4c3d77eacd57c",
+                "custo": "0bb66b7840e48a63801c14741103e23f65723cf3fcce8c7ea3335be2b8846ef8"
+              },
+              "estado": "inadequada_no_criterio",
+              "qualidade": 60.87,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864536,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "turn_and_session_orchestration",
+              "comparabilidade": {
+                "qualidade": "08e85a1aa46afd1d36cba963be9bd7020e38a1659f9cbb25bb47e5d5ed2a23e9",
+                "custo": "0bb66b7840e48a63801c14741103e23f65723cf3fcce8c7ea3335be2b8846ef8"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864529,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "narrative_delivery",
+              "comparabilidade": {
+                "qualidade": "a19d3a0122c14d65e8efb086e485c5592e9994e149c4b8230fda8f73e2376c2b",
+                "custo": "0bb66b7840e48a63801c14741103e23f65723cf3fcce8c7ea3335be2b8846ef8"
+              },
+              "estado": "violacao_critica",
+              "qualidade": 92.31,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864535,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": true
+            },
+            {
+              "module_id": "rules_and_character_state",
+              "comparabilidade": {
+                "qualidade": "3ce551a54c32da158fd1dc4413d870b6b29058786b34fdbea547aab88f386cd5",
+                "custo": "debb6d9c59fe14392e3c897c2ea132ba271f0f6a5afae04fbec0c70b58e59d35"
+              },
+              "estado": "amostra_insuficiente_para_generalizar",
+              "qualidade": 100.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864533,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "sidequest_authoring",
+              "comparabilidade": {
+                "qualidade": "39fb2c434f85be5d597e7582fc888a5f8df5e478cdbb6993f4ca669f4c0720df",
+                "custo": "79680dafdf57455baf81f07a6199d30f578a8828b9ccba377cd70ca2708e6362"
+              },
+              "estado": "negativa_valida",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 864531,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "sidequest_lifecycle",
+              "comparabilidade": {
+                "qualidade": "0e3870e26e34f621e8ebab40507b88909a446bf12d61a158306c118e348943a6",
+                "custo": "debb6d9c59fe14392e3c897c2ea132ba271f0f6a5afae04fbec0c70b58e59d35"
+              },
+              "estado": "negativa_valida",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "canonical_quest_integration",
+              "comparabilidade": {
+                "qualidade": "ef1f3133bdabe19df31537541eaaab46db4b1e7dab02e6f70e53f8cf931a7454",
+                "custo": "8b89010f25ff2ab69e0a32ad181cb7d15d60e4b576fcdd3cfbedbc6fe7254d0d"
+              },
+              "estado": "negativa_valida",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "npc_continuity_and_social_behavior",
+              "comparabilidade": {
+                "qualidade": "7dd952a7be9c90d2170b5c6221fac056e38f06a811de17811fd847c6e9241592",
+                "custo": "bd9235f376be4a78cda896f8664a5026851269c3cac68e1d5106c22f6f6a27e8"
+              },
+              "estado": "inadequada_no_criterio",
+              "qualidade": 68.42,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 658195,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "scene_world_projection",
+              "comparabilidade": {
+                "qualidade": "82f21dfa9716f5936df2e4297f7c4ba0548cd09b8d64292cd5a819f2914b0dac",
+                "custo": "debb6d9c59fe14392e3c897c2ea132ba271f0f6a5afae04fbec0c70b58e59d35"
+              },
+              "estado": "inadequada_no_criterio",
+              "qualidade": 50.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 425940,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "world_boundary_resolution",
+              "comparabilidade": {
+                "qualidade": "41c09820688ef3889f1c09d43d20b4dc2f79727569571fcc512ac9aa5e7be75a",
+                "custo": "debb6d9c59fe14392e3c897c2ea132ba271f0f6a5afae04fbec0c70b58e59d35"
+              },
+              "estado": "inadequada_no_criterio",
+              "qualidade": 0.0,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "causal_narrative_routing",
+              "comparabilidade": {
+                "qualidade": "2e315bcc4df989b27a8b88b3771e0c3781717b39fe002779287dad6bf14a8064",
+                "custo": "debb6d9c59fe14392e3c897c2ea132ba271f0f6a5afae04fbec0c70b58e59d35"
+              },
+              "estado": "negativa_valida",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            },
+            {
+              "module_id": "adversarial_operations",
+              "comparabilidade": {
+                "qualidade": "794f01619600a92d3713adaae3ff4716f790ad84de00a1680e2c2d0535def130",
+                "custo": "debb6d9c59fe14392e3c897c2ea132ba271f0f6a5afae04fbec0c70b58e59d35"
+              },
+              "estado": "negativa_valida",
+              "qualidade": null,
+              "custo": {
+                "unidade": "tokens",
+                "escopo": "inferencias_dos_turnos_narrativos",
+                "compartilhado_alocado": 0,
+                "exclusivo_observado": null,
+                "marginal": null,
+                "estimativa_causal": false
+              },
+              "guardrail": false
+            }
+          ],
+          "nota_operacional_parcial_0a100": 82.51,
+          "revisao_id": "s024-integral"
+        }
+      ]
     }
   ]
 }

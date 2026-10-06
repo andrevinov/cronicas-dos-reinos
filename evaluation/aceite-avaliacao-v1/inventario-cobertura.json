@@ -1,0 +1,2496 @@
+{
+  "natureza": "medição histórica isolada da execução do preflight sem suíte integral; validadores aninhados podem executar testes",
+  "data": "2026-10-04",
+  "revisao": "db4e02c04271ad9d694eae14d4d58dffc05adbe8",
+  "checks": [
+    {
+      "nome": "orquestração modular de turno e sessão",
+      "comando": [
+        "python",
+        "ferramentas/turn_and_session_orchestration.py",
+        "check"
+      ],
+      "grupo": "operação",
+      "exit_code": 0,
+      "duracao_segundos": 0.78,
+      "saida_final": null,
+      "propriedades": [
+        "turn_and_session_orchestration.transactional_turn",
+        "turn_and_session_orchestration.session_lifecycle",
+        "turn_and_session_orchestration.idempotent_commit"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_checkpoint.py",
+        "tests/test_checkpoint_canon_bridge.py",
+        "tests/test_checkpoint_obrigacoes_temporais.py",
+        "tests/test_checkpoints_mundo.py",
+        "tests/test_ciclo_sessoes.py",
+        "tests/test_cronica_cli.py",
+        "tests/test_cronica_hotpath_rollout.py",
+        "tests/test_cronica_iniciativa_nv16.py",
+        "tests/test_cronica_mecanica.py",
+        "tests/test_cronica_operational_router.py",
+        "tests/test_cronica_pending_gate.py",
+        "tests/test_cronica_pending_gate_budget.py",
+        "tests/test_cronica_permanencia_nv15.py",
+        "tests/test_cronica_sidequests_vivas_nv17.py",
+        "tests/test_cronica_ticket_transport.py",
+        "tests/test_cronica_transito_urbano.py",
+        "tests/test_memoria_sessoes.py",
+        "tests/test_rodape_turno.py",
+        "tests/test_turn_and_session_orchestration_module_v2.py",
+        "tests/test_turno_ciclo_sessao.py",
+        "tests/test_turno_transacional.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "transactional_turn",
+          "funcao": "_list_check(_turn.check_transactions)",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/turno.py",
+              "funcao": "check_transactions"
+            }
+          ],
+          "arquivo": "ferramentas/turn_and_session_orchestration.py",
+          "linha": 369
+        },
+        {
+          "propriedade": "idempotent_commit",
+          "funcao": "_list_check(_consolidation.check)",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/consolidar.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/turn_and_session_orchestration.py",
+          "linha": 370
+        },
+        {
+          "propriedade": "session_lifecycle",
+          "funcao": "_list_check(_checkpoint.check)",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/checkpoint.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/turn_and_session_orchestration.py",
+          "linha": 371
+        },
+        {
+          "propriedade": "observable_receipts",
+          "funcao": "_receipt_check",
+          "referencias": [],
+          "arquivo": "ferramentas/turn_and_session_orchestration.py",
+          "linha": 372
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "turn_and_session_orchestration",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 233
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "contexto e memória modulares",
+      "comando": [
+        "python",
+        "ferramentas/context_and_memory.py",
+        "check"
+      ],
+      "grupo": "operação",
+      "exit_code": 0,
+      "duracao_segundos": 0.129,
+      "saida_final": null,
+      "propriedades": [
+        "context_and_memory.routed_context_access",
+        "context_and_memory.scene_and_durable_memory",
+        "context_and_memory.knowledge_layer_separation"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_cena_mundo_contexto.py",
+        "tests/test_context_and_memory_module_v2.py",
+        "tests/test_contexto.py",
+        "tests/test_contexto_buscar_muitos.py",
+        "tests/test_contexto_cena.py",
+        "tests/test_contexto_cena_aliados.py",
+        "tests/test_contexto_transacional.py",
+        "tests/test_memoria_cena.py",
+        "tests/test_memoria_cena_cli.py",
+        "tests/test_memoria_cena_iniciativa.py",
+        "tests/test_memoria_cena_integracao.py",
+        "tests/test_memoria_duravel.py",
+        "tests/test_memoria_duravel_integracao.py",
+        "tests/test_politica_acesso.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "routed_context_access",
+          "funcao": "_access_check",
+          "referencias": [],
+          "arquivo": "ferramentas/context_and_memory.py",
+          "linha": 462
+        },
+        {
+          "propriedade": "scene_and_durable_memory",
+          "funcao": "_memory_check",
+          "referencias": [],
+          "arquivo": "ferramentas/context_and_memory.py",
+          "linha": 463
+        },
+        {
+          "propriedade": "cold_resume",
+          "funcao": "_cold_resume_check",
+          "referencias": [],
+          "arquivo": "ferramentas/context_and_memory.py",
+          "linha": 464
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "context_and_memory",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 204
+        },
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 197
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "recompensas determinísticas",
+      "comando": [
+        "python",
+        "ferramentas/recompensas.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.124,
+      "saida_final": null,
+      "propriedades": [
+        "mapas por local e tier consistentes",
+        "índices de recompensa e reservas sem nova rolagem"
+      ],
+      "acao_futura": "comparar repetição em interacoes_mundo sem confundir prêmios de quests",
+      "tarefa_destino": "AMV-10/15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_recompensas.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "recompensas",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 57
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "autoria modular de sidequests",
+      "comando": [
+        "python",
+        "ferramentas/sidequest_authoring.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.2,
+      "saida_final": null,
+      "propriedades": [
+        "sidequest_authoring.opportunity_gate",
+        "sidequest_authoring.quest_authoring",
+        "sidequest_authoring.fictional_materialization"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_cronica_sidequests_vivas_nv17.py",
+        "tests/test_emergent_sidequest_authoring_registry_v2.py",
+        "tests/test_oportunidades.py",
+        "tests/test_sidequests_vivas_nv17.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "opportunity_gate",
+          "funcao": "_opportunity.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/oportunidade_sidequest.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_authoring.py",
+          "linha": 287
+        },
+        {
+          "propriedade": "opportunity_registry",
+          "funcao": "_registry.validate_repo",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/oportunidades.py",
+              "funcao": "validate_repo"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_authoring.py",
+          "linha": 288
+        },
+        {
+          "propriedade": "quest_authoring",
+          "funcao": "_authoring.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/sidequests_emergentes.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_authoring.py",
+          "linha": 289
+        },
+        {
+          "propriedade": "fictional_materialization",
+          "funcao": "_integration.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/sidequests_integracao_runtime.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_authoring.py",
+          "linha": 290
+        },
+        {
+          "propriedade": "live_cause_routing",
+          "funcao": "_live_causes.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/sidequests_vivas.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_authoring.py",
+          "linha": 291
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "sidequest_authoring",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 83
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "lifecycle modular de sidequests",
+      "comando": [
+        "python",
+        "ferramentas/sidequest_lifecycle.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.213,
+      "saida_final": null,
+      "propriedades": [
+        "sidequest_lifecycle.active_reassessment",
+        "sidequest_lifecycle.transactional_progress",
+        "sidequest_lifecycle.phase_and_terminal_progression",
+        "sidequest_lifecycle.terminal_rewards",
+        "sidequest_lifecycle.success_reactions"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_sidequest_lifecycle_matrix.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "active_reassessment",
+          "funcao": "_active.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/sidequests_ativas.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_lifecycle.py",
+          "linha": 147
+        },
+        {
+          "propriedade": "transactional_progress",
+          "funcao": "_transactional.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/progresso_sidequests_transacional.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_lifecycle.py",
+          "linha": 148
+        },
+        {
+          "propriedade": "phase_and_terminal_progression",
+          "funcao": "_progression.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/progressao_sidequests.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_lifecycle.py",
+          "linha": 149
+        },
+        {
+          "propriedade": "terminal_rewards",
+          "funcao": "_rewards.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/recompensas_sidequest.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_lifecycle.py",
+          "linha": 150
+        },
+        {
+          "propriedade": "success_reactions",
+          "funcao": "_reactions.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/reacoes_sidequest.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/sidequest_lifecycle.py",
+          "linha": 151
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "sidequest_lifecycle",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 88
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "integração canônica modular de sidequests",
+      "comando": [
+        "python",
+        "ferramentas/canonical_quest_integration.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.26,
+      "saida_final": null,
+      "propriedades": [
+        "canonical_quest_integration.sidequest_to_canon_bridge",
+        "canonical_quest_integration.canon_to_quest_opportunity"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_canonical_quest_integration_evaluation.py",
+        "tests/test_sidequests_canonicas.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "sidequest_to_canon_bridge",
+          "funcao": "_bridge.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/canon_bridge_runtime.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/canonical_quest_integration.py",
+          "linha": 365
+        },
+        {
+          "propriedade": "canon_to_quest_opportunity",
+          "funcao": "_canonical.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/sidequests_canonicas.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/canonical_quest_integration.py",
+          "linha": 366
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "canonical_quest_integration",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 93
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "operações adversariais modulares",
+      "comando": [
+        "python",
+        "ferramentas/adversarial_operations.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.093,
+      "saida_final": null,
+      "propriedades": [
+        "adversarial_operations.adversarial_contract_integrity",
+        "adversarial_operations.concurrent_operations"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_adversarial_operations_module_v2.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "adversarial_contract_integrity",
+          "funcao": "_integrity.validate_repo",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/integridade_adversarial.py",
+              "funcao": "validate_repo"
+            }
+          ],
+          "arquivo": "ferramentas/adversarial_operations.py",
+          "linha": 422
+        },
+        {
+          "propriedade": "concurrent_operations",
+          "funcao": "_operations.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/operacoes_concorrentes.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/adversarial_operations.py",
+          "linha": 423
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "adversarial_operations",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 150
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "projeção espacial modular",
+      "comando": [
+        "python",
+        "ferramentas/scene_world_projection.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.206,
+      "saida_final": null,
+      "propriedades": [
+        "scene_world_projection.local_incidents",
+        "scene_world_projection.persistent_conditions",
+        "scene_world_projection.spatial_continuity"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_cena_mundo.py",
+        "tests/test_cena_mundo_contexto.py",
+        "tests/test_cena_mundo_transacional.py",
+        "tests/test_condicoes_mundo.py",
+        "tests/test_condicoes_mundo_proveniencia.py",
+        "tests/test_ecologia_local.py",
+        "tests/test_incidentes_mundo.py",
+        "tests/test_microeventos_locais.py",
+        "tests/test_permanencia_espacial.py",
+        "tests/test_permanencia_espacial_frescor.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "local_ecology",
+          "funcao": "_ecology.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/ecologia_local.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/scene_world_projection.py",
+          "linha": 87
+        },
+        {
+          "propriedade": "local_microevents",
+          "funcao": "_microevents.validate_repo",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/microeventos_locais.py",
+              "funcao": "validate_repo"
+            }
+          ],
+          "arquivo": "ferramentas/scene_world_projection.py",
+          "linha": 88
+        },
+        {
+          "propriedade": "local_incidents",
+          "funcao": "_incidents.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/incidentes_mundo.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/scene_world_projection.py",
+          "linha": 89
+        },
+        {
+          "propriedade": "persistent_conditions",
+          "funcao": "_conditions.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/condicoes_mundo.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/scene_world_projection.py",
+          "linha": 90
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "scene_world_projection",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 116
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "fronteira modular do mundo",
+      "comando": [
+        "python",
+        "ferramentas/world_boundary_resolution.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.13,
+      "saida_final": null,
+      "propriedades": [
+        "world_boundary_resolution.temporal_liveness",
+        "world_boundary_resolution.pending_batch_resolution"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_barreira_pendencias_mundo.py",
+        "tests/test_batch_world_boundary_budget.py",
+        "tests/test_cronica_pending_gate.py",
+        "tests/test_cronica_pending_gate_budget.py",
+        "tests/test_fronteira_mundo.py",
+        "tests/test_fronteira_vivacidade.py",
+        "tests/test_resolver_fronteira.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "temporal_liveness",
+          "funcao": "_check_liveness",
+          "referencias": [],
+          "arquivo": "ferramentas/world_boundary_resolution.py",
+          "linha": 139
+        },
+        {
+          "propriedade": "pending_batch_resolution",
+          "funcao": "_batch.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/resolver_fronteira.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/world_boundary_resolution.py",
+          "linha": 140
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "world_boundary_resolution",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 121
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "roteamento narrativo causal",
+      "comando": [
+        "python",
+        "ferramentas/causal_narrative_routing.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.114,
+      "saida_final": null,
+      "propriedades": [
+        "causal_narrative_routing.reactive_pressure_arbitration",
+        "causal_narrative_routing.dated_secret_canon"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_eventos_canonicos.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "reactive_pressure_arbitration",
+          "funcao": "_pressure.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/pressao_narrativa.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/causal_narrative_routing.py",
+          "linha": 176
+        },
+        {
+          "propriedade": "dated_secret_canon",
+          "funcao": "_canonical.validate",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/eventos_canonicos.py",
+              "funcao": "validate"
+            }
+          ],
+          "arquivo": "ferramentas/causal_narrative_routing.py",
+          "linha": 177
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "causal_narrative_routing",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 126
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "migração histórica Sete Nomes",
+      "comando": [
+        "python",
+        "ferramentas/migracao_sete_nomes.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.091,
+      "saida_final": null,
+      "propriedades": [
+        "snapshot de migração histórica preservado",
+        "contratos de missão instalados válidos"
+      ],
+      "acao_futura": "separar migração única de integridade atual",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "migracao_sete_nomes",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 112
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade preservada; parte histórica pode ser isolada após prova de substituição",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "integração reativa",
+      "comando": [
+        "python",
+        "ferramentas/interacoes_mundo.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.205,
+      "saida_final": null,
+      "propriedades": [
+        "composição do incidente local e tempo de trânsito",
+        "contratos de permanência e contexto causal"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_interacoes_mundo.py",
+        "tests/test_permanencia_espacial.py",
+        "tests/test_permanencia_espacial_frescor.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "interacoes_mundo",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 127
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "continuidade e comportamento social de NPCs",
+      "comando": [
+        "python",
+        "ferramentas/npc_continuity_and_social_behavior.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.33,
+      "saida_final": null,
+      "propriedades": [
+        "npc_continuity_and_social_behavior.social_initiative",
+        "npc_continuity_and_social_behavior.presence_and_identity",
+        "npc_continuity_and_social_behavior.relationship_memory_reputation"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_dialogo_relacional.py",
+        "tests/test_estado_relacional.py",
+        "tests/test_identidades_compatibilidade.py",
+        "tests/test_identidades_pendentes.py",
+        "tests/test_identidades_suspeita.py",
+        "tests/test_iniciativa_elenco.py",
+        "tests/test_iniciativa_elenco_frescor.py",
+        "tests/test_iniciativa_elenco_guardrails.py",
+        "tests/test_iniciativa_elenco_integracao.py",
+        "tests/test_iniciativa_elenco_router.py",
+        "tests/test_iniciativa_social.py",
+        "tests/test_memoria_cena.py",
+        "tests/test_memoria_cena_cli.py",
+        "tests/test_memoria_cena_iniciativa.py",
+        "tests/test_memoria_cena_integracao.py",
+        "tests/test_memoria_duravel.py",
+        "tests/test_memoria_duravel_integracao.py",
+        "tests/test_npc_continuity_module_v2.py",
+        "tests/test_personalidade_decisoria.py",
+        "tests/test_reputacao_publica.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "social_initiative",
+          "funcao": "_behavior_check",
+          "referencias": [],
+          "arquivo": "ferramentas/npc_continuity_and_social_behavior.py",
+          "linha": 400
+        },
+        {
+          "propriedade": "relationship_state",
+          "funcao": "_list_check(_relationships.check)",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/estado_relacional.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/npc_continuity_and_social_behavior.py",
+          "linha": 401
+        },
+        {
+          "propriedade": "identity_separation",
+          "funcao": "_list_check(_identities.check)",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/identidades.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/npc_continuity_and_social_behavior.py",
+          "linha": 402
+        },
+        {
+          "propriedade": "reputation_by_persona",
+          "funcao": "_list_check(_reputation.check)",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/reputacao_publica.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/npc_continuity_and_social_behavior.py",
+          "linha": 403
+        },
+        {
+          "propriedade": "name_catalog_and_reservations",
+          "funcao": "_names.check",
+          "referencias": [
+            {
+              "arquivo": "ferramentas/nomes_npcs.py",
+              "funcao": "check"
+            }
+          ],
+          "arquivo": "ferramentas/npc_continuity_and_social_behavior.py",
+          "linha": 404
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "npc_continuity_and_social_behavior",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 169
+        },
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 160
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "aceitação técnica modular v2",
+      "comando": [
+        "python",
+        "ferramentas/aceitacao_modular_v2.py",
+        "check"
+      ],
+      "grupo": "avaliação",
+      "exit_code": 0,
+      "duracao_segundos": 1.38,
+      "saida_final": null,
+      "propriedades": [
+        "nove episódios técnicos ancorados em testes",
+        "pacote pós-hoc reproduzível e versões coerentes",
+        "prontidão de baseline real separada da fixture"
+      ],
+      "acao_futura": "separar contrato, testes e aceite real",
+      "tarefa_destino": "AMV-14/15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_aceitacao_modular_v2.py",
+        "tests/test_validacao_externa_avaliacao.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "aceitacao_modular_v2",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 181
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "corpus de regressão da avaliação",
+      "comando": [
+        "python",
+        "ferramentas/verificar_corpus_avaliacao.py"
+      ],
+      "grupo": "avaliação",
+      "exit_code": 0,
+      "duracao_segundos": 0.813,
+      "saida_final": null,
+      "propriedades": [
+        "19 cenários congelados com 226 comparações",
+        "hashes e evidência literal do corpus anterior"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_corpus_avaliacao.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "verificar_corpus_avaliacao",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 187
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "entrega narrativa modular",
+      "comando": [
+        "python",
+        "ferramentas/narrative_delivery.py",
+        "check"
+      ],
+      "grupo": "narrativa",
+      "exit_code": 0,
+      "duracao_segundos": 0.052,
+      "saida_final": null,
+      "propriedades": [
+        "narrative_delivery.narrative_density",
+        "narrative_delivery.diegetic_mechanics",
+        "narrative_delivery.visible_closure"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_densidade_narrativa.py",
+        "tests/test_diegetico.py",
+        "tests/test_narrative_delivery_module_v2.py",
+        "tests/test_rodape_turno.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "delivery_contract",
+          "funcao": "_contract_check",
+          "referencias": [],
+          "arquivo": "ferramentas/narrative_delivery.py",
+          "linha": 277
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "narrative_delivery",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 251
+        },
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 244
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "regras e estado do personagem modulares",
+      "comando": [
+        "python",
+        "ferramentas/rules_and_character_state.py",
+        "check"
+      ],
+      "grupo": "mecânica",
+      "exit_code": 0,
+      "duracao_segundos": 0.125,
+      "saida_final": null,
+      "propriedades": [
+        "rules_and_character_state.rules_resolution",
+        "rules_and_character_state.roll_execution",
+        "rules_and_character_state.character_time_state"
+      ],
+      "acao_futura": "manter dono; fortalecer prova de finalidade e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_ficha_ren.py",
+        "tests/test_mecanica_dnd_5_5e.py",
+        "tests/test_rules_and_character_state_module_v2.py",
+        "tests/test_transacoes.py"
+      ],
+      "validadores_internos_estaticos": [
+        {
+          "propriedade": "rules_resolution",
+          "funcao": "_rule_catalog_check",
+          "referencias": [],
+          "arquivo": "ferramentas/rules_and_character_state.py",
+          "linha": 460
+        },
+        {
+          "propriedade": "roll_execution",
+          "funcao": "_roll_contract_check",
+          "referencias": [],
+          "arquivo": "ferramentas/rules_and_character_state.py",
+          "linha": 461
+        },
+        {
+          "propriedade": "character_time_state",
+          "funcao": "state_consistency",
+          "referencias": [],
+          "arquivo": "ferramentas/rules_and_character_state.py",
+          "linha": 462
+        },
+        {
+          "propriedade": "transactional_contract",
+          "funcao": "_transaction_contract_check",
+          "referencias": [],
+          "arquivo": "ferramentas/rules_and_character_state.py",
+          "linha": 463
+        }
+      ],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "rules_and_character_state",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 272
+        },
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 265
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-06/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "experiência narrativa integrada",
+      "comando": [
+        "python",
+        "ferramentas/experiencia_integrada.py",
+        "check"
+      ],
+      "grupo": "integração",
+      "exit_code": 0,
+      "duracao_segundos": 0.1,
+      "saida_final": null,
+      "propriedades": [
+        "elenco piloto e perfis instalados",
+        "documentação operacional conforme contrato; não comprova prosa nova"
+      ],
+      "acao_futura": "substituir gate restrito ao piloto com episódios",
+      "tarefa_destino": "AMV-08/14",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_personalidade_decisoria.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "experiencia_integrada",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 132
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "reconhecibilidade de personas",
+      "comando": [
+        "python",
+        "ferramentas/reconhecibilidade_persona.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.067,
+      "saida_final": null,
+      "propriedades": [
+        "identidade só muda mediante evidência e canal legítimo",
+        "personas não fundidas por suspeita"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_reconhecibilidade_persona_nv20.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "reconhecibilidade_persona",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv21.py",
+          "linha": 30
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "clima diário determinístico",
+      "comando": [
+        "python",
+        "ferramentas/clima_diario.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.076,
+      "saida_final": null,
+      "propriedades": [
+        "clima por data com reserva estável",
+        "condições climáticas projetadas sem reroll ou evento inventado"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_clima_diario_integracao_nv21.py",
+        "tests/test_clima_diario_nv21.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "clima_diario",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv21.py",
+          "linha": 35
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-12/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "política cívica e avisos públicos",
+      "comando": [
+        "python",
+        "ferramentas/politica_civica.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.074,
+      "saida_final": null,
+      "propriedades": [
+        "instituição, autoridade e fase de medida válidas",
+        "publicação e entrega por canal causal; não comprova impacto narrado"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_politica_civica_contratos_nv22.py",
+        "tests/test_politica_civica_integracao_nv22.py",
+        "tests/test_politica_civica_nv22.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "politica_civica",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv22.py",
+          "linha": 44
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-12/14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "aceitação integrada de vivacidade",
+      "comando": [
+        "python",
+        "ferramentas/aceitacao_vivacidade.py",
+        "check"
+      ],
+      "grupo": "mundo vivo",
+      "exit_code": 0,
+      "duracao_segundos": 0.11,
+      "saida_final": null,
+      "propriedades": [
+        "fronteira calma e carregada em cenários isolados",
+        "cadeia de candidatas fornecidas e ancoragem de regressões",
+        "orçamento do rollout histórico step11; não comprova descoberta em jogo"
+      ],
+      "acao_futura": "substituir aceite global preservando casos úteis",
+      "tarefa_destino": "AMV-14",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_aceitacao_vivacidade.py",
+        "tests/test_fronteira_vivacidade.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "aceitacao_vivacidade",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/preflight.py",
+          "linha": 303
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "estado atual separado do histórico",
+      "comando": [
+        "python",
+        "ferramentas/migrar-estado-atual.py",
+        "--check"
+      ],
+      "grupo": "estrutura",
+      "exit_code": 0,
+      "duracao_segundos": 0.07,
+      "saida_final": null,
+      "propriedades": [
+        "estado corrente separado do histórico",
+        "ficha e estado consistentes sem reescrever sessões"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "migrar_estado_atual",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 1
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 137
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [
+        {
+          "workflow": ".github/workflows/integridade.yml",
+          "job": "integridade",
+          "step": "Estado atual separado do histórico",
+          "comando": "python ferramentas/migrar-estado-atual.py --check"
+        }
+      ],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "memórias fragmentadas",
+      "comando": [
+        "python",
+        "ferramentas/migrar-memorias-fragmentadas.py",
+        "--check"
+      ],
+      "grupo": "estrutura",
+      "exit_code": 0,
+      "duracao_segundos": 0.473,
+      "saida_final": null,
+      "propriedades": [
+        "memórias fragmentadas íntegras",
+        "arquivos históricos preservados na migração"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_memorias_fragmentadas.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "migrar_memorias_fragmentadas",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 1
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 142
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [
+        {
+          "workflow": ".github/workflows/integridade.yml",
+          "job": "integridade",
+          "step": "Memórias fragmentadas e preservadas",
+          "comando": "python ferramentas/migrar-memorias-fragmentadas.py --check"
+        }
+      ],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "índice de conhecimento",
+      "comando": [
+        "python",
+        "ferramentas/reindexar-conhecimento.py",
+        "--check"
+      ],
+      "grupo": "estrutura",
+      "exit_code": 0,
+      "duracao_segundos": 0.066,
+      "saida_final": null,
+      "propriedades": [
+        "índice corresponde às fontes de conhecimento fragmentadas",
+        "separação dos domínios de conhecimento preservada"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_cena_mundo_contexto.py",
+        "tests/test_contexto.py",
+        "tests/test_contexto_buscar_muitos.py",
+        "tests/test_contexto_cena.py",
+        "tests/test_contexto_cena_aliados.py",
+        "tests/test_contexto_transacional.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "reindexar_conhecimento",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 1
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 147
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [
+        {
+          "workflow": ".github/workflows/integridade.yml",
+          "job": "integridade",
+          "step": "Memórias fragmentadas e preservadas",
+          "comando": "python ferramentas/reindexar-conhecimento.py --check"
+        }
+      ],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "runtime derivado",
+      "comando": [
+        "python",
+        "ferramentas/gerar-runtime.py",
+        "--check"
+      ],
+      "grupo": "estrutura",
+      "exit_code": 0,
+      "duracao_segundos": 0.087,
+      "saida_final": null,
+      "propriedades": [
+        "runtime derivado corresponde ao estado efetivo e pendências",
+        "handoff não substitui fonte canônica"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_runtime.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "gerar_runtime",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 1
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 150
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [
+        {
+          "workflow": ".github/workflows/integridade.yml",
+          "job": "integridade",
+          "step": "Runtime derivado e atualizado",
+          "comando": "python ferramentas/gerar-runtime.py --check"
+        }
+      ],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "consistência ruleset D&D 5.5e",
+      "comando": [
+        "python",
+        "ferramentas/ruleset_5_5e.py",
+        "check"
+      ],
+      "grupo": "integridade",
+      "exit_code": 0,
+      "duracao_segundos": 0.098,
+      "saida_final": null,
+      "propriedades": [
+        "ruleset ativo e ficha mecanicamente coerentes",
+        "adaptação da edição declarada"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_ruleset_5_5e_activation.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "ruleset_5_5e",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 1
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 153
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "gate AD&D para ruleset moderno",
+      "comando": [
+        "python",
+        "ferramentas/gate_adnd.py",
+        "check"
+      ],
+      "grupo": "integridade",
+      "exit_code": 0,
+      "duracao_segundos": 1.964,
+      "saida_final": null,
+      "propriedades": [
+        "origem AD&D e fonte mecânica moderna explícitas",
+        "mecânica literal antiga rejeitada em artefato ativo"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_gate_adnd.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "gate_adnd",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 158
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "integridade estrutural e semântica",
+      "comando": [
+        "python",
+        "ferramentas/verificar-integridade.py"
+      ],
+      "grupo": "integridade",
+      "exit_code": 0,
+      "duracao_segundos": 4.272,
+      "saida_final": null,
+      "propriedades": [
+        "referências, índices e invariantes canônicas válidos"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_integridade.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "verificar_integridade",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 1
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 163
+        },
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 168
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [
+        {
+          "workflow": ".github/workflows/integridade.yml",
+          "job": "integridade",
+          "step": "Integridade estrutural e semântica",
+          "comando": "python ferramentas/verificar-integridade.py"
+        },
+        {
+          "workflow": ".github/workflows/integridade.yml",
+          "job": "integridade",
+          "step": "Preservação do artefato histórico de baseline",
+          "comando": "python ferramentas/verificar-integridade.py --verificar-baseline-historica"
+        }
+      ],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "baseline histórica",
+      "comando": [
+        "python",
+        "ferramentas/verificar-integridade.py",
+        "--verificar-baseline-historica"
+      ],
+      "grupo": "integridade",
+      "exit_code": 0,
+      "duracao_segundos": 0.069,
+      "saida_final": null,
+      "propriedades": [
+        "imutabilidade do artefato histórico de baseline"
+      ],
+      "acao_futura": "preservar cobertura e comparar repetição",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_integridade.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "verificar_integridade",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 1
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 163
+        },
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 168
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [
+        {
+          "workflow": ".github/workflows/integridade.yml",
+          "job": "integridade",
+          "step": "Preservação do artefato histórico de baseline",
+          "comando": "python ferramentas/verificar-integridade.py --verificar-baseline-historica"
+        }
+      ],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    },
+    {
+      "nome": "auditoria final e retomada",
+      "comando": [
+        "python",
+        "ferramentas/auditoria-final.py",
+        "--json",
+        "--sem-testes"
+      ],
+      "grupo": "retomada",
+      "exit_code": 0,
+      "duracao_segundos": 6.956,
+      "saida_final": null,
+      "propriedades": [
+        "retomada exclusivamente quente com limite de bytes",
+        "delta pendente aplicado só no sandbox",
+        "privacidade e não mutação do save",
+        "onze comandos de regressão internos"
+      ],
+      "acao_futura": "preservar ensaios próprios e consolidar repetições",
+      "tarefa_destino": "AMV-15",
+      "equivalencia_de_cobertura_comprovada": false,
+      "testes_candidatos": [
+        "tests/test_auditoria_final.py"
+      ],
+      "validadores_internos_estaticos": [],
+      "fontes_exec_historicas": [],
+      "responsavel_atual": "auditoria_final",
+      "frequencia": {
+        "preflight_por_execucao": 1,
+        "auditoria_final_por_execucao": 0
+      },
+      "fontes_definicao_preflight": [
+        {
+          "arquivo": "ferramentas/_preflight_nv19.py",
+          "linha": 173
+        }
+      ],
+      "testes_e_validadores_sao_mapa_estatico_nao_prova_de_equivalencia": true,
+      "ocorrencias_diretas_ci": [
+        {
+          "workflow": ".github/workflows/integridade.yml",
+          "job": "integridade",
+          "step": "Auditoria final e teste de retomada",
+          "comando": "python ferramentas/auditoria-final.py --json --sem-testes > /tmp/auditoria-final.json"
+        }
+      ],
+      "relevancia_atual": "propriedade continua relevante; alcance semântico atual pode ser insuficiente",
+      "prova_exigida_antes_de_retirar": "A tarefa destino precisa provocar a mesma falha e demonstrar o dono substituto; nome, AST e execução verde não comprovam equivalência.",
+      "tarefa_previa_de_substituicao": "AMV-14/15",
+      "destino_condicional": "mesma propriedade no dono único identificado pela AMV-15; conservar regressão isolada pertinente"
+    }
+  ],
+  "duracao_total_segundos": 19.727,
+  "hash_protegido_antes": "e12bb7341965e70e584e71b5f8d532e2fa389d82b2dd5626bd2afb280e0064e3",
+  "hash_protegido_depois": "e12bb7341965e70e584e71b5f8d532e2fa389d82b2dd5626bd2afb280e0064e3",
+  "save_preservado": true,
+  "contagem_direta": 31,
+  "suite_integral_medida": false,
+  "tempo_nao_e_tokens": "Duração local não estima tokens nem porcentagem de cota Codex.",
+  "repeticoes_confirmadas": {
+    "auditoria_final_comandos": 11,
+    "identicos_ao_preflight_direto": [
+      "migrar-estado-atual.py --check",
+      "migrar-memorias-fragmentadas.py --check",
+      "reindexar-conhecimento.py --check",
+      "gerar-runtime.py --check",
+      "ruleset_5_5e.py check",
+      "verificar-integridade.py",
+      "verificar-integridade.py --verificar-baseline-historica"
+    ],
+    "comparar_com_fachadas": [
+      "turno.py check",
+      "consolidar.py check",
+      "sessoes.py check",
+      "checkpoint.py check"
+    ],
+    "aceite_modular": "Nove testes ancorados pertencem ao discovery integral.",
+    "ci": [
+      "Integridade repete validadores diretos e auditoria final.",
+      "Preflight adiciona benchmark step11."
+    ]
+  },
+  "auditoria_estatica_testes": {
+    "schema_version": 1,
+    "modo": "estatico",
+    "totais": {
+      "arquivos_python": 251,
+      "arquivos_descobertos_unittest": 243,
+      "arquivos_auxiliares": 8,
+      "testes_declarados_ast": 2360,
+      "testes_declarados_em_discovery": 2347,
+      "erros_ast": 0
+    },
+    "classificacoes": {
+      "unitario": 85,
+      "integracao": 172,
+      "contrato": 87,
+      "snapshot_historico": 30,
+      "estado_vivo": 7,
+      "regressao": 9,
+      "smoke": 7,
+      "performance": 82,
+      "migracao": 9,
+      "task_historica": 22
+    },
+    "candidatos": {
+      "congelamento_legitimo": [
+        "tests/sidequests_canonicas_task32_cases.py",
+        "tests/smoke_arcos_metodos.py",
+        "tests/smoke_cena_mundo_contexto.py",
+        "tests/smoke_contexto_multiclasse.py",
+        "tests/test_aceitacao_modular_v2.py",
+        "tests/test_acionamentos_leves.py",
+        "tests/test_acionamentos_staging.py",
+        "tests/test_active_sidequest_projection.py",
+        "tests/test_adversarial_integrity.py",
+        "tests/test_adversarial_operations_module_v2.py",
+        "tests/test_adversarios.py",
+        "tests/test_agentes.py",
+        "tests/test_agentes_leves.py",
+        "tests/test_agentes_leves_noop.py",
+        "tests/test_aliados_contextuais.py",
+        "tests/test_ameacas.py",
+        "tests/test_analisar_rollout.py",
+        "tests/test_analisar_rollout_atividades.py",
+        "tests/test_analisar_rollout_operacoes.py",
+        "tests/test_analisar_rollout_resultados.py",
+        "tests/test_analisar_rollout_sistemas.py",
+        "tests/test_arco_mundo.py",
+        "tests/test_arcos.py",
+        "tests/test_auditar_testes.py",
+        "tests/test_avaliacao_desempenho_sessao.py",
+        "tests/test_barreira_pendencias_mundo.py",
+        "tests/test_benchmark_narrativo.py",
+        "tests/test_benchmark_narrativo_sondas.py",
+        "tests/test_benchmark_rollouts.py",
+        "tests/test_canon_bridge_rewriter.py",
+        "tests/test_canonical_quest_integration_evaluation.py",
+        "tests/test_catalogo_avaliacao.py",
+        "tests/test_cena_mundo.py",
+        "tests/test_cena_mundo_contexto.py",
+        "tests/test_cena_mundo_transacional.py",
+        "tests/test_checkpoint.py",
+        "tests/test_checkpoint_canon_bridge.py",
+        "tests/test_checkpoints_mundo.py",
+        "tests/test_ciclo_npcs.py",
+        "tests/test_ciclo_sessoes.py",
+        "tests/test_clima_diario_nv21.py",
+        "tests/test_condicoes_mundo.py",
+        "tests/test_condicoes_mundo_proveniencia.py",
+        "tests/test_congelamentos_estado_vivo.py",
+        "tests/test_consolidacao.py",
+        "tests/test_contatos_sociais.py",
+        "tests/test_contexto.py",
+        "tests/test_contexto_buscar_muitos.py",
+        "tests/test_contexto_cena.py",
+        "tests/test_contexto_cena_aliados.py",
+        "tests/test_contexto_transacional.py",
+        "tests/test_continuidade_autoral.py",
+        "tests/test_contratos_operacionais.py",
+        "tests/test_corpus_avaliacao.py",
+        "tests/test_correcao_canonica.py",
+        "tests/test_correcao_recuperacao.py",
+        "tests/test_cronica_cli.py",
+        "tests/test_cronica_iniciativa_nv16.py",
+        "tests/test_cronica_mecanica.py",
+        "tests/test_cronica_pending_gate.py",
+        "tests/test_diegetico.py",
+        "tests/test_direcoes.py",
+        "tests/test_direcoes_destino.py",
+        "tests/test_dungeons.py",
+        "tests/test_ecologia_local.py",
+        "tests/test_emergent_sidequest_authoring_registry_v2.py",
+        "tests/test_emergent_sidequest_opportunity_boundary.py",
+        "tests/test_endpoints_deterministicos.py",
+        "tests/test_entrada.py",
+        "tests/test_entrada_medicao.py",
+        "tests/test_entradas.py",
+        "tests/test_entregas_causais.py",
+        "tests/test_estado_historico.py",
+        "tests/test_estado_relacional.py",
+        "tests/test_eventos_canonicos.py",
+        "tests/test_eventos_mundo.py",
+        "tests/test_experiencia_narrativa_integrada.py",
+        "tests/test_ficha_ren.py",
+        "tests/test_fronteira_mundo.py",
+        "tests/test_gate_adnd.py",
+        "tests/test_historical_test_review.py",
+        "tests/test_incidentes_mundo.py",
+        "tests/test_iniciativa_elenco.py",
+        "tests/test_iniciativa_elenco_frescor.py",
+        "tests/test_iniciativa_elenco_guardrails.py",
+        "tests/test_integracao_entrada_medicao.py",
+        "tests/test_integridade.py",
+        "tests/test_interacoes_mundo.py",
+        "tests/test_interacoes_narrativas.py",
+        "tests/test_locais.py",
+        "tests/test_marcos_aparicao.py",
+        "tests/test_memoria_cena.py",
+        "tests/test_memoria_cena_iniciativa.py",
+        "tests/test_memoria_duravel_integracao.py",
+        "tests/test_memoria_relevante.py",
+        "tests/test_memoria_relevante_integracao.py",
+        "tests/test_memoria_sessoes.py",
+        "tests/test_memorias_fragmentadas.py",
+        "tests/test_microeventos_locais.py",
+        "tests/test_microeventos_transito.py",
+        "tests/test_migracao_sidequests_nv17.py",
+        "tests/test_mundo.py",
+        "tests/test_mundo_causal_modules_v2.py",
+        "tests/test_mundo_vivo_orcamento.py",
+        "tests/test_mundo_vivo_snapshot.py",
+        "tests/test_narrative_systems_integration.py",
+        "tests/test_nomes_npcs.py",
+        "tests/test_npc_continuity_module_v2.py",
+        "tests/test_npc_stubs.py",
+        "tests/test_objetivos_avaliacao.py",
+        "tests/test_obrigacoes_temporais.py",
+        "tests/test_oportunidades.py",
+        "tests/test_permanencia_espacial.py",
+        "tests/test_permanencia_espacial_frescor.py",
+        "tests/test_planos_personagens.py",
+        "tests/test_politica_acesso.py",
+        "tests/test_politica_civica_nv22.py",
+        "tests/test_presenca_incidental.py",
+        "tests/test_pressao_aventura.py",
+        "tests/test_pressao_mundo_vivo.py",
+        "tests/test_pressao_ravens_bluff.py",
+        "tests/test_progressao_juppongatana.py",
+        "tests/test_qualidade_abordagem.py",
+        "tests/test_quest_rewards_discoveries_losses.py",
+        "tests/test_rastros.py",
+        "tests/test_recompensas.py",
+        "tests/test_reconhecibilidade_persona_nv20.py",
+        "tests/test_rede_protegida.py",
+        "tests/test_relogios.py",
+        "tests/test_reputacao_publica.py",
+        "tests/test_resolucao_npc_encontro.py",
+        "tests/test_reward_budget_v2.py",
+        "tests/test_rolar_lote.py",
+        "tests/test_ruleset_migration_contract.py",
+        "tests/test_seven_names_sidequest_regression.py",
+        "tests/test_sidequest_integration_budget.py",
+        "tests/test_sidequest_modules_v2.py",
+        "tests/test_sidequest_opportunity_decision.py",
+        "tests/test_sidequest_progression_deadlines_consequences.py",
+        "tests/test_sidequest_success_reactions.py",
+        "tests/test_sidequests_vivas_nv17.py",
+        "tests/test_telemetria_modular.py",
+        "tests/test_telemetria_repo.py",
+        "tests/test_tempo_atomico.py",
+        "tests/test_test_execution_profiles.py",
+        "tests/test_test_policy_contract.py",
+        "tests/test_torneio_clandestino.py",
+        "tests/test_transacoes.py",
+        "tests/test_transactional_sidequest_progress.py",
+        "tests/test_turn_and_session_orchestration_module_v2.py",
+        "tests/test_turno_transacional.py",
+        "tests/test_unified_session_lifecycle.py",
+        "tests/test_validacao_externa_avaliacao.py"
+      ],
+      "congelamento_suspeito": [
+        "tests/test_auditoria_final.py",
+        "tests/test_migracao_ren_5_5e.py",
+        "tests/test_papeis_conversacionais.py",
+        "tests/test_populacao_canonica.py",
+        "tests/test_rodape_turno.py",
+        "tests/test_ruleset_5_5e_activation.py",
+        "tests/test_talentos_ren.py"
+      ],
+      "possivel_redundancia": [
+        "tests/sidequests_canonicas_task32_cases.py",
+        "tests/test_eventos_mundo.py",
+        "tests/test_rede_protegida.py",
+        "tests/test_sidequests_canonicas.py"
+      ],
+      "teste_transitorio": [
+        "tests/sidequests_canonicas_task32_cases.py",
+        "tests/test_adversarial_integrity.py",
+        "tests/test_canon_bridge_rewriter.py",
+        "tests/test_canon_bridge_schedule_guard.py",
+        "tests/test_canonical_intent_rewrite_contract.py",
+        "tests/test_condicoes_mundo.py",
+        "tests/test_cronica_cli.py",
+        "tests/test_cronica_transito_urbano.py",
+        "tests/test_dialogo_relacional.py",
+        "tests/test_emergent_sidequest_authoring_registry_v2.py",
+        "tests/test_emergent_sidequest_opportunity_boundary.py",
+        "tests/test_incidentes_mundo.py",
+        "tests/test_live_campaign_state.py",
+        "tests/test_migracao_ren_5_5e.py",
+        "tests/test_quest_rewards_discoveries_losses.py",
+        "tests/test_rules_catalog.py",
+        "tests/test_secret_canon_v2.py",
+        "tests/test_secret_npc_quest_catalog.py",
+        "tests/test_sidequest_gate_v2.py",
+        "tests/test_sidequest_progression_deadlines_consequences.py",
+        "tests/test_torneio_clandestino.py",
+        "tests/test_unified_session_lifecycle.py"
+      ]
+    },
+    "duplicidades_exatas_de_corpo": [
+      [
+        {
+          "arquivo": "tests/sidequests_canonicas_task32_cases.py",
+          "teste": "test_endpoint_projeta_pedido_sem_autoaceite",
+          "linha": 57
+        },
+        {
+          "arquivo": "tests/test_sidequests_canonicas.py",
+          "teste": "test_endpoint_projeta_pedido_sem_autoaceite",
+          "linha": 65
+        }
+      ],
+      [
+        {
+          "arquivo": "tests/test_eventos_mundo.py",
+          "teste": "test_doenca_leve_prioriza_maerra_sem_agente_estrategico",
+          "linha": 79
+        },
+        {
+          "arquivo": "tests/test_rede_protegida.py",
+          "teste": "test_evento_real_reclassifica_maerra_sem_afeta_la_diretamente",
+          "linha": 55
+        }
+      ]
+    ],
+    "nota": "Classificações e candidatos são heurísticos: servem para triagem humana, não autorizam remoção nem alteração automática de testes."
+  },
+  "limite_auditoria": "Mapa estático de primeiro nível e dos wrappers exec, candidatos por componente/nome. Chamadas dinâmicas e equivalência entre modos de falha exigem revisão na AMV-15. Tempo medido é local e não mede tokens ou custo da CI.",
+  "ci": [
+    {
+      "arquivo": ".github/workflows/auditoria-testes.yml",
+      "jobs": [
+        {
+          "job": "auditoria",
+          "steps": [
+            {
+              "nome": "Dependências de teste",
+              "comandos": [
+                "python -m pip install -r requirements-dev.txt"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Inventário e telemetria",
+              "comandos": [
+                "python ferramentas/auditar-testes.py --medir --top 30 --json > /tmp/auditoria-testes.json",
+                "python - <<'PY'"
+              ],
+              "assertions_python_embutidas": 0
+            }
+          ]
+        }
+      ],
+      "custo_medido": false
+    },
+    {
+      "arquivo": ".github/workflows/integridade.yml",
+      "jobs": [
+        {
+          "job": "integridade",
+          "steps": [
+            {
+              "nome": "Dependências de teste",
+              "comandos": [
+                "python -m pip install -r requirements-dev.txt"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Testes unitários",
+              "comandos": [
+                "python -m unittest discover -s tests -v"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Estado atual separado do histórico",
+              "comandos": [
+                "python ferramentas/migrar-estado-atual.py --check"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Memórias fragmentadas e preservadas",
+              "comandos": [
+                "python ferramentas/migrar-memorias-fragmentadas.py --check",
+                "python ferramentas/reindexar-conhecimento.py --check"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Protocolo transacional de narração",
+              "comandos": [
+                "test -f ferramentas/contexto_core.py",
+                "test -f ferramentas/transacoes.py",
+                "test -f ferramentas/turno.py",
+                "python ferramentas/turno.py check",
+                "grep -q \"Lote A\" /tmp/rolagens-lote.txt",
+                "grep -q \"Lote B\" /tmp/rolagens-lote.txt"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Consolidação transacional",
+              "comandos": [
+                "test -f ferramentas/consolidar.py",
+                "test -f docs/agente/operacao/consolidacao-transacional.md",
+                "test -f baseline/consolidacao-step-08.md",
+                "grep -q 'docs/agente/operacao/consolidacao-transacional.md' AGENTS.md",
+                "python ferramentas/consolidar.py check",
+                "python ferramentas/consolidar.py status > /tmp/consolidacao-status.json",
+                "python - <<'PY'"
+              ],
+              "assertions_python_embutidas": 3
+            },
+            {
+              "nome": "Runtime derivado e atualizado",
+              "comandos": [
+                "python ferramentas/gerar-runtime.py --check"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Memória fria de sessões",
+              "comandos": [
+                "test -f ferramentas/sessoes.py",
+                "test -f ferramentas/checkpoint.py",
+                "test -f docs/agente/memoria/memoria-de-sessoes.md",
+                "test -f baseline/memoria-sessoes-step-09.md",
+                "test -f sessoes/index.yaml",
+                "test -f sessoes/003/handoff.yaml",
+                "python ferramentas/sessoes.py check",
+                "python ferramentas/checkpoint.py check",
+                "python ferramentas/contexto.py --sem-log retomada > /tmp/contexto-retomada.yaml",
+                "python ferramentas/contexto.py --sem-log sessao 2 --apos L2 --motivo \"A pergunta aponta diretamente para a sessão histórica 002.\" > /tmp/contexto-sessao-2.yaml",
+                "! grep -q 'transcricao_lida: true' /tmp/contexto-sessao-2.yaml",
+                "! grep -q 'sessoes/002/transcricao.md' /tmp/contexto-sessao-2.yaml",
+                "python ferramentas/contexto.py --sem-log buscar 'carroça-escritório cheira' --historico --apos L3 --motivo \"A busca corrente não contém a origem histórica necessária.\" > /tmp/contexto-historico.yaml",
+                "! grep -q 'sessoes/003/transcricao.md' /tmp/contexto-historico.yaml",
+                "python ferramentas/contexto.py --sem-log buscar 'carroça-escritório cheira' --historico --transcricoes --apos L4 --motivo \"O histórico estruturado não contém a formulação exata necessária.\" > /tmp/contexto-transcricoes.yaml",
+                "grep -q 'sessoes/003/transcricao.md' /tmp/contexto-transcricoes.yaml",
+                "if python ferramentas/contexto.py --sem-log buscar teste --transcricoes > /tmp/contexto-invalido.yaml 2>&1; then"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Escada formal de acesso",
+              "comandos": [
+                "test -f ferramentas/politica_acesso.py",
+                "test -f docs/agente/operacao/escada-de-acesso.md",
+                "test -f baseline/escada-acesso-step-10.md",
+                "grep -q 'docs/agente/operacao/escada-de-acesso.md' AGENTS.md",
+                "grep -q 'L4T' AGENTS.md",
+                "grep -q -- '--apos L2' AGENTS.md",
+                "python ferramentas/contexto.py --sem-log --max-bytes 16000 status > /tmp/acesso-l1.yaml",
+                "grep -q 'nivel: L1' /tmp/acesso-l1.yaml",
+                "grep -q 'teto_bytes: 4096' /tmp/acesso-l1.yaml",
+                "grep -q 'pare_se_suficiente: true' /tmp/acesso-l1.yaml",
+                "python ferramentas/contexto.py --sem-log cena > /tmp/acesso-l2.yaml",
+                "grep -q 'nivel: L2' /tmp/acesso-l2.yaml",
+                "python ferramentas/contexto.py --sem-log local \"casa de Iria Doss\" > /tmp/acesso-local.yaml",
+                "grep -q 'nivel: L2' /tmp/acesso-local.yaml",
+                "grep -q 'textura_narrativa' /tmp/acesso-local.yaml",
+                "if python ferramentas/contexto.py --sem-log buscar \"ponte baixa\" > /tmp/acesso-sem-motivo.txt 2>&1; then",
+                "python ferramentas/contexto.py --sem-log buscar \"ponte baixa\" --apos L2 --motivo \"As consultas dirigidas não localizaram o domínio da pista.\" > /tmp/acesso-l3.yaml",
+                "grep -q 'nivel: L3' /tmp/acesso-l3.yaml",
+                "grep -q 'depois_de: L2' /tmp/acesso-l3.yaml",
+                "if python ferramentas/contexto.py --sem-log buscar \"ponte baixa\" --historico --apos L2 --motivo \"A busca corrente não resolveu a origem histórica necessária.\" > /tmp/acesso-l4-errado.txt 2>&1; then",
+                "python ferramentas/contexto.py --sem-log buscar \"ponte baixa\" --historico --apos L3 --motivo \"A busca corrente não resolveu a origem histórica necessária.\" > /tmp/acesso-l4.yaml",
+                "grep -q 'nivel: L4' /tmp/acesso-l4.yaml",
+                "if python ferramentas/contexto.py --sem-log buscar \"ponte baixa\" --historico --transcricoes --apos L3 --motivo \"O histórico estruturado não contém o trecho bruto necessário.\" > /tmp/acesso-l4t-errado.txt 2>&1; then",
+                "python ferramentas/contexto.py --sem-log sessao 2 --apos L2 --motivo \"A pergunta aponta diretamente para a sessão 002 e seu resumo.\" > /tmp/acesso-salto.yaml",
+                "grep -q 'nivel: L4' /tmp/acesso-salto.yaml",
+                "grep -q 'salto_dirigido: true' /tmp/acesso-salto.yaml"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Telemetria externa de rollouts",
+              "comandos": [
+                "test -f ferramentas/analisar-rollout.py",
+                "test -f ferramentas/comparar-rollouts.py",
+                "test -f docs/agente/engenharia/telemetria-rollouts.md",
+                "test -f baseline/telemetria-step-11.md",
+                "test -f baseline/rollout-2026-08-15.json",
+                "test -f baseline/metas-rollout-pos-refatoracao.json",
+                "test -f tests/fixtures/rollout-step11-mini.jsonl",
+                "python ferramentas/analisar-rollout.py tests/fixtures/rollout-step11-mini.jsonl --json > /tmp/rollout-step11.json",
+                "python - <<'PY'",
+                "python ferramentas/comparar-rollouts.py tests/fixtures/rollout-step11-mini.jsonl --json > /tmp/comparacao-step11.json",
+                "python - <<'PY'",
+                "rm -f runtime/consultas-contexto.jsonl",
+                "python ferramentas/contexto.py status > /tmp/contexto-sem-telemetria.yaml",
+                "python ferramentas/contexto.py --log-local status > /tmp/contexto-com-telemetria.yaml",
+                "test -s runtime/consultas-contexto.jsonl",
+                "rm -f runtime/consultas-contexto.jsonl"
+              ],
+              "assertions_python_embutidas": 23
+            },
+            {
+              "nome": "Consultas dirigidas de contexto",
+              "comandos": [
+                "python ferramentas/contexto.py --sem-log status > /tmp/contexto-status.yaml",
+                "python ferramentas/contexto.py --sem-log cena > /tmp/contexto-cena.yaml",
+                "python ferramentas/contexto.py --sem-log npc nera > /tmp/contexto-npc.yaml",
+                "python ferramentas/contexto.py --sem-log npc \"Iria Doss\" > /tmp/contexto-iria.yaml",
+                "python ferramentas/contexto.py --sem-log local \"casa de Iria Doss\" > /tmp/contexto-local.yaml",
+                "python ferramentas/contexto.py --sem-log relacao kethra > /tmp/contexto-relacao.yaml",
+                "python ferramentas/contexto.py --sem-log conhecimento masao > /tmp/contexto-conhecimento.yaml",
+                "python ferramentas/contexto.py --sem-log conhecimento \"ponte baixa\" > /tmp/contexto-conhecimento-recente.yaml",
+                "python ferramentas/contexto.py --sem-log regra furtividade > /tmp/contexto-regra.yaml",
+                "python ferramentas/contexto.py --sem-log buscar \"ponte baixa\" --apos L2 --motivo \"As consultas dirigidas não localizaram o domínio completo da pista.\" > /tmp/contexto-busca.yaml",
+                "grep -q \"textura_narrativa\" /tmp/contexto-iria.yaml",
+                "grep -q \"cenario/texturas/npcs/iria_doss.yaml\" /tmp/contexto-iria.yaml",
+                "grep -q \"cenario/texturas/locais/casa_iria_doss.yaml\" /tmp/contexto-local.yaml",
+                "grep -q \"estado/relacoes/kethra_dunn.yaml\" /tmp/contexto-relacao.yaml",
+                "python - <<'PY'"
+              ],
+              "assertions_python_embutidas": 3
+            },
+            {
+              "nome": "Integridade estrutural e semântica",
+              "comandos": [
+                "python ferramentas/verificar-integridade.py"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Preservação do artefato histórico de baseline",
+              "comandos": [
+                "python ferramentas/verificar-integridade.py --verificar-baseline-historica"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Auditoria final e teste de retomada",
+              "comandos": [
+                "test -f ferramentas/auditoria-final.py",
+                "test -f docs/agente/engenharia/auditoria-final.md",
+                "test -f baseline/auditoria-final-step-12.md",
+                "python ferramentas/auditoria-final.py --json --sem-testes > /tmp/auditoria-final.json",
+                "python - <<'PY'"
+              ],
+              "assertions_python_embutidas": 13
+            }
+          ]
+        }
+      ],
+      "custo_medido": false
+    },
+    {
+      "arquivo": ".github/workflows/preflight.yml",
+      "jobs": [
+        {
+          "job": "preflight",
+          "steps": [
+            {
+              "nome": "Dependências de teste",
+              "comandos": [
+                "python -m pip install -r requirements-dev.txt"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Gates sem duplicar suíte completa",
+              "comandos": [
+                "python ferramentas/preflight.py --sem-testes"
+              ],
+              "assertions_python_embutidas": 0
+            },
+            {
+              "nome": "Smoke test do benchmark final",
+              "comandos": [
+                "python ferramentas/benchmark-rollouts.py \\",
+                "python - <<'PY'"
+              ],
+              "assertions_python_embutidas": 7
+            }
+          ]
+        }
+      ],
+      "custo_medido": false
+    }
+  ],
+  "fonte_preflight_efetivo": [
+    "ferramentas/preflight.py",
+    "ferramentas/_preflight_nv22.py",
+    "ferramentas/_preflight_nv21.py",
+    "ferramentas/_preflight_nv19.py"
+  ],
+  "dono_ci_suite_integral": ".github/workflows/integridade.yml / integridade / Testes unitários; preflight.yml usa --sem-testes, mas aceite modular ainda repete nove testes",
+  "fontes_sha256": {
+    "ferramentas/preflight.py": "8c0329738123bb3d2e08b59b02bfca922bf184d648e4a430355153dd99094a64",
+    "ferramentas/_preflight_nv22.py": "2a8d899c59c65d014a0b20f2a72bceb4718e35a7e25944d0dfa7fc278656e53f",
+    "ferramentas/_preflight_nv21.py": "23ee73a59d369305ea610be7ac2f5f74066b74853ad7260ae6f0ee82d9b4dd80",
+    "ferramentas/_preflight_nv19.py": "e36e68d90cf9b186491ab7339ecdb1a19fc548fcd68fb299b8285905fb589751",
+    ".github/workflows/auditoria-testes.yml": "71091bfc7c5eefc5a80732ed815d45f756bfdafd73ab26700f2f413757464905",
+    ".github/workflows/integridade.yml": "93829dd6d0bb1f9c93ac4d62d102ec54cd907df50803463f31baf69e6ebc2c7f",
+    ".github/workflows/preflight.yml": "d0284f5093a5c4467777f683399055c268816b0fd2791f0b4fb78baa01877537",
+    "ferramentas/turn_and_session_orchestration.py": "d088253346d6b0b3477f627a4725e9ea862533680b8dc6afcbbb2a4e541909aa",
+    "ferramentas/turno.py": "0730f86316dfeb193eeb517b6d971cbe62d3a6005d9cb1053452b45f733d6196",
+    "ferramentas/consolidar.py": "b65718cac313c9738ad022b5fdea57954ec6ae7be31dfa89fbd5a24bc69ad45b",
+    "ferramentas/checkpoint.py": "398128eddef44b6f286a9db1deb80da7821855caa66f51f9f89711e51eb307eb",
+    "ferramentas/context_and_memory.py": "1176f74b1191bf781268aad8328fe5aa230a2507624e6ec21cf3fc596cd213e0",
+    "ferramentas/recompensas.py": "c1338acf7c0e67b7be930e642c864d09183e8d8cbbb1e526ac44d9dc713fdf3e",
+    "ferramentas/sidequest_authoring.py": "24b6ee3b10499ed327b78e9b896252bc2f0207fd46b2fb7b619fe1973194faa6",
+    "ferramentas/oportunidade_sidequest.py": "6d385cac380b5a3f97468ecc163934c9691f40cde60c52e06255828285506cb0",
+    "ferramentas/oportunidades.py": "7395a12fbb2386de46ea103c1929111d31ae4947043e61e42b419ad62fa63087",
+    "ferramentas/sidequests_emergentes.py": "714d69f5557329f85ab864991f402eaca659f86fdaa6cd665111f174197cfa28",
+    "ferramentas/sidequests_integracao_runtime.py": "eaafc64a24207000c0fb2dbb7e41ec03d8112db47ce8f71e5537a6f9bf653942",
+    "ferramentas/sidequests_vivas.py": "063cff1964c43018cf0d33b1dfb5ee78fd0d3b596286a1a4c6bf9b430508fdce",
+    "ferramentas/sidequest_lifecycle.py": "11579affec217120602b37afd6a008fdb2e1b78819aab0fefc0b2267d925ddcc",
+    "ferramentas/sidequests_ativas.py": "872ca143e5b43ac7184bb61b40392dc087081b1784cf3ce807c6038ee035e628",
+    "ferramentas/progresso_sidequests_transacional.py": "bd72d82fa6e9def868d12758fd643260c13ccdf4b42e18a2eacfe543f153334a",
+    "ferramentas/progressao_sidequests.py": "411bff162e3f0f13e938910a8c5174a23ec7b20563a01b311be5ce4b19009e25",
+    "ferramentas/recompensas_sidequest.py": "79a7dfb052561547122e4246edc756b27f6b96046d01a62d6829526495d51b73",
+    "ferramentas/reacoes_sidequest.py": "874a194722df5baab73002db81ecbffe4fd7f4b6ee95ed2b151806b6e3a38e60",
+    "ferramentas/canonical_quest_integration.py": "8c95d5380f4f540657ca1d82e783d3b2176f609695bad18e207d2679d69b169e",
+    "ferramentas/canon_bridge_runtime.py": "25bd39db0b194ea8597da07df526f4f26e2821d153b47ce32e360ed1d59fffb2",
+    "ferramentas/sidequests_canonicas.py": "aab9f1cb872ea9c3eeb9cf5961532b60514816b61315e2ab42eb7e9e203f7db4",
+    "ferramentas/adversarial_operations.py": "b39ec540d1b4505e17626a099368349efc62a2d229e3d8a5026089be6e3b2d61",
+    "ferramentas/integridade_adversarial.py": "6df63193eceb114f6ed503b5edcb3c3cfb0ada57f29a1430556b52f722e5569f",
+    "ferramentas/operacoes_concorrentes.py": "4c004e88f205432cc8a180f93e818a4b118a1d5dd97c31ab4d4c11c2750cdb83",
+    "ferramentas/scene_world_projection.py": "3afcc9747577902f6c45ab6a38231dd00c63834197aa3be78c61f980c16d1630",
+    "ferramentas/ecologia_local.py": "c963fa92614b023bf750756cef6e7deb02e123eeeb551c0b4de535595c0a0580",
+    "ferramentas/microeventos_locais.py": "54f879b8414b204f0de343eef7910168ebc507f9bb975431f8dd937aacc809ef",
+    "ferramentas/incidentes_mundo.py": "6749a3e708f4bfa8a20bbf7e97eb0e366879c698f95dbbfe92c05052354b379b",
+    "ferramentas/condicoes_mundo.py": "a60ab4b64f064ef70e838863ff9d96190ef7e10b461ac0280353b9718dc1fb04",
+    "ferramentas/world_boundary_resolution.py": "7d89e2f9ba3ebbe0edd334d4d272787c2510511194294e08cc7f3e4229f3f1c6",
+    "ferramentas/resolver_fronteira.py": "9c7f6ea325e214bc03b92c56dbf56b6dc1b50e980cb509f8d13558d196af3619",
+    "ferramentas/causal_narrative_routing.py": "0169e1f1179cb8a3d004e78b511a9a388987df9ef275481fdaf984e43ca44793",
+    "ferramentas/pressao_narrativa.py": "5f2c1930c587e0a23f888df3a2528a812d8c713387ca4c31d26931c7f2afeb1d",
+    "ferramentas/eventos_canonicos.py": "5c7e18a72ec57e515b6cd1a0c86f24962ad887a6ea7e7571caa3be910f7646c6",
+    "ferramentas/migracao_sete_nomes.py": "c057ae93958bf9bd8842487c311b987729a1814a0829ca0d7e6e27f0812a6a34",
+    "ferramentas/interacoes_mundo.py": "d6eb8919aa97e2adfc0894561f3086bd1d720b5c7aa8523901ea7e11f2a8174b",
+    "ferramentas/npc_continuity_and_social_behavior.py": "ac9362cd316ab9ade975563a488136ce1e241e83b0339a502467e04e86a3eaa2",
+    "ferramentas/estado_relacional.py": "9f7996b91c72a75b18683f5fa070548f8204b1bea701c033ed1a0f332753222d",
+    "ferramentas/identidades.py": "de3c2fe3573a2714b8b0c0baee64b13f90e33ccf1f94be69736494c69856dcba",
+    "ferramentas/reputacao_publica.py": "85de045d39a09c969395e2feaa70af32206ddfc5bcd0ec4fd52bfefeb9da3159",
+    "ferramentas/nomes_npcs.py": "b2b4aa910d32923661cd6fa05ee258a4d2bffd9f35479781b8aa0efebc67f312",
+    "ferramentas/aceitacao_modular_v2.py": "ddfaec0843f0785cfc5c3ce8bb8ff0551c89c3f8ac13f23af56ee73a4564a702",
+    "ferramentas/verificar_corpus_avaliacao.py": "5b326c77dedfbaf2abccda34b89c5ce5db1dd1e08b79efb77cecc5690af2a2b5",
+    "ferramentas/narrative_delivery.py": "84e261ded63c030c5146af82ccf22a8424e27081bcca2bd6f63a6cee06840fcd",
+    "ferramentas/rules_and_character_state.py": "f97cb6eb369d97441fb4c4e4f74ea31b25ccfe4fb6752ee615391575da2d9a86",
+    "ferramentas/experiencia_integrada.py": "62b43fa50655050629a8455361c3eaecf1ebc45ad84444289574f96cd951bf8e",
+    "ferramentas/reconhecibilidade_persona.py": "edc068d289abde39ccea95d0dc05898d611484e1248e46049efb6231bc52935b",
+    "ferramentas/clima_diario.py": "13f340325dffa4ae68841d3df471bc6e0cdaca2bdcb370eb78ec088b2056b9ef",
+    "ferramentas/politica_civica.py": "396c3ef191729b74f55939f268b711fac10e3a06803d1829b1466c849b63fcee",
+    "ferramentas/aceitacao_vivacidade.py": "89272afd6cbef9dc0151cbd28f70051658462caaf2b93d2f818a6f612185bdac",
+    "ferramentas/migrar-estado-atual.py": "c8039286622593130f2d1407d26a16ae8e38cf47ae27d1e58f850724d7f0e822",
+    "ferramentas/migrar-memorias-fragmentadas.py": "3fe777050b051d6d346762761454e921b6ba34f4ae703d5adadf873d0f971c04",
+    "ferramentas/reindexar-conhecimento.py": "4635a85ecf58dc9baffa7443e228add8714b8653822277a355a27ba70a7379b6",
+    "ferramentas/gerar-runtime.py": "338f79e244f7a7b238a685392cf2e588a1ee9a6f2d1ce632050b7f9e386c8c3f",
+    "ferramentas/ruleset_5_5e.py": "a3ece761b339d8d05681ecfd4ef920578bd7ed69c5e35c5e28dada7bffea3bfb",
+    "ferramentas/gate_adnd.py": "e528242c5ab8eed3a1e6dec1c323e2385f5057285bc738799a0f5468b373ab07",
+    "ferramentas/verificar-integridade.py": "3b983dcac1002fc7ff9ed7af9f8383a8109c8a6ee7a26294f97633ddc83c9443",
+    "ferramentas/auditoria-final.py": "5a2bce00e2ee053695bb380bd73620f8e51821c322932f1bfd11df10887381f4"
+  },
+  "resumo": {
+    "checks_diretos": 31,
+    "checks_aprovados_na_medicao": 31,
+    "reexecucoes_exatas_na_auditoria": 7,
+    "testes_ancorados_repetidos": 9,
+    "cobertura_semantica_comprovada": false,
+    "retiradas_executadas": 0
+  },
+  "escopo_revisao": "revisao identifica a execução medida do preflight, antes das alterações AMV-01; mapa estático concluído no worktree da AMV-01",
+  "escopo_auditoria_estatica": "Inclui os novos testes isolados dos objetivos; totais AST não equivalem a testes executados ou à cobertura semântica."
+}

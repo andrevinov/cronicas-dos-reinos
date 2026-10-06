@@ -1,0 +1,155 @@
+{
+  "aceite_congelado": {
+    "casos": 12,
+    "checks": 19,
+    "falhas": 0,
+    "manifest_sha256": "3f2db5a50015c8a763f9aaff490e82ac114e8f194abf94bbc42b7cb9871c1ab2",
+    "resultado": "resultado-amv05-final.json"
+  },
+  "cobertura": {
+    "com_parecer": 13,
+    "confirmadas_verificadas": 8,
+    "estados": {
+      "confirmada": 8,
+      "indeterminada": 400
+    },
+    "sem_parecer": 395,
+    "unidades_interacao_criterio": 408
+  },
+  "codigo_e_interface_sha256": {
+    "evaluation/dashboard/app.js": "5298ab9568ad01f18966fd2f04b6dd3b1e0c43c8ea9cfdfb83e6ea0305760a4f",
+    "evaluation/dashboard/index.html": "ef37fab6d3421b89c74f201ba67df9faeb179113c53e9d252e919fd633c7a831",
+    "evaluation/dashboard/styles.css": "353c71069c300d5e35a953330385dd2ced881e9ea427128971c4df621ed51c55",
+    "ferramentas/apresentacao_avaliacao.py": "effb403d7cf693e110f2833117d8c49a4c8d73aa61ba9f6972eef4148f912d73",
+    "ferramentas/gerar-avaliacao-sessao.py": "494b41bdfcafeda3fae091086c9ca49eeb44f465862cb2214371d0702f76cac2",
+    "ferramentas/reavaliar-sessao.py": "9f9371e8fe6fcd25fb0579a75a51aaa990bf7eb5c63cb1b83b1c95bf1643ed5f",
+    "ferramentas/verificar_aceite_avaliacao.py": "956283a66c8508247f45851dffb5ebd40dcee6e22f2f5924efcb880a624845cd",
+    "tests/test_dashboard_renderizado.py": "8b157e5dd2a39b37a766ab992bcf59a313307742f280828149c758cca628de78"
+  },
+  "corpus_anterior": {
+    "casos_executados": 19,
+    "checks": 226,
+    "codigo_sha256": {
+      "aceite": "ddfaec0843f0785cfc5c3ce8bb8ff0551c89c3f8ac13f23af56ee73a4564a702",
+      "analisador": "5144f690005884acde1b908dc27755f70eae8d35c368b360fb7516c53c7a110c",
+      "executor_corpus": "5b326c77dedfbaf2abccda34b89c5ce5db1dd1e08b79efb77cecc5690af2a2b5",
+      "gerador": "494b41bdfcafeda3fae091086c9ca49eeb44f465862cb2214371d0702f76cac2"
+    },
+    "falhas": 0,
+    "status": "aprovado"
+  },
+  "custos": {
+    "compartilhado_alocado": 5406799,
+    "diferenca_fechamento": 0,
+    "escopo": "inferencias_dos_turnos_narrativos",
+    "estimativa_causal": false,
+    "exclusivo_observado": null,
+    "marginal": null,
+    "observado": 5406799,
+    "regra": "Rateio contábil entre pais, uma vez. Exposição de subcapacidades não é somável. Contexto nativo não identifica custo exclusivo ou marginal.",
+    "unidade": "tokens"
+  },
+  "dados_reservados_redigidos": true,
+  "data": "2026-10-04",
+  "entrada_id": "a03259b46188f267ab3128bde679e7940af7ad3dcbd7e34c753b1245ae577304",
+  "g0": "aprovado_no_recorte_demonstrado_s024",
+  "limites": [
+    "5 pareceres indeterminados e 395 unidades sem parecer",
+    "revisão pós-hoc separada do produtor, sem validação cega por terceiro",
+    "suíte completa e preflight não reexecutados; gate de merge preservado",
+    "AMV-06–16 ainda pendentes"
+  ],
+  "natureza": "aceite de avaliação e visualização; não aprova runtime nem estabilidade longitudinal",
+  "navegador": {
+    "comando": "poetry run python -m unittest tests.test_dashboard_renderizado -v",
+    "falhas": 0,
+    "motor": "Chrome headless",
+    "provas": [
+      "original bloqueado sem nota global ou ponto de tendência",
+      "revisão 024 mantém identidade da sessão",
+      "62 chamadas; 15 escritas = 11 sucessos + 2 falhas + 2 desconhecidas",
+      "13 pareceres, 408 unidades, 395 sem parecer",
+      "link abre prova e diagnóstico de agência",
+      "qualidade zero e operação 100 separadas",
+      "qualidade ausente, fontes insuficientes, negativa e amostra insuficiente distintas",
+      "texto reservado malicioso não aparece no DOM",
+      "versão incompatível excluída; revisão conta uma vez",
+      "pacote 023 sem arquivos opcionais antigos continua legível"
+    ],
+    "skips": 0,
+    "testes": 2
+  },
+  "operacoes_recorte_completo": {
+    "attempted_write_calls": 15,
+    "failed_write_calls": 2,
+    "input_tokens": 6274786,
+    "output_tokens": 61035,
+    "successful_write_calls": 11,
+    "tool_calls": 62,
+    "turns": 12,
+    "unknown_write_calls": 2,
+    "write_target_touches": 20
+  },
+  "originais_e_reproducao": "integridade-s024-amv05.json",
+  "preflight_alterado": false,
+  "save_protegido": {
+    "arquivos": 995,
+    "inalterado": true,
+    "sha256": "e12bb7341965e70e584e71b5f8d532e2fa389d82b2dd5626bd2afb280e0064e3"
+  },
+  "schema_verificacao_amv05": 1,
+  "schemas": {
+    "artefatos": 17,
+    "erros": [],
+    "schemas": 21
+  },
+  "testes_dominio": {
+    "errors": 0,
+    "failures": 0,
+    "modulos": [
+      "tests.test_experiencia_avaliacao",
+      "tests.test_contrato_atividades_modulares",
+      "tests.test_resultados_operacoes",
+      "tests.test_analisar_rollout",
+      "tests.test_analisar_rollout_operacoes",
+      "tests.test_analisar_rollout_resultados",
+      "tests.test_analisar_rollout_atividades",
+      "tests.test_analisar_rollout_sistemas",
+      "tests.test_telemetria_modular",
+      "tests.test_benchmark_rollouts",
+      "tests.test_comparar_rollouts",
+      "tests.test_corpus_avaliacao",
+      "tests.test_integracao_entrada_medicao",
+      "tests.test_validacao_externa_avaliacao",
+      "tests.test_catalogo_avaliacao",
+      "tests.test_objetivos_avaliacao",
+      "tests.test_fail_closed_evaluation",
+      "tests.test_turn_and_session_orchestration_module_v2",
+      "tests.test_context_and_memory_module_v2",
+      "tests.test_narrative_delivery_module_v2",
+      "tests.test_rules_and_character_state_module_v2",
+      "tests.test_mundo_causal_modules_v2",
+      "tests.test_npc_continuity_module_v2",
+      "tests.test_sidequest_modules_v2",
+      "tests.test_adversarial_operations_module_v2",
+      "tests.test_cronica_pending_gate",
+      "tests.test_cronica_pending_gate_budget",
+      "tests.test_cronica_iniciativa_nv16",
+      "tests.test_cronica_permanencia_nv15",
+      "tests.test_sidequest_integration_budget",
+      "tests.test_memoria_cena_integracao",
+      "tests.test_iniciativa_elenco_integracao",
+      "tests.test_apresentacao_avaliacao",
+      "tests.test_dashboard_avaliacao",
+      "tests.test_agregacao_avaliacao",
+      "tests.test_avaliacao_desempenho_sessao",
+      "tests.test_qualidade_interacao_avaliacao",
+      "tests.test_filas_prioridade_avaliacao"
+    ],
+    "natureza": "suíte focalizada dos domínios alterados, sem estado vivo mutado",
+    "skipped": 0,
+    "success": true,
+    "tests": 366
+  },
+  "versoes_execucao_preservadas": true
+}

@@ -168,7 +168,7 @@ def _aggregate_after(reports: list[dict[str, Any]]) -> dict[str, Any]:
 
 def _normalized(data: dict[str, Any]) -> dict[str, float | int | None]:
     turns = int(data.get("turns") or 0)
-    categories = data.get("tool_categories") or {}
+    categories = data.get("operation_categories") or data.get("tool_categories") or {}
     return {
         "turns": turns,
         "input_tokens_per_turn": _per_turn(data.get("input_tokens"), turns),

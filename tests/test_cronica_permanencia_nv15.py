@@ -84,6 +84,8 @@ class CronicaPermanenceTests(unittest.TestCase):
         self.assertEqual(result["permanencia_espacial"]["local_id"], "circo_hooft")
         self.assertTrue(result["reativa_espacial"])
         self.assertEqual(result["gates"][0]["resultado"], "calma_espacial")
+        self.assertIn("scene_world_projection|permanencia|aplicavel|1",
+                      result["cobertura_avaliacao_modular"]["recibos"])
 
     def test_permanence_rejects_entry_explore_trigger_mixing(self):
         with self.assertRaisesRegex(cp._core.CronicaError, "aceita apenas --local opcional"):

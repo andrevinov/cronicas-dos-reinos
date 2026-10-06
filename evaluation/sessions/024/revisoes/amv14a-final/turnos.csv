@@ -1,0 +1,34 @@
+ordinal,turn_id,classe_turno,inicio,fim,latencia_segundos,trecho_usuario,nivel_acesso,input_tokens,cached_input_tokens,uncached_input_tokens_aprox,output_tokens,reasoning_output_tokens,tokens_totais,inference_events,tool_calls,tool_output_bytes,read_search_calls,write_calls,dice_calls,other_calls,routed_context_calls,raw_read_calls,schema_discovery_calls,orchestration_calls,prepare_calls,conclude_calls,par_preparar_concluir_exato,decisao_oportunidade,decisao_sem_oportunidade,decisao_ausente,modulos_observados,quantidade_modulos_observados,interaction_id,interaction_ref,referencia_visivel_exatamente_uma_vez
+1,01a0aaca-8cb0-7bf2-aff8-e236a6c3b45d,mecanica,2026-09-16T15:16:36.184000+00:00,2026-09-16T15:21:01.398000+00:00,265.214,"Ren fica esperando do lado de fora, olhando uma banca ou outra, se afastando praqui e pralí, esperando o homem chegar. Se ele chegar, Ren vai tentar ouvir do lado de fora inicialmente, através das venezianas (se houverem) ou fresta de porta",L3+RAW,472777,446336,26441,9160,6000,481937,14,13,52777,8,1,1,3,3,5,0,3,2,1,nao,0,2,0,"[""emergent_sidequest_opportunity""]",1,interaction-3e14bb0c2ea62b86903b,S024-I0001,sim
+2,01a0aad7-f645-7691-9aca-8b00300da48c,mecanica,2026-09-16T15:31:15.247000+00:00,2026-09-16T15:33:56.166000+00:00,160.919,"Ren entra no restaurante nessa hora:
+
+""Não será preciso, Mori-dono. Tanaka-san está aqui"", em kozakurano, ainda andando como um velho.
+
+Ao menor sinal de movimento, Ren fala:
+
+""Não tente. Não perca o tempo de nenhum de nós: você não vai con",L3,322059,309504,12555,5817,3416,327876,6,5,18900,2,1,1,1,2,0,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity"", ""npc_social_initiative""]",2,interaction-0f895e880a32d2e4df31,S024-I0002,sim
+3,01a0aade-5b4e-7661-b38a-31ce71af1f2c,mecanica,2026-09-16T15:38:14.273000+00:00,2026-09-16T15:39:47.072000+00:00,92.799,"""Eu não gosto de fazer ninguém sofrer, Mori-dono. Eu não resolvo com os punhos quando posso resolver com uma boa conversa. Não concorda que é muito melhor conversar do que lutar?"" e sorri o sorriso de Tanaka.
+
+Ren pausa. E depois fala sério",L0,254116,246400,7716,3564,1532,257680,4,3,10326,0,1,1,1,0,0,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity""]",1,interaction-64bc733e76f3992e5411,S024-I0003,sim
+4,01a0aaea-3809-7863-ae6b-8df5dc6f9272,mecanica,2026-09-16T15:51:11.707000+00:00,2026-09-16T15:53:09.202000+00:00,117.495,"""Qualquer nome falado na frente de Aiko-dono seria condena-la, Mori-dono"", Ren continua em kozakurano. ""Eu jamais falaria nome algum diante dela"".
+
+Depois de uma pausa, ele olha pra Mori.
+
+""Eu vou lhe contar duas histórias, senhor: os dois ",RAW,356385,347136,9249,4521,1960,360906,5,4,12084,1,1,1,1,0,1,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity""]",1,interaction-31f6ce6bdca2469757c6,S024-I0004,sim
+5,01a0aaf1-5dc5-7df1-a642-200c66832150,mecanica,2026-09-16T15:59:00.088000+00:00,2026-09-16T16:02:05.148000+00:00,185.06,"""Espere. Não se apresse.""
+
+Ren pede a Aiko papel e caneta. Sem que ela possa ver, escreve:
+
+Masao Hirasawa. Juppongatana. Kurobane Jinzaburo. Kajikawa Shizune.
+
+""Eu não lhe impedirei se sair por aquela porta se ler esses nomes não mudar nad",L2+RAW,523822,502528,21294,7012,4286,530834,6,5,45190,2,1,1,1,1,1,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity""]",1,interaction-f2c36a58e3bafcad0552,S024-I0005,sim
+6,01a0aaf8-cc9b-77b2-b26b-2bec85bc42f8,avanco_comum,2026-09-16T16:07:07.218000+00:00,2026-09-16T16:09:34.007000+00:00,146.789,"[AVALIAÇÃO S024-I0005 — Eu, André Carvalho, se quiser escrever algo sem que alguém que não está interessado em ver ou que correria risco de vida se visse, consigo fazer isso 100% das vezes. Esse teste de Prestidigitação pra esconder as letr",RAW,807604,793472,14132,5421,2655,813025,8,7,26555,4,1,0,2,0,4,2,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity""]",1,interaction-33246d7d6794eb0938d2,S024-I0006,sim
+7,01a0aafd-6709-7bb0-8649-163a98e06ed6,avanco_comum,2026-09-16T16:12:08.890000+00:00,2026-09-16T16:13:45.336000+00:00,96.446,"Ren fica depois da saída dele.
+
+""Perdoe-me, Aiko-dono. Esse homem é empregado de homens muito perigosos. Eu precisei de suas informações pra chegar a ele. A senhora pode não fazer ideia da situação onde está metida... e talvez seja melhor.""",L0,337316,328704,8612,3918,1968,341234,3,2,12143,0,1,0,1,0,0,0,2,1,1,sim,0,1,0,"[""emergent_sidequest_opportunity"", ""npc_social_initiative""]",2,interaction-8d5c97935c08a57af14a,S024-I0007,nao
+8,01a0ab0f-2670-78c3-974d-851984849264,mecanica,2026-09-16T16:31:32.005000+00:00,2026-09-16T16:36:20.407000+00:00,288.402,"""Aiko-dono, a senhora já corria riscos antes de mim. Não vou mentir que talvez corra mais agora... mas seu lugar já estava sendo usado por eles.""
+
+Ren faz uma pausa.
+
+""A senhora pode abrir amanhã. Não vou fazer promessas absurdas... mas se ",RAW,1525017,1503232,21785,12201,5020,1537218,12,11,24341,1,5,1,4,0,1,0,8,4,4,nao,0,4,0,"[""emergent_sidequest_opportunity"", ""npc_social_initiative""]",2,interaction-198f2815ab436db2bde8,S024-I0009,sim
+9,01a0ad2f-f078-73d3-8fa1-855c74bf0649,avanco_comum,2026-09-17T02:26:35.958000+00:00,2026-09-17T02:27:35.703000+00:00,59.745,"Ren volta para o circo, um tanto frustrado. Ele sabe que Mori irá cruzar seu caminho novamente. Acredita que conseguiu a proteção para Aiko apesar de tudo, e que talvez Mori possa ser um futuro aliado nessa luta. Se não for... ele já sabe o",L0,753684,609664,144020,2405,689,756089,5,4,11231,0,1,0,3,0,0,0,3,2,1,nao,0,2,0,"[""emergent_sidequest_opportunity""]",1,interaction-f753740efa3436564d42,S024-I0011,sim

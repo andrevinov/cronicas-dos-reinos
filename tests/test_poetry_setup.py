@@ -42,6 +42,7 @@ class PoetrySetupTest(unittest.TestCase):
             "test-full",
             "testes",
         }
+        expected.add("avaliar-sessao")
         self.assertEqual(set(scripts), expected)
         self.assertTrue(all(value.startswith("ferramentas.poetry_cli:") for value in scripts.values()))
         self.assertNotIn("rolar-dados", scripts)

@@ -1,0 +1,29 @@
+{
+  "natureza": "cenario_sintetico_isolado_nao_e_sessao_real",
+  "tipo": "rollout",
+  "registros": [
+    {
+      "type": "response_item",
+      "payload": {
+        "type": "function_call",
+        "name": "exec_command",
+        "call_id": "call-1",
+        "arguments": "{\"cmd\": \"poetry run cronica concluir --ticket exemplo\"}",
+        "internal_chat_message_metadata_passthrough": {
+          "turn_id": "t1"
+        }
+      }
+    },
+    {
+      "type": "response_item",
+      "payload": {
+        "type": "function_call_output",
+        "call_id": "call-1",
+        "output": "Process exited with code 2\nerro: ticket inválido\n",
+        "internal_chat_message_metadata_passthrough": {
+          "turn_id": "t1"
+        }
+      }
+    }
+  ]
+}

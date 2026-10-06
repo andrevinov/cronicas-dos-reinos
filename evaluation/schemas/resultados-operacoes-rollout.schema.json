@@ -75,6 +75,10 @@
             "erro_detector"
           ]
         },
+        "category": {"type": "string", "minLength": 1},
+        "module_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "canonical_write": {"type": "boolean"},
+        "blocks_dependent_conclusion": {"type": "boolean"},
         "evidence": {"$ref": "#/$defs/evidence"}
       }
     }

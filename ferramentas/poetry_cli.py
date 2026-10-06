@@ -51,6 +51,10 @@ def servidor() -> int:
         return 0
 
 
+def avaliar_sessao() -> int:
+    return _run_script("revisao_sessao.py")
+
+
 def entrada() -> int:
     return _run_script("entrada.py")
 

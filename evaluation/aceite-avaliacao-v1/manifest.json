@@ -1,0 +1,371 @@
+{
+  "schema_referencia_aceite_avaliacao": 1,
+  "versao": "1.0.0",
+  "data": "2026-10-04",
+  "estado": "congelado_antes_das_correcoes",
+  "natureza": "Gabaritos normativos anteriores às correções, não gerados pelo avaliador; observações e expectativas separadas.",
+  "catalogo": "config/catalogo.json",
+  "metas": "config/metas.json",
+  "gabarito_s024": "gabarito-s024.json",
+  "inventario": "inventario-cobertura.json",
+  "hashes": {
+    "config/catalogo.json": "7eeca8b232b037113cbcdecce53b1f1186c037ce46d9aa778ad43b7b86aed44a",
+    "config/metas.json": "0059165b2ad5fab6529d3ba544e88f77e708874bc5e610782da0b3ac76961811",
+    "entradas/conclusao_com_exit_code.json": "e0a50eb3d28a1c1d98ab47f690c01affd4991c44a4edef01962e2c963990071f",
+    "entradas/conclusao_yaml.json": "ceb1894c3d39d3f2100060caffbd6554f782542995c6f8ab56f7361d036e171c",
+    "entradas/fase_inventada.json": "207b46b70cb8e2aebc2a7ba42f93f5b77fd7ba00e49469154059be7866512727",
+    "entradas/iniciativa_omitida.json": "f542737989e3339fa79415a02a7240feb1cb4eb5b061362661a27fd0be82ffbf",
+    "entradas/orfao_sem_atividade.json": "d6749ec5e86b75aae8b9e514916818de17506b5e1b291934fde451f20e56d5fb",
+    "entradas/painel_medicao_bloqueada.json": "a14db01c9cedf117f0f23994ab1c5e7349d61cf1b5f675359ca98c6ec3713af1",
+    "entradas/qualidade_ausente.json": "d8628b29bffff0e54fa7067fb6e462cb697bcd6c242131957e61961caa4a9e3c",
+    "entradas/qualidade_inadequada.json": "d3feb9284babf9ce16e9569a19e9f2bf452e8eefb8815018038ad745e727abd1",
+    "entradas/resultado_ausente.json": "b366fab33b7625ca8b9614c819d30ba33af5c1627af77e48e41797b48c91b6b0",
+    "entradas/saida_falhou.json": "0a0ff2e90a1f2770886cd62f9ae47d4a8f00d737c4be087992ba88e89970a707",
+    "entradas/subfase_legitima_npc.json": "1090aab7cf51c041b7b7c618bb9e14dbcca23c21d278c8ec6974b5211e331dbd",
+    "gabarito-s024.json": "3b1e57aac28fdabea8fa164237f18d4ae1fba34b1893bf01345cb6ba3c1bfb3c",
+    "inventario-cobertura.json": "98984bade5f0b9d1570ccdafd09555f2410884c3a51f5010ae826d57d1acb953",
+    "entradas/inatividade_legitima_off.json": "4a5e1e1a6a7416c15b957c28b7e7011d3787b24b8f288ba3bcc7f243c87b1096"
+  },
+  "casos": [
+    {
+      "case_id": "conclusao_yaml",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/conclusao_yaml.json",
+      "checks": [
+        {
+          "check_id": "resultado-terminal",
+          "caminho": [
+            "resultados",
+            "operations",
+            0,
+            "state"
+          ],
+          "esperado": "sucesso",
+          "justificativa": "Estado terminal comprova conclusão.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "estado: concluido"
+          }
+        },
+        {
+          "check_id": "escrita-coerente",
+          "caminho": [
+            "metricas",
+            "successful_write_calls"
+          ],
+          "esperado": 1,
+          "justificativa": "Uma conclusão bem-sucedida corresponde a uma escrita lógica.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "estado: concluido"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "subfase_legitima_npc",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/subfase_legitima_npc.json",
+      "checks": [
+        {
+          "check_id": "sem-orfao-falso",
+          "caminho": [
+            "cobertura",
+            "npc_continuity_and_social_behavior",
+            "orphan_receipts"
+          ],
+          "esperado": 0,
+          "justificativa": "Produtor instalado emite concluir_iniciativa legitimamente no commit.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "concluir_iniciativa"
+          }
+        },
+        {
+          "check_id": "cobertura-npc-completa",
+          "caminho": [
+            "cobertura",
+            "npc_continuity_and_social_behavior",
+            "coverage_complete"
+          ],
+          "esperado": true,
+          "justificativa": "Subfase legítima adicional não torna cobertura incompleta.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "concluir_iniciativa"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "orfao_sem_atividade",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/orfao_sem_atividade.json",
+      "checks": [
+        {
+          "check_id": "orfao-diagnosticado",
+          "caminho": [
+            "modulos",
+            "world_boundary_resolution",
+            "aplicabilidade_avaliacao"
+          ],
+          "esperado": "falha_instrumentacao",
+          "justificativa": "Recibo sem atividade reconhecida não é ausência legítima.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "world_boundary_resolution|fronteira"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "qualidade_inadequada",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/qualidade_inadequada.json",
+      "checks": [
+        {
+          "check_id": "qualidade-zero",
+          "caminho": [
+            "modulo",
+            "nota_qualidade_interacao_0a100"
+          ],
+          "esperado": 0.0,
+          "justificativa": "Adjudicação inadequada confirmada deve representar qualidade zero.",
+          "evidencia": {
+            "ponteiro": "/adjudicacoes/quality_assessments/0/quality",
+            "fragmento": "inadequada"
+          }
+        },
+        {
+          "check_id": "sem-aprovacao-global",
+          "caminho": [
+            "aprovacao_geral_saudavel"
+          ],
+          "esperado": false,
+          "justificativa": "Qualidade inadequada confirmada impede selo global saudável.",
+          "evidencia": {
+            "ponteiro": "/adjudicacoes/quality_assessments/0/quality",
+            "fragmento": "inadequada"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "qualidade_ausente",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/qualidade_ausente.json",
+      "checks": [
+        {
+          "check_id": "sem-qualidade-inventada",
+          "caminho": [
+            "modulo",
+            "nota_qualidade_interacao_0a100"
+          ],
+          "esperado": null,
+          "justificativa": "Sem adjudicação não há qualidade medida.",
+          "evidencia": {
+            "ponteiro": "/adjudicacoes/quality_assessments",
+            "fragmento": "[]"
+          }
+        },
+        {
+          "check_id": "sem-selo-com-qualidade-vazia",
+          "caminho": [
+            "aprovacao_geral_saudavel"
+          ],
+          "esperado": false,
+          "justificativa": "Ausência de qualidade não comprova saúde da experiência.",
+          "evidencia": {
+            "ponteiro": "/adjudicacoes/quality_assessments",
+            "fragmento": "[]"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "iniciativa_omitida",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/iniciativa_omitida.json",
+      "checks": [
+        {
+          "check_id": "omissao-sem-recibo",
+          "caminho": [
+            "omissoes_elegiveis_avaliadas"
+          ],
+          "esperado": 1,
+          "justificativa": "Presença, conhecimento, canal e compromisso vencido tornam a causa elegível; ausência de recibo não a apaga.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "compromisso_vencido: transmitir_aviso_agora"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "painel_medicao_bloqueada",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/painel_medicao_bloqueada.json",
+      "checks": [
+        {
+          "check_id": "sem-faixa-saudavel",
+          "caminho": [
+            "nao_exibe_saudavel"
+          ],
+          "esperado": true,
+          "justificativa": "Medição bloqueada domina classificação principal.",
+          "evidencia": {
+            "ponteiro": "/scorecard/status_avaliacao",
+            "fragmento": "bloqueada_instrumentacao"
+          }
+        },
+        {
+          "check_id": "sem-nota-conclusiva",
+          "caminho": [
+            "nota_principal_sem_numero"
+          ],
+          "esperado": true,
+          "justificativa": "Nota parcial pertence ao detalhe, não à conclusão principal bloqueada.",
+          "evidencia": {
+            "ponteiro": "/scorecard/status_avaliacao",
+            "fragmento": "bloqueada_instrumentacao"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "saida_falhou",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/saida_falhou.json",
+      "checks": [
+        {
+          "check_id": "falha-real",
+          "caminho": [
+            "resultados",
+            "operations",
+            0,
+            "state"
+          ],
+          "esperado": "falha_operacional",
+          "justificativa": "Código de saída não zero não vira sucesso.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "Process exited with code 2"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "resultado_ausente",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/resultado_ausente.json",
+      "checks": [
+        {
+          "check_id": "ausencia-real",
+          "caminho": [
+            "resultados",
+            "operations",
+            0,
+            "state"
+          ],
+          "esperado": "resultado_ausente",
+          "justificativa": "Chamada sem resultado não comprova sucesso.",
+          "evidencia": {
+            "ponteiro": "/registros/0/payload/arguments",
+            "fragmento": "cronica concluir"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "fase_inventada",
+      "conjunto": "desenvolvimento",
+      "entrada": "entradas/fase_inventada.json",
+      "checks": [
+        {
+          "check_id": "orfao-real-preservado",
+          "caminho": [
+            "cobertura",
+            "npc_continuity_and_social_behavior",
+            "coverage_complete"
+          ],
+          "esperado": false,
+          "justificativa": "Reconhecer subfase legítima não libera fase inventada.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "fase_inventada"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "conclusao_com_exit_code",
+      "conjunto": "reservado",
+      "entrada": "entradas/conclusao_com_exit_code.json",
+      "checks": [
+        {
+          "check_id": "resultado-reservado",
+          "caminho": [
+            "resultados",
+            "operations",
+            0,
+            "state"
+          ],
+          "esperado": "sucesso",
+          "justificativa": "Formato alternativo reservado mantém resultado terminal.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "Process exited with code 0"
+          }
+        },
+        {
+          "check_id": "escrita-reservada",
+          "caminho": [
+            "metricas",
+            "successful_write_calls"
+          ],
+          "esperado": 1,
+          "justificativa": "Exit code explícito representa uma escrita lógica.",
+          "evidencia": {
+            "ponteiro": "/registros/1/payload/output",
+            "fragmento": "estado: concluido"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "inatividade_legitima_off",
+      "entrada": "entradas/inatividade_legitima_off.json",
+      "conjunto": "desenvolvimento",
+      "checks": [
+        {
+          "check_id": "off-sem-falha-inventada",
+          "caminho": [
+            "modulos",
+            "npc_continuity_and_social_behavior",
+            "aplicabilidade_avaliacao"
+          ],
+          "esperado": "sem_atividade",
+          "justificativa": "Consulta totalmente OFF não avança o mundo nem cria oportunidade narrativa; zero atividade não deve virar falha de NPC.",
+          "evidencia": {
+            "ponteiro": "/registros/0/payload/content/0/text",
+            "fragmento": "[OFF:"
+          }
+        },
+        {
+          "check_id": "off-sem-qualidade-inventada",
+          "caminho": [
+            "modulos",
+            "npc_continuity_and_social_behavior",
+            "nota_qualidade_interacao_0a100"
+          ],
+          "esperado": null,
+          "justificativa": "Ausência legítima de experiência de NPC nesta consulta não prova qualidade boa ou ruim; permanece fora do denominador.",
+          "evidencia": {
+            "ponteiro": "/registros/0/payload/content/0/text",
+            "fragmento": "[OFF:"
+          }
+        }
+      ]
+    }
+  ]
+}

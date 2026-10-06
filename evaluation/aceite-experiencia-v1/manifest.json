@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "date": "2026-10-06",
+  "natureza": "referencia_de_episodios_isolados_congelada_antes_da_medicao",
+  "reference_sha256": {
+    "episodios.json": "8a27f4db441a8e729c826de933ef44b18a858fc5571f1ead0e25ce2dc66ecb75",
+    "gabarito.json": "f9d58eb635d27228d726f33f45efa01f92f5811d899ba358e5b4aac149dd82af",
+    "episodios-v2.json": "3b0df18ffb8af5d84036eac3024d69f8553e145a6e827a187d7e0691ddf39e3c"
+  },
+  "independence_limit": "Referência separada da entrada do revisor; não se alega autoria independente ou avaliação cega por terceiro.",
+  "reference_version": 2,
+  "active_corpus": "episodios-v2.json",
+  "correction": "A fonte v1 omitira o marcador nativo task_started antes da entrada; o scanner legitimamente não atribuía a intenção ao turno. v2 preserva a intenção prevista; nenhum gabarito foi alterado."
+}

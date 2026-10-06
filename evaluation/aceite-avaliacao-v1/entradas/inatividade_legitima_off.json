@@ -1,0 +1,32 @@
+{
+  "natureza": "cenario_sintetico_isolado_nao_e_sessao_real",
+  "tipo": "rollout",
+  "registros": [
+    {
+      "type": "response_item",
+      "payload": {
+        "type": "message",
+        "role": "user",
+        "content": [
+          {
+            "type": "input_text",
+            "text": "[OFF: confirme apenas a ordem do preparo e da conclusão; não avançar a cena.]"
+          }
+        ]
+      }
+    },
+    {
+      "type": "response_item",
+      "payload": {
+        "type": "message",
+        "role": "assistant",
+        "content": [
+          {
+            "type": "output_text",
+            "text": "[OFF: preparar, narrar e concluir; tempo e mundo não avançam nesta consulta.]"
+          }
+        ]
+      }
+    }
+  ]
+}

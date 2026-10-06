@@ -1,7 +1,15 @@
 # AMV-14 — Aceite por episódios realmente executados
 
-**Data:** 2026-10-04. **Status:** proposta.
+**Data:** 2026-10-04. **Status:** avaliador antecipado em 2026-10-06; integração de jogo pendente.
 **Dependências:** AMV-04–05 e AMV-07–13.
+
+## Parte antecipada entregue
+
+[Entrega de 2026-10-06](entrega-avaliador-2026-10-06.md): revisão pelo agente,
+24 episódios com 168 verificações, diagnóstico por estágio, publicação protegida
+e prioridades corrigidas. Essa parte depende de AMV-04–05. AMV-07–13 seguem
+necessárias para executar os módulos alterados pelas portas públicas. Replay
+de pareceres não conclui a integração nem inaugura aceite longitudinal.
 
 Este é o aceite integrado das mudanças de jogo. O aceite inicial do avaliador
 ocorre antes, no G0 da etapa A; não pode ser adiado até esta tarefa.

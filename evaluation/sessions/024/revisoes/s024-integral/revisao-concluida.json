@@ -1,0 +1,51 @@
+{
+  "status": "publicada",
+  "scope": "integral",
+  "request_id": "4826775dfe8e1389c2039bd567ccca950d4654b1354bdd1b1038532166976ddf",
+  "entrada_id": "dee03c387dbdf6b04b79cd41f063bc451e8537380a369250c579d9c8d43e1cce",
+  "submission_sha256": "fedb5ed4e89058ec2266e44167b6bab8798830e92751a0a9618449f8a14ff620",
+  "workflow": {
+    "schema": 1,
+    "status": "revisada",
+    "scope": "integral",
+    "request_id": "4826775dfe8e1389c2039bd567ccca950d4654b1354bdd1b1038532166976ddf",
+    "reviewer": {
+      "configuration": {
+        "executor": "agente_ativo",
+        "matrix_author": "agente que leu as fontes e decidiu cada coluna",
+        "mode": "leitura_semantica_integral_das_fontes",
+        "novos_julgamentos": true,
+        "reproduction": "Presença reproduzida em fixture na versão instalada; hipótese histórica permanece aberta.",
+        "revalidacao_de_antigos": false,
+        "scope_limit": "Mesmo prefixo histórico original; encerramento fora dele analisado apenas no relatório suplementar."
+      },
+      "identity": "Codex/revisao-integral-S024-2026-10-06",
+      "role": "revisor_poshoc"
+    },
+    "units_selected": 408,
+    "units_reviewed": 408,
+    "not_applicable": 164,
+    "insufficient_sources": 137,
+    "blocked_reviews": 0,
+    "method_limit": "Revisão pelo agente, não validação cega por terceiro nem aprovação longitudinal."
+  },
+  "output_dir": "/home/andre/Projects/cronicas-dos-reinos/evaluation/sessions/024/revisoes/s024-integral",
+  "files": {
+    "verificacao-revisao.json": "eceb69bcb0b703cf7b684504a26595d631fdb49aeaac206d02b634b664d731ff",
+    "reproducao-presenca.json": "2a0af469a15c265d7de8e644c311de085d75c8d47d9eff9147da78077ba17f6e",
+    "relatorio.md": "4e708e3c54e34099aa2d2e813af202520403f2945adfa0d1407aba0cb46cd5ef",
+    "manifest.json": "978273187ee4ee4eb8ee3a96f9816b18283a51495357b15a512b32b5b6293ee8",
+    "proveniencia-medicao.json": "97f2aa15a270c3a25c16d8559aecf060d49bf306c93e2c8f9a7b0dc6da5336fd",
+    "scorecard.json": "760350a50a21856e65e7e9e96bd85610b814c4f8dd59988d645b62eed029060f",
+    "validade-medicao.json": "241e568c779c0e612f536f8a8d31d4fee8a1713477d59846248e089c17121fe2",
+    "adjudicacoes-modulares.json": "f3a5c90bea8a88cd3ae033e28672ddc6ca4345252e5aca8e4fe466013998944f",
+    "manifestacoes-jogador.json": "5210697813428a42cab202c3cf6c8487d07e3600276e2dde5d782922090902e1",
+    "avaliacoes-qualidade.json": "97d2415de6bd07961a0fd31ae0353e200014da41007f37e6546648024e4923b0",
+    "interacoes.json": "40a3f37f42e106a3fb07ef8e342f2e8b0355b7d70b94dd31086b9c29bbf6421a",
+    "resumo-modulos.json": "2a00fedc9a9d5b535021e0e90e073358ae5e89c8853670c36cf7932088b89dc0",
+    "resumo-modulos.csv": "9c570ef9da4452b340c95d6cd211a64d3d74a9dd2fe368e055cc86839eaf0a6c",
+    "eventos-modulares.csv": "4262b8e251c0974e2cacb251e5a0e2e5ea9e94f84e3d11f67077a52e2750e432",
+    "turnos.csv": "6ed69050a0d2d9b47e5a619a42e0045a4c8095005f742eaf05e0d8e98afac5db",
+    "telemetria.json": "98ff73fdacb87d25ce7d1526e5f71d886dfd37c8d0db44ed5337ecd49ba12585"
+  }
+}

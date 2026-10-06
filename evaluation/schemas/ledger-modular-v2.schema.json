@@ -56,6 +56,8 @@
         "$ref": "avaliacoes-qualidade-interacao-v1.schema.json#/$defs/assessment"
       }
     },
+    "experience_review": {"type": "object", "required": ["schema", "engine_version", "rubric_version", "frames", "regra"]},
+    "module_coverage_gates": {"type": "object", "additionalProperties": {"type": "object"}},
     "player_feedback": {"type": "array", "items": {"$ref": "#/$defs/playerFeedback"}}
   },
   "$defs": {
@@ -74,6 +76,11 @@
     "interaction": {
       "type": "object",
       "additionalProperties": false,
+      "allOf": [{
+        "if": {"required": ["observacao_recorte"]},
+        "then": {"properties": {"visible_reference_count": {"type": "null"}, "visible_exactly_once": {"type": "null"}, "receipt_present": {"type": "null"}, "response_present": {"type": "null"}}},
+        "else": {"properties": {"turn_id": {"type": "string"}, "visible_reference_count": {"type": "integer"}, "visible_exactly_once": {"type": "boolean"}, "receipt_present": {"type": "boolean"}, "response_present": {"type": "boolean"}}}
+      }],
       "required": ["interaction_id", "interaction_ref", "session", "ordinal", "class", "state", "turn_id", "visible_reference_count", "visible_exactly_once", "receipt_present", "response_present"],
       "properties": {
         "interaction_id": {"type": ["string", "null"]},
@@ -82,11 +89,12 @@
         "ordinal": {"type": "integer", "minimum": 1},
         "class": {"enum": ["ON", "OFF", "RECALL", "operacional"]},
         "state": {"enum": ["reserved", "complete", "incomplete"]},
-        "turn_id": {"type": "string", "minLength": 1},
-        "visible_reference_count": {"type": "integer", "minimum": 0},
-        "visible_exactly_once": {"type": "boolean"},
-        "receipt_present": {"type": "boolean"},
-        "response_present": {"type": "boolean"},
+        "turn_id": {"type": ["string", "null"], "minLength": 1},
+        "observacao_recorte": {"const": "apenas_registro_historico"},
+        "visible_reference_count": {"type": ["integer", "null"], "minimum": 0},
+        "visible_exactly_once": {"type": ["boolean", "null"]},
+        "receipt_present": {"type": ["boolean", "null"]},
+        "response_present": {"type": ["boolean", "null"]},
         "input_sha256": {"type": ["string", "null"]},
         "response_sha256": {"type": ["string", "null"]},
         "transaction_id": {"type": ["string", "null"]},
@@ -156,6 +164,7 @@
         "materialized_result_observed": {"type": ["string", "null"]},
         "effect_observed": {"type": ["boolean", "null"]},
         "observable_evidence": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "call_ids_observed": {"type": "array", "items": {"type": "string", "minLength": 1}},
         "inference_confidence": {"enum": ["alta", "media", "baixa"]},
         "adjudication": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/adjudication"}]},
         "cost": {
@@ -317,6 +326,13 @@
               "capability_id": {"type": ["string", "null"]},
               "confidence": {"type": ["string", "null"]},
               "evidence": {"type": "array", "items": {"type": "string"}}
+            }},
+            {"type": "object", "additionalProperties": false, "required": ["module_id", "assessment_ids", "claims"], "properties": {
+              "module_id": {"type": "string"},
+              "assessment_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+              "claims": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["claim", "decision", "assessment_id"], "properties": {
+                "claim": {"type": "string"}, "decision": {"enum": ["pendente", "confirmada", "parcial", "nao_confirmada", "indeterminada"]}, "assessment_id": {"type": "string"}
+              }}}
             }}
           ]
         },

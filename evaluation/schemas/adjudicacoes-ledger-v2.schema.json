@@ -7,6 +7,24 @@
   "required": ["schema_adjudicacoes_modulares"],
   "properties": {
     "schema_adjudicacoes_modulares": {"const": 2},
+    "review_workflow": {
+      "type": "object",
+      "required": ["schema", "status", "scope", "request_id", "reviewer", "units_selected", "units_reviewed", "not_applicable", "insufficient_sources", "blocked_reviews", "method_limit"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": 1},
+        "status": {"const": "revisada"},
+        "scope": {"enum": ["integral", "parcial_declarado"]},
+        "request_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "reviewer": {"type": "object"},
+        "units_selected": {"type": "integer", "minimum": 1},
+        "units_reviewed": {"type": "integer", "minimum": 1},
+        "not_applicable": {"type": "integer", "minimum": 0},
+        "insufficient_sources": {"type": "integer", "minimum": 0},
+        "blocked_reviews": {"type": "integer", "minimum": 0},
+        "method_limit": {"type": "string", "minLength": 1}
+      }
+    },
     "corrections": {
       "type": "array",
       "items": {

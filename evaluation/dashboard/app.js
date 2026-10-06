@@ -31,6 +31,9 @@
     manifestations: [],
     localManifestations: [],
     releases: [],
+    manifest: {},
+    provenance: {},
+    assessments: [],
   };
 
   const $ = (selector) => document.querySelector(selector);
@@ -108,6 +111,13 @@
 
   async function fetchJSON(path) {
     const response = await fetch(path, { cache: "no-store" });
+    if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
+    return response.json();
+  }
+
+  async function fetchHistoricalJSON(path) {
+    const response = await fetch(path, {cache: "no-store"});
+    if (response.status === 404) return {arquivo_ausente: true};
     if (!response.ok) throw new Error(`${path}: HTTP ${response.status}`);
     return response.json();
   }
@@ -210,7 +220,118 @@
 
   function comparableSessions() {
     const current = comparisonKey(state.sessionEntry);
-    return (state.index.sessoes || []).filter((entry) => comparisonKey(entry) === current);
+    return (state.index.sessoes || []).filter((entry) => comparisonKey(entry) === current
+      && (entry.serie_avaliacao !== "modules-v2" || (entry.conclusao_medicao?.permitida === true
+        && entry.agregacao_modular?.conclusao_permitida === true
+        && entry.apresentacao?.conclusao_global_permitida === true)));
+  }
+
+  function experienceLabel(value) {
+    return ({nao_avaliada: "Qualidade não avaliada", fontes_insuficientes: "Fontes insuficientes",
+      negativa_valida: "Negativa válida", inadequada_no_criterio: "Experiência inadequada no critério",
+      violacao_critica: "Violação crítica", amostra_insuficiente_para_generalizar: "Parecer local · amostra insuficiente para generalizar"})[value] || "Qualidade não avaliada";
+  }
+
+  function compatibleModulePoints(moduleId, metric) {
+    const current = state.modules.find((x) => x.modulo === moduleId);
+    const key = current?.comparabilidade?.[metric];
+    if (!key) return [];
+    const points = [];
+    for (const session of state.index.sessoes || []) {
+      // Uma revisão não é uma nova sessão. Escolha no máximo um ponto compatível.
+      const candidates = [session, ...(session.revisoes || [])];
+      for (const entry of candidates.reverse()) {
+        const row = (entry.series_modulos || []).find((x) => x.module_id === moduleId);
+        if (row?.comparabilidade?.[metric] !== key) continue;
+        if (metric === "qualidade" && (row.guardrail || ["nao_avaliada", "fontes_insuficientes"].includes(row.estado))) continue;
+        const value = metric === "custo" ? number(row.custo?.compartilhado_alocado) : number(row.qualidade);
+        if (value !== null) { points.push({id: entry.sessao_id, value}); break; }
+      }
+    }
+    return points;
+  }
+
+  function renderValidity() {
+    const card = state.scorecard;
+    const presentation = card.apresentacao || {};
+    const coverage = presentation.cobertura;
+    const summary = $("#validitySummary");
+    summary.replaceChildren(create("p", "", experienceLabel(presentation.qualidade)));
+    summary.append(create("p", "", presentation.regra || "Este pacote histórico não mediu qualidade por critério. Os números operacionais parciais não aprovam a narrativa."));
+    const workflow = card.revisao_semantica;
+    if (workflow) summary.append(create("p", "", `Revisão pelo agente: ${workflow.units_reviewed}/${workflow.units_selected} unidades decididas; ${workflow.not_applicable} não aplicáveis; ${workflow.insufficient_sources} com fontes insuficientes; ${workflow.blocked_reviews} pareceres bloqueados. Escopo: ${workflow.scope}. ${workflow.method_limit}`));
+    for (const item of card.conclusao_medicao?.bloqueios || []) {
+      summary.append(create("p", "measurement-limit", `Limite: ${item.codigo} · ${item.escopo || item.motivo || "medição parcial"}`));
+    }
+    const coverageElement = $("#coverageSummary");
+    coverageElement.replaceChildren();
+    if (coverage) {
+      for (const [label, key] of [["Unidades interação × critério", "unidades_interacao_criterio"],
+        ["Com parecer", "com_parecer"], ["Confirmadas com fontes verificadas", "confirmadas_verificadas"], ["Sem parecer", "sem_parecer"]]) {
+        coverageElement.append(metricCard(label, INTEGER.format(coverage[key]), "Combinações possíveis; os subconjuntos não se somam e não são oportunidades reais", null));
+      }
+    } else coverageElement.append(create("p", "", "Cobertura semântica não instrumentada no pacote original."));
+    const critical = $("#criticalFindings");
+    critical.replaceChildren();
+    for (const item of card.violacoes_criticas || []) {
+      const box = create("article", "critical-finding");
+      box.append(create("h3", "", `Violação crítica: ${item.guardrail}`), create("p", "", `${item.interaction_ref || ""} · ${item.module_id || ""}. Guardrail fora de qualquer média.`));
+      if (item.assessment_id) {
+        const link = create("a", "", "Abrir parecer e evidência");
+        link.href = `#parecer-${item.assessment_id}`; box.append(link);
+      }
+      critical.append(box);
+    }
+    const source = state.manifest.fonte || {};
+    const provenance = $("#provenanceSummary");
+    provenance.replaceChildren(create("p", "", state.manifest.revisao
+      ? `${state.manifest.revisao.rotulo}. Mesmo recorte e módulos jogados; sem novo jogo ou execução do runtime posterior.`
+      : "Pacote original preservado; leitura conforme os limites da medição histórica."));
+    provenance.append(create("p", "source-hash", `Fonte: ${source.sha256 || "não identificada"} · ${source.bytes ?? "N/D"} bytes · entrada ${state.provenance.entrada_id || "N/D"}`));
+    provenance.append(create("p", "", `Avaliador: gerador ${state.manifest.versoes?.gerador || "N/D"}; detector ${state.manifest.versoes?.detector_modular || "N/D"}; rubrica ${state.manifest.versoes?.rubrica || "não registrada"}.`));
+    if (state.manifest.revisao) provenance.append(create("p", "source-hash", `Original vinculado: ${state.manifest.revisao.manifest_original_sha256}`));
+    for (const row of state.manifest.versoes_modulos || []) provenance.append(create("p", "", `${row.module_id}: implementação jogada ${row.module_implementation_version}; avaliação registrada no jogo ${row.module_evaluation_version}.`));
+    $("#partialScore").textContent = `Nota operacional parcial: ${formatScore(card.nota_operacional_parcial_0a100 ?? card.nota_geral_0a100)} / 100. Indicadores e proxies sobre componentes observáveis; não é nota da experiência.`;
+    const costs = card.custos;
+    if (costs) summary.append(create("p", "", `Custo compartilhado alocado: ${INTEGER.format(costs.compartilhado_alocado)} tokens (${costs.escopo}). Diferença de fechamento: ${costs.diferenca_fechamento}. Exclusivo observado: desconhecido. Marginal: desconhecido. ${costs.regra}`));
+  }
+
+  function renderReviews() {
+    const container = $("#reviewGrid");
+    container.replaceChildren();
+    if (!state.assessments.length) container.append(create("p", "", "Nenhum parecer de qualidade neste pacote. Manifestação do jogador e recibo de execução não substituem revisão."));
+    for (const item of state.assessments) {
+      const detail = create("details", "review-card");
+      detail.id = `parecer-${item.assessment_id}`;
+      const meta = item.review || {};
+      const verified = item.adjudication?.state === "confirmada" && meta.verification === "verificada" && !(meta.conflicts || []).length;
+      const reserved = (item.evidence || []).some((x) => x.visibility === "reservada");
+      detail.append(create("summary", "", `${item.interaction_ref} · ${item.criterion_id} · ${verified ? item.quality : item.adjudication?.state || "pendente"}`));
+      detail.append(create("p", "", `Elegibilidade: ${item.eligibility}; ativação: ${item.activation}. Revisor: ${item.evaluator}; fontes: ${meta.verification || "não revalidadas"}.`));
+      detail.append(create("p", "", `Limite: ${meta.uncertainty || meta.independence || "parecer local, não generalizável"}`));
+      if (meta.diagnosis?.stage) detail.append(create("p", "", `Estágio investigado: ${meta.diagnosis.stage}. Causa: ${meta.diagnosis.cause_status || "hipótese"}.`));
+      if ((meta.conflicts || []).length) detail.append(create("p", "", `Conflitos: ${meta.conflicts.join(", ")}`));
+      const diagnosis = reserved ? meta.public_diagnosis : meta.diagnosis;
+      if (diagnosis) {
+        for (const [label, key] of [["Achado", "finding"], ["Correção proposta", "correction"], ["Teste sugerido", "test"]]) detail.append(create("p", "", `${label}: ${diagnosis[key] || "N/D"}`));
+      }
+      if (reserved) detail.append(create("p", "", "Este parecer contém fonte reservada; diagnóstico e trechos reservados permanecem protegidos por hash."));
+      for (const evidence of item.evidence || []) {
+        const block = create("div", "review-evidence");
+        // Somente visibilidade explicitamente pública autoriza mostrar a citação.
+        if (evidence.visibility === "publica") block.append(create("blockquote", "", evidence.literal || evidence.observation || "sem trecho literal"));
+        else block.append(create("p", "", `Evidência reservada · SHA-256 ${evidence.literal_sha256 || "não registrado"}`));
+        block.append(create("p", "source-hash", `${evidence.locator} · fonte ${evidence.source_sha256 || "N/D"} · offsets ${evidence.start ?? "N/D"}–${evidence.end ?? "N/D"} · trecho ${evidence.literal_sha256 || "N/D"}`));
+        detail.append(block);
+      }
+      container.append(detail);
+    }
+  }
+
+  function openReferencedReview() {
+    if (!window.location.hash.startsWith("#parecer-")) return;
+    const detail = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+    if (detail?.tagName === "DETAILS") { detail.open = true; detail.scrollIntoView({block: "nearest"}); }
   }
 
   function loadStoredFeedback() {
@@ -296,8 +417,12 @@
     const aggregationBlocked = isV2() && aggregation.conclusao_permitida === false;
     const measurementConclusion = state.scorecard.conclusao_medicao || {};
     const conclusionBlocked = isV2() && measurementConclusion.permitida === false;
-    $("#overallScore").textContent = formatScore(score);
-    $("#overallBand").textContent = scoreBand(score);
+    const critical = isV2() && (state.scorecard.violacoes_criticas || []).length > 0;
+    $("#overallScore").textContent = isV2() ? (critical ? "!" : "—") : formatScore(score);
+    $("#overallBand").textContent = isV2()
+      ? critical ? "Violação crítica" : (conclusionBlocked || aggregationBlocked)
+        ? "Medição incompleta" : "Conclusão limitada à amostra"
+      : scoreBand(score);
     $("#scoreMode").textContent = conclusionBlocked
       ? "Desempenho observado · conclusão bloqueada"
       : aggregationBlocked
@@ -306,8 +431,8 @@
         ? "Prévia com sua percepção"
         : "Desempenho operacional provisório";
     const ring = $("#scoreRing");
-    ring.style.setProperty("--score", clamp(score || 0));
-    ring.style.setProperty("--ring-color", scoreColor(score));
+    ring.style.setProperty("--score", isV2() ? 0 : clamp(score || 0));
+    ring.style.setProperty("--ring-color", isV2() ? (critical ? "#e37c72" : "#a9b1bd") : scoreColor(score));
     $("#previewScore").textContent = hasPlayer ? formatScore(score) : "N/D";
     const player = playerScores();
     if (isV2()) {
@@ -325,11 +450,16 @@
     const entries = comparableSessions();
     const currentIndex = entries.findIndex((item) => item.sessao_id === state.sessionEntry.sessao_id);
     const previous = currentIndex > 0 ? number(entries[currentIndex - 1].nota_geral_0a100) : null;
-    if (conclusionBlocked) {
+    if (critical) {
+      $("#scoreMode").textContent = "Guardrail fora das médias";
+      $("#scoreDelta").textContent = "Economia e fluidez não compensam esta violação";
+    } else if (conclusionBlocked) {
       const reasons = (measurementConclusion.bloqueios || []).map((item) => item.codigo).join(", ");
       $("#scoreDelta").textContent = `Conclusão bloqueada${reasons ? `: ${reasons}` : ""}`;
     } else if (aggregationBlocked) {
       $("#scoreDelta").textContent = "Conclusão bloqueada; componentes inválidos foram excluídos";
+    } else if (isV2()) {
+      $("#scoreDelta").textContent = "Pareceres locais não autorizam aprovação global";
     } else if (previous === null) {
       $("#scoreDelta").textContent = hasPlayer && original !== null
         ? `${formatScore(score - original)} ponto(s) pela percepção local`
@@ -349,7 +479,7 @@
       : `${aggregation.modulos_incluidos} de ${aggregation.modulos_catalogados} módulos incluídos`;
     $("#sessionTitle").textContent = `Sessão ${state.sessionEntry.sessao_id}`;
     $("#confidenceLabel").textContent = state.scorecard.confianca?.sessao || "N/D";
-    $("#sessionSummary").textContent = `${INTEGER.format(metrics.turnos_narrativos || 0)} turnos narrativos, ${aggregationSummary} e ${formatTokens(metrics.input_tokens)} tokens de entrada observados.`;
+    $("#sessionSummary").textContent = `${INTEGER.format(metrics.turnos_narrativos || 0)} turnos narrativos, ${aggregationSummary} e ${formatTokens(metrics.input_tokens)} tokens de entrada nos turnos narrativos. O recorte completo aparece nos sinais operacionais.`;
     const conclusionLabel = conclusion.permitida === false ? " · conclusão bloqueada" : "";
     $("#evaluationStatus").textContent = `Avaliação ${state.scorecard.status_avaliacao || "N/D"}${conclusionLabel}`;
     $("#seriesStatus").textContent = isV2() ? "modules-v2" : "legado v1";
@@ -409,11 +539,21 @@
     ];
     const container = $("#metricsGrid");
     container.replaceChildren(...rows.map((row) => metricCard(...row)));
+    const complete = state.scorecard.operacoes_recorte_completo;
+    if (complete) {
+      for (const [label, key] of [["Chamadas nativas · recorte completo", "tool_calls"],
+        ["Escritas tentadas", "attempted_write_calls"], ["Escritas com sucesso", "successful_write_calls"],
+        ["Escritas com falha", "failed_write_calls"], ["Escritas sem resultado comprovado", "unknown_write_calls"],
+        ["Alvos efetivamente escritos", "write_target_touches"], ["Tokens de entrada · recorte completo", "input_tokens"]]) {
+        container.prepend(metricCard(label, complete[key] === null ? "N/D" : INTEGER.format(complete[key]), "Recorte completo; não somar ao recorte narrativo", null));
+      }
+    }
   }
 
   function renderTrend() {
     const metric = $("#trendMetric").value;
-    const values = comparableSessions()
+    const moduleSelection = metric.startsWith("modulo:") ? metric.split(":") : null;
+    const values = moduleSelection ? compatibleModulePoints(moduleSelection[1], moduleSelection[2]) : comparableSessions()
       .map((entry) => ({
         id: entry.sessao_id,
         value: metric === "geral"
@@ -424,7 +564,13 @@
     const container = $("#trendChart");
     container.replaceChildren();
     if (!values.length) {
-      container.append(create("p", "trend-empty", "Ainda não há medições para este eixo."));
+      container.append(create("p", "trend-empty", "Sem pontos válidos e compatíveis. Notas bloqueadas, qualidade não avaliada e versões incompatíveis ficam fora da série."));
+      return;
+    }
+    if (moduleSelection) {
+      const list = create("ul", "series-points");
+      for (const point of values) list.append(create("li", "", `Sessão ${point.id}: ${PT.format(point.value)} ${moduleSelection[2] === "custo" ? "tokens compartilhados alocados" : "/ 100 de qualidade nos critérios revisados"}`));
+      container.append(list, create("p", "", `${values.length} sessão(ões) compatível(is) neste módulo. Sem conclusão de melhora longitudinal; revisões da mesma sessão contam uma vez. Custo não mede benefício narrativo.`));
       return;
     }
     const width = 680;
@@ -502,6 +648,15 @@
       : `${values.length} sessões comparáveis nesta série.`));
   }
 
+  function confirmedExperienceProblem(module) {
+    return Boolean((module.violacoes_guardrail_experiencia || []).length
+      || number(module.oportunidades_qualitativas_perdidas) > 0
+      || number(module.qualidade_interacao_inadequada) > 0
+      || (number(module.avaliacoes_qualidade_pontuaveis) > 0
+        && number(module.nota_experiencia_interacao_0a100) !== null
+        && number(module.nota_experiencia_interacao_0a100) < 100));
+  }
+
   function renderInsights() {
     const scored = state.modules.filter((module) => number(previewModuleScore(module)) !== null);
     const best = [...scored].sort((a, b) => previewModuleScore(b) - previewModuleScore(a))[0];
@@ -510,15 +665,19 @@
       .filter((module) => number(module[field]) !== null)
       .sort((a, b) => number(a[field]) - number(b[field]))[0];
     const repair = firstRanked("fila_reparo_medidor_rank");
-    const experience = firstRanked("fila_experiencia_rank");
+    // Pacotes antigos preservam a fila defeituosa. A leitura nova também protege
+    // esses históricos: crítico não some por nota nula e nota 100 não vira falha.
+    const experience = [...state.modules].filter(confirmedExperienceProblem)
+      .sort((a, b) => (b.violacoes_guardrail_experiencia || []).length - (a.violacoes_guardrail_experiencia || []).length
+        || (number(a.fila_experiencia_rank) ?? Infinity) - (number(b.fila_experiencia_rank) ?? Infinity))[0];
     const costly = hasIndependentPriorityQueues()
       ? firstRanked("fila_investigacao_custo_rank")
       : [...state.modules].sort((a, b) => number(b.tokens_totais_atribuidos_fracionados) - number(a.tokens_totais_atribuidos_fracionados))[0];
     const entries = hasIndependentPriorityQueues() ? [
-      ["↑", "Melhor nota", best, best ? formatScore(previewModuleScore(best)) : "N/D"],
-      ["↓", "Pior nota", worst, worst ? formatScore(previewModuleScore(worst)) : "N/D"],
-      ["!", "Reparo do medidor", repair, repair ? `#${repair.fila_reparo_medidor_rank}` : "fila vazia"],
-      ["◇", "Problema da experiência", experience, experience ? `#${experience.fila_experiencia_rank}` : "sem adjudicação"],
+      ["↑", "Maior nota operacional parcial", best, best ? formatScore(previewModuleScore(best)) : "N/D"],
+      ["↓", "Menor nota operacional parcial", worst, worst ? formatScore(previewModuleScore(worst)) : "N/D"],
+      ["!", "Falha de instrumentação comprovada", repair, repair ? `#${repair.fila_reparo_medidor_rank}` : "nenhuma nesta fila"],
+      ["◇", "Problema confirmado da experiência", experience, experience ? ((experience.violacoes_guardrail_experiencia || []).length ? "crítico" : `#${experience.fila_experiencia_rank}`) : "nenhum confirmado"],
       ["¤", "Maior atribuição contábil", costly, costly ? formatTokens(costly.tokens_totais_atribuidos_fracionados) : "N/D"],
     ] : [
       ["↑", "Melhor nota", best, best ? formatScore(previewModuleScore(best)) : "N/D"],
@@ -574,10 +733,11 @@
       const instrumentationFailure = module.avaliacao_ativacao === "falha de instrumentação";
       const notApplicable = module.aplicabilidade_avaliacao === "nao_aplicavel";
       const indeterminate = module.aplicabilidade_avaliacao === "indeterminado";
-      const scoreText = instrumentationFailure ? "ERRO" : (notApplicable || indeterminate) ? "—" : formatScore(moduleScore);
-      const scoreState = instrumentationFailure ? "telemetria incompleta" : notApplicable ? "não aplicável" : indeterminate ? "indeterminado" : scoreBand(moduleScore);
+      const qualityReading = module.leitura_experiencia;
+      const scoreText = isV2() ? "—" : instrumentationFailure ? "ERRO" : (notApplicable || indeterminate) ? "—" : formatScore(moduleScore);
+      const scoreState = isV2() ? experienceLabel(qualityReading?.estado) : instrumentationFailure ? "telemetria incompleta" : notApplicable ? "não aplicável" : indeterminate ? "indeterminado" : scoreBand(moduleScore);
       const card = create("article", "module-card");
-      card.style.setProperty("--module-color", instrumentationFailure ? "#e37c72" : scoreColor(moduleScore));
+      card.style.setProperty("--module-color", instrumentationFailure || ["violacao_critica", "inadequada_no_criterio"].includes(qualityReading?.estado) ? "#e37c72" : isV2() ? "#a9b1bd" : scoreColor(moduleScore));
       const header = create("div", "module-card-header");
       const name = create("div");
       const versionRow = create("div", "module-version-row");
@@ -603,7 +763,7 @@
         if (number(module.fila_reparo_medidor_rank) !== null) {
           meta.append(create("span", "pill over", `Reparo #${module.fila_reparo_medidor_rank}`));
         }
-        if (number(module.fila_experiencia_rank) !== null) {
+        if (number(module.fila_experiencia_rank) !== null && confirmedExperienceProblem(module)) {
           meta.append(create("span", "pill", `Experiência #${module.fila_experiencia_rank}`));
         }
         if (number(module.fila_investigacao_custo_rank) !== null) {
@@ -617,7 +777,7 @@
       meta.append(create(
         "span",
         `pill ${interactionQuality === null ? "" : interactionQuality >= 80 ? "ok" : "over"}`.trim(),
-        `Qualidade adjudicada ${formatScore(interactionQuality)}`,
+        `${qualityReading?.confirmadas_verificadas ? "Qualidade nos critérios revisados" : "Qualidade histórica não revalidada"} ${formatScore(interactionQuality)}`,
       ));
       if (interactionOpportunity !== null) {
         meta.append(create(
@@ -657,7 +817,7 @@
         meta.append(create(
           "span",
           `pill ${module.cobertura_avaliativa_completa ? "ok" : "over"}`,
-          module.cobertura_avaliativa_completa ? "Cobertura completa" : "Cobertura incompleta",
+          module.cobertura_avaliativa_completa ? "Cobertura operacional completa" : "Cobertura operacional incompleta",
         ));
       }
       const bar = create("div", "bar");
@@ -665,6 +825,7 @@
       fill.style.setProperty("--width", `${clamp(moduleScore || 0)}%`);
       fill.style.setProperty("--bar-color", scoreColor(moduleScore));
       bar.append(fill);
+      bar.hidden = isV2();
       const stats = create("div", "module-stats");
       const values = [
         ["Turnos", INTEGER.format(module.turnos_detectados || 0)],
@@ -681,6 +842,16 @@
       }
       const details = document.createElement("details");
       details.append(create("summary", "", "Diagnóstico e evidências"));
+      details.append(create("p", "", `Operação parcial: ${formatScore(moduleScore)} / 100 · indicadores operacionais, não aprovação da experiência.`));
+      if (qualityReading) {
+        details.append(create("p", "", `Amostra: ${qualityReading.confirmadas_verificadas}/${qualityReading.unidades} unidades confirmadas; ${qualityReading.pendencias} pendências. Oportunidades elegíveis: ${qualityReading.elegiveis}; atendidas: ${qualityReading.atendidas}; omitidas: ${qualityReading.omitidas}; negativas válidas: ${qualityReading.negativas_validas}; indeterminadas: ${qualityReading.indeterminadas}.`));
+        details.append(create("p", "", `Avaliação registrada no jogo: ${module.versao_avaliacao}; avaliador desta revisão: ${module.versao_avaliador_revisao}. Implementação jogada: ${module.versao_implementacao}.`));
+        for (const criterion of module.experiencia_por_criterio || []) details.append(create("p", "", `${criterion.criterio_id}: ${criterion.objetivo_jogo}`));
+        for (const id of qualityReading.assessment_ids || []) {
+          const link = create("a", "review-link", `Abrir parecer ${id}`); link.href = `#parecer-${id}`; details.append(link);
+        }
+        details.append(create("p", "", `Custo compartilhado alocado: ${module.custo?.compartilhado_alocado} tokens. Exclusivo: desconhecido; marginal: desconhecido. Rateio contábil não é estimativa causal.`));
+      }
       details.append(create("p", "", module.principais_problemas_de_ativacao || "Nenhum problema específico registrado."));
       if (instrumentationFailure) {
         details.append(create("p", "", "A nota foi bloqueada: houve atividade avaliativa esperada, mas o recibo obrigatório estava ausente, incompleto ou duplicado. Isso nunca é convertido em N/D."));
@@ -961,6 +1132,7 @@
     renderAxes();
     renderInsights();
     renderModules();
+    openReferencedReview();
   }
 
   function exportFeedback() {
@@ -1009,30 +1181,55 @@
 
   function renderAllDataViews() {
     renderHeader();
+    renderValidity();
+    renderReviews();
     renderAxes();
     renderTrend();
     renderMetrics();
     renderInsights();
     renderModules();
+    openReferencedReview();
   }
 
-  async function loadSession(sessionId) {
-    const entry = state.index.sessoes.find((item) => item.sessao_id === sessionId);
-    if (!entry) throw new Error(`sessão ${sessionId} não encontrada no índice`);
-    state.sessionEntry = entry;
+  let loadSequence = 0;
+  async function loadSession(sessionId, revisionId = "original") {
+    const sequence = ++loadSequence;
+    const original = state.index.sessoes.find((item) => item.sessao_id === sessionId);
+    if (!original) throw new Error(`sessão ${sessionId} não encontrada no índice`);
+    const entry = revisionId === "original" ? original : (original.revisoes || []).find((x) => x.revisao_id === revisionId);
+    if (!entry) throw new Error(`revisão ${revisionId} não encontrada`);
+    const select = $("#revisionSelect");
+    select.replaceChildren();
+    for (const [value, text] of [["original", "Original preservado"], ...(original.revisoes || []).map((x) => [x.revisao_id, x.revisao?.rotulo || x.revisao_id])]) {
+      const option = create("option", "", text); option.value = value; select.append(option);
+    }
+    select.value = revisionId;
     const base = `../sessions/${entry.caminho}`;
-    const [scorecard, moduleSummary] = await Promise.all([
+    const v2 = entry.serie_avaliacao === "modules-v2";
+    const [scorecard, moduleSummary, manifest, interactionData, manifestationData, qualityData, provenance, feedbackCSV] = await Promise.all([
       fetchJSON(`${base}/scorecard.json`),
       fetchJSON(`${base}/resumo-modulos.json`),
+      fetchJSON(`${base}/manifest.json`),
+      v2 ? fetchJSON(`${base}/interacoes.json`) : {},
+      v2 ? fetchJSON(`${base}/manifestacoes-jogador.json`) : {},
+      v2 ? fetchHistoricalJSON(`${base}/avaliacoes-qualidade.json`) : {},
+      v2 ? fetchHistoricalJSON(`${base}/proveniencia-medicao.json`) : {},
+      v2 ? "" : fetchText(`${base}/feedback-jogador.csv`),
     ]);
+    if (sequence !== loadSequence) return;
+    if (scorecard.apresentacao && (qualityData.arquivo_ausente || provenance.arquivo_ausente)) {
+      throw new Error("Revisão incompleta: arquivo de pareceres ou proveniência ausente");
+    }
+    state.sessionEntry = entry;
     state.scorecard = scorecard;
+    state.manifest = manifest;
+    state.provenance = {};
+    state.assessments = [];
     state.modules = moduleSummary.modulos || [];
     $("#moduleSort").value = hasIndependentPriorityQueues() ? "experiencia" : "prioridade";
     if (entry.serie_avaliacao === "modules-v2") {
-      const [interactionData, manifestationData] = await Promise.all([
-        fetchJSON(`${base}/interacoes.json`),
-        fetchJSON(`${base}/manifestacoes-jogador.json`),
-      ]);
+      state.provenance = provenance;
+      state.assessments = qualityData.assessments || [];
       state.interactions = interactionData.interactions || [];
       state.manifestations = manifestationData.player_feedback || [];
       state.feedbackRows = [];
@@ -1042,7 +1239,7 @@
       $("#interactionFeedbackSection").hidden = false;
       renderInteractionFeedback();
     } else {
-      state.feedbackRows = parseCSV(await fetchText(`${base}/feedback-jogador.csv`));
+      state.feedbackRows = parseCSV(feedbackCSV);
       state.interactions = [];
       state.manifestations = [];
       state.localManifestations = [];
@@ -1050,6 +1247,14 @@
       $("#legacyFeedbackSection").hidden = false;
       $("#interactionFeedbackSection").hidden = true;
       renderFeedback();
+    }
+    const trendSelect = $("#trendMetric");
+    for (const option of [...trendSelect.options]) if (option.value.startsWith("modulo:")) option.remove();
+    for (const module of state.modules.filter((x) => x.comparabilidade)) {
+      for (const key of ["qualidade", "custo"]) {
+        const option = create("option", "", `${friendlyModuleName(module.modulo)} · ${key}`);
+        option.value = `modulo:${module.modulo}:${key}`; trendSelect.append(option);
+      }
     }
     renderAllDataViews();
     $("#main")?.removeAttribute("hidden");
@@ -1074,8 +1279,10 @@
         select.append(option);
       }
       const latest = sessions[sessions.length - 1];
-      select.value = latest.sessao_id;
-      await loadSession(latest.sessao_id);
+      const params = new URLSearchParams(window.location.search);
+      const selected = sessions.find((x) => x.sessao_id === params.get("sessao")) || latest;
+      select.value = selected.sessao_id;
+      await loadSession(selected.sessao_id, params.get("revisao") || "original");
       $("#loadingState").hidden = true;
       $("#topo").hidden = false;
     } catch (error) {
@@ -1085,7 +1292,9 @@
     }
   }
 
-  $("#sessionSelect").addEventListener("change", (event) => loadSession(event.target.value));
+  $("#sessionSelect").addEventListener("change", (event) => loadSession(event.target.value).catch((error) => showToast(error.message)));
+  window.addEventListener("hashchange", openReferencedReview);
+  $("#revisionSelect").addEventListener("change", (event) => loadSession($("#sessionSelect").value, event.target.value).catch((error) => showToast(error.message)));
   $("#trendMetric").addEventListener("change", renderTrend);
   $("#moduleSearch").addEventListener("input", renderModules);
   $("#activationFilter").addEventListener("change", renderModules);

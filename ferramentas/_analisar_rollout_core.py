@@ -314,34 +314,13 @@ def _patch_payload_size(name: str, raw_input: str) -> int:
     return 0
 
 
-def _tool_success(payload: dict[str, Any], output_text: str) -> bool | None:
-    for key in ("exit_code", "returncode"):
-        value = payload.get(key)
-        if isinstance(value, int):
-            return value == 0
-    success = payload.get("success")
-    if isinstance(success, bool):
-        return success
-    status = str(payload.get("status") or "").lower()
-    if status in {"success", "succeeded", "completed", "ok"}:
-        return True
-    if status in {"failure", "failed", "error", "cancelled", "canceled"}:
-        return False
-    for pattern in EXIT_CODE_RES:
-        match = pattern.search(output_text)
-        if match:
-            return int(match.group(1)) == 0
-    stripped = output_text.strip()
-    lower = stripped.lower()
-    if not stripped:
-        return None
-    if re.search(r"(?:^|[,{\s])[\"']?is_error[\"']?\s*:\s*true", lower):
-        return False
-    if lower.startswith(("falha", "failed", "error", "invalid patch")):
-        return False
-    if stripped.startswith(("OK", "Done!", "Success", "SUCCESS")):
-        return True
-    return None
+def _tool_success(payload: dict[str, Any], output_text: str, *, domain: bool = True) -> bool | None:
+    # Adaptador de formato histórico; a regra de resultado tem um único dono.
+    try:
+        from ferramentas.resultados_operacoes import legacy_success
+    except ModuleNotFoundError:
+        from resultados_operacoes import legacy_success
+    return legacy_success(payload, output_text, domain=domain)
 
 
 def _attempts_transcript_read(command: str, mentioned_paths: list[str]) -> bool:
@@ -636,7 +615,7 @@ def analyze(path: Path, narration_regex: str | None = None) -> dict[str, Any]:
                     turn["tool_output_bytes"] += len(output_text.encode("utf-8"))
                     matched = _match_output_call(turn, payload)
                     if matched is not None:
-                        matched["success"] = _tool_success(payload, output_text)
+                        matched["success"] = _tool_success(payload, output_text, domain=matched["category"] in {"write", "dice"})
                         matched["output_seen"] = True
                         if matched.get("routed_context"):
                             turn["access_levels"].extend(_access_levels_from_output(output_text))

@@ -332,6 +332,7 @@ def install_initiative_conclusion(
     )
     outcomes = list(result.get("resultados") or [])
     result.update(
+        ticket_id=ticket_id,
         schema_npc_continuity=FACADE_SCHEMA,
         module_id=MODULE_ID,
         metricas={

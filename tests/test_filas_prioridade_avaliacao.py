@@ -48,6 +48,17 @@ def row(
 
 
 class IndependentPriorityQueuesTest(unittest.TestCase):
+    def test_critical_violation_is_first_and_perfect_local_sample_is_not_a_problem(self):
+        critical = row("critical", adjudicated=2)
+        critical["violacoes_guardrail_experiencia"] = ["agency-violation"]
+        assigned = generator._assign_priority_queues([
+            row("perfect", experience=100, adjudicated=2),
+            row("bad", experience=0, adjudicated=1), critical,
+        ])
+        self.assertIsNone(assigned[0]["fila_experiencia_rank"])
+        self.assertEqual(assigned[2]["fila_experiencia_rank"], 1)
+        self.assertEqual(assigned[1]["fila_experiencia_rank"], 2)
+
     def test_cost_mutation_cannot_change_repair_or_experience_queues(self) -> None:
         source = [
             row(

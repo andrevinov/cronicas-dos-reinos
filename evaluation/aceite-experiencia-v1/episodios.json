@@ -1,0 +1,1518 @@
+{
+  "schema": 1,
+  "natureza": "episodios_sinteticos_isolados_nao_e_jogo_real",
+  "episodes": [
+    {
+      "id": "e01v1",
+      "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e01v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren observa a sala."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: abrigo\nelenco_presente: [Ilara]\nconhecimento_Ilara: ponte_rompida_confirmada_por_inspecao\nobjetivo_Ilara: salvar_vizinhos\ncompromisso_Ilara: avisar_os_presentes_antes_da_saida_das_18h\nhora: \"18:00\"\ncanal: conversa_presencial\nimpedimentos: []\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Ilara interpõe-se à porta. — A ponte cedeu. Fiquem aqui; vou buscar os guardas. Ela sai pela passagem lateral.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e01v2",
+      "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e01v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren observa a sala."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: abrigo\nelenco_presente: [Ilara]\nconhecimento_Ilara: ponte_rompida_confirmada_por_inspecao\nobjetivo_Ilara: salvar_vizinhos\ncompromisso_Ilara: avisar_os_presentes_antes_da_saida_das_18h\nhora: \"18:00\"\ncanal: conversa_presencial\nimpedimentos: []\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "A luz atravessa as frestas. Duas cadeiras rangem junto à mesa; o corredor segue disponível.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e02v1",
+      "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e02v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren observa a sala."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: abrigo\nelenco_presente: [Ilara]\nconhecimento_Ilara: desconhece_o_plano_do_sabotador\nobjetivo_Ilara: esconder_identidade\ncompromissos: []\ncanal: conversa_presencial\nimpedimentos: [revelar_identidade_agora_expoe_refens]\nsegredo_narrador: sabotador_escondeu_explosivo_no_portao_norte\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Ilara mantém o capuz baixo, deixa passar a patrulha e permanece junto à parede.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e02v2",
+      "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e02v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren observa a sala."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: abrigo\nelenco_presente: [Ilara]\nconhecimento_Ilara: desconhece_o_plano_do_sabotador\nobjetivo_Ilara: esconder_identidade\ncompromissos: []\ncanal: conversa_presencial\nimpedimentos: [revelar_identidade_agora_expoe_refens]\nsegredo_narrador: sabotador_escondeu_explosivo_no_portao_norte\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Ilara anuncia: — O sabotador escondeu explosivo no portão norte. Levanta-se para desarmá-lo.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e03v1",
+      "criterion_id": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e03v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren retorna à oficina e pede o reparo combinado."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: oficina\nelenco_presente: [Daro]\nacordo_anterior: Daro_prometeu_reparar_o_cabo_sem_cobrar_em_troca_do_resgate_do_aprendiz\nfato_canonico: aprendiz_resgatado_por_Ren\nconhecimento_Daro: presenciou_o_resgate\nmemoria_entregue: acordo_anterior\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Daro reconhece o cabo. — Você trouxe meu aprendiz de volta. Este reparo é por minha conta. Ele abre a caixa de ferramentas.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e03v2",
+      "criterion_id": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e03v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren retorna à oficina e pede o reparo combinado."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: oficina\nelenco_presente: [Daro]\nacordo_anterior: Daro_prometeu_reparar_o_cabo_sem_cobrar_em_troca_do_resgate_do_aprendiz\nfato_canonico: aprendiz_resgatado_por_Ren\nconhecimento_Daro: presenciou_o_resgate\nmemoria_entregue: acordo_anterior\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "— Nunca combinamos nada — diz Daro. — Pague vinte moedas ou procure outro ferreiro.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e04v1",
+      "criterion_id": "adversarial_operations.adversarial_contract_integrity",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e04v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren examina o cais antes de atravessá-lo."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: cais\nplano_adversario: apreender_o_carregamento_de_Ren_por_divida_nao_paga\ncontrato: divida_vencida_com_recibo\nconhecimento_cobrador: reconheceu_persona_Tanaka_em_testemunho_publico\nrecursos: dois_capangas_e_mandado_valido\nlimites: nao_conhece_identidade_Ren\noperacao_consolidada: guardas_apreenderam_carga_no_cais\ncanal_Ren: selo_e_guardas_visiveis\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Dois guardas cercam os caixotes sob um selo oficial. — Tanaka? A carga foi retida pela dívida. O oficial mostra o mandado; há uma mesa de recursos ao lado.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e04v2",
+      "criterion_id": "adversarial_operations.adversarial_contract_integrity",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e04v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren examina o cais antes de atravessá-lo."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: cais\nplano_adversario: apreender_o_carregamento_de_Ren_por_divida_nao_paga\ncontrato: divida_vencida_com_recibo\nconhecimento_cobrador: reconheceu_persona_Tanaka_em_testemunho_publico\nrecursos: dois_capangas_e_mandado_valido\nlimites: nao_conhece_identidade_Ren\noperacao_consolidada: guardas_apreenderam_carga_no_cais\ncanal_Ren: selo_e_guardas_visiveis\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Os caixotes estão liberados. Não há guardas, selos ou restrições no cais.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e05v1",
+      "criterion_id": "world_boundary_resolution.temporal_liveness",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e05v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren chega à ponte depois de três horas na biblioteca."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nhora_antes: \"12:00\"\nhora_agora: \"15:00\"\nplano: sabotagem_da_ponte_as_14h\nresultado_consolidado: ponte_rompida_as_14h\nRen_ausente_na_execucao: true\ncanal: destrocos_visiveis_no_rio\norigem_secreta: ainda_nao_descoberta\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Uma seção da ponte jaz no rio. Tábuas giram na corrente e a margem oposta ficou inacessível por essa travessia.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e05v2",
+      "criterion_id": "world_boundary_resolution.temporal_liveness",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e05v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren chega à ponte depois de três horas na biblioteca."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nhora_antes: \"12:00\"\nhora_agora: \"15:00\"\nplano: sabotagem_da_ponte_as_14h\nresultado_consolidado: ponte_rompida_as_14h\nRen_ausente_na_execucao: true\ncanal: destrocos_visiveis_no_rio\norigem_secreta: ainda_nao_descoberta\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "A ponte continua inteira e aberta; nada mudou durante as horas na biblioteca.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e06v1",
+      "criterion_id": "sidequest_lifecycle.terminal_rewards",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e06v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren entrega o mapa ao contratante."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nquest: recuperar_mapa\naceita: true\nobjetivo: entrega_do_mapa_confirmada\nrecompensa_contratada: 30_moedas\nrecompensa_paga_antes: false\ncontratante_presente: true\nfonte_persistencia: saldo_antes_100_saldo_depois_130\nterminal_consolidado: sucesso\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "O contratante confere o mapa e entrega trinta moedas. A missão foi concluída; o pagamento está registrado.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e06v2",
+      "criterion_id": "sidequest_lifecycle.terminal_rewards",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e06v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren entrega o mapa ao contratante."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nquest: recuperar_mapa\naceita: true\nobjetivo: entrega_do_mapa_confirmada\nrecompensa_contratada: 30_moedas\nrecompensa_paga_antes: false\ncontratante_presente: true\nfonte_persistencia: saldo_antes_100_saldo_depois_130\nterminal_consolidado: sucesso\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "O contratante guarda o mapa. — Não há pagamento por isso. A missão foi concluída.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e07v1",
+      "criterion_id": "sidequest_lifecycle.terminal_rewards",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e07v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren confere a bolsa após receber o pagamento."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nquest: recuperar_mapa\nterminal_consolidado: sucesso\nrecompensa_contratada: 30_moedas\nregistro_de_pagamento: ausente\nsaldo_antes: 100\nsaldo_depois: 100\nlimite_temporal: estado_depois_da_conclusao\nprosa_anterior: contratante_entregou_trinta_moedas\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "A bolsa contém cento e trinta moedas, incluindo o pagamento que o contratante entregou.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e08v1",
+      "criterion_id": "scene_world_projection.persistent_conditions",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e08v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren observa a praça ao amanhecer."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\ncondicao_ativa: chuva_forte_por_tres_dias\nmedida_ativa: prefeitura_fechou_o_mercado_por_inundacao\nvalidade: ate_inspecao_dos_drenos\ninspecao_realizada: false\ncanal: chuva_e_aviso_visiveis\nlocal: praca_do_mercado\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "A chuva escorre pelas barracas fechadas. Um aviso da prefeitura exige inspeção dos drenos; os vendedores descarregam sob o abrigo da rua lateral.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e08v2",
+      "criterion_id": "scene_world_projection.persistent_conditions",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e08v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren observa a praça ao amanhecer."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\ncondicao_ativa: chuva_forte_por_tres_dias\nmedida_ativa: prefeitura_fechou_o_mercado_por_inundacao\nvalidade: ate_inspecao_dos_drenos\ninspecao_realizada: false\ncanal: chuva_e_aviso_visiveis\nlocal: praca_do_mercado\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "A praça está seca e ensolarada. O mercado funciona normalmente, sem avisos ou restrições.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e09v1",
+      "criterion_id": "causal_narrative_routing.dated_secret_canon",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e09v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren procura o duelo anunciado."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nfuncao_dramatica_protegida: rival_expõe_dilema_entre_vitoria_e_protecao_dos_civis\nforma_adaptavel: local_e_horario_do_duelo\nfato_canonico: ponte_do_duelo_destruida_na_vespera\nconhecimento_rival: viu_a_ponte_cair\nlocal_alternativo_disponivel: armazem_com_civis_refugiados\nRen_nao_escolheu_lutar: true\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "O rival espera no armazém, longe da ponte destruída. Refugiados atravessam o espaço entre ambos. — Pode me perseguir ou ajudá-los a sair. A porta fica aberta para Ren.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e09v2",
+      "criterion_id": "causal_narrative_routing.dated_secret_canon",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e09v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren procura o duelo anunciado."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nfuncao_dramatica_protegida: rival_expõe_dilema_entre_vitoria_e_protecao_dos_civis\nforma_adaptavel: local_e_horario_do_duelo\nfato_canonico: ponte_do_duelo_destruida_na_vespera\nconhecimento_rival: viu_a_ponte_cair\nlocal_alternativo_disponivel: armazem_com_civis_refugiados\nRen_nao_escolheu_lutar: true\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "O rival espera na ponte intacta, exatamente como estava marcado. Os fatos da véspera não alteram o encontro.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e10v1",
+      "criterion_id": "rules_and_character_state.roll_execution",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e10v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren tenta saltar o fosso."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\ncompromisso_anterior: Atletismo_CD_12\nresultado_bruto: d20_7_mais_3_total_10\nresultado: falha\nconsequencia_pre_comprometida: escorregar_na_borda_perder_posicao\nalternativa_disponivel: rampa_lateral_com_cobertura\nnenhum_ajuste_posterior_autorizado: true\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "O pé escorrega na borda; o salto não alcança o outro lado. A rampa lateral continua disponível sob a cobertura de pedra.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e10v2",
+      "criterion_id": "rules_and_character_state.roll_execution",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e10v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren tenta saltar o fosso."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\ncompromisso_anterior: Atletismo_CD_12\nresultado_bruto: d20_7_mais_3_total_10\nresultado: falha\nconsequencia_pre_comprometida: escorregar_na_borda_perder_posicao\nalternativa_disponivel: rampa_lateral_com_cobertura\nnenhum_ajuste_posterior_autorizado: true\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "A dificuldade passa a ser dez. Ren salta com sucesso e alcança o outro lado.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e11v1",
+      "criterion_id": "narrative_delivery.narrative_density",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e11v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren volta imediatamente para a rua."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: telhado\nsaidas: escada_livre\nobstaculo_externo: nenhum\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "A escada desemboca na rua. Passos e rodas disputam o espaço sob as lanternas.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e11v2",
+      "criterion_id": "narrative_delivery.narrative_density",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e11v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren volta imediatamente para a rua."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nlocal: telhado\nsaidas: escada_livre\nobstaculo_externo: nenhum\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Ren decide esperar dez minutos, desiste de voltar à rua e escolhe dormir no telhado.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e12v1",
+      "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e12v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren lê o bilhete deixado na mesa."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nator: Bessa\nobjetivo: comunicar_a_evacuacao_ao_destinatario\nconhecimento: ordem_de_evacuacao_confirmada\ncompromisso: entregar_aviso_antes_da_mare_alta\ncanal: bilhete_deixado_na_mesa\npresenca_fisica: Bessa_ausente\nimpedimentos: nenhum\nhora: prazo_vencido\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "No bilhete, Bessa informa que a evacuação começou: o acesso sul será fechado antes da maré alta.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e12v2",
+      "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e12v2",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren lê o bilhete deixado na mesa."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nator: Bessa\nobjetivo: comunicar_a_evacuacao_ao_destinatario\nconhecimento: ordem_de_evacuacao_confirmada\ncompromisso: entregar_aviso_antes_da_mare_alta\ncanal: bilhete_deixado_na_mesa\npresenca_fisica: Bessa_ausente\nimpedimentos: nenhum\nhora: prazo_vencido\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "O bilhete descreve o cardápio de ontem. Na mesa há também uma caneca vazia.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "e13v1",
+      "criterion_id": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+      "interaction_ref": "S999-I0001",
+      "records": [
+        {
+          "type": "session_meta",
+          "payload": {
+            "id": "e13v1",
+            "cwd": "/campanha-isolada"
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "user",
+            "content": [
+              {
+                "type": "input_text",
+                "text": "Ren pede que o mensageiro cumpra a promessa."
+              }
+            ]
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call",
+            "name": "exec_command",
+            "call_id": "fonte",
+            "arguments": "{\"cmd\": \"poetry run cronica preparar --cena-id episodio --sem-oportunidade-sidequest\"}",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "function_call_output",
+            "call_id": "fonte",
+            "output": "Process exited with code 0\nfase: pronta\nator: mensageiro\nregistro_da_promessa_anterior: indisponivel\nconhecimento_mensageiro: nao_documentado\n",
+            "internal_chat_message_metadata_passthrough": {
+              "turn_id": "t1"
+            }
+          }
+        },
+        {
+          "type": "response_item",
+          "payload": {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "O mensageiro pergunta qual promessa Ren está cobrando.\nRODAPE_CANONICO — Interação S999-I0001"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "natureza": "cenario_sintetico_isolado_nao_e_sessao_real",
+  "tipo": "qualidade",
+  "ledger": {
+    "interactions": [
+      {
+        "interaction_ref": "S900-I0001",
+        "response_present": true
+      }
+    ],
+    "events": [
+      {
+        "event_id": "delivery",
+        "module_id": "narrative_delivery",
+        "capability_id": "visible_closure",
+        "turn_ordinal": 1,
+        "call_ids_observed": [
+          "call-1"
+        ],
+        "eligibility_observed": "sim",
+        "activation_observed": "efeito",
+        "effect_observed": true,
+        "inference_confidence": "alta",
+        "adjudication": null
+      }
+    ],
+    "corrections": [],
+    "semantic_audits": [],
+    "quality_assessments": [],
+    "player_feedback": [],
+    "module_parent_costs": []
+  },
+  "adjudicacoes": {
+    "schema_adjudicacoes_modulares": 2,
+    "corrections": [],
+    "semantic_audits": [],
+    "quality_assessments": [],
+    "player_feedback": []
+  }
+}

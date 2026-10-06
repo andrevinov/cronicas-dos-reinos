@@ -1,6 +1,34 @@
 # AMV-01 — Objetivos dos módulos e regressões do diagnóstico
 
-**Data:** 2026-10-04. **Status:** proposta. **Dependências:** nenhuma.
+**Data:** 2026-10-04. **Status:** concluída em 2026-10-04; G0 pendente.
+**Dependências:** nenhuma.
+
+## Entrega executada
+
+Contratos das 34 capacidades dos 12 módulos foram adicionados ao catálogo e ao
+schema, com validação compatível com catálogos históricos. O
+[pacote de referência](../../../evaluation/aceite-avaliacao-v1/README.md) congela
+12 casos (11 de desenvolvimento e 1 reservado), expectativas, metas, fontes da
+024 e inventário de cobertura. O corte original e sete âncoras foram verificados
+sem copiar o rollout bruto para o repositório.
+
+A [medição inicial](../../../evaluation/aceite-avaliacao-v1/resultado-inicial.json)
+registra **7 falhas em 17 verificações** do conjunto de desenvolvimento. Os casos
+mínimos de qualidade ausente/inadequada passam como controles; a referência não
+afirma que eles reproduzem toda a insuficiência de apresentação. O painel bloqueado
+da 024 reproduz a aprovação indevida nas funções reais de apresentação.
+
+O inventário registra os 31 checks diretos aprovados em 19,727 segundos, sete
+comandos repetidos na auditoria final e nove testes ancorados repetidos. Nenhuma
+aposentadoria foi executada. Contratos e gabaritos são a entrega desta tarefa;
+consumo semântico, correções do avaliador e aceite G0 permanecem nas AMV-02–05.
+
+**Verificação:** 23 testes focados e as 226 comparações do corpus anterior passaram.
+A suíte integral executou 2.352 testes, com quatro falhas e um erro; os cinco casos
+foram reproduzidos numa cópia isolada da revisão anterior. A árvore protegida
+da campanha permaneceu idêntica. O
+[registro da verificação](../../../evaluation/aceite-avaliacao-v1/verificacao-implementacao.json)
+preserva essas limitações; a suíte integral não foi declarada aprovada.
 
 ## O que implementar
 

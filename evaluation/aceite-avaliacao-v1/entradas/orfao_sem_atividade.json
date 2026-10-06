@@ -1,0 +1,29 @@
+{
+  "natureza": "cenario_sintetico_isolado_nao_e_sessao_real",
+  "tipo": "rollout",
+  "registros": [
+    {
+      "type": "response_item",
+      "payload": {
+        "type": "function_call",
+        "name": "exec_command",
+        "call_id": "call-1",
+        "arguments": "{\"cmd\": \"poetry run python ferramentas/contexto.py status\"}",
+        "internal_chat_message_metadata_passthrough": {
+          "turn_id": "t1"
+        }
+      }
+    },
+    {
+      "type": "response_item",
+      "payload": {
+        "type": "function_call_output",
+        "call_id": "call-1",
+        "output": "Process exited with code 0\nconsulta: status\ncobertura_avaliacao_modular:\n  schema_avaliacao_cobertura_modular: 1\n  recibos:\n  - context_and_memory|consulta|aplicavel|1\n  - world_boundary_resolution|fronteira|aplicavel|1\n",
+        "internal_chat_message_metadata_passthrough": {
+          "turn_id": "t1"
+        }
+      }
+    }
+  ]
+}

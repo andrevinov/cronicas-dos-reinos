@@ -1,12 +1,17 @@
 # AMV-16 — Aprendizado por sessão e validação em jogo real
 
-**Data:** 2026-10-04. **Status:** proposta. **Dependências:** AMV-05, AMV-14–15.
+**Data:** 2026-10-04. **Status:** revisão entregue em 2026-10-06; acompanhamento longitudinal pendente. **Dependências:** AMV-05, AMV-14–15.
+
+Antecipação: [porta de revisão pelo agente](../../agente/engenharia/revisao-pos-sessao.md)
+e [entrega](entrega-avaliador-2026-10-06.md). O agente executa a revisão e publica;
+solicitação de parecer não completa a tarefa. Aceite integrado e sessões
+comparáveis permanecem nas condições abaixo.
 
 ## O que implementar
 
 Entregar uma entrada de manutenção que, depois de encerrar a sessão pelo lifecycle,
-congele o recorte nativo, reconstrua operações e oportunidades, realize ou solicite
-a revisão prevista, gere pacote e relatório e atualize a série compatível.
+congele o recorte nativo, reconstrua operações e oportunidades, execute a revisão
+prevista pelo agente, gere pacote e relatório e atualize a série compatível.
 Evoluir o gerador atual; não criar outro painel ou uma segunda fonte de métricas.
 Incerteza e revisão indisponível produzem estado explícito, sem nota presumida.
 

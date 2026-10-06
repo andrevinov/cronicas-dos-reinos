@@ -59,6 +59,7 @@
           "escopo": {"type": "string"},
           "gravidade": {"const": "limitacao"},
           "mensagem": {"type": "string"},
+          "module_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
           "linha": {"type": "integer", "minimum": 1}
         }
       }

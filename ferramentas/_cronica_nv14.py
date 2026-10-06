@@ -171,7 +171,8 @@ def prepare(*args, **kwargs):
         except (ValueError, OSError, yaml.YAMLError) as exc:
             raise _core.CronicaError(f"NV10: {exc}") from exc
     base = _hot.prepare(*args, **kwargs)
-    if "cobertura_avaliacao_modular" not in base:
+    if not any(str(item).startswith("scene_world_projection|preparar|")
+               for item in (base.get("cobertura_avaliacao_modular") or {}).get("recibos", [])):
         _module_coverage.attach_coverage(
             base,
             module_id="scene_world_projection",
@@ -244,21 +245,18 @@ def prepare(*args, **kwargs):
             if _narrative_interactions.integration_enabled(Path(repo))
             else 0
         )
-        # A cobertura já presente faz parte do envelope de entrada da memória,
-        # mas não deve expulsar fatos prioritários. Neutralizamos apenas esses
-        # bytes já contabilizados; os recibos anexados depois continuam cobertos
-        # pelas reservas públicas de interação e orquestração.
-        existing_coverage_bytes = len(
-            yaml.safe_dump(
-                {
-                    _module_coverage.COVERAGE_KEY: prepared.get(
-                        _module_coverage.COVERAGE_KEY
-                    )
-                },
-                allow_unicode=True,
-                sort_keys=False,
-            ).encode("utf-8")
-        )
+        # Preserva a compensação histórica dos recibos compactos na seleção de
+        # memória. Metadados novos são contabilizados no envelope e não recebem
+        # crédito como espaço livre. Reservas de interação/orquestração continuam
+        # cobrindo os hooks seguintes dentro do teto existente de ON.
+        legacy_coverage = {
+            "schema_avaliacao_cobertura_modular": 1,
+            "recibos": (prepared.get(_module_coverage.COVERAGE_KEY) or {}).get("recibos", []),
+        }
+        legacy_coverage_bytes = len(yaml.safe_dump(
+            {_module_coverage.COVERAGE_KEY: legacy_coverage}, allow_unicode=True,
+            sort_keys=False,
+        ).encode("utf-8"))
         prepared = _scene_memory.attach(
             Path(repo), prepared, decode_ticket=decode_ticket,
             encode_ticket=_core.encode_ticket, participants=memory_participants,
@@ -268,7 +266,7 @@ def prepare(*args, **kwargs):
                 final_budget
                 - _turn_orchestration.RECEIPT_RESERVE_BYTES
                 - interaction_reserve
-                + existing_coverage_bytes
+                + legacy_coverage_bytes
             ),
         )
         prepared = _narrative_interactions.attach_prepare(Path(repo), prepared)
@@ -868,6 +866,9 @@ def main(argv: list[str] | None = None) -> int:
             )
         else:
             raise ciclo_cronica.UnifiedSessionError(f"comando desconhecido: {args.cmd}")
+        # Compositores externos já fixaram o ticket final; os recibos internos
+        # passam a referir esse mesmo ticket, inclusive em recovery/retry.
+        _module_coverage.bind_output(result, operation=args.cmd)
         print(yaml.safe_dump(result, allow_unicode=True, sort_keys=False), end="")
         return 0
     except PartialConclusionError as exc:

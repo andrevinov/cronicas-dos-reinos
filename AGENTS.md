@@ -117,6 +117,12 @@ Dúvida: `contexto.py regra`. Defina CD/modificadores antes da rolagem; nunca fa
 
 ## 9. Alterações no repositório
 
+**Avaliação pós-sessão:** ao pedido de avaliar uma sessão, seguir
+`docs/agente/engenharia/revisao-pos-sessao.md`: `avaliar-sessao preparar` → ler
+casos/fontes → produzir decisões como revisor pós-hoc → `avaliar-sessao concluir`.
+O agente faz a revisão; não delegar preenchimento ao jogador nem terminar em
+`aguarda_revisao_do_agente`. Escopo parcial e fontes insuficientes ficam explícitos.
+
 Preservar UTF-8/histórico/visibilidade. Testes: `docs/agente/engenharia/politica-de-testes.md`.
 
 - estado vivo → invariantes; absoluto mutável → fixtures/snapshots/cenários temporários/histórico imutável;

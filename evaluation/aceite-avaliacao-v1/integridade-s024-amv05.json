@@ -1,0 +1,37 @@
+{
+  "derivados_sha256": {
+    "adjudicacoes-modulares.json": "c420ae3eae9fb21488857d66e03c79ba8219f01bb65e844305b8d33b0b40d165",
+    "avaliacoes-qualidade.json": "5dd9a3a2914f1dad30e3a7dbb22b7be98dd5a1be997d5723ac25cfcbeb7c8f01",
+    "eventos-modulares.csv": "8a156c6e1feed9da4fd7a1d596d6708c3e1036752bc6e7cf95f9c0b5eaab8d81",
+    "interacoes.json": "ecea8eebaaee1181f555d84948edbdd657e3a13e26456ada2e603787e747c56b",
+    "manifest.json": "0c95396213c7933fa8cc1da28b4f056543119a7d21a01e6b4bb9f9c9f63ea4a1",
+    "manifestacoes-jogador.json": "ad0f1b6fc04fdb2f58ee3d3341f7b85bea22cb1c35aa9bb1bb77762bc2789c67",
+    "proveniencia-medicao.json": "f9b55d8cdcb229be0dcfc5823393aa4520089cab5ef0f566b12a1cc4aaf96932",
+    "relatorio.md": "1869d64bab6bff8dac4f302f7dd373304638f73c95db8e86f041df67143095b3",
+    "resumo-modulos.csv": "63dbb8a374f63f363459a360034bb46ef1e1373e5ce12d4b5fd2684508b401f6",
+    "resumo-modulos.json": "36fca6efaeb3e9f6d84646f59f62ab3eea4db1e5a0253132094ed42cb2a18a0e",
+    "scorecard.json": "de0e49515190fdf5e69ee5741b0e2994a082affb4e566b1b8a29a7d979f457d3",
+    "telemetria.json": "11652f60378c3c0db9f124e65043684f831d68c1ecea50a6001972a17265c881",
+    "turnos.csv": "450b30b71003217e6d00bf10e3897b5890ed6047671c153c2c3a8e15bb931e11",
+    "validade-medicao.json": "3b804be916c94cf1d78beccc38121228c66b8d2331383eb861a9ed08fb9bac7a"
+  },
+  "entrada_id": "a03259b46188f267ab3128bde679e7940af7ad3dcbd7e34c753b1245ae577304",
+  "natureza": "original imutável e duas reproduções idênticas da revisão derivada",
+  "originais_sha256": {
+    "adjudicacoes-modulares.json": "14b459ccfa3ca378f900dafc53106c04ab183c9d5b5293f26b3ba6330f4caac7",
+    "avaliacoes-qualidade.json": "ed24b235e2469e78a0a7c588f4a3a16e2e61f8dd95f1baf6cc6089d4fcfc7752",
+    "eventos-modulares.csv": "85e19cc2bb36b9f3517d9e1eb49fdfbc993948705289ab735714dc520082de85",
+    "interacoes.json": "f5be4fe30371d8a2bb85d24fd9076768599c793c6f92a037ad477f0bfd68fd28",
+    "manifest.json": "8ed4ecce452df9eaeb8199bb628427c18895b3fcacfb80822da3ff0fdc966173",
+    "manifestacoes-jogador.json": "0cede99d9a9e683d984ef62546c4f87b803ae0bf9256aae25985c627aa991451",
+    "proveniencia-medicao.json": "02d0caae05ad15c0be56a55ce059ae768eb332a298ed3f8d4694c3b4443614b8",
+    "relatorio.md": "ff5060ad57a8a6f72f0c396d53b20369eb106d717c89d726678472ff1f60afa3",
+    "resumo-modulos.csv": "955f4db83c7baa21d6f546a327a1e433fc3fd1fb445a51f302a95a68799399d7",
+    "resumo-modulos.json": "00847192647589c3a59ce65f474d313ebec13ceedff308b4ae91a7801c473506",
+    "scorecard.json": "f135a8ccb24bd52dab23d825a74af4865fdea1a111fcb0e2f5570950de8eb8bd",
+    "telemetria.json": "0eea5cf9f55aec75214663736726feaf2fa23437154576fb671ba8f23289318b",
+    "turnos.csv": "450b30b71003217e6d00bf10e3897b5890ed6047671c153c2c3a8e15bb931e11",
+    "validade-medicao.json": "3b804be916c94cf1d78beccc38121228c66b8d2331383eb861a9ed08fb9bac7a"
+  },
+  "reproducoes_identicas": true
+}

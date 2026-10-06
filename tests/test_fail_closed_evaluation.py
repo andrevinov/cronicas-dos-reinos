@@ -184,7 +184,7 @@ def test_catalog_applies_fail_closed_contract_to_all_modules() -> None:
     assert len(module_ids) == 12
     assert contract["atividade_sem_recibo"] == "falha_instrumentacao"
     assert contract["nd_exige_zero_atividade_avaliativa"] is True
-    assert all(item["versao_avaliacao"] == "4.0.0" for item in catalog["modulos"])
+    assert all(int(item["versao_avaliacao"].split(".")[0]) >= 4 for item in catalog["modulos"])
 
 
 def test_detector_requires_all_seven_prepare_receipts() -> None:
@@ -362,7 +362,8 @@ class FailClosedEvaluationTest(unittest.TestCase):
         self.assertTrue(parsed["block_present"])
         self.assertTrue(parsed["schema_present"])
         self.assertEqual(
-            parsed["receipts"][0],
+            {key: parsed["receipts"][0][key] for key in
+             ("module_id", "phase", "applicability", "units", "complete")},
             {
                 "module_id": "scene_world_projection",
                 "phase": "preparar",

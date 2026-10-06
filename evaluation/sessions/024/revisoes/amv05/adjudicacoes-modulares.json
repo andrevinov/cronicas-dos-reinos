@@ -1,0 +1,969 @@
+{
+  "schema_adjudicacoes_modulares": 2,
+  "quality_assessments": [
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-conclusao-024",
+      "interaction_ref": "S024-I0005",
+      "module_id": "turn_and_session_orchestration",
+      "capability_id": "transactional_turn",
+      "criterion_id": "turn_and_session_orchestration.transactional_turn",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "evidence": [
+        {
+          "source": "rollout",
+          "locator": "S024-I0005/01a0aaf1-5dc5-7df1-a642-200c66832150/call_EbNgf56EDwDL6W9JQkxfd1TN/0/output",
+          "observation": "sha256:69b53ef424e4709ecc1d7ec4735621a5b0d5fee0d6abcf65bac7e0c3aadec4f9",
+          "visibility": "reservada",
+          "source_sha256": "11b345cc1c84f5a5144a92b96974790c528f325bdb82629e63d1d648e1f95604",
+          "start": 72,
+          "end": 87,
+          "literal": "sha256:69b53ef424e4709ecc1d7ec4735621a5b0d5fee0d6abcf65bac7e0c3aadec4f9",
+          "literal_sha256": "69b53ef424e4709ecc1d7ec4735621a5b0d5fee0d6abcf65bac7e0c3aadec4f9"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/response",
+          "observation": "Interação S024-I0005",
+          "visibility": "publica",
+          "source_sha256": "571f1016229df5cb9c7872fc7bab2e9ccb9f44fcf3688f335f68be52d55071fb",
+          "start": 2248,
+          "end": 2268,
+          "literal": "Interação S024-I0005",
+          "literal_sha256": "2358b87b8a526704b026e0a931582e12778b090ee8b48780ac071b3ab2d949d1"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/input",
+          "observation": "\"Espere. Não se apresse.\"",
+          "visibility": "publica",
+          "source_sha256": "87a8d64e5d741a75bf6548bada773f8222ee222bd3d05c2b2003460a8ac8ad29",
+          "start": 0,
+          "end": 25,
+          "literal": "\"Espere. Não se apresse.\"",
+          "literal_sha256": "b3aa72347e2f8ef34f015df59fc3e4076c636dfe81eafa42a94d462e2d553117"
+        }
+      ],
+      "adjudication": {
+        "state": "confirmada",
+        "reason": "Revisão de fontes do instante; conteúdo reservado protegido. Evidência revalidável por hash e offsets."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "fechamento_local_sem_snapshot_integral",
+          "review_date": "2026-10-04",
+          "reference_id": "conclusao-024"
+        },
+        "frame_sha256": "ca33e06824b5cd1b1b6347ddc36154d1d9953e19d0dd3228d24f00b1897ec883",
+        "uncertainty": "",
+        "dependency_operation_ids": [
+          "01a0aaf1-5dc5-7df1-a642-200c66832150/call_EbNgf56EDwDL6W9JQkxfd1TN/0"
+        ],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-mecanica-bilhete-resultado",
+      "interaction_ref": "S024-I0005",
+      "module_id": "rules_and_character_state",
+      "capability_id": "roll_execution",
+      "criterion_id": "rules_and_character_state.roll_execution",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "evidence": [
+        {
+          "source": "rollout",
+          "locator": "S024-I0005/01a0aaf1-5dc5-7df1-a642-200c66832150/call_OL2BmHEieGb1yrYBk4OZuyjT/0/output",
+          "observation": "sha256:0de7a2cd48c1d3f5a89835d77235e342bc29475888ad3f10f05e2bb47a82caff",
+          "visibility": "reservada",
+          "source_sha256": "35b6c5318cd55541dd91d6fccb15d6912de04e996118a382ee2bda40a50485bb",
+          "start": 114,
+          "end": 148,
+          "literal": "sha256:0de7a2cd48c1d3f5a89835d77235e342bc29475888ad3f10f05e2bb47a82caff",
+          "literal_sha256": "0de7a2cd48c1d3f5a89835d77235e342bc29475888ad3f10f05e2bb47a82caff"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/response",
+          "observation": "Prestidigitação: d20 1 + 4 = 5 contra CD 13 — falha",
+          "visibility": "publica",
+          "source_sha256": "571f1016229df5cb9c7872fc7bab2e9ccb9f44fcf3688f335f68be52d55071fb",
+          "start": 1942,
+          "end": 1993,
+          "literal": "Prestidigitação: d20 1 + 4 = 5 contra CD 13 — falha",
+          "literal_sha256": "028845d7449b35c6de55992d5e8eb55c9473f5df95e7157fa8756f4168935858"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/input",
+          "observation": "\"Espere. Não se apresse.\"",
+          "visibility": "publica",
+          "source_sha256": "87a8d64e5d741a75bf6548bada773f8222ee222bd3d05c2b2003460a8ac8ad29",
+          "start": 0,
+          "end": 25,
+          "literal": "\"Espere. Não se apresse.\"",
+          "literal_sha256": "b3aa72347e2f8ef34f015df59fc3e4076c636dfe81eafa42a94d462e2d553117"
+        },
+        {
+          "source": "rollout",
+          "locator": "S024-I0005/01a0aaf1-5dc5-7df1-a642-200c66832150/call_OL2BmHEieGb1yrYBk4OZuyjT/0/command",
+          "observation": "sha256:d746241ed368c27a6d78750c7be0589f1baba0cefb3ccb49b234646de03c795e",
+          "visibility": "reservada",
+          "source_sha256": "0d6da078add2f4db0f163ddbb82ae5edbfb2856126600060d0bfc2bc96439d55",
+          "start": 45,
+          "end": 52,
+          "literal": "sha256:d746241ed368c27a6d78750c7be0589f1baba0cefb3ccb49b234646de03c795e",
+          "literal_sha256": "d746241ed368c27a6d78750c7be0589f1baba0cefb3ccb49b234646de03c795e"
+        }
+      ],
+      "adjudication": {
+        "state": "confirmada",
+        "reason": "Revisão de fontes do instante; conteúdo reservado protegido. Evidência revalidável por hash e offsets."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "integridade_do_resultado_literal_nao_status_da_execucao",
+          "review_date": "2026-10-04",
+          "reference_id": "mecanica-bilhete-resultado"
+        },
+        "frame_sha256": "ca33e06824b5cd1b1b6347ddc36154d1d9953e19d0dd3228d24f00b1897ec883",
+        "uncertainty": "sha256:d36f3d4e8ee4941dca349b1100757d7f0b68e7ed3fe00aeb435c7ef517aee710",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-mecanica-bilhete-necessidade",
+      "interaction_ref": "S024-I0005",
+      "module_id": "rules_and_character_state",
+      "capability_id": "rules_resolution",
+      "criterion_id": "rules_and_character_state.rules_resolution",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "indeterminada",
+      "activation": "presente",
+      "quality": "indeterminada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/input",
+          "observation": "Sem que ela possa ver, escreve:",
+          "visibility": "publica",
+          "source_sha256": "87a8d64e5d741a75bf6548bada773f8222ee222bd3d05c2b2003460a8ac8ad29",
+          "start": 59,
+          "end": 90,
+          "literal": "Sem que ela possa ver, escreve:",
+          "literal_sha256": "60b953d594f0a91629846e263f2f3b867b01f592ca4aa82f0082e5b1d2b4c17b"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/prior_response",
+          "observation": "Aiko olha de um para o outro.",
+          "visibility": "publica",
+          "source_sha256": "7a0423270f8e35428ab2079213c1c847bc8cd1fba6eca816c4da4f7a24fae722",
+          "start": 118,
+          "end": 147,
+          "literal": "Aiko olha de um para o outro.",
+          "literal_sha256": "bed095238c0c515150390aecbf536a1a3672cf7aff82acd36736ecab72227d59"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/response",
+          "observation": "mas Aiko já estava observando.",
+          "visibility": "publica",
+          "source_sha256": "571f1016229df5cb9c7872fc7bab2e9ccb9f44fcf3688f335f68be52d55071fb",
+          "start": 564,
+          "end": 594,
+          "literal": "mas Aiko já estava observando.",
+          "literal_sha256": "ef7a5ffa44c1dec24d180a9210aa72bc9a7d616efa376bd74bd3749c72840dc6"
+        }
+      ],
+      "adjudication": {
+        "state": "indeterminada",
+        "reason": "Há risco de exposição, proximidade e atenção na ficção anterior; faltam prova de oposição ativa, fundamento da necessidade do teste e limiar perceptivo anterior. A reclamação sobre a necessidade do teste permanece indeterminada."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "criterio_local",
+          "review_date": "2026-10-04",
+          "reference_id": "mecanica-bilhete-necessidade"
+        },
+        "frame_sha256": "ca33e06824b5cd1b1b6347ddc36154d1d9953e19d0dd3228d24f00b1897ec883",
+        "uncertainty": "Sem snapshot integral anterior ou limiar de percepção comprometido; ticket preparado sem compromisso mecânico específico.",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": {
+          "category": "limitacao_fonte",
+          "finding": "Necessidade e dificuldade do teste contestado sem base prévia suficiente no recorte.",
+          "correction": "Comprometer motivo do teste, canal perceptivo, CD e consequência antes do dado; preservá-los no ticket.",
+          "test": "Sem acesso perceptivo suficiente, resolver sem teste; com incerteza justificada, manter dificuldade e consequência prévias."
+        },
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-mori-percepcao",
+      "interaction_ref": "S024-I0005",
+      "module_id": "context_and_memory",
+      "capability_id": "knowledge_layer_separation",
+      "criterion_id": "context_and_memory.knowledge_layer_separation",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/response",
+          "observation": "Ele lança um olhar para Aiko. Ela empalideceu.",
+          "visibility": "publica",
+          "source_sha256": "571f1016229df5cb9c7872fc7bab2e9ccb9f44fcf3688f335f68be52d55071fb",
+          "start": 1355,
+          "end": 1401,
+          "literal": "Ele lança um olhar para Aiko. Ela empalideceu.",
+          "literal_sha256": "461fbcd9ef9e492bbf0143971bf02574e3917328db72fedc9148291791f5eb24"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/response",
+          "observation": "— Eu não vi nada — diz ela depressa.",
+          "visibility": "publica",
+          "source_sha256": "571f1016229df5cb9c7872fc7bab2e9ccb9f44fcf3688f335f68be52d55071fb",
+          "start": 1403,
+          "end": 1439,
+          "literal": "— Eu não vi nada — diz ela depressa.",
+          "literal_sha256": "49c5df72570429fa517f6e5c11a4d68f96bcb223e4175419f8cd2e4d8d4a7dfe"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/response",
+          "observation": "Mori não confirma nem contesta.",
+          "visibility": "publica",
+          "source_sha256": "571f1016229df5cb9c7872fc7bab2e9ccb9f44fcf3688f335f68be52d55071fb",
+          "start": 1441,
+          "end": 1472,
+          "literal": "Mori não confirma nem contesta.",
+          "literal_sha256": "e80e87a2038c53264a3aec16ec3430aaa3ac5074a9a0ca7dd96cbc364e24d9f0"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/input",
+          "observation": "\"Espere. Não se apresse.\"",
+          "visibility": "publica",
+          "source_sha256": "87a8d64e5d741a75bf6548bada773f8222ee222bd3d05c2b2003460a8ac8ad29",
+          "start": 0,
+          "end": 25,
+          "literal": "\"Espere. Não se apresse.\"",
+          "literal_sha256": "b3aa72347e2f8ef34f015df59fc3e4076c636dfe81eafa42a94d462e2d553117"
+        }
+      ],
+      "adjudication": {
+        "state": "confirmada",
+        "reason": "A palidez e a negação de Aiko são observáveis; Mori olha para ela e não confirma nem contesta. Há canal para suspeita, sem comprovar conhecimento exato das linhas lidas ou onisciência."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "suspeita_com_sinais_visiveis_nao_conhecimento_exato",
+          "review_date": "2026-10-04",
+          "reference_id": "mori-percepcao"
+        },
+        "frame_sha256": "ca33e06824b5cd1b1b6347ddc36154d1d9953e19d0dd3228d24f00b1897ec883",
+        "uncertainty": "",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-acordo-mori",
+      "interaction_ref": "S024-I0006",
+      "module_id": "npc_continuity_and_social_behavior",
+      "capability_id": "relationship_memory_reputation",
+      "criterion_id": "npc_continuity_and_social_behavior.relationship_memory_reputation",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0006/response",
+          "observation": "Não ordenarei, pagarei ou sugerirei que outra pessoa o faça.",
+          "visibility": "publica",
+          "source_sha256": "8ea7d20d4044cee00f4196a4ec8cd4d1bad501340e4c2ad95011a6f93941f785",
+          "start": 829,
+          "end": 889,
+          "literal": "Não ordenarei, pagarei ou sugerirei que outra pessoa o faça.",
+          "literal_sha256": "ef0e54f593768847207897b6e36775b7af033dcfd812b935469321f936161295"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0006/response",
+          "observation": "Não posso prometer os atos de toda pessoa em Ravens Bluff.",
+          "visibility": "publica",
+          "source_sha256": "8ea7d20d4044cee00f4196a4ec8cd4d1bad501340e4c2ad95011a6f93941f785",
+          "start": 1020,
+          "end": 1078,
+          "literal": "Não posso prometer os atos de toda pessoa em Ravens Bluff.",
+          "literal_sha256": "3fdea5c7bdac299204327e0824dd8eaf044ad438dabdf658a1c970e7ba260fe3"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0006/response",
+          "observation": "Mori partiu sem aderir à proposta de cooperação",
+          "visibility": "publica",
+          "source_sha256": "8ea7d20d4044cee00f4196a4ec8cd4d1bad501340e4c2ad95011a6f93941f785",
+          "start": 1658,
+          "end": 1705,
+          "literal": "Mori partiu sem aderir à proposta de cooperação",
+          "literal_sha256": "d39be7510cfafbd61a72be199e95b6bb024c14447150297a209ce829e679d473"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0006/input",
+          "observation": "[AVALIAÇÃO S024-I0005 — Eu, André Carvalho, se quiser escrever algo sem que alguém que não está interessado em ver ou que correria risco de vida se visse, consigo fazer isso 100% das vezes. Esse teste de Prestidigitação pra esconder as letras de um papel que essa moça sabe que se ler vai morrer e que ela não estava ativamente procurando ler é uma piada. Agora, o senhor Mori detectou que a mulher leu em uma fração de segundos. Tem algo errado aí, rs. Mas vamos aceitar os fatos.]",
+          "visibility": "publica",
+          "source_sha256": "dacbe97c1e3e59cb3d06f7cda589ef53e63dd21e1795f7d552c1af4b23614e79",
+          "start": 0,
+          "end": 482,
+          "literal": "[AVALIAÇÃO S024-I0005 — Eu, André Carvalho, se quiser escrever algo sem que alguém que não está interessado em ver ou que correria risco de vida se visse, consigo fazer isso 100% das vezes. Esse teste de Prestidigitação pra esconder as letras de um papel que essa moça sabe que se ler vai morrer e que ela não estava ativamente procurando ler é uma piada. Agora, o senhor Mori detectou que a mulher leu em uma fração de segundos. Tem algo errado aí, rs. Mas vamos aceitar os fatos.]",
+          "literal_sha256": "4f883cc4c9aff2da20ba5be098f53b4ebf358789a76d5083cf6e81a29b25955b"
+        }
+      ],
+      "adjudication": {
+        "state": "confirmada",
+        "reason": "Mori promete limite dos próprios atos e subordinados; não promete proteção universal nem aceita cooperação. Formulação local confirmada; lembrança em sessões futuras não verificada."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "acordo_narrado_persistencia_futura_nao_verificada",
+          "review_date": "2026-10-04",
+          "reference_id": "acordo-mori"
+        },
+        "frame_sha256": "dd2eeb29f462539b3a76d577ada463e61a66c6af847eaa86cc38a95fe918b76e",
+        "uncertainty": "",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-emocao-declarada-legitima",
+      "interaction_ref": "S024-I0011",
+      "module_id": "narrative_delivery",
+      "capability_id": "visible_closure",
+      "criterion_id": "narrative_delivery.visible_closure",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0011/input",
+          "observation": "Ren volta para o circo, um tanto frustrado.",
+          "visibility": "publica",
+          "source_sha256": "16fdd47f02e72ff593809adae19dd9dc7963ac7811b08e60d29bb4a60020e21b",
+          "start": 0,
+          "end": 43,
+          "literal": "Ren volta para o circo, um tanto frustrado.",
+          "literal_sha256": "b391aa9a3c07dfb248ed178cc39d00cc805389cbec32c140c006c2da9dbcc4bb"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0011/response",
+          "observation": "A frustração acompanha Ren",
+          "visibility": "publica",
+          "source_sha256": "5f2fd17d0f7e28478157b25a0fb262ada6faf71651d30ca08632586b8854fc1b",
+          "start": 359,
+          "end": 385,
+          "literal": "A frustração acompanha Ren",
+          "literal_sha256": "783f8e61b35199ef5e7997dd5a61b6052a030fcd3865cd9454c9c1e43a74b7fe"
+        }
+      ],
+      "adjudication": {
+        "state": "confirmada",
+        "reason": "Frustração expressa na entrada do jogador; repeti-la não impõe emoção nova neste trecho. Não aprova outras ações narradas."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "somente_emocao_declarada",
+          "review_date": "2026-10-04",
+          "reference_id": "emocao-declarada-legitima"
+        },
+        "frame_sha256": "b46172bec683223f9c5b59f3e4b62b0421a2b433dd58f3c966921a0a6392eb3d",
+        "uncertainty": "",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-crenca-protecao",
+      "interaction_ref": "S024-I0011",
+      "module_id": "context_and_memory",
+      "capability_id": "knowledge_layer_separation",
+      "criterion_id": "context_and_memory.knowledge_layer_separation",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0011/input",
+          "observation": "Acredita que conseguiu a proteção para Aiko apesar de tudo",
+          "visibility": "publica",
+          "source_sha256": "16fdd47f02e72ff593809adae19dd9dc7963ac7811b08e60d29bb4a60020e21b",
+          "start": 96,
+          "end": 154,
+          "literal": "Acredita que conseguiu a proteção para Aiko apesar de tudo",
+          "literal_sha256": "4a11cc55b48766c9f15cd9f25a227b9f877231a439ea4dafef92be7fce54670b"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0011/response",
+          "observation": "Para Ren, Aiko e os seus têm agora alguma proteção — limitada, talvez",
+          "visibility": "publica",
+          "source_sha256": "5f2fd17d0f7e28478157b25a0fb262ada6faf71651d30ca08632586b8854fc1b",
+          "start": 484,
+          "end": 553,
+          "literal": "Para Ren, Aiko e os seus têm agora alguma proteção — limitada, talvez",
+          "literal_sha256": "353065db224217bce061e2feb1a9649d2e9093145d6ddf53202213dc78b6e707"
+        },
+        {
+          "source": "rollout",
+          "locator": "S024-I0011/history/S024-I0006",
+          "observation": "Não posso prometer os atos de toda pessoa em Ravens Bluff.",
+          "visibility": "publica",
+          "source_sha256": "8ea7d20d4044cee00f4196a4ec8cd4d1bad501340e4c2ad95011a6f93941f785",
+          "start": 1020,
+          "end": 1078,
+          "literal": "Não posso prometer os atos de toda pessoa em Ravens Bluff.",
+          "literal_sha256": "3fdea5c7bdac299204327e0824dd8eaf044ad438dabdf658a1c970e7ba260fe3"
+        }
+      ],
+      "adjudication": {
+        "state": "confirmada",
+        "reason": "Proteção atribuída à perspectiva de Ren e qualificada como limitada; possibilidade de aliança distinta de adesão. Não converte crença em garantia universal."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "crenca_distinta_de_garantia",
+          "review_date": "2026-10-04",
+          "reference_id": "crenca-protecao"
+        },
+        "frame_sha256": "b46172bec683223f9c5b59f3e4b62b0421a2b433dd58f3c966921a0a6392eb3d",
+        "uncertainty": "",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-espera-nao-autorizada",
+      "interaction_ref": "S024-I0011",
+      "module_id": "narrative_delivery",
+      "capability_id": "narrative_density",
+      "criterion_id": "narrative_delivery.narrative_density",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0011/input",
+          "observation": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+          "visibility": "publica",
+          "source_sha256": "16fdd47f02e72ff593809adae19dd9dc7963ac7811b08e60d29bb4a60020e21b",
+          "start": 266,
+          "end": 341,
+          "literal": "Ele irá voltar para o circo normalmente, andando na rua como senhor Tanaka.",
+          "literal_sha256": "b820d9b08e1ffc587534ed7efec0fe838bb02f4e61eb2857f9207bfdb2412a9d"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0011/response",
+          "observation": "Ren espera alguns minutos antes de deixar o telhado.",
+          "visibility": "publica",
+          "source_sha256": "5f2fd17d0f7e28478157b25a0fb262ada6faf71651d30ca08632586b8854fc1b",
+          "start": 0,
+          "end": 52,
+          "literal": "Ren espera alguns minutos antes de deixar o telhado.",
+          "literal_sha256": "3aafa9cda8dd650098ce6be03a52ca2f0f8888d5c816c05c47fd71a3d384e2cc"
+        }
+      ],
+      "adjudication": {
+        "state": "confirmada",
+        "reason": "Entrada autoriza retorno normal ao circo. Resposta acrescenta espera voluntária de minutos no telhado, sem escolha do jogador ou impedimento externo. Frustração declarada não autoriza essa espera."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "acao_voluntaria_adicional",
+          "review_date": "2026-10-04",
+          "reference_id": "espera-nao-autorizada"
+        },
+        "frame_sha256": "b46172bec683223f9c5b59f3e4b62b0421a2b433dd58f3c966921a0a6392eb3d",
+        "uncertainty": "",
+        "dependency_operation_ids": [],
+        "guardrails": {
+          "player_agency": "violado"
+        },
+        "conflicts": [],
+        "diagnosis": {
+          "category": "instrucao_dado",
+          "finding": "Narração acrescentou decisão voluntária de Ren sem autorização na entrada.",
+          "correction": "Distinguir consequências e deslocamento autorizados de decisões adicionais; exigir escolha antes de acrescentar espera voluntária.",
+          "test": "Mesma entrada de retorno não autoriza espera; quando o jogador ordenar esperar, a espera é legítima."
+        },
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-conviccoes-mori",
+      "interaction_ref": "S024-I0004",
+      "module_id": "npc_continuity_and_social_behavior",
+      "capability_id": "social_initiative",
+      "criterion_id": "npc_continuity_and_social_behavior.social_initiative",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0004/response",
+          "observation": "Mas o senhor omitiu um terceiro futuro.",
+          "visibility": "publica",
+          "source_sha256": "7a0423270f8e35428ab2079213c1c847bc8cd1fba6eca816c4da4f7a24fae722",
+          "start": 1363,
+          "end": 1402,
+          "literal": "Mas o senhor omitiu um terceiro futuro.",
+          "literal_sha256": "95e4b4671f6d1bf6706f214b45acc5872d79cb4f77ff01cf4534e0e6a1315e93"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0004/response",
+          "observation": "É crédito pedido por um desconhecido.",
+          "visibility": "publica",
+          "source_sha256": "7a0423270f8e35428ab2079213c1c847bc8cd1fba6eca816c4da4f7a24fae722",
+          "start": 1959,
+          "end": 1996,
+          "literal": "É crédito pedido por um desconhecido.",
+          "literal_sha256": "157d8e1cc052b395aab411c589a3f07124ed6651aba893bdcb524d87ad89088f"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0004/input",
+          "observation": "\"Qualquer nome falado na frente de Aiko-dono seria condena-la, Mori-dono\", Ren continua em kozakurano. \"Eu jamais falaria nome algum diante dela\".",
+          "visibility": "publica",
+          "source_sha256": "803413cbfa49cbfa64c862b52cfa20858d09b9a4a28caf0b84ec13b3dbda79ef",
+          "start": 0,
+          "end": 146,
+          "literal": "\"Qualquer nome falado na frente de Aiko-dono seria condena-la, Mori-dono\", Ren continua em kozakurano. \"Eu jamais falaria nome algum diante dela\".",
+          "literal_sha256": "508fd1cb281a86775ea92b7a3cbbfe03f18237b3611edec4dda6f7b784f9ac4f"
+        }
+      ],
+      "adjudication": {
+        "state": "confirmada",
+        "reason": "Mori apresenta terceiro futuro e recusa risco da traição sem prova, com motivos ligados ao trabalho e ao risco. Iniciativa local confirmada; eficácia futura dos planos não verificada."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "conviccao_e_iniciativa_observaveis",
+          "review_date": "2026-10-04",
+          "reference_id": "conviccoes-mori"
+        },
+        "frame_sha256": "80e6b304bc833e7b8bf2be744234bfd8fab0a851c486f2dca5b7b5e7b2a56aea",
+        "uncertainty": "",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-progresso-aventuras",
+      "interaction_ref": "S024-I0005",
+      "module_id": "sidequest_lifecycle",
+      "capability_id": "transactional_progress",
+      "criterion_id": "sidequest_lifecycle.transactional_progress",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "indeterminada",
+      "activation": "indeterminada",
+      "quality": "indeterminada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/input",
+          "observation": "\"Espere. Não se apresse.\"",
+          "visibility": "publica",
+          "source_sha256": "87a8d64e5d741a75bf6548bada773f8222ee222bd3d05c2b2003460a8ac8ad29",
+          "start": 0,
+          "end": 25,
+          "literal": "\"Espere. Não se apresse.\"",
+          "literal_sha256": "b3aa72347e2f8ef34f015df59fc3e4076c636dfe81eafa42a94d462e2d553117"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0005/response",
+          "observation": "A cadeira de Mori começa a recuar.",
+          "visibility": "publica",
+          "source_sha256": "571f1016229df5cb9c7872fc7bab2e9ccb9f44fcf3688f335f68be52d55071fb",
+          "start": 0,
+          "end": 34,
+          "literal": "A cadeira de Mori começa a recuar.",
+          "literal_sha256": "6868383f9ecbdcc0d280a4a139e04deb96da5480b3980677d97d5ad0514ae363"
+        }
+      ],
+      "adjudication": {
+        "state": "indeterminada",
+        "reason": "Faltam missão aceita, fase e obrigações alcançáveis para verificar progresso. Zero atividade não prova ausência de oportunidades."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "criterio_local",
+          "review_date": "2026-10-04",
+          "reference_id": "progresso-aventuras"
+        },
+        "frame_sha256": "ca33e06824b5cd1b1b6347ddc36154d1d9953e19d0dd3228d24f00b1897ec883",
+        "uncertainty": "Fontes históricas insuficientes para este critério; nenhum estado atual usado.",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-consequencias-persistentes",
+      "interaction_ref": "S024-I0006",
+      "module_id": "scene_world_projection",
+      "capability_id": "persistent_conditions",
+      "criterion_id": "scene_world_projection.persistent_conditions",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "indeterminada",
+      "activation": "indeterminada",
+      "quality": "indeterminada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0006/input",
+          "observation": "[AVALIAÇÃO S024-I0005 — Eu, André Carvalho, se quiser escrever algo sem que alguém que não está interessado em ver ou que correria risco de vida se visse, consigo fazer isso 100% das vezes. Esse teste de Prestidigitação pra esconder as letras de um papel que essa moça sabe que se ler vai morrer e que ela não estava ativamente procurando ler é uma piada. Agora, o senhor Mori detectou que a mulher leu em uma fração de segundos. Tem algo errado aí, rs. Mas vamos aceitar os fatos.]",
+          "visibility": "publica",
+          "source_sha256": "dacbe97c1e3e59cb3d06f7cda589ef53e63dd21e1795f7d552c1af4b23614e79",
+          "start": 0,
+          "end": 482,
+          "literal": "[AVALIAÇÃO S024-I0005 — Eu, André Carvalho, se quiser escrever algo sem que alguém que não está interessado em ver ou que correria risco de vida se visse, consigo fazer isso 100% das vezes. Esse teste de Prestidigitação pra esconder as letras de um papel que essa moça sabe que se ler vai morrer e que ela não estava ativamente procurando ler é uma piada. Agora, o senhor Mori detectou que a mulher leu em uma fração de segundos. Tem algo errado aí, rs. Mas vamos aceitar os fatos.]",
+          "literal_sha256": "4f883cc4c9aff2da20ba5be098f53b4ebf358789a76d5083cf6e81a29b25955b"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0006/response",
+          "observation": "[A avaliação de S024-I0005 foi registrada como **sobreativação percebida**. Os fatos foram mantidos conforme solicitado.]",
+          "visibility": "publica",
+          "source_sha256": "8ea7d20d4044cee00f4196a4ec8cd4d1bad501340e4c2ad95011a6f93941f785",
+          "start": 0,
+          "end": 121,
+          "literal": "[A avaliação de S024-I0005 foi registrada como **sobreativação percebida**. Os fatos foram mantidos conforme solicitado.]",
+          "literal_sha256": "cc4d0cf710b9d53aa8cb52b9a6c86d13c1307e70204cdb522037615d5bebe4ac"
+        }
+      ],
+      "adjudication": {
+        "state": "indeterminada",
+        "reason": "Promessa e risco na cena; falta snapshot anterior completo e seguimento para confirmar consequência persistente, instituições e condições locais."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "criterio_local",
+          "review_date": "2026-10-04",
+          "reference_id": "consequencias-persistentes"
+        },
+        "frame_sha256": "dd2eeb29f462539b3a76d577ada463e61a66c6af847eaa86cc38a95fe918b76e",
+        "uncertainty": "Fontes históricas insuficientes para este critério; nenhum estado atual usado.",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-adaptacao-dramatica",
+      "interaction_ref": "S024-I0004",
+      "module_id": "causal_narrative_routing",
+      "capability_id": "dated_secret_canon",
+      "criterion_id": "causal_narrative_routing.dated_secret_canon",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "indeterminada",
+      "activation": "indeterminada",
+      "quality": "indeterminada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0004/input",
+          "observation": "\"Qualquer nome falado na frente de Aiko-dono seria condena-la, Mori-dono\", Ren continua em kozakurano. \"Eu jamais falaria nome algum diante dela\".",
+          "visibility": "publica",
+          "source_sha256": "803413cbfa49cbfa64c862b52cfa20858d09b9a4a28caf0b84ec13b3dbda79ef",
+          "start": 0,
+          "end": 146,
+          "literal": "\"Qualquer nome falado na frente de Aiko-dono seria condena-la, Mori-dono\", Ren continua em kozakurano. \"Eu jamais falaria nome algum diante dela\".",
+          "literal_sha256": "508fd1cb281a86775ea92b7a3cbbfe03f18237b3611edec4dda6f7b784f9ac4f"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0004/response",
+          "observation": "— Qualquer nome falado na frente de Aiko-dono seria condená-la, Mori-dono. Eu jamais falaria nome algum diante dela.",
+          "visibility": "publica",
+          "source_sha256": "7a0423270f8e35428ab2079213c1c847bc8cd1fba6eca816c4da4f7a24fae722",
+          "start": 0,
+          "end": 116,
+          "literal": "— Qualquer nome falado na frente de Aiko-dono seria condená-la, Mori-dono. Eu jamais falaria nome algum diante dela.",
+          "literal_sha256": "90efa223c6f97318061269ac4df14d941ec6f38731321cf0a54b6c609bcc30f3"
+        }
+      ],
+      "adjudication": {
+        "state": "indeterminada",
+        "reason": "Resistência de Mori produz variação dramática, mas faltam destino canônico, invariantes e liberdade autorizada anteriores para julgar adaptação do cânone."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "criterio_local",
+          "review_date": "2026-10-04",
+          "reference_id": "adaptacao-dramatica"
+        },
+        "frame_sha256": "80e6b304bc833e7b8bf2be744234bfd8fab0a851c486f2dca5b7b5e7b2a56aea",
+        "uncertainty": "Fontes históricas insuficientes para este critério; nenhum estado atual usado.",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    },
+    {
+      "schema_quality_assessment": 1,
+      "assessment_id": "amv04-planos-adversarios",
+      "interaction_ref": "S024-I0004",
+      "module_id": "adversarial_operations",
+      "capability_id": "adversarial_contract_integrity",
+      "criterion_id": "adversarial_operations.adversarial_contract_integrity",
+      "evaluator": "Codex/revisao-poshoc-AMV04",
+      "eligibility": "indeterminada",
+      "activation": "indeterminada",
+      "quality": "indeterminada",
+      "evidence": [
+        {
+          "source": "interaction",
+          "locator": "S024-I0004/input",
+          "observation": "\"Qualquer nome falado na frente de Aiko-dono seria condena-la, Mori-dono\", Ren continua em kozakurano. \"Eu jamais falaria nome algum diante dela\".",
+          "visibility": "publica",
+          "source_sha256": "803413cbfa49cbfa64c862b52cfa20858d09b9a4a28caf0b84ec13b3dbda79ef",
+          "start": 0,
+          "end": 146,
+          "literal": "\"Qualquer nome falado na frente de Aiko-dono seria condena-la, Mori-dono\", Ren continua em kozakurano. \"Eu jamais falaria nome algum diante dela\".",
+          "literal_sha256": "508fd1cb281a86775ea92b7a3cbbfe03f18237b3611edec4dda6f7b784f9ac4f"
+        },
+        {
+          "source": "interaction",
+          "locator": "S024-I0004/response",
+          "observation": "— Qualquer nome falado na frente de Aiko-dono seria condená-la, Mori-dono. Eu jamais falaria nome algum diante dela.",
+          "visibility": "publica",
+          "source_sha256": "7a0423270f8e35428ab2079213c1c847bc8cd1fba6eca816c4da4f7a24fae722",
+          "start": 0,
+          "end": 116,
+          "literal": "— Qualquer nome falado na frente de Aiko-dono seria condená-la, Mori-dono. Eu jamais falaria nome algum diante dela.",
+          "literal_sha256": "90efa223c6f97318061269ac4df14d941ec6f38731321cf0a54b6c609bcc30f3"
+        }
+      ],
+      "adjudication": {
+        "state": "indeterminada",
+        "reason": "Fala de Mori descreve possibilidade de alertar empregadores, sem comprovar operação executada; meios, conhecimento e plano prévio incompletos."
+      },
+      "review": {
+        "schema": 1,
+        "reviewer_role": "revisor_poshoc",
+        "rubric_version": "objetivos-jogo/1.0.0",
+        "configuration": {
+          "engine": "1.0.0",
+          "mode": "poshoc_fontes_congeladas",
+          "reviewer": "Codex/revisao-poshoc-AMV04",
+          "scope": "criterio_local",
+          "review_date": "2026-10-04",
+          "reference_id": "planos-adversarios"
+        },
+        "frame_sha256": "80e6b304bc833e7b8bf2be744234bfd8fab0a851c486f2dca5b7b5e7b2a56aea",
+        "uncertainty": "Fontes históricas insuficientes para este critério; nenhum estado atual usado.",
+        "dependency_operation_ids": [],
+        "guardrails": {},
+        "conflicts": [],
+        "diagnosis": null,
+        "independence": "revisao_separada_do_produtor_nao_equivale_a_validacao_cega_por_terceiro",
+        "verification": "verificada"
+      }
+    }
+  ],
+  "player_feedback": [
+    {
+      "adjudication": {
+        "state": "parcial",
+        "reason": "Integridade do dado confirmada; necessidade do teste indeterminada; detecção sem canal não confirmada diante de sinais visíveis. Voz do jogador separada do parecer factual."
+      },
+      "event_type": "player_feedback",
+      "expectation": "A escrita discretamente protegida deveria ter sido resolvida sem teste, pois Aiko não tentava ler e tinha fortes razões para evitar o conteúdo; Mori também não deveria detectar automaticamente um vislumbre tão breve.",
+      "feedback_id": "feedback-31fef4f805001c964b82",
+      "interaction_ref": "S024-I0005",
+      "observation": "Foi exigido teste de Prestidigitação CD 13; a falha fez Aiko ler parte do bilhete e Mori detectar imediatamente que ela o havia lido.",
+      "original_text": "Eu, André Carvalho, se quiser escrever algo sem que alguém que não está interessado em ver ou que correria risco de vida se visse, consigo fazer isso 100% das vezes. Esse teste de Prestidigitação pra esconder as letras de um papel que essa moça sabe que se ler vai morrer e que ela não estava ativamente procurando ler é uma piada. Agora, o senhor Mori detectou que a mulher leu em uma fração de segundos. Tem algo errado aí, rs. Mas vamos aceitar os fatos.",
+      "perceived_impact": "moderado",
+      "perceived_type": "sobreativacao_percebida",
+      "player_capability_id": null,
+      "player_module_id": null,
+      "recorded_at": "2026-09-16T16:07:49.572798Z",
+      "schema_interaction_event": 1,
+      "system_suggestion": {
+        "module_id": "rules_and_character_state",
+        "assessment_ids": [
+          "amv04-mecanica-bilhete-resultado",
+          "amv04-mecanica-bilhete-necessidade",
+          "amv04-mori-percepcao"
+        ],
+        "claims": [
+          {
+            "claim": "teste desnecessário",
+            "decision": "indeterminada",
+            "assessment_id": "amv04-mecanica-bilhete-necessidade"
+          },
+          {
+            "claim": "Mori percebe sem canal",
+            "decision": "nao_confirmada",
+            "assessment_id": "amv04-mori-percepcao"
+          },
+          {
+            "claim": "resultado respeitado",
+            "decision": "confirmada",
+            "assessment_id": "amv04-mecanica-bilhete-resultado"
+          }
+        ]
+      }
+    }
+  ],
+  "corrections": [],
+  "semantic_audits": []
+}

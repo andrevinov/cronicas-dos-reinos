@@ -1,5 +1,14 @@
 # Matriz de desativação e remoção após o roadmap
 
+**Registro AMV-05 — 2026-10-04:** foi retirada a apresentação de nota operacional
+parcial como aprovação global, junto com pontos bloqueados ou incompatíveis das
+séries. Campos históricos permanecem preservados. As provas substitutas são o
+contrato de apresentação, os testes de domínio e dois testes do DOM em Chrome.
+Expectativas que promoviam manifestação isolada a efeito/guardrail foram
+substituídas por vinculação ao parecer, preservando a proteção factual.
+Nenhum gate do preflight foi desabilitado; suas remoções continuam condicionadas
+a AMV-06/15. [Aceite e limites da AMV-05](amv05-dashboard-e-series.md).
+
 **Data:** 2026-10-04. **Status:** proposta condicional.
 **Execução:** AMV-15, depois das provas de cobertura das tarefas correspondentes.
 

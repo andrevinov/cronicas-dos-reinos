@@ -23,6 +23,10 @@
         <label for="sessionSelect">Sessão avaliada</label>
         <select id="sessionSelect" aria-label="Selecionar sessão"></select>
       </div>
+      <div class="session-picker">
+        <label for="revisionSelect">Pacote desta sessão</label>
+        <select id="revisionSelect" aria-label="Selecionar revisão"></select>
+      </div>
     </header>
 
     <main id="topo" class="container" hidden>
@@ -37,11 +41,11 @@
             <span id="feedbackStatus" class="badge badge-muted">Feedback pendente</span>
           </div>
         </div>
-        <article class="score-panel" aria-label="Nota geral">
+        <article class="score-panel" aria-label="Validade e conclusão">
           <div id="scoreRing" class="score-ring" style="--score: 0">
             <div>
               <strong id="overallScore">—</strong>
-              <span>/ 100</span>
+              <span>Conclusão</span>
             </div>
           </div>
           <div>
@@ -52,26 +56,43 @@
         </article>
       </section>
 
-      <section class="section" aria-labelledby="axesTitle">
+      <section class="section audit-section" aria-labelledby="validityTitle">
+        <h2 id="validityTitle">Validade, cobertura e limites</h2>
+        <div id="validitySummary" aria-live="polite"></div>
+        <div id="coverageSummary" class="metrics-grid"></div>
+        <div id="criticalFindings" class="critical-findings"></div>
+        <details><summary>Fonte e versões desta avaliação</summary><div id="provenanceSummary"></div></details>
+      </section>
+
+      <section class="section" aria-labelledby="reviewsTitle">
+        <h2 id="reviewsTitle">Pareceres por interação e critério</h2>
+        <p>Abra um parecer para consultar a evidência, o diagnóstico e seus limites. Conteúdo reservado aparece apenas por hash.</p>
+        <div id="reviewGrid"></div>
+      </section>
+
+      <details class="section operational-details"><summary>Métricas operacionais parciais · não aprovam a experiência</summary>
+      <p id="partialScore"></p>
+      <section aria-labelledby="axesTitle">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Dimensões comparáveis</p>
-            <h2 id="axesTitle">Onde o sistema sustenta — e onde cede</h2>
+            <p class="eyebrow">Indicadores operacionais</p>
+            <h2 id="axesTitle">Componentes observáveis da operação</h2>
           </div>
           <p>As notas ausentes não viram neutras; os pesos restantes são renormalizados.</p>
         </div>
         <div id="axesGrid" class="axes-grid"></div>
       </section>
+      </details>
 
       <section class="section split-section" aria-label="Tendência e leitura rápida">
         <article class="card trend-card">
           <div class="card-heading">
             <div>
               <p class="eyebrow">Evolução</p>
-              <h2>Progresso entre sessões</h2>
+              <h2>Comparações compatíveis</h2>
             </div>
             <select id="trendMetric" aria-label="Métrica da tendência">
-              <option value="geral">Nota geral</option>
+              <option value="geral">Conclusão global</option>
               <option value="calibracao">Calibração</option>
               <option value="eficacia_integridade">Eficácia</option>
               <option value="confiabilidade">Confiabilidade</option>
@@ -84,7 +105,7 @@
         </article>
         <article class="card insight-card">
           <p class="eyebrow">Leitura rápida</p>
-          <h2>Extremos desta sessão</h2>
+          <h2>Filas de investigação</h2>
           <div id="insights" class="insights"></div>
         </article>
       </section>
@@ -95,7 +116,7 @@
             <p class="eyebrow">Hot path</p>
             <h2 id="metricsTitle">Sinais operacionais</h2>
           </div>
-          <p>Valores da sessão, comparados aos contratos atuais quando existe meta explícita.</p>
+          <p>Recorte completo separado dos turnos narrativos. Metas da entrada congelada; contagens não aprovam qualidade.</p>
         </div>
         <div id="metricsGrid" class="metrics-grid"></div>
       </section>

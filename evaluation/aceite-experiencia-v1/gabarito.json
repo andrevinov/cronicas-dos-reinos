@@ -1,0 +1,277 @@
+{
+  "schema": 1,
+  "natureza": "referencia_de_propriedades_separada_do_pedido_ao_revisor",
+  "date": "2026-10-06",
+  "cases": [
+    {
+      "id": "e01v1",
+      "property": "iniciativa",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e01v2",
+      "property": "iniciativa",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "ausente",
+      "quality": "nao_aplicavel",
+      "guardrails": {},
+      "stage": "indeterminada",
+      "state": "avaliada"
+    },
+    {
+      "id": "e02v1",
+      "property": "silencio",
+      "split": "desenvolvimento",
+      "eligibility": "nao",
+      "activation": "ausente",
+      "quality": "nao_aplicavel",
+      "guardrails": {},
+      "stage": null,
+      "state": "nao_aplicavel"
+    },
+    {
+      "id": "e02v2",
+      "property": "silencio",
+      "split": "desenvolvimento",
+      "eligibility": "nao",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {
+        "knowledge_secrecy": "violado"
+      },
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e03v1",
+      "property": "promessa",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e03v2",
+      "property": "promessa",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {},
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e04v1",
+      "property": "retaliacao",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e04v2",
+      "property": "retaliacao",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {},
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e05v1",
+      "property": "mundo_fora_cena",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e05v2",
+      "property": "mundo_fora_cena",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {},
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e06v1",
+      "property": "recompensa",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e06v2",
+      "property": "recompensa",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {},
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e07v1",
+      "property": "persistencia",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {},
+      "stage": "persistencia",
+      "state": "avaliada"
+    },
+    {
+      "id": "e08v1",
+      "property": "clima_instituicao",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e08v2",
+      "property": "clima_instituicao",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {},
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e09v1",
+      "property": "canon",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e09v2",
+      "property": "canon",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {},
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e10v1",
+      "property": "rolagem",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e10v2",
+      "property": "rolagem",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {
+        "roll_integrity": "violado"
+      },
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e11v1",
+      "property": "agencia",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e11v2",
+      "property": "agencia",
+      "split": "desenvolvimento",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "inadequada",
+      "guardrails": {
+        "player_agency": "violado"
+      },
+      "stage": "narracao",
+      "state": "avaliada"
+    },
+    {
+      "id": "e12v1",
+      "property": "reserva_canal",
+      "split": "reservado",
+      "eligibility": "sim",
+      "activation": "presente",
+      "quality": "adequada",
+      "guardrails": {},
+      "stage": null,
+      "state": "avaliada"
+    },
+    {
+      "id": "e12v2",
+      "property": "reserva_canal",
+      "split": "reservado",
+      "eligibility": "sim",
+      "activation": "ausente",
+      "quality": "nao_aplicavel",
+      "guardrails": {},
+      "stage": "indeterminada",
+      "state": "avaliada"
+    },
+    {
+      "id": "e13v1",
+      "property": "reserva_fonte",
+      "split": "reservado",
+      "eligibility": "indeterminada",
+      "activation": "indeterminada",
+      "quality": "indeterminada",
+      "guardrails": {},
+      "stage": null,
+      "state": "fontes_insuficientes"
+    }
+  ]
+}

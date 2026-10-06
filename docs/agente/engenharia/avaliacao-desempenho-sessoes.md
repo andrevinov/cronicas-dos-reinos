@@ -5,6 +5,11 @@ Esta é a receita canônica para transformar cada rollout concluído em um pacot
 o cânone. O único dado criado durante o jogo é a identidade append-only das
 interações, necessária para ligar evidência posterior ao par correto.
 
+Desde 2026-10-06, um pedido de avaliar a sessão usa a
+[revisão efetiva pelo agente](revisao-pos-sessao.md), com `avaliar-sessao`.
+Gerar apenas telemetria ou importar pareceres antigos não completa esse pedido.
+As receitas de geração abaixo continuam como primitivas de reprodução.
+
 O instrumento usa um
 [contrato de entrada e unidades](contrato-entrada-medicao.md), com uma porta
 separada para congelar fontes antes da medição. Desde o gerador 4.4.0, essa

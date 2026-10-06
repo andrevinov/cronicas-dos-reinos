@@ -362,7 +362,7 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
         self.assertEqual(authoring["falsos_positivos"], 0)
         self.assertEqual(authoring["ativacoes_observadas"], 0)
         self.assertEqual(authoring["versao_implementacao"], "2.0.1")
-        self.assertEqual(authoring["versao_avaliacao"], "4.0.0")
+        self.assertEqual(authoring["versao_avaliacao"], next(item["versao_avaliacao"] for item in json.loads(mod.DEFAULT_CATALOG.read_text(encoding="utf-8"))["modulos"] if item["id"] == "sidequest_authoring"))
         self.assertEqual(authoring["avaliacoes_oportunidade_recebidas"], 0)
         self.assertEqual(authoring["avaliacoes_oportunidade_pontuaveis"], 0)
         self.assertEqual(authoring["aplicabilidade_avaliacao"], "falha_instrumentacao")
@@ -497,25 +497,24 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
         self.assertIsNone(evidence_only["nota_desempenho_provisoria_0a100"])
 
         feedback = by_id["feedback_module"]
-        self.assertEqual(feedback["efeitos_avaliaveis"], 1)
-        self.assertEqual(feedback["nota_eficacia_integridade_0a100"], 0.0)
-        self.assertEqual(feedback["aplicabilidade_avaliacao"], "aplicavel")
-        self.assertEqual(feedback["confianca_amostra_sessao"], "baixa")
-        self.assertNotIn(
-            "nenhuma evidência observável",
-            feedback["principais_problemas_de_ativacao"],
-        )
+        # Manifestação confirmada continua visível; sem parecer de critério,
+        # não inventa denominador de efeito ou nota de experiência (AMV-04).
+        self.assertEqual(feedback["efeitos_avaliaveis"], 0)
+        self.assertIsNone(feedback["nota_eficacia_integridade_0a100"])
+        self.assertEqual(feedback["aplicabilidade_avaliacao"], "evidencia_insuficiente")
+        self.assertEqual(feedback["manifestacoes_confirmadas"], 1)
 
         scene = by_id["scene_module"]
         self.assertEqual(scene["chamadas_detectadas"], 1)
         self.assertEqual(scene["ativacoes_observadas"], 1)
         self.assertEqual(scene["nota_calibracao_0a100"], 100.0)
-        self.assertEqual(scene["nota_eficacia_integridade_0a100"], 0.0)
+        self.assertIsNone(scene["nota_eficacia_integridade_0a100"])
         self.assertGreater(scene["nota_desempenho_provisoria_0a100"], 0.0)
 
         guardrail = by_id["guardrail_module"]
         self.assertIsNone(guardrail["nota_desempenho_provisoria_0a100"])
-        self.assertIn("guardrail(s) confirmado(s)", guardrail["principais_problemas_de_ativacao"])
+        self.assertNotIn("guardrail(s) confirmado(s)", guardrail["principais_problemas_de_ativacao"])
+        self.assertEqual(guardrail["manifestacoes_confirmadas"], 1)
 
         scorecard = mod._scorecard_v2(
             "022",
@@ -527,12 +526,9 @@ class SessionPerformanceEvaluationTest(unittest.TestCase):
             targets,
             [],
         )
-        self.assertEqual(scorecard["status_avaliacao"], "comprometida")
-        self.assertEqual(scorecard["manifestacoes"]["guardrails_confirmados"], 1)
-        self.assertEqual(
-            scorecard["violacoes_criticas"][0]["feedback_id"],
-            "feedback-guardrail",
-        )
+        self.assertEqual(scorecard["status_avaliacao"], "provisoria")
+        self.assertEqual(scorecard["manifestacoes"]["guardrails_confirmados"], 0)
+        self.assertEqual(scorecard["violacoes_criticas"], [])
 
         delivery = by_id["narrative_delivery"]
         self.assertEqual(delivery["auditorias_semanticas"], 1)

@@ -186,7 +186,7 @@ def _hot_prepare(
             "--acao, --tier ou --periculosidade. Elenco conhecido usa --participante."
         )
     try:
-        planned = _stay.prepare(Path(repo), scene_id=scene_id, place=place, now=now)
+        planned = _world_projection.prepare_permanence(Path(repo), scene_id=scene_id, place=place, now=now)
     except _stay.SpatialPermanenceError as exc:
         raise _core.CronicaError(f"NV15: {exc}") from exc
     public = planned["publico"]
@@ -248,6 +248,7 @@ def _hot_prepare(
         "fontes_lidas": public.get("fontes_lidas") or [],
         "proximo_passo": {},
     }
+    result["cobertura_avaliacao_modular"] = planned["cobertura_avaliacao_modular"]
     decorated = _hot._decorate(result, reactive=False)
     decorated["reativa_espacial"] = True
     return decorated

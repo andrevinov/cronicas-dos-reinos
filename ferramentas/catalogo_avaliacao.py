@@ -256,6 +256,15 @@ def validate_catalog_v2(catalog: dict[str, Any]) -> None:
     if (regression_ids | extension_ids) & set(module_ids):
         raise EvaluationCatalogError("cenário/regressão não pode ser módulo de primeira classe")
 
+    if __package__:
+        from .objetivos_avaliacao import validate_objectives
+    else:
+        from objetivos_avaliacao import validate_objectives
+    try:
+        validate_objectives(catalog)
+    except (ValueError, KeyError, TypeError) as exc:
+        raise EvaluationCatalogError(f"contratos de objetivo inválidos: {exc}") from exc
+
 
 def validate_guardrails(data: dict[str, Any], catalog: dict[str, Any]) -> None:
     if data.get("schema_catalogo_guardrails") != 1:
@@ -503,6 +512,8 @@ def require_module_comparable(
 
 def validate_defaults() -> None:
     catalog = load_json(DEFAULT_CATALOG)
+    if "contrato_objetivos_avaliacao" not in catalog:
+        raise EvaluationCatalogError("catálogo instalado precisa preservar os contratos de objetivo")
     guardrails = load_json(DEFAULT_GUARDRAILS)
     policy = load_json(DEFAULT_SERIES_POLICY)
     releases = load_json(DEFAULT_RELEASES)

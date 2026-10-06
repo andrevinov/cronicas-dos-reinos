@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "date": "2026-10-06",
+  "scope": "avaliador_antecipado_e_fluxo_de_revisao_pelo_agente",
+  "testes_direcionados": {
+    "executados": 66,
+    "resultado": "aprovado",
+    "comando": "poetry run python -m unittest tests.test_revisao_sessao tests.test_filas_prioridade_avaliacao tests.test_experiencia_avaliacao tests.test_apresentacao_avaliacao tests.test_qualidade_interacao_avaliacao tests.test_integracao_entrada_medicao tests.test_avaliacao_desempenho_sessao tests.test_dashboard_avaliacao tests.test_agregacao_avaliacao tests.test_poetry_setup -q"
+  },
+  "navegador": {
+    "executados": 2,
+    "resultado": "aprovado",
+    "comando": "poetry run python -m unittest tests.test_dashboard_renderizado -q",
+    "sandbox": "necessario_servidor_local_fora_do_sandbox"
+  },
+  "revisao_executada": {
+    "episodios": 24,
+    "verificacoes": 168,
+    "referencia": "resultado-revisao-executada.json",
+    "limite": "Participação do mesmo agente na autoria e revisão; não é validação cega."
+  },
+  "schemas": [
+    "avaliacoes-qualidade.json",
+    "adjudicacoes-modulares.json",
+    "proveniencia-medicao.json"
+  ],
+  "historicos_preservados": {
+    "originais_024": 14,
+    "revisao_amv05": 14,
+    "hashes_conferidos": true
+  },
+  "publicacao": {
+    "path": "evaluation/sessions/024/revisoes/amv14a-final",
+    "receipt_sha256": "e9dbe4a968e27c267377781aa96f46fd91a36a5e61d4749297868e13ce2a7ee1",
+    "scope": "parcial_declarado",
+    "workflow": {
+      "blocked_reviews": 0,
+      "insufficient_sources": 5,
+      "method_limit": "Revisão pelo agente, não validação cega por terceiro nem aprovação longitudinal.",
+      "not_applicable": 0,
+      "request_id": "9d862a3f2bbeb0a194b97b0666bd12d2fb471bc3340cb3a9a74204fbe5ff7a2a",
+      "reviewer": {
+        "configuration": {
+          "mode": "revalidacao_de_pareceres_historicos",
+          "novos_julgamentos": false,
+          "origem": "AMV04"
+        },
+        "identity": "Codex/revalidacao-AMV14A-2026-10-06",
+        "role": "revisor_poshoc"
+      },
+      "schema": 1,
+      "scope": "parcial_declarado",
+      "status": "revisada",
+      "units_reviewed": 13,
+      "units_selected": 13
+    },
+    "fila_experiencia": [
+      "narrative_delivery"
+    ],
+    "source_sha256": "8be6e5f5068f3dbf21abdb02339f7d5499b854abdc0efd1d744b8e5e9965b55f",
+    "codigo_e_interface_sha256": {
+      "ferramentas/revisao_sessao.py": "693ea84257e7b2e8e03ed36d08ac7f7e6f5f746e8bae8116ec7112b1759315b0",
+      "ferramentas/experiencia_avaliacao.py": "0d133d1755a85fbebcfae22e1cc1c3a56056141dad18ebeb1eb6460e4c6ffa5b",
+      "ferramentas/gerar-avaliacao-sessao.py": "38f68e4bdb3bf7a455837517d0e7dda19faccb5683255d2102256658e6be3b76",
+      "ferramentas/verificar_revisao_experiencia.py": "8b26240a972d7d13f647679705ede3e781359e0196d4649726f17b4d0fc05106",
+      "evaluation/dashboard/app.js": "8a36cbc0200b0436dd486dd21678b9f62ff83ccfaccc0692af2a832701003b41"
+    }
+  },
+  "preflight_alterado_nesta_entrega": false,
+  "suíte_integral_e_preflight": "não executados nesta entrega; obrigatórios antes de merge",
+  "api_externa": "nenhuma chamada adicional",
+  "limites": [
+    "Aceite integrado dos módulos de jogo pendente",
+    "Não confirma generalização do revisor",
+    "024 revalidada parcialmente, sem novos julgamentos",
+    "Hipótese causal depende de reprodução para confirmação"
+  ]
+}

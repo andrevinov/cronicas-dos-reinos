@@ -25,6 +25,9 @@
     "estado": {"enum": ["preparacao", "producao", "descontinuado"]},
     "padrao_producao": {"const": true},
     "natureza": {"type": "string", "minLength": 1},
+    "contrato_objetivos_avaliacao": {
+      "$ref": "#/$defs/contratoObjetivos"
+    },
     "contrato_cobertura_fail_closed": {
       "type": "object",
       "additionalProperties": false,
@@ -92,7 +95,186 @@
       "items": {"$ref": "#/$defs/migracao"}
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "contrato_objetivos_avaliacao"
+        ]
+      },
+      "then": {
+        "properties": {
+          "modulos": {
+            "items": {
+              "properties": {
+                "subcapacidades": {
+                  "items": {
+                    "required": [
+                      "contrato_objetivo"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
+    "contratoObjetivos": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "versao",
+        "estado",
+        "dimensoes",
+        "sucesso_operacional_nao_confirma_experiencia",
+        "oportunidade_independe_de_recibo",
+        "guardrail_fora_da_media",
+        "ausencia_de_fonte_nao_e_negativa",
+        "sem_evidencia",
+        "amostragem"
+      ],
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "versao": {
+          "const": "1.0.0"
+        },
+        "estado": {
+          "enum": [
+            "especificado_aguardando_consumo",
+            "consumido_em_revisao_poshoc"
+          ]
+        },
+        "dimensoes": {
+          "type": "array",
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "operacao",
+              "oportunidade",
+              "efeito_persistente",
+              "experiencia"
+            ]
+          }
+        },
+        "sucesso_operacional_nao_confirma_experiencia": {
+          "const": true
+        },
+        "oportunidade_independe_de_recibo": {
+          "const": true
+        },
+        "guardrail_fora_da_media": {
+          "const": true
+        },
+        "ausencia_de_fonte_nao_e_negativa": {
+          "const": true
+        },
+        "sem_evidencia": {
+          "const": "indeterminado_fora_do_denominador"
+        },
+        "amostragem": {
+          "const": {
+            "provisoria": "uma_unidade_confirmada_sem_afirmacao_longitudinal",
+            "sessoes_comparaveis_minimas": 3,
+            "oportunidades_por_modulo_minimas": 10,
+            "criterio_raro": "episodio_controlado_nao_substitui_ocorrencia_real",
+            "natureza": "limite_de_processo_nao_garantia_estatistica"
+          }
+        }
+      }
+    },
+    "objetivoCapacidade": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "criterio_id",
+        "responsavel",
+        "unidade",
+        "objetivo_jogo",
+        "gatilho_legitimo",
+        "fontes_necessarias",
+        "resultado_verificavel",
+        "negativa_valida",
+        "falha_observavel",
+        "dimensoes",
+        "guardrails",
+        "sem_evidencia"
+      ],
+      "properties": {
+        "criterio_id": {
+          "$ref": "#/$defs/texto"
+        },
+        "responsavel": {
+          "$ref": "#/$defs/texto"
+        },
+        "objetivo_jogo": {
+          "$ref": "#/$defs/texto"
+        },
+        "gatilho_legitimo": {
+          "$ref": "#/$defs/texto"
+        },
+        "resultado_verificavel": {
+          "$ref": "#/$defs/texto"
+        },
+        "negativa_valida": {
+          "$ref": "#/$defs/texto"
+        },
+        "falha_observavel": {
+          "$ref": "#/$defs/texto"
+        },
+        "unidade": {
+          "enum": [
+            "turno",
+            "cena",
+            "fronteira",
+            "sessao",
+            "evento"
+          ]
+        },
+        "fontes_necessarias": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/texto"
+          }
+        },
+        "guardrails": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/texto"
+          }
+        },
+        "dimensoes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "operacao",
+              "oportunidade",
+              "efeito_persistente",
+              "experiencia"
+            ]
+          },
+          "contains": {
+            "const": "oportunidade"
+          }
+        },
+        "sem_evidencia": {
+          "const": "indeterminado_fora_do_denominador"
+        }
+      }
+    },
     "texto": {"type": "string", "minLength": 1},
     "modulo": {
       "type": "object",
@@ -182,6 +364,9 @@
       "additionalProperties": false,
       "required": ["id", "responsabilidade", "aliases_v1"],
       "properties": {
+        "contrato_objetivo": {
+          "$ref": "#/$defs/objetivoCapacidade"
+        },
         "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
         "responsabilidade": {"$ref": "#/$defs/texto"},
         "aliases_v1": {

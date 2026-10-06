@@ -81,8 +81,16 @@
         "module_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
         "fase": {"type": "string", "minLength": 1},
         "objeto_ref": {"type": "string", "pattern": "^[a-z0-9_]+:sha256:[0-9a-f]{64}$"},
-        "operation_state": {"const": "sucesso"},
-        "receipt_state": {"enum": ["completo", "ausente", "incompleto", "duplicado"]},
+        "atividade_logica_id": {"type": "string", "pattern": "^atividade:[0-9a-f]{64}$"},
+        "reutilizada": {"type": "boolean"},
+        "fonte_expectativa": {"enum": ["invocacao", "ticket", "gatilho_observado", "invocacao_hook", "compatibilidade_legada_sem_gatilho_independente"]},
+        "contrato_atividades": {"type": ["string", "null"]},
+        "versao_produtor": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "ticket_ref": {"type": ["string", "null"], "pattern": "^ticket_id:sha256:[0-9a-f]{64}$"},
+        "interacao_ref": {"type": ["string", "null"]},
+        "negativa": {"type": ["object", "null"], "additionalProperties": false, "required": ["causa", "escopo"], "properties": {"causa": {"type": "string", "minLength": 1}, "escopo": {"type": "string", "minLength": 1}}},
+        "operation_state": {"enum": ["sucesso", "evidencia_insuficiente"]},
+        "receipt_state": {"enum": ["completo", "ausente", "incompleto", "duplicado", "contraditorio"]},
         "assessment_state": {
           "enum": [
             "aplicavel",
@@ -90,7 +98,8 @@
             "evidencia_insuficiente",
             "falha_instrumentacao_recibo_ausente",
             "falha_instrumentacao_recibo_incompleto",
-            "falha_instrumentacao_recibo_duplicado"
+            "falha_instrumentacao_recibo_duplicado",
+            "falha_instrumentacao_recibo_contraditorio"
           ]
         },
         "applicability": {
@@ -129,7 +138,7 @@
         "fase": {"type": "string", "minLength": 1},
         "applicability": {"enum": ["aplicavel", "nao_aplicavel", "indeterminado"]},
         "units": {"type": "integer", "minimum": 0},
-        "reason": {"const": "sem_atividade_compativel_na_operacao"}
+        "reason": {"enum": ["sem_atividade_compativel_na_operacao", "objeto_divergente", "ticket_divergente", "vinculo_invalido", "interacao_divergente"]}
       }
     }
   }

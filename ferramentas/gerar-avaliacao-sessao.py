@@ -25,6 +25,8 @@ from statistics import mean, median
 from typing import Any, Iterable
 
 from ferramentas.catalogo_avaliacao import comparability_key, evaluation_series
+from ferramentas.experiencia_avaliacao import RUBRIC_VERSION, scoreable as _quality_scoreable
+from ferramentas import apresentacao_avaliacao as presentation
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,7 +36,7 @@ DEFAULT_TARGETS = ROOT / "evaluation" / "metas-avaliacao-v2.json"
 DEFAULT_BASELINE = ROOT / "baseline" / "rollout-2026-08-15.json"
 PACKAGE_SCHEMA = 1
 PACKAGE_SCHEMA_V2 = 2
-GENERATOR_VERSION = "4.4.0"
+GENERATOR_VERSION = "4.9.0"
 AGGREGATION_SCHEMA = 1
 PRIORITY_QUEUES_SCHEMA = 1
 PROVENANCE_SCHEMA = 1
@@ -45,6 +47,11 @@ CRITICAL_EVALUATOR_FILES = frozenset(
         "ferramentas/gerar-avaliacao-sessao.py",
         "ferramentas/analisar-rollout.py",
         "ferramentas/_analisar_rollout_core.py",
+        "ferramentas/resultados_operacoes.py",
+        "ferramentas/atividades_modulares.py",
+        "ferramentas/experiencia_avaliacao.py",
+        "ferramentas/revisao_sessao.py",
+        "ferramentas/apresentacao_avaliacao.py",
         "ferramentas/entrada_medicao.py",
         "ferramentas/interacoes_narrativas.py",
     }
@@ -486,7 +493,7 @@ def _turn_class(item: dict[str, Any], active_modules: list[str]) -> str:
         return "autoria_ou_terminal"
     if active & {"batch_world_boundary", "liveness_boundary"}:
         return "fronteira_temporal"
-    if int((item.get("tool_categories") or {}).get("dice", 0)):
+    if int((item.get("operation_categories") or item.get("tool_categories") or {}).get("dice", 0)):
         return "mecanica"
     return "avanco_comum"
 
@@ -508,7 +515,7 @@ def _turn_rows(
         active = sorted(module for module, count in calls.items() if int(count or 0) > 0)
         phases = item.get("orchestration_phases") or {}
         decisions = item.get("sidequest_opportunity_decisions") or {}
-        categories = item.get("tool_categories") or {}
+        categories = item.get("operation_categories") or item.get("tool_categories") or {}
         rows.append(
             {
                 "ordinal": int(item.get("ordinal") or index + 1),
@@ -811,6 +818,7 @@ def _module_summary(
                 "nota_fluidez_exposta_0a100": scores["fluidez"],
                 "nota_jogador_0a100": scores["jogador"],
                 "nota_desempenho_provisoria_0a100": performance,
+                "natureza_nota_desempenho": "indicadores_operacionais_nao_confirmam_experiencia",
                 "faixa_desempenho": _status(performance, targets),
                 "prioridade_rank": priority_rank,
                 "prioridade_faixa": manual.get("prioridade_faixa") or "N/D",
@@ -1107,6 +1115,33 @@ def _rebuild_session_index(sessions_dir: Path) -> None:
                 "caminho": directory.name,
             }
         )
+        entry = entries[-1]
+        summary_path = directory / "resumo-modulos.json"
+        rows = _load_json(summary_path).get("modulos", []) if summary_path.is_file() else []
+        entry.update(presentation.index_view(manifest, scorecard, rows))
+        revisions = []
+        revisions_dir = directory / "revisoes"
+        for revision_dir in sorted(revisions_dir.iterdir()) if revisions_dir.is_dir() else []:
+            if not (revision_dir / "manifest.json").is_file():
+                continue
+            revision_manifest = _load_json(revision_dir / "manifest.json")
+            link = revision_manifest.get("revisao") or {}
+            if (revision_manifest.get("sessao_id") != session_id or
+                    link.get("manifest_original_sha256") != _sha256(manifest_path) or
+                    link.get("pacote_original_sha256") != presentation.digest({
+                        p.name: _sha256(p) for p in directory.iterdir() if p.is_file()})):
+                continue
+            revision_score = _load_json(revision_dir / "scorecard.json")
+            revision_rows = _load_json(revision_dir / "resumo-modulos.json")["modulos"]
+            revisions.append({**entry, **presentation.index_view(revision_manifest, revision_score, revision_rows),
+                              "caminho": str(revision_dir.relative_to(sessions_dir)),
+                              "revisao_id": revision_dir.name,
+                              "status_avaliacao": revision_score.get("status_avaliacao"),
+                              "nota_geral_0a100": None,
+                              "eixos": revision_score.get("eixos"),
+                              "indicadores_globais": revision_score.get("indicadores_globais"),
+                              "chave_comparabilidade": list(comparability_key(revision_manifest, policy))})
+        entry["revisoes"] = revisions
     entries.sort(key=lambda item: (str(item["sessao_id"]).zfill(12), str(item["sessao_id"])))
     _write_json(
         sessions_dir / "index.json",
@@ -1146,7 +1181,7 @@ def _interaction_quality_metrics(
     confirmed = [
         item
         for item in assessments
-        if (item.get("adjudication") or {}).get("state") == "confirmada"
+        if _quality_scoreable(item)
     ]
     matrix = {
         "verdadeiro_positivo": 0,
@@ -1193,6 +1228,8 @@ def _interaction_quality_metrics(
     )
     opportunity_score = _score_average((recall, specificity))
     quality_score = _ratio_score(sum(quality_values), len(quality_values))
+    critical = [item["assessment_id"] for item in confirmed
+                if "violado" in item.get("review", {}).get("guardrails", {}).values()]
     return {
         "recebidas": len(assessments),
         "confirmadas": len(confirmed),
@@ -1219,7 +1256,10 @@ def _interaction_quality_metrics(
         "nota_qualidade_0a100": quality_score,
         "nota_experiencia_0a100": _score_average(
             (opportunity_score, quality_score)
-        ),
+        ) if not critical else None,
+        "violacoes_guardrail": critical,
+        "proveniencia_legada_nao_revalidada": sum(item.get("review") is None for item in assessments),
+        "revisoes_com_fontes_verificadas": sum(item.get("review", {}).get("verification") == "verificada" for item in assessments),
     }
 
 
@@ -1305,14 +1345,24 @@ def _measurement_conclusion(
         "erro_detector": "erro_detector",
     }
     grouped: dict[str, list[str]] = {state: [] for state in outcome_codes}
+    scope: dict[str, set[str]] = {state: set() for state in outcome_codes}
+    auxiliary_limitations = []
     for operation in (report.get("operation_outcomes") or {}).get("operations") or []:
         state = str(operation.get("state") or "")
         if state in grouped:
-            grouped[state].append(str(operation.get("operation_id") or "sem_id"))
+            identifier = str(operation.get("operation_id") or "sem_id")
+            # Pacotes antigos não tinham escopo: preservam a regra conservadora.
+            if operation.get("blocks_dependent_conclusion", True) or state == "erro_detector":
+                grouped[state].append(identifier)
+                scope[state].update(operation.get("module_ids") or [])
+            else:
+                auxiliary_limitations.append({"codigo": outcome_codes[state], "escopo": f"operacao:{identifier}", "gravidade": "limitacao",
+                    "mensagem": "Resultado auxiliar inconclusivo; não invalida conclusões independentes.", "module_ids": operation.get("module_ids") or []})
     blockers = [
         {
             "codigo": outcome_codes[state],
             "operation_ids": sorted(operation_ids),
+            "module_ids": sorted(scope[state]),
         }
         for state, operation_ids in grouped.items()
         if operation_ids
@@ -1336,7 +1386,7 @@ def _measurement_conclusion(
         item
         for item in provenance.get("diagnosticos") or []
         if item.get("gravidade") == "limitacao"
-    ]
+    ] + auxiliary_limitations
     return {
         "schema_conclusao_medicao": CONCLUSION_SCHEMA,
         "permitida": not blockers,
@@ -1345,7 +1395,7 @@ def _measurement_conclusion(
         "bloqueios": blockers,
         "limitacoes": limitations,
         "regra": (
-            "qualquer correlação ambígua, resultado ausente, evidência insuficiente, "
+            "correlação ambígua, resultado ausente ou evidência insuficiente de uma dependência, "
             "erro do detector, falha de instrumentação ou entrada não congelada "
             "impede conclusão dependente; fatos observados permanecem consultáveis"
         ),
@@ -1367,7 +1417,13 @@ def _merge_interactions(
         result.append(merged)
         if reference:
             by_ref.pop(str(reference), None)
-    result.extend(by_ref.values())
+    for item in by_ref.values():
+        # O registro histórico pode ultrapassar o recorte do rollout. Sua
+        # existência não prova resposta, recibo ou referência visível no recorte.
+        item["observacao_recorte"] = "apenas_registro_historico"
+        for key in ("visible_reference_count", "visible_exactly_once", "receipt_present", "response_present"):
+            item[key] = None
+        result.append(item)
     return result
 
 
@@ -1423,6 +1479,8 @@ def _module_summary_v2(
         coverage_duplicate_receipts = int(
             coverage_gate.get("duplicate_receipts") or 0
         )
+        coverage_orphan_receipts = int(coverage_gate.get("orphan_receipts") or 0)
+        coverage_contradictory_receipts = int(coverage_gate.get("contradictory_receipts") or 0)
         coverage_applicable_units = int(
             coverage_gate.get("applicable_units") or 0
         )
@@ -1484,6 +1542,9 @@ def _module_summary_v2(
             for item in manifestations
             if item.get("perceived_type") == "possivel_guardrail"
             and (item.get("adjudication") or {}).get("state") == "confirmada"
+            and any(_quality_scoreable(assessment) and "violado" in assessment.get("review", {}).get("guardrails", {}).values()
+                    and assessment["assessment_id"] in (item.get("system_suggestion") or {}).get("assessment_ids", [])
+                    for assessment in quality_assessments)
         ]
         module_quality_assessments = [
             item
@@ -1491,23 +1552,13 @@ def _module_summary_v2(
             if item.get("module_id") == module_id
         ]
         quality_metrics = _interaction_quality_metrics(module_quality_assessments)
-        missed_opportunities = sum(
-            item.get("perceived_type") == "oportunidade_percebida" for item in confirmed
-        )
-        if not uses_objective_opportunity:
-            eligible += missed_opportunities
-            false_negative += missed_opportunities
-            false_positive += sum(
-                item.get("perceived_type")
-                in {"sobreativacao_percebida", "ativacao_inadequada"}
-                for item in confirmed
-            )
-        effects.extend(
-            item.get("perceived_type") == "boa_ativacao"
-            for item in confirmed
-            if item.get("perceived_type")
-            in {"boa_ativacao", "efeito_incorreto", "timing", "continuidade"}
-        )
+        criterion_reviews = [{"criterio_id": capability["contrato_objetivo"]["criterio_id"],
+                              "objetivo_jogo": capability["contrato_objetivo"]["objetivo_jogo"],
+                              "metricas": _interaction_quality_metrics([item for item in module_quality_assessments
+                                  if item["criterion_id"] == capability["contrato_objetivo"]["criterio_id"]])}
+                             for capability in module.get("subcapacidades", []) if capability.get("contrato_objetivo")]
+        # A percepção preserva a voz do jogador. A decisão factual pertence ao
+        # parecer por critério, contado uma única vez em quality_metrics.
 
         module_semantic_audits = []
         semantic_effects: list[bool] = []
@@ -1671,12 +1722,15 @@ def _module_summary_v2(
         )
         coverage_instrumentation_failure = bool(
             uses_fail_closed_coverage
-            and coverage_activity_units > 0
             and (
+                coverage_orphan_receipts > 0
+                or coverage_contradictory_receipts > 0
+                or (coverage_activity_units > 0 and (
                 coverage_missing_receipts > 0
                 or coverage_incomplete_receipts > 0
                 or coverage_duplicate_receipts > 0
                 or not coverage_complete
+                ))
             )
         )
         coverage_not_applicable = bool(
@@ -1775,6 +1829,10 @@ def _module_summary_v2(
         else:
             activation_label = "N/D"
         problems: list[str] = []
+        if quality_metrics["oportunidades_perdidas"]:
+            problems.append(f"{quality_metrics['oportunidades_perdidas']} omissão(ões) de experiência confirmada(s), inclusive sem chamada do módulo")
+        if quality_metrics["qualidade_inadequada"]:
+            problems.append(f"{quality_metrics['qualidade_inadequada']} resultado(s) de experiência inadequado(s) com adjudicação")
         if false_negative:
             problems.append(f"{false_negative} oportunidade(s) elegível(is) sem ativação confirmada")
         if false_positive:
@@ -1809,8 +1867,10 @@ def _module_summary_v2(
         if coverage_instrumentation_failure:
             problems.append(
                 f"{coverage_missing_receipts} recibo(s) de cobertura ausente(s), "
-                f"{coverage_incomplete_receipts} incompleto(s) e "
-                f"{coverage_duplicate_receipts} duplicado(s) em "
+                f"{coverage_incomplete_receipts} incompleto(s), "
+                f"{coverage_duplicate_receipts} duplicado(s), "
+                f"{coverage_contradictory_receipts} contraditório(s) e "
+                f"{coverage_orphan_receipts} órfão(s) em "
                 f"{coverage_activity_units} atividade(s) esperada(s)"
             )
         elif coverage_not_applicable:
@@ -1901,6 +1961,10 @@ def _module_summary_v2(
             {
                 "modulo": module_id,
                 "responsabilidade": module.get("responsabilidade"),
+                "experiencia_por_criterio": criterion_reviews,
+                "estado_experiencia": "violacao_guardrail" if quality_metrics["violacoes_guardrail"] else "provisoria" if quality_metrics["pontuaveis"] else "nao_avaliavel",
+                "violacoes_guardrail_experiencia": quality_metrics["violacoes_guardrail"],
+                "limite_amostra_experiencia": "Revisão local; não confirma desempenho longitudinal (3 sessões comparáveis e 10 oportunidades).",
                 "visibilidade_jogador": module.get("visibilidade_jogador"),
                 "rotulo_jogador": module.get("rotulo_jogador"),
                 "versao_implementacao": module.get("versao_implementacao"),
@@ -1983,6 +2047,8 @@ def _module_summary_v2(
                 "recibos_cobertura_duplicados": (
                     coverage_duplicate_receipts if uses_fail_closed_coverage else None
                 ),
+                "recibos_cobertura_orfaos": coverage_orphan_receipts if uses_fail_closed_coverage else None,
+                "recibos_cobertura_contraditorios": coverage_contradictory_receipts if uses_fail_closed_coverage else None,
                 "unidades_avaliativas_aplicaveis": (
                     coverage_applicable_units if uses_fail_closed_coverage else None
                 ),
@@ -2070,10 +2136,10 @@ def _module_summary_v2(
                 "manifestacoes_jogador": len(manifestations),
                 "manifestacoes_confirmadas": len(confirmed),
                 "aplicabilidade_avaliacao": (
-                    "sem_atividade"
-                    if uses_fail_closed_coverage and coverage_activity_units == 0
-                    else "falha_instrumentacao"
+                    "falha_instrumentacao"
                     if coverage_instrumentation_failure
+                    else "sem_atividade"
+                    if uses_fail_closed_coverage and coverage_activity_units == 0
                     else "nao_aplicavel"
                     if coverage_not_applicable
                     else "indeterminado"
@@ -2132,6 +2198,8 @@ def _instrumentation_repair_counts(row: dict[str, Any]) -> tuple[int, int]:
                 "recibos_cobertura_ausentes",
                 "recibos_cobertura_incompletos",
                 "recibos_cobertura_duplicados",
+                "recibos_cobertura_orfaos",
+                "recibos_cobertura_contraditorios",
             )
         )
         return affected, expected
@@ -2182,6 +2250,15 @@ def _assign_priority_queues(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             if experience is not None and quality_denominator > 0
             else None
         )
+        critical = len(row.get("violacoes_guardrail_experiencia") or [])
+        missed = int(_number(row.get("oportunidades_qualitativas_perdidas")) or 0)
+        bad_quality = int(_number(row.get("qualidade_interacao_inadequada")) or 0)
+        # Guardrail fica fora da média, mas nunca fora da fila. Nota 100 em uma
+        # amostra não constitui problema; falta de revisão fica fora desta fila.
+        if critical:
+            experience_score = 100.0
+        elif experience_score is not None and experience_score <= 0 and not (missed or bad_quality):
+            experience_score = None
         attributed_tokens = int(
             _number(row.get("tokens_totais_atribuidos_fracionados")) or 0
         )
@@ -2200,6 +2277,7 @@ def _assign_priority_queues(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "fila_experiencia_rank": None,
                 "pontuacao_prioridade_experiencia_0a100": experience_score,
                 "fila_experiencia_denominador_adjudicado": quality_denominator,
+                "fila_experiencia_violacoes_criticas": critical,
                 "fila_investigacao_custo_rank": None,
                 "custo_atribuicao_contabil": {
                     "metodo": "divisao_inteira_igual_entre_modulos_pais_observados_no_turno_com_classe_controle_separada",
@@ -2241,6 +2319,7 @@ def _assign_priority_queues(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
             if row.get("pontuacao_prioridade_experiencia_0a100") is not None
         ),
         key=lambda row: (
+            -int(row.get("fila_experiencia_violacoes_criticas") or 0),
             -float(row["pontuacao_prioridade_experiencia_0a100"]),
             -int(row["fila_experiencia_denominador_adjudicado"]),
             str(row.get("modulo") or ""),
@@ -2291,8 +2370,8 @@ def _priority_queues_summary(module_rows: list[dict[str, Any]]) -> dict[str, Any
         "problemas_experiencia": {
             "module_ids": ranked_ids("fila_experiencia_rank"),
             "regra": (
-                "somente qualidade por interação adjudicada; prioridade é "
-                "100 menos a nota de experiência"
+                "violações críticas primeiro; depois falhas por interação adjudicadas; "
+                "nota 100 sem falha e falta de revisão não criam problema"
             ),
         },
         "investigacao_custo": {
@@ -2400,6 +2479,12 @@ def _scorecard_v2(
     }
     overall = _weighted_score(axes, targets.get("pesos_sessao") or {})
     critical = list(validity.get("violacoes_criticas") or [])
+    for assessment in ledger.get("quality_assessments") or []:
+        if _quality_scoreable(assessment):
+            for guardrail, state in assessment.get("review", {}).get("guardrails", {}).items():
+                if state == "violado":
+                    critical.append({"guardrail": guardrail, "assessment_id": assessment["assessment_id"],
+                                     "interaction_ref": assessment["interaction_ref"], "module_id": assessment["module_id"]})
     for audit in ledger.get("semantic_audits") or []:
         for guardrail, state in (audit.get("guardrails") or {}).items():
             if state == "violado":
@@ -2409,6 +2494,9 @@ def _scorecard_v2(
         for item in ledger.get("player_feedback") or []
         if item.get("perceived_type") == "possivel_guardrail"
         and (item.get("adjudication") or {}).get("state") == "confirmada"
+        and any(_quality_scoreable(assessment) and "violado" in assessment.get("review", {}).get("guardrails", {}).values()
+                and assessment["assessment_id"] in (item.get("system_suggestion") or {}).get("assessment_ids", [])
+                for assessment in ledger.get("quality_assessments") or [])
     ]
     for item in confirmed_feedback_guardrails:
         suggestion = item.get("system_suggestion") or {}
@@ -2509,6 +2597,8 @@ def _scorecard_v2(
         "eixos": {key: {"nota_0a100": value, "peso": (targets.get("pesos_sessao") or {}).get(key)} for key, value in axes.items()},
         "componentes": {"economia": economy, "confiabilidade": {"par_cronica_exato": pair_score, "referencia_interacao_exatamente_uma_vez": visible_rate}},
         "agregacao_modular": aggregation,
+        "experiencia": _interaction_quality_metrics(list(ledger.get("quality_assessments") or [])),
+        "natureza_nota_geral": "indicadores_operacionais_nao_confirmam_qualidade_da_experiencia",
         "filas_prioridade": _priority_queues_summary(module_rows),
         "indicadores_globais": {
             "turnos_narrativos": int(narration.get("turns") or 0),
@@ -2624,9 +2714,18 @@ def _report_markdown_v2(
             "",
             "> Artefato pós-hoc de engenharia; não altera cânone.",
             "",
-            f"**{score_label}:** {scorecard.get('nota_geral_0a100', 'N/D')} / 100 ({scorecard.get('faixa_geral', 'N/D')}).",
+            f"**Validade:** {scorecard.get('apresentacao', {}).get('validade', scorecard.get('status_avaliacao'))}. Sem nota global conclusiva.",
+            f"**Qualidade:** {scorecard.get('apresentacao', {}).get('qualidade', 'não avaliada')}.",
+            f"**Cobertura:** {scorecard.get('apresentacao', {}).get('cobertura', {})}.",
+            f"**Revisão:** {manifest.get('revisao', {}).get('rotulo', 'geração inicial')}; versões jogadas preservadas.",
             "",
             *aggregation_lines,
+            "",
+            "<details><summary>Indicadores operacionais parciais</summary>",
+            "",
+            f"{score_label}: {scorecard.get('nota_operacional_parcial_0a100', 'N/D')} / 100. Não aprova qualidade da experiência.",
+            "",
+            "</details>",
             "",
             "## Módulos-pai e filas independentes",
             "",
@@ -2766,10 +2865,30 @@ def _generate_session_evaluation_v2(
     }
     for item in manifestations.get("player_feedback") or []:
         if item.get("feedback_id") and item.get("interaction_ref") in known_refs:
-            combined_feedback[str(item["feedback_id"])] = item
+            identifier = str(item["feedback_id"])
+            previous = combined_feedback.get(identifier)
+            if previous and previous.get("original_text") != item.get("original_text"):
+                raise EvaluationError("texto original da manifestação diverge da fonte congelada")
+            # O ledger de manifestações registra a fala; não rebaixa a adjudicação
+            # posterior para pendente durante regeneração.
+            if not previous:
+                combined_feedback[identifier] = item
     adjudications["schema_adjudicacoes_modulares"] = 2
     adjudications["player_feedback"] = list(combined_feedback.values())
-    ledger = analyzer.apply_modular_adjudications(ledger, adjudications)
+    # Resultados determinísticos já estão no ledger. Pareceres exportados de uma
+    # geração anterior são revalidados, sem duplicar suas unidades automáticas.
+    imported_ids = {item.get("assessment_id") for item in adjudications.get("quality_assessments") or []}
+    ledger["quality_assessments"] = [item for item in ledger.get("quality_assessments") or []
+                                     if item.get("assessment_id") not in imported_ids]
+    if analyzer_catalog_path is not None:
+        analyzer._CATALOG_V2_PATH = analyzer_catalog_path
+    try:
+        ledger = analyzer.adjudicate_rollout(ledger, adjudications, rollout)
+        if adjudications.get("review_workflow"):
+            ledger["experience_review"]["workflow"] = copy.deepcopy(adjudications["review_workflow"])
+    finally:
+        if analyzer_catalog_path is not None:
+            analyzer._CATALOG_V2_PATH = previous_catalog_path
     adjudications["quality_assessments"] = list(
         ledger.get("quality_assessments") or []
     )
@@ -2825,6 +2944,17 @@ def _generate_session_evaluation_v2(
         if any(item.get("codigo") in evidence_codes for item in conclusion["bloqueios"]):
             scorecard["status_avaliacao"] = "bloqueada_evidencia"
 
+    versions = {
+        "gerador": GENERATOR_VERSION,
+        "telemetria": report.get("schema_version"),
+        "detector_modular": ledger.get("detector_version"),
+        "rubrica": RUBRIC_VERSION,
+        "apresentacao": presentation.VERSION,
+        "catalogo_modulos": catalog_data.get("versao_catalogo"),
+        "metas": targets.get("versao_metas"),
+        "contrato_avaliacao": targets.get("contrato_avaliacao"),
+    }
+    presentation.publish(scorecard, module_rows, ledger, report, versions, provenance, catalog_data)
     _write_json(output_dir / "telemetria.json", report)
     _write_csv(output_dir / "turnos.csv", list(turn_rows[0]) if turn_rows else ["ordinal"], turn_rows)
     events = list(ledger.get("events") or [])
@@ -2845,6 +2975,7 @@ def _generate_session_evaluation_v2(
                 "parcial, não confirmada e indeterminada permanecem visíveis"
             ),
             "assessments": ledger.get("quality_assessments") or [],
+            "experience_review": ledger.get("experience_review") or {},
         },
     )
     manifestations["player_feedback"] = ledger.get("player_feedback") or []
@@ -2854,14 +2985,6 @@ def _generate_session_evaluation_v2(
     _write_json(output_dir / "scorecard.json", scorecard)
     _write_json(output_dir / "proveniencia-medicao.json", provenance)
 
-    versions = {
-        "gerador": GENERATOR_VERSION,
-        "telemetria": report.get("schema_version"),
-        "detector_modular": ledger.get("detector_version"),
-        "catalogo_modulos": catalog_data.get("versao_catalogo"),
-        "metas": targets.get("versao_metas"),
-        "contrato_avaliacao": targets.get("contrato_avaliacao"),
-    }
     manifest_source = {
         **(source_descriptor or {}),
         "arquivo": (source_descriptor or {}).get("arquivo", rollout.name),
@@ -2899,6 +3022,51 @@ def _generate_session_evaluation_v2(
     if output_dir.parent.name == "sessions":
         _rebuild_session_index(output_dir.parent)
     return {"manifest": manifest, "scorecard": scorecard, "output_dir": str(output_dir)}
+
+
+def generate_derived_evaluation(rollout: Path, *, original_dir: Path, output_dir: Path,
+                                revision_id: str, revision_date: str,
+                                measurement_input: dict[str, Any]) -> dict[str, Any]:
+    """Reavalia o mesmo recorte, preservando o original e as versões realmente jogadas."""
+    original_dir, output_dir = original_dir.resolve(), output_dir.resolve()
+    if output_dir == original_dir or original_dir.is_relative_to(output_dir):
+        raise EvaluationError("revisão não pode substituir o pacote original")
+    if not revision_id or not all(c.isalnum() or c in "-_" for c in revision_id):
+        raise EvaluationError("revisao_id inválido")
+    original_manifest = _load_json(original_dir / "manifest.json")
+    original_files = {p.name: _sha256(p) for p in original_dir.iterdir() if p.is_file()}
+    source = measurement_input.get("fonte") or {}
+    historic_source = original_manifest["fonte"]
+    if source.get("sha256") != historic_source.get("sha256") or source.get("corte_bytes") != historic_source.get("bytes"):
+        raise EvaluationError("revisão exige o mesmo recorte SHA-256 e bytes do original")
+    # O arquivo congelado de interações contém versões do instante, não do catálogo atual.
+    frozen_interactions = _frozen_snapshot(measurement_input, "interacoes")
+    frozen_data = _frozen_manifestation_data(frozen_interactions, original_manifest["sessao_id"])
+    versioned = [x["module_versions"] for x in frozen_data.get("interactions", []) if x.get("module_versions")]
+    expected_versions = {x["module_id"]: {"implementation_version": x["module_implementation_version"],
+                                         "evaluation_version": x["module_evaluation_version"]}
+                         for x in original_manifest.get("versoes_modulos", [])}
+    if not versioned or any(x != expected_versions for x in versioned):
+        raise EvaluationError("versões executadas da revisão não correspondem ao original")
+    result = generate_session_evaluation(rollout, session_id=original_manifest["sessao_id"],
+                                         output_dir=output_dir, measurement_input=measurement_input)
+    link = {"id": revision_id, "rotulo": f"Reavaliação {revision_id.upper()} · mesma sessão",
+            "natureza": "revisao_poshoc_mesmo_recorte_sem_novo_jogo", "data": revision_date,
+            "manifest_original_sha256": original_files["manifest.json"],
+            "pacote_original_sha256": presentation.digest(original_files),
+            "fonte_original_sha256": historic_source["sha256"],
+            "entrada_original_id": original_manifest.get("proveniencia_medicao", {}).get("entrada_id"),
+            "runtime_posterior_executado": False}
+    result["manifest"]["revisao"] = link
+    _write_json(output_dir / "manifest.json", result["manifest"])
+    (output_dir / "relatorio.md").write_text(
+        _report_markdown_v2(result["manifest"], result["scorecard"],
+                            _load_json(output_dir / "resumo-modulos.json")["modulos"]), encoding="utf-8")
+    if original_files != {p.name: _sha256(p) for p in original_dir.iterdir() if p.is_file()}:
+        raise EvaluationError("o pacote original mudou durante a revisão")
+    if original_dir.parent.name == "sessions" and output_dir.parent == original_dir / "revisoes":
+        _rebuild_session_index(original_dir.parent)
+    return result
 
 
 def generate_session_evaluation(

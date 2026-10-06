@@ -71,7 +71,7 @@ Elementos persistentes devem ter identificadores quando isso facilitar referênc
 
 Criar scripts somente quando houver benefício prático claro, como rolagem, validação de YAML, cálculo de XP, conferência de ficha, geração/fechamento de pacote de sessão, busca de inconsistências e atualização de índices.
 
-Toda ferramenta deve, salvo decisão explícita em contrário, funcionar offline, usar mensagens em português, tratar erros básicos, deixar claro quando altera dados, preservar conteúdo existente, ser testável e evitar dependências desnecessárias. Não automatizar julgamento narrativo.
+Toda ferramenta deve, salvo decisão explícita em contrário, funcionar offline, usar mensagens em português, tratar erros básicos, deixar claro quando altera dados, preservar conteúdo existente, ser testável e evitar dependências desnecessárias. Julgamento narrativo pertence à revisão pós-hoc pelo agente; automatizar organização, vínculo, verificação e publicação não transforma heurística em parecer semântico.
 
 O rolador público padrão é `poetry run dados`; rolagens independentes usam `poetry run dados-lote`. Se a ficha mudar de modo que invalide atalhos, atualizar a ferramenta ou registrar pendência antes de usar os atalhos afetados.
 

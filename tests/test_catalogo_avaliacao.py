@@ -146,6 +146,7 @@ class EvaluationCatalogContractTest(unittest.TestCase):
 
     def test_schemas_publicados_sao_json_validos_e_apontam_para_draft_2020(self) -> None:
         expected = {
+            "apresentacao-avaliacao-v1.schema.json",
             "agregacao-scorecard-v2.schema.json",
             "atividades-modulares-rollout.schema.json",
             "avaliacoes-qualidade-interacao-v1.schema.json",
